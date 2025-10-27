@@ -3,7 +3,7 @@ version: '3.3'
 services:
   postgres:
     image: postgres:13
-    container_name: mosip-postgres
+    container_name: mosip-postgres-prod
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -32,7 +32,7 @@ services:
 
   mosip-db-deployer:
     image: postgres:13
-    container_name: mosip-db-deployer
+    container_name: mosip-db-deployer-prod
     environment:
       PGPASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
     depends_on:
@@ -50,36 +50,7 @@ services:
       "
     restart: "no"
 
-  # Interface web pour PostgreSQL
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: mosip-pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@mosip.local}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    ports:
-      - "${PGADMIN_PORT:-8080}:80"
-    depends_on:
-      - postgres
-    networks:
-      - mosip-network
-    restart: unless-stopped
-
-  # Redis pour le cache (développement uniquement)
-  redis:
-    image: redis:6-alpine
-    container_name: mosip-redis
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
-    networks:
-      - mosip-network
-    restart: unless-stopped
-    command: redis-server --appendonly yes
-    volumes:
-      - ./data/redis:/data
-
-  # Service de sauvegarde automatique (production uniquement)
+  # Service de sauvegarde automatique
   postgres-backup:
     image: postgres:13
     container_name: mosip-postgres-backup
@@ -102,10 +73,6 @@ services:
         done
       "
     restart: unless-stopped
-
-volumes:
-  postgres_data:
-    driver: local
 
 networks:
   mosip-network:

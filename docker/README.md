@@ -29,35 +29,29 @@ chmod +x quick-start.sh
 ./quick-start.sh
 ```
 
-### Démarrage Manuel avec Profils
+### Démarrage Manuel
 
-#### Développement (PostgreSQL + pgAdmin)
+#### Développement (PostgreSQL + pgAdmin + Redis)
 ```bash
 cd docker
-docker-compose --profile dev up -d
-```
-
-#### Développement Avancé (PostgreSQL + pgAdmin + Redis)
-```bash
-cd docker
-docker-compose --profile dev-advanced up -d
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
 #### Production (PostgreSQL + Sauvegardes automatiques)
 ```bash
 cd docker
-# Configurer les variables d'environnement
+# Configurer les variables d'environnement (optionnel)
 cp mosip.env .env
 # Éditer .env avec vos mots de passe
 
 # Démarrer en production
-docker-compose --profile prod up -d
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
-#### Tous les services
+#### Tous les services (développement complet)
 ```bash
 cd docker
-docker-compose --profile dev --profile dev-advanced --profile prod up -d
+docker-compose up -d
 ```
 
 ## 📊 Accès

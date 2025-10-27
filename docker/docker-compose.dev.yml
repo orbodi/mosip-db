@@ -3,7 +3,7 @@ version: '3.3'
 services:
   postgres:
     image: postgres:13
-    container_name: mosip-postgres
+    container_name: mosip-postgres-dev
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -22,8 +22,8 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
-      interval: 30s
-      timeout: 10s
+      interval: 10s
+      timeout: 5s
       retries: 5
     command: >
       postgres
@@ -32,7 +32,7 @@ services:
 
   mosip-db-deployer:
     image: postgres:13
-    container_name: mosip-db-deployer
+    container_name: mosip-db-deployer-dev
     environment:
       PGPASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
     depends_on:
@@ -45,7 +45,7 @@ services:
     command: >
       bash -c "
         echo 'Waiting for PostgreSQL to be ready...' &&
-        sleep 15 &&
+        sleep 10 &&
         /deploy-scripts/deploy-all-databases.sh
       "
     restart: "no"
@@ -53,7 +53,7 @@ services:
   # Interface web pour PostgreSQL
   pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: mosip-pgadmin
+    container_name: mosip-pgadmin-dev
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@mosip.local}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
@@ -65,47 +65,6 @@ services:
     networks:
       - mosip-network
     restart: unless-stopped
-
-  # Redis pour le cache (développement uniquement)
-  redis:
-    image: redis:6-alpine
-    container_name: mosip-redis
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
-    networks:
-      - mosip-network
-    restart: unless-stopped
-    command: redis-server --appendonly yes
-    volumes:
-      - ./data/redis:/data
-
-  # Service de sauvegarde automatique (production uniquement)
-  postgres-backup:
-    image: postgres:13
-    container_name: mosip-postgres-backup
-    environment:
-      PGPASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
-    depends_on:
-      - postgres
-    volumes:
-      - ./data/backups:/backups
-      - ./scripts/backup-scripts:/backup-scripts
-    networks:
-      - mosip-network
-    command: >
-      bash -c "
-        while true; do
-          echo 'Starting backup at ' $$(date) &&
-          /backup-scripts/backup-databases.sh &&
-          echo 'Backup completed at ' $$(date) &&
-          sleep 86400
-        done
-      "
-    restart: unless-stopped
-
-volumes:
-  postgres_data:
-    driver: local
 
 networks:
   mosip-network:

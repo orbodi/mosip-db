@@ -1,0 +1,295 @@
+# MOSIP Database - Git Ignore
+
+# ===========================================
+# Docker & Containers
+# ===========================================
+docker/data/
+docker/logs/
+docker/backups/
+*.log
+
+# Docker volumes
+postgres_data/
+redis_data/
+
+# ===========================================
+# Environment & Configuration
+# ===========================================
+.env
+.env.local
+.env.production
+.env.staging
+docker/.env
+docker/.env.local
+docker/.env.production
+docker/.env.staging
+
+# Configuration files with sensitive data
+*_secrets.yml
+*_secrets.yaml
+*_secrets.json
+secrets/
+credentials/
+
+# ===========================================
+# Database Files
+# ===========================================
+*.sql.backup
+*.dump
+*.bak
+backup_*.sql
+backup_*.dump
+*.sql.gz
+*.dump.gz
+
+# Database dumps
+database_dumps/
+backups/
+dumps/
+
+# ===========================================
+# Logs & Temporary Files
+# ===========================================
+logs/
+*.log
+*.log.*
+log/
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Application logs
+application.log
+error.log
+access.log
+debug.log
+
+# ===========================================
+# IDE & Editor Files
+# ===========================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ===========================================
+# Operating System Files
+# ===========================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# Security & Sensitive Data
+# ===========================================
+# Private keys
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Certificates
+*.crt
+*.cer
+*.der
+*.p7b
+*.p7c
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_dsa
+id_dsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ===========================================
+# Build & Compilation
+# ===========================================
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.obj
+
+# Build directories
+build/
+dist/
+target/
+out/
+bin/
+obj/
+
+# ===========================================
+# Package Managers
+# ===========================================
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+# ===========================================
+# Documentation & Generated Files
+# ===========================================
+# Generated documentation
+docs/_build/
+docs/build/
+site/
+
+# Generated files
+*.generated.*
+*.auto.*
+
+# ===========================================
+# Testing & Coverage
+# ===========================================
+# Test results
+test-results/
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+
+# ===========================================
+# MOSIP Specific
+# ===========================================
+# MOSIP specific temporary files
+mosip_temp/
+mosip_cache/
+mosip_logs/
+
+# Database specific
+*.wal
+*.backup
+*.archive
+
+# ===========================================
+# Docker Specific
+# ===========================================
+# Docker build context
+.dockerignore
+
+# Docker Compose override files (keep base files)
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# ===========================================
+# Backup & Archive Files
+# ===========================================
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+*.7z
+
+# ===========================================
+# Monitoring & Metrics
+# ===========================================
+# Prometheus
+prometheus_data/
+grafana_data/
+
+# ===========================================
+# Keep Important Files
+# ===========================================
+# Keep example files
+!*.example
+!*.sample
+!*.template
+
+# Keep documentation
+!README.md
+!*.md
+!docs/
+
+# Keep configuration templates
+!mosip.env.example
+!docker-compose.yml.example

@@ -54,12 +54,37 @@ Une fois le déploiement terminé, vous pouvez vous connecter à PostgreSQL :
 
 ### Variables d'Environnement
 
-Modifiez le fichier `mosip.env` pour personnaliser la configuration :
+Modifiez le fichier `docker/mosip.env` pour personnaliser la configuration :
 
 ```env
 POSTGRES_PASSWORD=mosip@123
 SYSADMIN_PASSWORD=Mosipadm@dev123
 # ... autres variables
+```
+
+### Configuration Git
+
+Le projet inclut une configuration Git complète :
+- `.gitignore` - Exclut les fichiers sensibles et temporaires
+- `.gitattributes` - Gère les fins de ligne et types de fichiers
+- `.dockerignore` - Optimise les builds Docker
+- `README-Git.md` - Guide de configuration Git
+
+## 📁 Structure du Projet
+
+```
+mosip-db/
+├── database/                   # Scripts de base de données MOSIP
+├── docker/                     # Configuration Docker
+│   ├── config/                 # Configuration PostgreSQL
+│   ├── data/                   # Données persistantes (ignoré par Git)
+│   ├── scripts/                # Scripts de déploiement
+│   ├── docker-compose.yml      # Configuration unifiée
+│   └── mosip.env              # Variables d'environnement
+├── .gitignore                 # Configuration Git
+├── .gitattributes             # Attributs Git
+├── .dockerignore              # Configuration Docker
+└── README.md                  # Documentation principale
 ```
 
 ### Ports

@@ -8,63 +8,27 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
-      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
     ports:
       - "${POSTGRES_PORT:-5433}:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./config/postgresql.conf:/etc/postgresql/postgresql.conf
       - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf
-      - ../database:/docker-entrypoint-initdb.d/database
-      - ./scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-    networks:
-      - mosip-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
     command: >
       postgres
       -c config_file=/etc/postgresql/postgresql.conf
       -c hba_file=/etc/postgresql/pg_hba.conf
 
-  mosip-db-deployer:
-    image: postgres:13
-    container_name: mosip-db-deployer
-    environment:
-      PGPASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
-    depends_on:
-      - postgres
-    volumes:
-      - ../database:/database
-      - ./scripts/deploy-scripts:/deploy-scripts
-    networks:
-      - mosip-network
-    command: >
-      bash -c "
-        echo 'Waiting for PostgreSQL to be ready...' &&
-        sleep 10 &&
-        /deploy-scripts/deploy-all-databases.sh
-      "
-    restart: "no"
-
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: mosip-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@mosip.local}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
       - "${PGADMIN_PORT:-8080}:80"
     depends_on:
       - postgres
-    networks:
-      - mosip-network
     restart: unless-stopped
-
-networks:
-  mosip-network:
-    driver: bridge

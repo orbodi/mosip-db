@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-5433}:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./config/postgresql.conf:/etc/postgresql/postgresql.conf
@@ -22,8 +22,8 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
-      interval: 30s
-      timeout: 10s
+      interval: 10s
+      timeout: 5s
       retries: 5
     command: >
       postgres
@@ -45,12 +45,11 @@ services:
     command: >
       bash -c "
         echo 'Waiting for PostgreSQL to be ready...' &&
-        sleep 15 &&
+        sleep 10 &&
         /deploy-scripts/deploy-all-databases.sh
       "
     restart: "no"
 
-  # Interface web pour PostgreSQL
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: mosip-pgadmin
@@ -65,47 +64,6 @@ services:
     networks:
       - mosip-network
     restart: unless-stopped
-
-  # Redis pour le cache (développement uniquement)
-  redis:
-    image: redis:6-alpine
-    container_name: mosip-redis
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
-    networks:
-      - mosip-network
-    restart: unless-stopped
-    command: redis-server --appendonly yes
-    volumes:
-      - ./data/redis:/data
-
-  # Service de sauvegarde automatique (production uniquement)
-  postgres-backup:
-    image: postgres:13
-    container_name: mosip-postgres-backup
-    environment:
-      PGPASSWORD: ${POSTGRES_PASSWORD:-mosip@123}
-    depends_on:
-      - postgres
-    volumes:
-      - ./data/backups:/backups
-      - ./scripts/backup-scripts:/backup-scripts
-    networks:
-      - mosip-network
-    command: >
-      bash -c "
-        while true; do
-          echo 'Starting backup at ' $$(date) &&
-          /backup-scripts/backup-databases.sh &&
-          echo 'Backup completed at ' $$(date) &&
-          sleep 86400
-        done
-      "
-    restart: unless-stopped
-
-volumes:
-  postgres_data:
-    driver: local
 
 networks:
   mosip-network:

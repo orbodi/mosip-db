@@ -1,0 +1,13 @@
+hierarchy_level,hierarchy_level_name,lang_code,is_active,cr_by,cr_dtimes
+0,Country,eng,t,superadmin,2021-11-25 01:30:04.082
+0,Pays,fra,t,superadmin,2021-11-25 01:30:04.082
+1,Region,eng,t,superadmin,2021-11-25 01:30:04.082
+1,Région,fra,t,superadmin,2021-11-25 01:30:04.082
+2,Prefecture,eng,t,superadmin,2021-11-25 01:30:04.082
+2,Préfecture,fra,t,superadmin,2021-11-25 01:30:04.082
+3,Commune,eng,t,superadmin,2021-11-25 01:30:04.082
+3,Commune,fra,t,superadmin,2021-11-25 01:30:04.082
+4,Canton,eng,t,superadmin,2021-11-25 01:30:04.082
+4,Canton,fra,t,superadmin,2021-11-25 01:30:04.082
+5,Locality,eng,t,superadmin,2021-11-25 01:30:04.082
+5,Localité,fra,t,superadmin,2021-11-25 01:30:04.082

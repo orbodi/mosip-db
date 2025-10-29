@@ -1,0 +1,4 @@
+CREATE ROLE audituser WITH 
+	INHERIT
+	LOGIN
+	PASSWORD :dbuserpwd;

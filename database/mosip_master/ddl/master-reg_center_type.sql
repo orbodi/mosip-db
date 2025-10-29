@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.reg_center_type
--- Purpose    	: Registration Center Type : List of registration center types availabe / configured within the system.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.reg_center_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.reg_center_type CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.reg_center_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean NOT NULL DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_cntrtyp_id PRIMARY KEY (code,lang_code)
 

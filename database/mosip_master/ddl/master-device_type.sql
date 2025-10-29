@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.device_type
--- Purpose    	: Device Type : Types of devices that are supported by the system,  like  scanning, printing, photo, biometric etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.device_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.device_type CASCADE;
@@ -17,15 +6,15 @@ CREATE TABLE master.device_type(
 	code character varying(36) NOT NULL,
 	name character varying(64) NOT NULL,
 	descr character varying(128),
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3) ,
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_dtyp_code PRIMARY KEY (code,lang_code)
+	CONSTRAINT pk_dtyp_code PRIMARY KEY (code)
 
 );
 -- ddl-end --

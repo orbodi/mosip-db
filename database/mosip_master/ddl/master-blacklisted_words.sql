@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.blacklisted_words
--- Purpose    	: Black Listed Words : List of words that are black listed.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.blacklisted_words | type: TABLE --
 -- DROP TABLE IF EXISTS master.blacklisted_words CASCADE;
@@ -22,9 +11,8 @@ CREATE TABLE master.blacklisted_words(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
-	del_dtimes timestamp,
-	CONSTRAINT pk_blwrd_code PRIMARY KEY (word,lang_code)
+	is_deleted boolean DEFAULT FALSE,
+	del_dtimes timestamp
 
 );
 -- ddl-end --

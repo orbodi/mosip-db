@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.template_file_format
--- Purpose    	: Template File Format : Format of the template files that are used for notifications. For ex.,  xml, html, xslt, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.template_file_format | type: TABLE --
 -- DROP TABLE IF EXISTS master.template_file_format CASCADE;
@@ -22,9 +11,9 @@ CREATE TABLE master.template_file_format(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_tffmt_code PRIMARY KEY (code,lang_code)
+	CONSTRAINT pk_tffmt_code PRIMARY KEY (code, lang_code)
 
 );
 -- ddl-end --

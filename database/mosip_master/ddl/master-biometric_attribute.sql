@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.biometric_attribute
--- Purpose    	: Biometric Attribute : List of all biometric attributes to be captured for each biometric type during UIN registration.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ----------------------------------------------------------------------------------------
+
 
 -- object: master.biometric_attribute | type: TABLE --
 -- DROP TABLE IF EXISTS master.biometric_attribute CASCADE;
@@ -24,7 +13,7 @@ CREATE TABLE master.biometric_attribute(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_bmattr_code PRIMARY KEY (code,lang_code)
 

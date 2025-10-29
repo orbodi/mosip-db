@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_regprc
--- Table Name 	: regprc.reg_manual_verification
--- Purpose    	: Manual Verification: Stores all the registration request which goes through manual verification process, registration can be assinged to single/multiple manual verifier as part of the verification process.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: regprc.reg_manual_verification | type: TABLE --
 -- DROP TABLE IF EXISTS regprc.reg_manual_verification CASCADE;
@@ -18,7 +7,9 @@ CREATE TABLE regprc.reg_manual_verification(
 	matched_ref_id character varying(39) NOT NULL,
 	matched_ref_type character varying(36) NOT NULL,
 	mv_usr_id character varying(256),
-	matched_score numeric(6,3),
+	ref_regtrn_id character varying(36),
+	request_id character varying(36),
+	res_text bytea,
 	status_code character varying(36),
 	reason_code character varying(36),
 	status_comment character varying(256),
@@ -29,11 +20,15 @@ CREATE TABLE regprc.reg_manual_verification(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_rmnlver_id PRIMARY KEY (reg_id,matched_ref_id,matched_ref_type)
+	workflow_instance_id character varying(36) NOT NULL,
+	CONSTRAINT pk_rmnlver_id PRIMARY KEY (workflow_instance_id,matched_ref_id,matched_ref_type)
 
 );
+-- indexes section -------------------------------------------------
+create index idx_rmanvrn_reqid on regprc.reg_manual_verification (request_id);
+
 -- ddl-end --
 COMMENT ON TABLE regprc.reg_manual_verification IS 'Manual Verification: Stores all the registration request which goes through manual verification process, registration can be assinged to single/multiple manual verifier as part of the verification process';
 -- ddl-end --
@@ -45,7 +40,11 @@ COMMENT ON COLUMN regprc.reg_manual_verification.matched_ref_type IS 'Mached ref
 -- ddl-end --
 COMMENT ON COLUMN regprc.reg_manual_verification.mv_usr_id IS 'Manual Verifier ID: User ID of the manual verifier';
 -- ddl-end --
-COMMENT ON COLUMN regprc.reg_manual_verification.matched_score IS 'Mached Score: Mached score as part deduplication process, This will be the combined score of multiple ABISapplications';
+COMMENT ON COLUMN regprc.reg_manual_verification.ref_regtrn_id IS 'Reference Transaction ID: Transaction id for the manual adjudication transaction refered from registration transaction table';
+-- ddl-end --
+COMMENT ON COLUMN regprc.reg_manual_verification.request_id IS 'Request ID: Request id of the request is been sent for manual adjudication at external applications';
+-- ddl-end --
+COMMENT ON COLUMN regprc.reg_manual_verification.res_text IS 'Response Text: Text which is recived from external application for manual adjudication';
 -- ddl-end --
 COMMENT ON COLUMN regprc.reg_manual_verification.status_code IS 'Status Code : Status of the manual verification';
 -- ddl-end --

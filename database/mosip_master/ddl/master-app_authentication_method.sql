@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.app_authentication_method
--- Purpose    	: App Authentication Method : Store List of application, process, role and their user authentication methods mapped with sequence.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.app_authentication_method | type: TABLE --
 -- DROP TABLE IF EXISTS master.app_authentication_method CASCADE;
@@ -19,13 +8,13 @@ CREATE TABLE master.app_authentication_method(
 	role_code character varying(36) NOT NULL,
 	auth_method_code character varying(36) NOT NULL,
 	method_seq smallint,
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3) ,
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_appauthm_id PRIMARY KEY (app_id,process_id,role_code,auth_method_code)
 

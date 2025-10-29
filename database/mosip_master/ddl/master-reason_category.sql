@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.reason_category
--- Purpose    	: Reason Category : List of reason categories defined for different processes, for ex., client rejection, manual adjudication etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.reason_category | type: TABLE --
 -- DROP TABLE IF EXISTS master.reason_category CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.reason_category(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_rsncat_code PRIMARY KEY (code,lang_code)
 

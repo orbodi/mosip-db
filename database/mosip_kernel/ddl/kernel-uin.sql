@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_kernel
--- Table Name 	: kernel.uin
--- Purpose    	: UIN: Stores pre-generated UINs that are assigned to an individual as part of registration process.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: kernel.uin | type: TABLE --
 -- DROP TABLE IF EXISTS kernel.uin CASCADE;
@@ -20,7 +9,7 @@ CREATE TABLE kernel.uin(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_uin_id PRIMARY KEY (uin)
 

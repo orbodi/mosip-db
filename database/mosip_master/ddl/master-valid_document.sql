@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.valid_document
--- Purpose    	: Valid Document : This is mapping table that relates  document category and document type, that is valid document proof for UIN registration process.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.valid_document | type: TABLE --
 -- DROP TABLE IF EXISTS master.valid_document CASCADE;
@@ -22,7 +11,7 @@ CREATE TABLE master.valid_document(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_valdoc_code PRIMARY KEY (doctyp_code,doccat_code)
 

@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_kernel
--- Table Name 	: kernel.otp_transaction
--- Purpose    	: OTP Transaction: All OTP related data and validation details are maintained here.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: kernel.otp_transaction | type: TABLE --
 -- DROP TABLE IF EXISTS kernel.otp_transaction CASCADE;
@@ -27,7 +16,7 @@ CREATE TABLE kernel.otp_transaction(
 	cr_dtimes timestamp,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_otptrn_id PRIMARY KEY (id)
 
@@ -37,9 +26,9 @@ COMMENT ON TABLE kernel.otp_transaction IS 'OTP Transaction: All OTP related dat
 -- ddl-end --
 COMMENT ON COLUMN kernel.otp_transaction.id IS 'ID: Unique transaction id for each otp transaction request';
 -- ddl-end --
-COMMENT ON COLUMN kernel.otp_transaction.ref_id IS 'Reference ID: Reference ID is a reference information received from OTP requester which can be used while validating the OTP.';
+COMMENT ON COLUMN kernel.otp_transaction.ref_id IS 'Reference ID: Reference ID is a reference information received from OTP requester which can be used while validating the OTP. AM: please give examples of ref_id';
 -- ddl-end --
-COMMENT ON COLUMN kernel.otp_transaction.ref_id_type IS 'Reference ID Type: Type of information in Reference ID field, used to reference this OTP request.';
+COMMENT ON COLUMN kernel.otp_transaction.ref_id_type IS 'Reference ID Type: Type of information in Reference ID field, used to reference this OTP request. AM: i guess only email & ph are the types. Please specify';
 -- ddl-end --
 COMMENT ON COLUMN kernel.otp_transaction.otp IS 'OTP: One Time Pin which is generated based on the configuration setup and sent to the requester application / module.';
 -- ddl-end --
@@ -49,7 +38,7 @@ COMMENT ON COLUMN kernel.otp_transaction.expiry_dtimes IS 'Expiry Date Time: Dat
 -- ddl-end --
 COMMENT ON COLUMN kernel.otp_transaction.validation_retry_count IS 'Validation Retry Count: Validation retry counts of this OTP request. If the validation retry crosses the threshold limit, then the OTP will be de-activated.';
 -- ddl-end --
-COMMENT ON COLUMN kernel.otp_transaction.status_code IS 'Status Code: Status of the OTP whether it is active or expired.';
+COMMENT ON COLUMN kernel.otp_transaction.status_code IS 'Status Code: Status of the OTP whether it is active or expired. AM: please enumerate the status types. They are only a few, not infinite';
 -- ddl-end --
 COMMENT ON COLUMN kernel.otp_transaction.lang_code IS 'Language Code : For multilanguage implementation this attribute Refers master.language.code. The value of some of the attributes in current record is stored in this respective language. ';
 -- ddl-end --

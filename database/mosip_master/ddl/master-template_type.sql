@@ -1,20 +1,9 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.template_type
--- Purpose    	: Template Type : Type of templates supported by the system. For ex., sms, email, etc
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.template_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.template_type CASCADE;
 CREATE TABLE master.template_type(
-	code character varying(36) NOT NULL,
+	code character varying(64) NOT NULL,
 	descr character varying(256) NOT NULL,
 	lang_code character varying(3) NOT NULL,
 	is_active boolean NOT NULL,
@@ -22,9 +11,9 @@ CREATE TABLE master.template_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_tmpltyp_code PRIMARY KEY (code,lang_code)
+	CONSTRAINT pk_tmpltyp_code PRIMARY KEY (code, lang_code)
 
 );
 -- ddl-end --

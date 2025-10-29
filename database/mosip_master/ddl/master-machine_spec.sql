@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.machine_spec
--- Purpose    	: Machine Specification :  Specification of Machines for each Machine type that are supported by system,  like laptop, desktop, dongle etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.machine_spec | type: TABLE --
 -- DROP TABLE IF EXISTS master.machine_spec CASCADE;
@@ -21,15 +10,15 @@ CREATE TABLE master.machine_spec(
 	mtyp_code character varying(36) NOT NULL,
 	min_driver_ver character varying(16) NOT NULL,
 	descr character varying(256),
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3) ,
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_mspec_code PRIMARY KEY (id,lang_code)
+	CONSTRAINT pk_mspec_code PRIMARY KEY (id)
 
 );
 -- ddl-end --

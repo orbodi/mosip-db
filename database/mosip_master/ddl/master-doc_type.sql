@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.doc_type
--- Purpose    	: Document Type : List of acceptable document types supported by the system, for ex., passport, driving license, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.doc_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.doc_type CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.doc_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_doctyp_code PRIMARY KEY (code,lang_code)
 

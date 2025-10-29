@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.device_master_h
--- Purpose    	: Device Master History : This to track changes to master record whenever there is an INSERT/UPDATE/DELETE ( soft delete ), Effective DateTimestamp is used for identifying latest or point in time information. Refer master.device_master table description for details.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.device_master_h | type: TABLE --
 -- DROP TABLE IF EXISTS master.device_master_h CASCADE;
@@ -22,16 +11,17 @@ CREATE TABLE master.device_master_h(
 	validity_end_dtimes timestamp,
 	dspec_id 	character varying(36) NOT NULL,
 	zone_code 	character varying(36) NOT NULL,
-	lang_code 	character varying(3) NOT NULL,
+	regcntr_id  character varying(10),
+	lang_code 	character varying(3) ,
 	is_active 	boolean NOT NULL,
 	cr_by 		character varying(256) NOT NULL,
 	cr_dtimes 	timestamp NOT NULL,
 	upd_by 		character varying(256),
 	upd_dtimes 	timestamp,
-	is_deleted 	boolean,
+	is_deleted 	boolean DEFAULT FALSE,
 	del_dtimes 	timestamp,
 	eff_dtimes 	timestamp NOT NULL,
-	CONSTRAINT pk_devicem_h_id PRIMARY KEY (id,lang_code,eff_dtimes)
+	CONSTRAINT pk_devicem_h_id PRIMARY KEY (id,eff_dtimes)
 
 );
 -- ddl-end --
@@ -52,6 +42,8 @@ COMMENT ON COLUMN master.device_master_h.validity_end_dtimes IS 'Validity End Da
 COMMENT ON COLUMN master.device_master_h.dspec_id IS 'Device Specification ID : Device specification id refers to master.device_spec.id';
 -- ddl-end --
 COMMENT ON COLUMN master.device_master_h.zone_code IS 'Zone Code : Unique zone code generated or entered by admin while creating zones, It is referred to master.zone.code. ';
+-- ddl-end --
+COMMENT ON COLUMN master.device_master.regcntr_id IS 'Registration Center ID : registration center id refers to master.registration_center.id';
 -- ddl-end --
 COMMENT ON COLUMN master.device_master_h.lang_code IS 'Language Code : For multilanguage implementation this attribute Refers master.language.code. The value of some of the attributes in current record is stored in this respective language. ';
 -- ddl-end --

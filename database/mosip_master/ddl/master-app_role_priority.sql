@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.app_role_priority
--- Purpose    	: Application Role Priority : Defines role priority for each application and processes for application user.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.app_role_priority | type: TABLE --
 -- DROP TABLE IF EXISTS master.app_role_priority CASCADE;
@@ -18,13 +7,13 @@ CREATE TABLE master.app_role_priority(
 	process_id character varying(36) NOT NULL,
 	role_code character varying(36) NOT NULL,
 	priority smallint,
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3),
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_roleprt_id PRIMARY KEY (app_id,process_id,role_code)
 

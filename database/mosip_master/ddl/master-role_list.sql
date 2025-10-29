@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.role_list
--- Purpose    	: Role List : List of roles defined within the system. These roles are used for various processes like data access, authentication methods, authorization, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.role_list | type: TABLE --
 -- DROP TABLE IF EXISTS master.role_list CASCADE;
@@ -22,7 +11,7 @@ CREATE TABLE master.role_list(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_rolelst_code PRIMARY KEY (code,lang_code)
 

@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.reason_list
--- Purpose    	: Reason List : List of reasons for each category, for ex., photo mismatch, duplicate registration etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.reason_list | type: TABLE --
 -- DROP TABLE IF EXISTS master.reason_list CASCADE;
@@ -24,7 +13,7 @@ CREATE TABLE master.reason_list(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_rsnlst_code PRIMARY KEY (code,rsncat_code,lang_code)
 

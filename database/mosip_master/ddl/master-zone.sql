@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.zone
--- Purpose    	: Zone :  List of all zones and hierarchies defined for various zone requirements.  An example is provided for understanding the data to be populated.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.zone | type: TABLE --
 -- DROP TABLE IF EXISTS master.zone CASCADE;
@@ -26,7 +15,7 @@ CREATE TABLE master.zone(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_zone_code PRIMARY KEY (code,lang_code),
 	CONSTRAINT uk_hierpath UNIQUE (hierarchy_path,lang_code)

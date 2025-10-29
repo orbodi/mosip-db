@@ -8,14 +8,12 @@
 -- 
 -- Modified Date        Modified By         Comments / Remarks
 -- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
 
+-- ------------------------------------------------------------------------------------------
 -- object: ida.uin_auth_lock | type: TABLE --
 -- DROP TABLE IF EXISTS ida.uin_auth_lock CASCADE;
 CREATE TABLE ida.uin_auth_lock(
-	uin character varying(500) NOT NULL,
-	uin_hash character varying(128) NOT NULL,
+	token_id character varying(128) NOT NULL,
 	auth_type_code character varying(36) NOT NULL,
 	lock_request_datetime timestamp NOT NULL,
 	lock_start_datetime timestamp NOT NULL,
@@ -26,18 +24,20 @@ CREATE TABLE ida.uin_auth_lock(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_uinal PRIMARY KEY (uin,auth_type_code,lock_request_datetime),
-	CONSTRAINT uk_uinal UNIQUE (uin_hash,auth_type_code,lock_request_datetime)
+	unlock_expiry_datetime timestamp,
+	CONSTRAINT pk_uinal PRIMARY KEY (token_id,auth_type_code,lock_request_datetime)
 
 );
 -- ddl-end --
+--index section starts----
+CREATE INDEX ind_ual_id ON ida.uin_auth_lock (token_id);
+--index section ends------
+
 COMMENT ON TABLE ida.uin_auth_lock IS 'UIN Authentication Lock: An individual is provided an option to lock or unlock any of the authentication types that are provided by the system. When an individual locks a particular type of authentication, any requests received by the system will be rejected. The details of the locked authentication types are stored in this table. ';
 -- ddl-end --
-COMMENT ON COLUMN ida.uin_auth_lock.uin IS 'Unique Identification Number: Unique Identification Number of an individual for which an authentication type is locked.';
--- ddl-end --
-COMMENT ON COLUMN ida.uin_auth_lock.uin_hash IS 'Unique Identification Number Hash: Unique Identification Number Hash value of an individual for which an authentication type is locked.';
+COMMENT ON COLUMN ida.uin_auth_lock.token_id IS 'Token ID: ID generated with reference to UIN/VID.';
 -- ddl-end --
 COMMENT ON COLUMN ida.uin_auth_lock.auth_type_code IS 'Authentication Type Code: Unique code of an authentication type that is being locked by an individual';
 -- ddl-end --
@@ -62,4 +62,6 @@ COMMENT ON COLUMN ida.uin_auth_lock.upd_dtimes IS 'Updated DateTimestamp : Date 
 COMMENT ON COLUMN ida.uin_auth_lock.is_deleted IS 'IS_Deleted : Flag to mark whether the record is Soft deleted.';
 -- ddl-end --
 COMMENT ON COLUMN ida.uin_auth_lock.del_dtimes IS 'Deleted DateTimestamp : Date and Timestamp when the record is soft deleted with is_deleted=TRUE';
+-- ddl-end --
+COMMENT ON COLUMN ida.uin_auth_lock.unlock_expiry_datetime IS E'Unlock Timestamp';
 -- ddl-end --

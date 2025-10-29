@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.machine_type
--- Purpose    	: Machine Type : Types of Machines that are supported by the system,  like laptop, desktop, dongle etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.machine_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.machine_type CASCADE;
@@ -17,15 +6,15 @@ CREATE TABLE master.machine_type(
 	code character varying(36) NOT NULL,
 	name character varying(64) NOT NULL,
 	descr character varying(128),
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3),
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_mtyp_code PRIMARY KEY (code,lang_code)
+	CONSTRAINT pk_mtyp_code PRIMARY KEY (code)
 
 );
 -- ddl-end --

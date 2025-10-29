@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.individual_type
--- Purpose    	: Individual Type : Type of indivisuals considered during registration.for ex., foreigner, non-foreigner, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.individual_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.individual_type CASCADE;
@@ -22,7 +11,7 @@ CREATE TABLE master.individual_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_indvtyp_code PRIMARY KEY (code,lang_code)
 

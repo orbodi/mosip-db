@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.authentication_type
--- Purpose    	: Authentication Type : List of Authentication types supported by the system.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.authentication_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.authentication_type CASCADE;
@@ -22,7 +11,7 @@ CREATE TABLE master.authentication_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_authtyp_code PRIMARY KEY (code,lang_code)
 

@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.location
--- Purpose    	: Location :  List of all location and  hierarchies defined for various location requirements.  An example is provided for understanding the data to be populated.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.location | type: TABLE --
 -- DROP TABLE IF EXISTS master.location CASCADE;
@@ -25,12 +14,15 @@ CREATE TABLE master.location(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_loc_code PRIMARY KEY (code,lang_code)
 
 );
 -- ddl-end --
+-- index creation starts--
+CREATE INDEX IF NOT EXISTS idx_location_cr_dtimes ON master.location USING btree (cr_dtimes);
+-- index creation ends--
 COMMENT ON TABLE master.location IS 'Location :  List of all location and  hierarchies defined for various location requirements.  An example is provided for understanding the data to be populated.';
 -- ddl-end --
 COMMENT ON COLUMN master.location.code IS 'Code : Unique location code. ';

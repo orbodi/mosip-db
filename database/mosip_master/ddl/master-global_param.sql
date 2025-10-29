@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.global_param
--- Purpose    	: Global Parameters: Stores global system and application parameters with default values used across applications and modules.  These can be configured/changed through admin portal as needed.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.global_param | type: TABLE --
 -- DROP TABLE IF EXISTS master.global_param CASCADE;
@@ -24,7 +13,7 @@ CREATE TABLE master.global_param(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_glbparm_code PRIMARY KEY (code,lang_code)
 

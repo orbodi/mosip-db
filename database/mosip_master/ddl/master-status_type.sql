@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.status_type
--- Purpose    	: Status Type : List of status types. These are used to group a set of statuses of a process.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.status_type | type: TABLE --
 -- DROP TABLE IF EXISTS master.status_type CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.status_type(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_sttyp_code PRIMARY KEY (code,lang_code)
 

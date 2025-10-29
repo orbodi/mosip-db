@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.screen_authorization
--- Purpose    	: Screen Authorization : Mapping table to define the access control of application screens to a role.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.screen_authorization | type: TABLE --
 -- DROP TABLE IF EXISTS master.screen_authorization CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.screen_authorization(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_scrauth_screen_id PRIMARY KEY (screen_id,role_code)
 

@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.admin_param
--- Purpose    	: Admin Parameters : Stores admin parameters with values used in application modules.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.admin_param | type: TABLE --
 -- DROP TABLE IF EXISTS master.admin_param CASCADE;
@@ -24,7 +13,7 @@ CREATE TABLE master.admin_param(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_admparm_code PRIMARY KEY (code,lang_code)
 

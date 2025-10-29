@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.doc_format
--- Purpose    	: Document Format : List of acceptable document formats supported by the system, for ex., pdf, jpeg, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.doc_format | type: TABLE --
 -- DROP TABLE IF EXISTS master.doc_format CASCADE;
@@ -23,7 +12,7 @@ CREATE TABLE master.doc_format(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_docfmt_code PRIMARY KEY (code,lang_code)
 

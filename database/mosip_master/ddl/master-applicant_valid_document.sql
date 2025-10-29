@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.applicant_valid_document
--- Purpose    	: Applicant Valid Document : This is mapping table that relates applicant type, document category and document type, that is valid document proof for UIN registration process.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.applicant_valid_document | type: TABLE --
 -- DROP TABLE IF EXISTS master.applicant_valid_document CASCADE;
@@ -23,11 +12,15 @@ CREATE TABLE master.applicant_valid_document(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_avaldoc_code PRIMARY KEY (apptyp_code,doccat_code,doctyp_code)
 
 );
+-- index creation starts--
+CREATE INDEX IF NOT EXISTS idx_app_val_doc_cr_dtimes ON master.applicant_valid_document USING btree (cr_dtimes);
+CREATE INDEX IF NOT EXISTS idx_app_val_doc_upd_dtimes ON master.applicant_valid_document USING btree (upd_dtimes);
+-- index creation ends--
 -- ddl-end --
 COMMENT ON TABLE master.applicant_valid_document IS 'Applicant Valid Document : This is mapping table that relates applicant type, document category and document type, that is valid document proof for UIN registration process.';
 -- ddl-end --

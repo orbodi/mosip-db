@@ -1,0 +1,4 @@
+﻿app_id,key_validity_duration,is_active,cr_by,cr_dtimes,eff_dtimes
+IDA,1095,TRUE,mosipadmin,now(),now()
+ROOT,1826,TRUE,mosipadmin,now(),now()
+BASE,730,TRUE,mosipadmin,now(),now()

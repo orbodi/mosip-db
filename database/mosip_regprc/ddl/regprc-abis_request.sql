@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_regprc
--- Table Name 	: regprc.abis_request
--- Purpose    	: ABIS Request: Stores all the requests that were sent to ABIS systems.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: regprc.abis_request | type: TABLE --
 -- DROP TABLE IF EXISTS regprc.abis_request CASCADE;
@@ -29,14 +18,18 @@ CREATE TABLE regprc.abis_request(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_abisreq PRIMARY KEY (id),
-	CONSTRAINT uk_abisreq UNIQUE (abis_app_code,request_type,request_dtimes),
 	CONSTRAINT uk_abisreq_ref UNIQUE (req_batch_id,abis_app_code)
 
 );
 -- ddl-end --
+-- index creation starts--
+CREATE INDEX IF NOT EXISTS idx_user_detail_cntr_id ON regprc.abis_request USING btree (bio_ref_id);
+CREATE INDEX IF NOT EXISTS idx_abis_req_regtrn_id ON regprc.abis_request USING btree (ref_regtrn_id);
+CREATE INDEX idx_abis_search on regprc.abis_request(bio_ref_id, ref_regtrn_id);
+-- index creation ends--
 COMMENT ON TABLE regprc.abis_request IS 'ABIS Request: Stores all the requests that were sent to ABIS systems';
 -- ddl-end --
 COMMENT ON COLUMN regprc.abis_request.id IS 'Request ID: System generated id, used to track all the ABIS request sent to ABIS applications.';

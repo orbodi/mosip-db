@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_regprc
--- Table Name 	: regprc.registration_transaction
--- Purpose    	: Registration Transaction: Registration Processor Transaction table is to store ALL  Registration Processor packet processing/process transaction details for ID issuance.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: regprc.registration_transaction | type: TABLE --
 -- DROP TABLE IF EXISTS regprc.registration_transaction CASCADE;
@@ -29,12 +18,18 @@ CREATE TABLE regprc.registration_transaction(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_regtrn_id PRIMARY KEY (id)
 
 );
 -- ddl-end --
+-- index creation starts--
+CREATE INDEX IF NOT EXISTS idx_reg_trn_reg_id ON regprc.registration_transaction USING btree (reg_id);
+CREATE INDEX IF NOT EXISTS idx_reg_trn_status_code ON regprc.registration_transaction USING btree (status_code);
+CREATE INDEX IF NOT EXISTS idx_reg_trn_trntypecode ON regprc.registration_transaction USING btree (trn_type_code);
+CREATE INDEX IF NOT EXISTS idx_reg_trn_upd_dtimes ON regprc.registration_transaction USING btree (upd_dtimes);
+--index creation ends--
 COMMENT ON TABLE regprc.registration_transaction IS 'Registration Transaction: Registration Processor Transaction table is to store ALL  Registration Processor packet processing/process transaction details for ID issuance';
 -- ddl-end --
 COMMENT ON COLUMN regprc.registration_transaction.id IS 'ID: Transaction id of the transactions that were recorded in registration module/application';

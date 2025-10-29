@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.message_list
--- Purpose    	: Message List : List of message texts that will be displayed or sent as alerts / notifications.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.message_list | type: TABLE --
 -- DROP TABLE IF EXISTS master.message_list CASCADE;
@@ -25,7 +14,7 @@ CREATE TABLE master.message_list(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_msglst_code PRIMARY KEY (code,lang_code)
 

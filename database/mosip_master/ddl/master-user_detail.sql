@@ -1,26 +1,13 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.user_detail
--- Purpose    	: User Detail : List of applicatgion users in the system, who can perform UIN registration functions as per roles assigned.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.user_detail | type: TABLE --
 -- DROP TABLE IF EXISTS master.user_detail CASCADE;
 CREATE TABLE master.user_detail(
 	id character varying(256) NOT NULL,
-	uin character varying(28),
-	name character varying(64) NOT NULL,
-	email character varying(256),
-	mobile character varying(16),
-	status_code character varying(36) NOT NULL,
-	lang_code character varying(3) NOT NULL,
+	name character varying(64) ,
+	status_code character varying(36),
+	regcntr_id character varying(10),
+	lang_code character varying(3) ,
 	last_login_dtimes timestamp,
 	last_login_method character varying(64),
 	is_active boolean NOT NULL,
@@ -28,25 +15,22 @@ CREATE TABLE master.user_detail(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_usrdtl_id PRIMARY KEY (id)
 
 );
 -- ddl-end --
+-- index creation starts--
+CREATE INDEX IF NOT EXISTS idx_user_detail_cntr_id ON master.user_detail USING btree (regcntr_id);
+-- index creation ends --
 COMMENT ON TABLE master.user_detail IS 'User Detail : List of applicatgion users in the system, who can perform UIN registration functions as per roles assigned.';
 -- ddl-end --
 COMMENT ON COLUMN master.user_detail.id IS 'User ID : Unique ID generated / assigned for a user';
 -- ddl-end --
-COMMENT ON COLUMN master.user_detail.uin IS 'UIN: UIN of the user. Typically this will be used for bio authentication';
--- ddl-end --
 COMMENT ON COLUMN master.user_detail.name IS 'Name : User name';
 -- ddl-end --
-COMMENT ON COLUMN master.user_detail.email IS 'Email: Email address of the user';
--- ddl-end --
-COMMENT ON COLUMN master.user_detail.mobile IS 'Mobile: Mobile number of the user';
--- ddl-end --
-COMMENT ON COLUMN master.user_detail.status_code IS 'Status Code: User status. Refers to master.status_master.code';
+COMMENT ON COLUMN master.user_detail.regcntr_id IS 'Registration Center ID : registration center id refers to master.registration_center.id';
 -- ddl-end --
 COMMENT ON COLUMN master.user_detail.lang_code IS 'Language Code : For multilanguage implementation this attribute Refers master.language.code. The value of some of the attributes in current record is stored in this respective language. ';
 -- ddl-end --

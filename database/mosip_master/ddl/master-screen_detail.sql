@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.screen_detail
--- Purpose    	: Screen Detail : List of screens of each application..
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.screen_detail | type: TABLE --
 -- DROP TABLE IF EXISTS master.screen_detail CASCADE;
@@ -24,7 +13,7 @@ CREATE TABLE master.screen_detail(
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
 	CONSTRAINT pk_scrdtl_id PRIMARY KEY (id,lang_code)
 

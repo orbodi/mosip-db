@@ -1,30 +1,19 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.authentication_method
--- Purpose    	: Authentication Method : List of user Authentication methods supported by the system.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.authentication_method | type: TABLE --
 -- DROP TABLE IF EXISTS master.authentication_method CASCADE;
 CREATE TABLE master.authentication_method(
 	code character varying(36) NOT NULL,
 	method_seq smallint,
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3) ,
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_authm_code PRIMARY KEY (code,lang_code)
+	CONSTRAINT pk_authm_code PRIMARY KEY (code)
 
 );
 -- ddl-end --

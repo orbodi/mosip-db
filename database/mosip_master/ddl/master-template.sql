@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.template
--- Purpose    	: Template : Templates are defined to standardize the communication process within the system. For ex., notications, alerts, etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.template | type: TABLE --
 -- DROP TABLE IF EXISTS master.template CASCADE;
@@ -19,20 +8,21 @@ CREATE TABLE master.template(
 	descr character varying(256),
 	file_format_code character varying(36) NOT NULL,
 	model character varying(128),
-	file_txt character varying(4086),
+	file_txt character varying,
 	module_id character varying(36),
 	module_name character varying(128),
-	template_typ_code character varying(36) NOT NULL,
+	template_typ_code character varying(64) NOT NULL,
 	lang_code character varying(3) NOT NULL,
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_tmplt_id PRIMARY KEY (id,lang_code)
-
+	CONSTRAINT pk_tmplt_id PRIMARY KEY (id,lang_code),
+	CONSTRAINT fk_tmplt_tmpltyp FOREIGN KEY (template_typ_code, lang_code) REFERENCES master.template_type (code, lang_code),
+	CONSTRAINT fk_tmplt_tffmt FOREIGN KEY (file_format_code,lang_code) REFERENCES master.template_file_format (code,lang_code)
 );
 -- ddl-end --
 COMMENT ON TABLE master.template IS 'Template : Templates are defined to standardize the communication process within the system. For ex., notications, alerts, etc.';

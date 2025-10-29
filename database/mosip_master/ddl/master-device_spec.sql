@@ -1,15 +1,4 @@
--- -------------------------------------------------------------------------------------------------
--- Database Name: mosip_master
--- Table Name 	: master.device_spec
--- Purpose    	: Device Specification :  Specification of devices for each device type that are supported by system for various process requirements, like scanning, printing, photo, biometric etc.
---           
--- Create By   	: Nasir Khan / Sadanandegowda
--- Created Date	: 15-Jul-2019
--- 
--- Modified Date        Modified By         Comments / Remarks
--- ------------------------------------------------------------------------------------------
--- 
--- ------------------------------------------------------------------------------------------
+
 
 -- object: master.device_spec | type: TABLE --
 -- DROP TABLE IF EXISTS master.device_spec CASCADE;
@@ -21,15 +10,15 @@ CREATE TABLE master.device_spec(
 	dtyp_code character varying(36) NOT NULL,
 	min_driver_ver character varying(16) NOT NULL,
 	descr character varying(256),
-	lang_code character varying(3) NOT NULL,
+	lang_code character varying(3),
 	is_active boolean NOT NULL,
 	cr_by character varying(256) NOT NULL,
 	cr_dtimes timestamp NOT NULL,
 	upd_by character varying(256),
 	upd_dtimes timestamp,
-	is_deleted boolean,
+	is_deleted boolean DEFAULT FALSE,
 	del_dtimes timestamp,
-	CONSTRAINT pk_dspec_code PRIMARY KEY (id,lang_code)
+	CONSTRAINT pk_dspec_code PRIMARY KEY (id)
 
 );
 -- ddl-end --

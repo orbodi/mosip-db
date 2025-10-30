@@ -133,7 +133,7 @@ TRUNCATE TABLE master.device_type cascade ;
 ----- TRUNCATE master.device_spec TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.device_spec cascade ;
 
-\COPY master.device_spec (id,type_code,sub_type_code,make,model,partner_org_name,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-device_spec.csv' delimiter ',' HEADER  csv;
+\COPY master.device_spec (id,name,brand,model,dtyp_code,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-device_spec.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.device_master_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.device_master_h cascade ;

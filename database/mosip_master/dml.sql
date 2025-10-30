@@ -247,7 +247,50 @@ ORDER BY holiday_date, location_code, cr_dtimes;
 ----- TRUNCATE master.location TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.location cascade ;
 
-\COPY master.location (code,name,hierarchy_level,hierarchy_level_name,parent_loc_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-location.csv' delimiter ',' HEADER  csv;
+-- Load into staging to normalize hierarchy_level_name encoding and values
+DROP TABLE IF EXISTS _location_stg;
+CREATE TEMP TABLE _location_stg (
+    code character varying(36),
+    name character varying(128),
+    hierarchy_level smallint,
+    hierarchy_level_name text,
+    parent_loc_code character varying(36),
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+
+\COPY _location_stg (code,name,hierarchy_level,hierarchy_level_name,parent_loc_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-location.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.location (code,name,hierarchy_level,hierarchy_level_name,parent_loc_code,lang_code,is_active,cr_by,cr_dtimes)
+SELECT s.code,
+       s.name,
+       s.hierarchy_level,
+       CASE s.lang_code
+         WHEN 'fra' THEN CASE s.hierarchy_level
+             WHEN 0 THEN 'Pays'
+             WHEN 1 THEN 'Region'
+             WHEN 2 THEN 'Prefecture'
+             WHEN 3 THEN 'Commune'
+             WHEN 4 THEN 'Canton'
+             WHEN 5 THEN 'Locality'
+           END
+         ELSE CASE s.hierarchy_level
+             WHEN 0 THEN 'Country'
+             WHEN 1 THEN 'Region'
+             WHEN 2 THEN 'Prefecture'
+             WHEN 3 THEN 'Commune'
+             WHEN 4 THEN 'Canton'
+             WHEN 5 THEN 'Locality'
+           END
+       END AS hierarchy_level_name,
+       NULLIF(s.parent_loc_code,'') AS parent_loc_code,
+       s.lang_code,
+       s.is_active,
+       s.cr_by,
+       s.cr_dtimes
+FROM _location_stg s;
 
 ----- TRUNCATE master.machine_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_type cascade ;

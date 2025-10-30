@@ -517,7 +517,35 @@ FROM _user_detail_stg;
 ----- TRUNCATE master.valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.valid_document cascade ;
 
-\COPY master.valid_document (doctyp_code,doccat_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-valid_document.csv' delimiter ',' HEADER  csv;
+-- Stage and load only rows with lang_code='fra' and existing doc_type
+DROP TABLE IF EXISTS _valid_document_stg;
+CREATE TEMP TABLE _valid_document_stg (
+    doctyp_code character varying(36),
+    doccat_code character varying(36),
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+
+\COPY _valid_document_stg (doctyp_code,doccat_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-valid_document.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.valid_document (doctyp_code,doccat_code,lang_code,is_active,cr_by,cr_dtimes)
+SELECT v.doctyp_code,
+       v.doccat_code,
+       'fra'::character varying(3) AS lang_code,
+        v.is_active,
+        v.cr_by,
+        v.cr_dtimes
+FROM _valid_document_stg v
+WHERE EXISTS (
+    SELECT 1 FROM master.doc_type d
+    WHERE d.code = v.doctyp_code AND d.lang_code = 'fra'
+)
+AND EXISTS (
+    SELECT 1 FROM master.doc_category c
+    WHERE c.code = v.doccat_code AND c.lang_code = 'fra'
+);
 
 ----- TRUNCATE master.zone TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone cascade ;

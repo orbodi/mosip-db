@@ -327,12 +327,12 @@ ORDER BY id, cr_dtimes;
 ----- TRUNCATE master.machine_master_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_master_h cascade ;
 
-\COPY master.machine_master_h (id,machine_id,serial_num,machine_spec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-machine_master_h.csv' delimiter ',' HEADER  csv;
+\COPY master.machine_master_h (id,name,mac_address,serial_num,ip_address,mspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-machine_master_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.machine_master TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_master cascade ;
 
-\COPY master.machine_master (id,machine_id,serial_num,machine_spec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-machine_master.csv' delimiter ',' HEADER  csv;
+\COPY master.machine_master (id,name,mac_address,serial_num,ip_address,mspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-machine_master.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reason_list TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reason_list cascade ;

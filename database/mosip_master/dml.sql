@@ -442,7 +442,7 @@ TRUNCATE TABLE master.reg_center_type cascade ;
 ----- TRUNCATE master.title TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.title cascade ;
 
-\COPY master.title (code,name,descr,gender_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-title.csv' delimiter ',' HEADER  csv;
+\COPY master.title (code,name,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-title.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.user_detail_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail_h cascade ;

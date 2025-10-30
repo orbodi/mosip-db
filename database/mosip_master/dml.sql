@@ -118,10 +118,7 @@ TRUNCATE TABLE master.screen_authorization cascade ;
 
 -------------- Level 4 data load scripts ------------------------
 
------ TRUNCATE master.applicant_valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
-TRUNCATE TABLE master.applicant_valid_document cascade ;
-
-\COPY master.applicant_valid_document (apptyp_code,doccat_code,doctyp_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-applicant_valid_document.csv' delimiter ',' HEADER  csv;
+-- Moved after doc_type/doc_category to satisfy FK constraints
 
 ----- TRUNCATE master.blacklisted_words TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.blacklisted_words cascade ;
@@ -153,7 +150,11 @@ TRUNCATE TABLE master.doc_type cascade ;
 
 \COPY master.doc_type (code,name,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-doc_type.csv' delimiter ',' HEADER  csv;
 
------ TRUNCATE master.id_type TABLE Data and It's reference Data and COPY Data from CSV file -----
+----- TRUNCATE master.applicant_valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
+TRUNCATE TABLE master.applicant_valid_document cascade ;
+
+\COPY master.applicant_valid_document (apptyp_code,doccat_code,doctyp_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-applicant_valid_document.csv' delimiter ',' HEADER  csv;
+
 TRUNCATE TABLE master.id_type cascade ;
 
 \COPY master.id_type (code,name,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-id_type.csv' delimiter ',' HEADER  csv;

@@ -139,8 +139,8 @@ TRUNCATE TABLE master.device_spec cascade ;
 TRUNCATE TABLE master.device_master_h cascade ;
 
 -- Load into a staging table to deduplicate by id, then insert distinct rows
-DROP TABLE IF EXISTS master._device_master_h_stg;
-CREATE TEMP TABLE master._device_master_h_stg (
+DROP TABLE IF EXISTS _device_master_h_stg;
+CREATE TEMP TABLE _device_master_h_stg (
     id character varying(36),
     name character varying(64),
     mac_address character varying(64),
@@ -155,12 +155,12 @@ CREATE TEMP TABLE master._device_master_h_stg (
     eff_dtimes timestamp
 );
 
-\COPY master._device_master_h_stg (id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-device_master_h.csv' delimiter ',' HEADER  csv;
+\COPY _device_master_h_stg (id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-device_master_h.csv' delimiter ',' HEADER  csv;
 
 INSERT INTO master.device_master_h (id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes)
 SELECT DISTINCT ON (id)
        id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,'fra'::character varying,is_active,cr_by,cr_dtimes,eff_dtimes
-FROM master._device_master_h_stg
+FROM _device_master_h_stg
 ORDER BY id, eff_dtimes;
 
 ----- TRUNCATE master.device_master TABLE Data and It's reference Data and COPY Data from CSV file -----

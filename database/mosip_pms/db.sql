@@ -1,7 +1,10 @@
 CREATE DATABASE mosip_pms 
 	ENCODING = 'UTF8' 
+	LC_COLLATE = 'en_US.utf8' 
+	LC_CTYPE = 'en_US.utf8' 
 	TABLESPACE = pg_default 
-	OWNER = postgres;
+	OWNER = postgres
+	TEMPLATE  = template0;
 
 COMMENT ON DATABASE mosip_pms IS 'PMS related entities and its data is stored in this database';
 

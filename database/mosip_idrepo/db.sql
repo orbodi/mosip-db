@@ -1,7 +1,7 @@
 CREATE DATABASE mosip_idrepo
 	ENCODING = 'UTF8'
-	LC_COLLATE = 'en_US.UTF-8'
-	LC_CTYPE = 'en_US.UTF-8'
+	LC_COLLATE = 'en_US.utf8'
+	LC_CTYPE = 'en_US.utf8'
 	TABLESPACE = pg_default
 	OWNER = postgres
 	TEMPLATE  = template0;

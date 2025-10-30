@@ -151,7 +151,7 @@ TRUNCATE TABLE master.device_master cascade ;
 ----- TRUNCATE master.doc_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.doc_type cascade ;
 
-\COPY master.doc_type (code,name,descr,doc_category_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-doc_type.csv' delimiter ',' HEADER  csv;
+\COPY master.doc_type (code,name,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-doc_type.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.id_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.id_type cascade ;

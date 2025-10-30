@@ -217,7 +217,27 @@ TRUNCATE TABLE master.language cascade ;
 ----- TRUNCATE master.loc_holiday TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.loc_holiday cascade ;
 
-\COPY master.loc_holiday (id,location_code,holiday_date,holiday_name,holiday_desc,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-loc_holiday.csv' delimiter ',' HEADER  csv;
+-- Deduplicate loc_holiday by (holiday_date, location_code); force lang_code='fra'
+DROP TABLE IF EXISTS _loc_holiday_stg;
+CREATE TEMP TABLE _loc_holiday_stg (
+    id integer,
+    location_code character varying(36),
+    holiday_date date,
+    holiday_name character varying(64),
+    holiday_desc character varying(128),
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+
+\COPY _loc_holiday_stg (id,location_code,holiday_date,holiday_name,holiday_desc,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-loc_holiday.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.loc_holiday (id,location_code,holiday_date,holiday_name,holiday_desc,lang_code,is_active,cr_by,cr_dtimes)
+SELECT DISTINCT ON (holiday_date, location_code)
+       id,location_code,holiday_date,holiday_name,holiday_desc,'fra'::character varying,is_active,cr_by,cr_dtimes
+FROM _loc_holiday_stg
+ORDER BY holiday_date, location_code, cr_dtimes;
 
 ----- TRUNCATE master.location TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.location cascade ;

@@ -300,7 +300,29 @@ TRUNCATE TABLE master.machine_type cascade ;
 ----- TRUNCATE master.machine_spec TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_spec cascade ;
 
-\COPY master.machine_spec (id,name,brand,model,mtyp_code,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-machine_spec.csv' delimiter ',' HEADER  csv;
+-- Deduplicate machine_spec by id; prefer one row per id and force lang_code='fra'
+DROP TABLE IF EXISTS _machine_spec_stg;
+CREATE TEMP TABLE _machine_spec_stg (
+    id character varying(36),
+    name character varying(64),
+    brand character varying(32),
+    model character varying(16),
+    mtyp_code character varying(36),
+    min_driver_ver character varying(16),
+    descr character varying(256),
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+
+\COPY _machine_spec_stg (id,name,brand,model,mtyp_code,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-machine_spec.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.machine_spec (id,name,brand,model,mtyp_code,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes)
+SELECT DISTINCT ON (id)
+       id,name,brand,model,mtyp_code,min_driver_ver,descr,'fra'::character varying,is_active,cr_by,cr_dtimes
+FROM _machine_spec_stg
+ORDER BY id, cr_dtimes;
 
 ----- TRUNCATE master.machine_master_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_master_h cascade ;

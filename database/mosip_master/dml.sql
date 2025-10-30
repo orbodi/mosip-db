@@ -300,7 +300,7 @@ TRUNCATE TABLE master.machine_type cascade ;
 ----- TRUNCATE master.machine_spec TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_spec cascade ;
 
-\COPY master.machine_spec (id,type_code,sub_type_code,make,model,partner_org_name,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-machine_spec.csv' delimiter ',' HEADER  csv;
+\COPY master.machine_spec (id,name,brand,model,mtyp_code,min_driver_ver,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-machine_spec.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.machine_master_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.machine_master_h cascade ;

@@ -325,7 +325,7 @@ TRUNCATE TABLE master.reg_center_type cascade ;
 ----- TRUNCATE master.reg_center_device_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_device_h cascade ;
 
-\COPY master.reg_center_device_h (regcntr_id,device_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-reg_center_device_h.csv' delimiter ',' HEADER  csv;
+\COPY master.reg_center_device_h (regcntr_id,device_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-reg_center_device_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reg_center_device TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_device cascade ;
@@ -335,7 +335,7 @@ TRUNCATE TABLE master.reg_center_device cascade ;
 ----- TRUNCATE master.reg_center_machine_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_machine_h cascade ;
 
-\COPY master.reg_center_machine_h (regcntr_id,machine_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-reg_center_machine_h.csv' delimiter ',' HEADER  csv;
+\COPY master.reg_center_machine_h (regcntr_id,machine_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-reg_center_machine_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reg_center_machine TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_machine cascade ;
@@ -345,7 +345,7 @@ TRUNCATE TABLE master.reg_center_machine cascade ;
 ----- TRUNCATE master.reg_center_machine_device_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_machine_device_h cascade ;
 
-\COPY master.reg_center_machine_device_h (regcntr_id,machine_id,device_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-reg_center_machine_device_h.csv' delimiter ',' HEADER  csv;
+\COPY master.reg_center_machine_device_h (regcntr_id,machine_id,device_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-reg_center_machine_device_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reg_center_machine_device TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_machine_device cascade ;
@@ -355,7 +355,7 @@ TRUNCATE TABLE master.reg_center_machine_device cascade ;
 ----- TRUNCATE master.reg_center_user_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_user_h cascade ;
 
-\COPY master.reg_center_user_h (regcntr_id,user_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-reg_center_user_h.csv' delimiter ',' HEADER  csv;
+\COPY master.reg_center_user_h (regcntr_id,user_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-reg_center_user_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reg_center_user TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_user cascade ;
@@ -365,7 +365,7 @@ TRUNCATE TABLE master.reg_center_user cascade ;
 ----- TRUNCATE master.reg_center_user_machine_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_user_machine_h cascade ;
 
-\COPY master.reg_center_user_machine_h (regcntr_id,user_id,machine_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-reg_center_user_machine_h.csv' delimiter ',' HEADER  csv;
+\COPY master.reg_center_user_machine_h (regcntr_id,user_id,machine_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-reg_center_user_machine_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.reg_center_user_machine TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.reg_center_user_machine cascade ;
@@ -380,7 +380,7 @@ TRUNCATE TABLE master.title cascade ;
 ----- TRUNCATE master.user_detail_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail_h cascade ;
 
-\COPY master.user_detail_h (id,uin,firstname,lastname,email,mobile,status_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
+\COPY master.user_detail_h (id,uin,firstname,lastname,email,mobile,status_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.user_detail TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail cascade ;

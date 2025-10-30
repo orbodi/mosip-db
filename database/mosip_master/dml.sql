@@ -121,7 +121,7 @@ TRUNCATE TABLE master.screen_authorization cascade ;
 ----- TRUNCATE master.applicant_valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.applicant_valid_document cascade ;
 
-\COPY master.applicant_valid_document (app_type_code,doc_category_code,doc_type_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-applicant_valid_document.csv' delimiter ',' HEADER  csv;
+\COPY master.applicant_valid_document (apptyp_code,doccat_code,doctyp_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-applicant_valid_document.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.blacklisted_words TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.blacklisted_words cascade ;

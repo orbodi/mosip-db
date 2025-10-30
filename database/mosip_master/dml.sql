@@ -550,7 +550,7 @@ AND EXISTS (
 ----- TRUNCATE master.zone TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone cascade ;
 
-\COPY master.zone (code,name,descr,hierarchy_level,parent_zone_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-zone.csv' delimiter ',' HEADER  csv;
+\COPY master.zone (code,name,hierarchy_level,hierarchy_level_name,hierarchy_path,parent_zone_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-zone.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.zone_user_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone_user_h cascade ;

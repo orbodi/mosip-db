@@ -123,7 +123,7 @@ TRUNCATE TABLE master.screen_authorization cascade ;
 ----- TRUNCATE master.blacklisted_words TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.blacklisted_words cascade ;
 
-\COPY master.blacklisted_words (word,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-blacklisted_words.csv' delimiter ',' HEADER  csv;
+\COPY master.blacklisted_words (word,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-blacklisted_words.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.device_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.device_type cascade ;

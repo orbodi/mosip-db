@@ -207,7 +207,7 @@ TRUNCATE TABLE master.id_type cascade ;
 ----- TRUNCATE master.individual_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.individual_type cascade ;
 
-\COPY master.individual_type (code,name,descr,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-individual_type.csv' delimiter ',' HEADER  csv;
+\COPY master.individual_type (code,name,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-individual_type.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.language TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.language cascade ;

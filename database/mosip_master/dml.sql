@@ -186,10 +186,10 @@ CREATE TEMP TABLE _device_master_stg (
 \COPY _device_master_stg (id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-device_master.csv' delimiter ',' HEADER  csv;
 
 INSERT INTO master.device_master (id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,lang_code,is_active,cr_by,cr_dtimes)
-SELECT DISTINCT ON (id)
+SELECT DISTINCT ON (name)
        id,name,mac_address,serial_num,ip_address,dspec_id,zone_code,'fra'::character varying,is_active,cr_by,cr_dtimes
 FROM _device_master_stg
-ORDER BY id, cr_dtimes;
+ORDER BY name, cr_dtimes;
 
 ----- TRUNCATE master.doc_type TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.doc_type cascade ;

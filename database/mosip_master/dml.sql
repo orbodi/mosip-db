@@ -555,12 +555,12 @@ TRUNCATE TABLE master.zone cascade ;
 ----- TRUNCATE master.zone_user_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone_user_h cascade ;
 
-\COPY master.zone_user_h (zone_code,user_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes,history_dtimes) FROM './dml/master-zone_user_h.csv' delimiter ',' HEADER  csv;
+\COPY master.zone_user_h (zone_code,usr_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-zone_user_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.zone_user TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone_user cascade ;
 
-\COPY master.zone_user (zone_code,user_id,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-zone_user.csv' delimiter ',' HEADER  csv;
+\COPY master.zone_user (zone_code,usr_id,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-zone_user.csv' delimiter ',' HEADER  csv;
 
 
 

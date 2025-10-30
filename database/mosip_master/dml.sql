@@ -447,12 +447,12 @@ TRUNCATE TABLE master.title cascade ;
 ----- TRUNCATE master.user_detail_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail_h cascade ;
 
-\COPY master.user_detail_h (id,uin,firstname,lastname,email,mobile,status_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
+\COPY master.user_detail_h (id,name,status_code,lang_code,last_login_method,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.user_detail TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail cascade ;
 
-\COPY master.user_detail (id,uin,firstname,lastname,email,mobile,status_code,lang_code,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-user_detail.csv' delimiter ',' HEADER  csv;
+\COPY master.user_detail (id,name,status_code,lang_code,last_login_method,is_active,cr_by,cr_dtimes) FROM './dml/master-user_detail.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.valid_document cascade ;

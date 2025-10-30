@@ -217,7 +217,7 @@ TRUNCATE TABLE master.language cascade ;
 ----- TRUNCATE master.loc_holiday TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.loc_holiday cascade ;
 
-\COPY master.loc_holiday (location_code,holiday_date,holiday_name,holiday_desc,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-loc_holiday.csv' delimiter ',' HEADER  csv;
+\COPY master.loc_holiday (id,location_code,holiday_date,holiday_name,holiday_desc,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-loc_holiday.csv' delimiter ',' HEADER  csv;
 
 ----- TRUNCATE master.location TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.location cascade ;

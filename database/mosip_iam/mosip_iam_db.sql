@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS mosip_iam;
 CREATE DATABASE mosip_iam
 	ENCODING = 'UTF8'
-	LC_COLLATE = 'en_US.uft8'
-	LC_CTYPE = 'en_US.uft8'
+	LC_COLLATE = 'en_US.utf8'
+	LC_CTYPE = 'en_US.utf8'
 	TABLESPACE = pg_default
 	OWNER = sysadmin;
 -- ddl-end --

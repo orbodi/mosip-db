@@ -447,12 +447,72 @@ TRUNCATE TABLE master.title cascade ;
 ----- TRUNCATE master.user_detail_h TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail_h cascade ;
 
-\COPY master.user_detail_h (id,name,status_code,lang_code,last_login_method,is_active,cr_by,cr_dtimes,eff_dtimes) FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
+-- Stage CSV (has extra columns) then insert only required fields
+DROP TABLE IF EXISTS _user_detail_h_stg;
+CREATE TEMP TABLE _user_detail_h_stg (
+    id character varying(256),
+    uin text,
+    name character varying(64),
+    email text,
+    mobile text,
+    status_code character varying(36),
+    lang_code character varying(3),
+    last_login_method character varying(64),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp,
+    eff_dtimes timestamp
+);
+
+\COPY _user_detail_h_stg FROM './dml/master-user_detail_h.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.user_detail_h (id,name,status_code,regcntr_id,lang_code,last_login_dtimes,last_login_method,is_active,cr_by,cr_dtimes,eff_dtimes)
+SELECT id,
+       name,
+       status_code,
+       NULL::character varying(10) AS regcntr_id,
+       'fra'::character varying(3) AS lang_code,
+       NULL::timestamp AS last_login_dtimes,
+       last_login_method,
+       is_active,
+       cr_by,
+       cr_dtimes,
+       eff_dtimes
+FROM _user_detail_h_stg;
 
 ----- TRUNCATE master.user_detail TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.user_detail cascade ;
 
-\COPY master.user_detail (id,name,status_code,lang_code,last_login_method,is_active,cr_by,cr_dtimes) FROM './dml/master-user_detail.csv' delimiter ',' HEADER  csv;
+-- Stage CSV (has extra columns) then insert only required fields
+DROP TABLE IF EXISTS _user_detail_stg;
+CREATE TEMP TABLE _user_detail_stg (
+    id character varying(256),
+    uin text,
+    name character varying(64),
+    email text,
+    mobile text,
+    status_code character varying(36),
+    lang_code character varying(3),
+    last_login_method character varying(64),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+
+\COPY _user_detail_stg FROM './dml/master-user_detail.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.user_detail (id,name,status_code,regcntr_id,lang_code,last_login_dtimes,last_login_method,is_active,cr_by,cr_dtimes)
+SELECT id,
+       name,
+       status_code,
+       NULL::character varying(10) AS regcntr_id,
+       'fra'::character varying(3) AS lang_code,
+       NULL::timestamp AS last_login_dtimes,
+       last_login_method,
+       is_active,
+       cr_by,
+       cr_dtimes
+FROM _user_detail_stg;
 
 ----- TRUNCATE master.valid_document TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.valid_document cascade ;

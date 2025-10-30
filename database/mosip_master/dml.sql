@@ -1,4 +1,5 @@
 \c mosip_master 
+SET client_encoding TO 'UTF8';
 
 -------------- Level 1 data load scripts ------------------------
 

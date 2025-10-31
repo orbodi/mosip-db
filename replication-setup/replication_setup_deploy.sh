@@ -24,8 +24,8 @@ DEFAULT_DB_NAME=${CFG[DEFAULT_DB_NAME]:-postgres}
 
 TARGET_DB_NAME=${CFG[TARGET_DB_NAME]:-}
 TARGET_SCHEMA=${CFG[TARGET_SCHEMA]:-}
-SYSADMIN_USER=${CFG[SYSADMIN_USER]:-sysadmin}
-SYSADMIN_PWD=${CFG[SYSADMIN_PWD]:-}
+REPLICATION_USER=${CFG[REPLICATION_USER]:-${CFG[SYSADMIN_USER]:-postgres}}
+REPLICATION_PWD=${CFG[REPLICATION_PWD]:-${CFG[SYSADMIN_PWD]:-}}
 PUBLICATION_NAME=${CFG[PUBLICATION_NAME]:-$TARGET_SCHEMA_pub}
 LOG_PATH=${CFG[LOG_PATH]:-/tmp/replication-setup/}
 
@@ -44,8 +44,8 @@ echo $(date "+%m/%d/%Y %H:%M:%S") ": Starting replication setup for $TARGET_DB_N
 PGPASSWORD="$SU_USER_PWD" psql --username="$SU_USER" --host="$DB_SERVERIP" --port="$DB_PORT" --dbname="$DEFAULT_DB_NAME" -t -c "SELECT 1" >/dev/null
 
 echo $(date "+%m/%d/%Y %H:%M:%S") ": Applying privileges and publication..." | tee -a "$LOG"
-PGPASSWORD="$SYSADMIN_PWD" psql --username="$SYSADMIN_USER" --host="$DB_SERVERIP" --port="$DB_PORT" --dbname="$TARGET_DB_NAME" \
-	-v target_schema="$TARGET_SCHEMA" -v sysadmin_user="$SYSADMIN_USER" -v publication_name="$PUBLICATION_NAME" \
+PGPASSWORD="$REPLICATION_PWD" psql --username="$REPLICATION_USER" --host="$DB_SERVERIP" --port="$DB_PORT" --dbname="$TARGET_DB_NAME" \
+	-v target_schema="$TARGET_SCHEMA" -v replication_user="$REPLICATION_USER" -v publication_name="$PUBLICATION_NAME" \
 	-f "$(dirname "$0")/replication_setup.sql" >> "$LOG" 2>&1
 
 if grep -q "ERROR" "$LOG"; then

@@ -4,14 +4,14 @@ Ce dossier fournit des scripts shell pour créer et alimenter des publications d
 
 ## Prérequis
 - PostgreSQL ≥ 13 accessible depuis la machine d’exécution.
-- L’utilisateur `sysadmin` (créé par les scripts MOSIP) doit avoir le droit REPLICATION et être autorisé dans `pg_hba.conf`.
+- L’utilisateur `postgres` (ou celui défini dans `REPLICATION_USER`) doit avoir le droit REPLICATION et être autorisé dans `pg_hba.conf`.
 - `psql` disponible dans le `$PATH`.
 - Le fichier `replication_deploy.properties` correctement renseigné.
 
 ## Scripts disponibles
 
 ### 1. `replication_setup_deploy.sh`
-Crée la publication logique et accorde les privilèges à `sysadmin` sur le schéma cible.
+Crée la publication logique et accorde les privilèges à l’utilisateur de réplication (par défaut `postgres`) sur le schéma cible.
 
 Fonctionnement :
 - lit `replication_deploy.properties`
@@ -19,7 +19,7 @@ Fonctionnement :
 - exécute `replication_setup.sql` sur `TARGET_DB_NAME` avec `psql`
 
 Ce que fait `replication_setup.sql` :
-1. `GRANT USAGE` + `GRANT SELECT` sur le schéma `TARGET_SCHEMA` pour `SYSADMIN_USER`.
+1. `GRANT USAGE` + `GRANT SELECT` sur le schéma `TARGET_SCHEMA` pour `REPLICATION_USER`.
 2. Pose des `DEFAULT PRIVILEGES` pour les futures tables du schéma.
 3. Crée la publication `PUBLICATION_NAME` si elle n’existe pas (publication vide).
 
@@ -35,7 +35,8 @@ Fonctionnement :
 Paramètres principaux :
 - **Connexion** : `DB_SERVERIP`, `DB_PORT`, `SU_USER`, `SU_USER_PWD`, `DEFAULT_DB_NAME`
 - **Cible** : `TARGET_DB_NAME`, `TARGET_SCHEMA`
-- **Publication** : `PUBLICATION_NAME`
+- **Utilisateur de réplication** : `REPLICATION_USER`, `REPLICATION_PWD` (par défaut `postgres`)
+- **Publication** : `PUBLICATION_NAME` (par défaut `dbz_publication`)
 - **Tables à ajouter** : `TABLE_LIST` (liste séparée par des virgules)
 - **Logs** : `LOG_PATH`
 

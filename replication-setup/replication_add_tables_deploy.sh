@@ -19,8 +19,8 @@ done < "$properties_file"
 DB_SERVERIP=${CFG[DB_SERVERIP]:-localhost}
 DB_PORT=${CFG[DB_PORT]:-5433}
 TARGET_DB_NAME=${CFG[TARGET_DB_NAME]:-}
-SYSADMIN_USER=${CFG[SYSADMIN_USER]:-sysadmin}
-SYSADMIN_PWD=${CFG[SYSADMIN_PWD]:-}
+REPLICATION_USER=${CFG[REPLICATION_USER]:-${CFG[SYSADMIN_USER]:-postgres}}
+REPLICATION_PWD=${CFG[REPLICATION_PWD]:-${CFG[SYSADMIN_PWD]:-}}
 PUBLICATION_NAME=${CFG[PUBLICATION_NAME]:-}
 TABLE_LIST=${CFG[TABLE_LIST]:-}
 LOG_PATH=${CFG[LOG_PATH]:-/tmp/replication-setup/}
@@ -36,7 +36,7 @@ fi
 
 echo $(date "+%m/%d/%Y %H:%M:%S") ": Adding tables to publication $PUBLICATION_NAME on $TARGET_DB_NAME" | tee -a "$LOG"
 
-PGPASSWORD="$SYSADMIN_PWD" psql --username="$SYSADMIN_USER" --host="$DB_SERVERIP" --port="$DB_PORT" --dbname="$TARGET_DB_NAME" \
+PGPASSWORD="$REPLICATION_PWD" psql --username="$REPLICATION_USER" --host="$DB_SERVERIP" --port="$DB_PORT" --dbname="$TARGET_DB_NAME" \
 	-v publication_name="$PUBLICATION_NAME" -v table_list="$TABLE_LIST" \
 	-f "$(dirname "$0")/replication_add_tables.sql" >> "$LOG" 2>&1
 

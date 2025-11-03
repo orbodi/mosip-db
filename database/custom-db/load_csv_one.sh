@@ -88,6 +88,19 @@ def get_actual_columns(schema, table):
     out = subprocess.check_output(cmd, env=env).decode().strip()
     return [c for c in out.split('\n') if c]
 
+def get_required_columns(schema, table):
+    q = (
+        "select column_name from information_schema.columns "
+        "where is_nullable='NO' and column_default is null and "
+        f"table_schema={shlex.quote(schema)!r} and table_name={shlex.quote(table)!r}"
+    )
+    env = os.environ.copy()
+    if PGPASSWORD:
+        env['PGPASSWORD'] = PGPASSWORD
+    cmd = ['psql', '-h', PGHOST, '-p', PGPORT, '-U', PGUSER, '-d', DBNAME, '-At', '-c', q]
+    out = subprocess.check_output(cmd, env=env).decode().strip()
+    return [c for c in out.split('\n') if c]
+
 COPY_RE = re.compile(r"^\\COPY\s+((?P<schema>\w+)\.)?(?P<table>\w+)\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'", re.IGNORECASE)
 
 def sanitize_sql(sql_path):
@@ -107,6 +120,7 @@ def sanitize_sql(sql_path):
             continue
         try:
             actual_cols = get_actual_columns(schema, table)
+            required_cols = set(get_required_columns(schema, table))
         except subprocess.CalledProcessError:
             continue
         keep = [c for c in cols if c in actual_cols]
@@ -116,18 +130,27 @@ def sanitize_sql(sql_path):
             with open(csv_path, newline='', encoding='utf-8') as f_in:
                 r = csv.DictReader(f_in)
                 if r.fieldnames:
-                    csv_keep = [c for c in keep if c in r.fieldnames]
-                    if not csv_keep:
+                    # Case-insensitive header mapping
+                    header_map = {h.lower(): h for h in r.fieldnames}
+                    csv_keep_headers = []
+                    for c in keep:
+                        lc = c.lower()
+                        if lc in header_map:
+                            csv_keep_headers.append(header_map[lc])
+                    # If any required columns would be dropped, skip alignment for this COPY
+                    missing_required = [c for c in required_cols if c not in [k.lower() for k in keep]]
+                    if missing_required:
+                        continue
+                    if not csv_keep_headers:
                         pass
                     else:
                         filtered_csv = csv_path + '.filtered.csv'
                         with open(filtered_csv, 'w', newline='', encoding='utf-8') as f_out:
-                            w = csv.DictWriter(f_out, fieldnames=csv_keep)
+                            w = csv.DictWriter(f_out, fieldnames=csv_keep_headers)
                             w.writeheader()
                             for row in r:
-                                w.writerow({k: row.get(k, '') for k in csv_keep})
-                        cols_str = ','.join(csv_keep)
-                        # Preserve original relative directory of CSV path
+                                w.writerow({k: row.get(k, '') for k in csv_keep_headers})
+                        cols_str = ','.join(keep)
                         rel_dir = os.path.dirname(csv_rel)
                         rel_filtered = os.path.join(rel_dir, os.path.basename(filtered_csv)) if rel_dir else os.path.basename(filtered_csv)
                         new_line = COPY_RE.sub(lambda mm: mm.group(0)

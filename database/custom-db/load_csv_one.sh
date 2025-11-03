@@ -176,6 +176,40 @@ for root, _, files in os.walk(TMP_DIR):
             sanitize_sql(os.path.join(root, fn))
 PY
 
+  # Targeted fallback fix for mosip_ida: drop pre_expire_days from key_policy_def if present
+  if [[ "$DB_NAME" == "mosip_ida" ]]; then
+    SQL_PATH="$TMP_DIR/$BASE_NAME"
+    if grep -Eqi "^\\s*\\COPY\\s+ida\\.key_policy_def" "$SQL_PATH"; then
+      CSV_REL=$(sed -n -E "s/.*ida\\.key_policy_def[^)]*\)\\s+FROM\s+'([^']+)'.*/\1/p" "$SQL_PATH" | head -n1)
+      if [[ -n "$CSV_REL" ]]; then
+        SRC_CSV="$TMP_DIR/$CSV_REL"
+        if [[ -f "$SRC_CSV" ]]; then
+          python3 - "$SRC_CSV" <<'PY2'
+import csv, sys
+path = sys.argv[1]
+out = path + '.filtered.csv'
+with open(path, newline='', encoding='utf-8') as f_in, open(out, 'w', newline='', encoding='utf-8') as f_out:
+    r = csv.DictReader(f_in)
+    fields = [h for h in r.fieldnames if h.lower() != 'pre_expire_days']
+    w = csv.DictWriter(f_out, fieldnames=fields)
+    w.writeheader()
+    for row in r:
+        row.pop('pre_expire_days', None)
+        w.writerow({k: row.get(k, '') for k in fields})
+print(out)
+PY2
+          NEW_CSV="$SRC_CSV.filtered.csv"
+          # remove column from COPY list and point to filtered CSV
+          sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\b,?pre_expire_days\b([^)]*\))/\1\2/I" "$SQL_PATH"
+          REL_DIR=$(dirname "$CSV_REL")
+          REL_NEW=$(basename "$NEW_CSV")
+          [[ -n "$REL_DIR" && "$REL_DIR" != "." ]] && REL_NEW="$REL_DIR/$REL_NEW"
+          sed -i -E "s#(ida\\.key_policy_def[^)]*\)[^\n]*FROM[[:space:]]+'[^']+'#\1 FROM '$REL_NEW'#I" "$SQL_PATH"
+        fi
+      fi
+    fi
+  fi
+
   (
     cd "$TMP_DIR"
     if [[ "$DML_STRICT" == "false" ]]; then

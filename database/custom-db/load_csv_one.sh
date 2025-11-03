@@ -35,7 +35,12 @@ DML_PATHS[mosip_iam]="$ROOT_DIR/mosip_iam/mosip_iam_dml_deploy.sql"
 DML_FILE="${DML_PATHS[$DB_NAME]:-}"
 if [[ -n "${DML_FILE}" && -f "$DML_FILE" ]]; then
   echo "[${DB_NAME}] Loading DML/CSV via $DML_FILE"
-  psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$DML_FILE"
+  DML_DIR="$(cd "$(dirname "$DML_FILE")" && pwd)"
+  DML_BASE="$(basename "$DML_FILE")"
+  (
+    cd "$DML_DIR"
+    psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$DML_BASE"
+  )
   echo "[${DB_NAME}] DML load complete"
 else
   echo "[${DB_NAME}] No DML mapping found or file missing; skipping"

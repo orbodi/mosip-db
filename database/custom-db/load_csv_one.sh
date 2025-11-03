@@ -176,41 +176,56 @@ for root, _, files in os.walk(TMP_DIR):
             sanitize_sql(os.path.join(root, fn))
 PY
 
-  # Targeted fallback fix for mosip_ida: drop pre_expire_days from key_policy_def if present
+  # Targeted fallback fix for mosip_ida: normalize ida.key_policy_def COPY to actual columns
   if [[ "$DB_NAME" == "mosip_ida" ]]; then
     SQL_PATH="$TMP_DIR/$BASE_NAME"
     if grep -Eqi "^\\s*\\COPY\\s+ida\\.key_policy_def" "$SQL_PATH"; then
       CSV_REL=$(sed -n -E "s/.*ida\\.key_policy_def[^)]*\)\\s+FROM\s+'([^']+)'.*/\1/p" "$SQL_PATH" | head -n1)
-      if [[ -n "$CSV_REL" ]]; then
-        SRC_CSV="$TMP_DIR/$CSV_REL"
-        if [[ -f "$SRC_CSV" ]]; then
-          python3 - "$SRC_CSV" <<'PY2'
-import csv, sys
-path = sys.argv[1]
-out = path + '.filtered.csv'
-with open(path, newline='', encoding='utf-8') as f_in, open(out, 'w', newline='', encoding='utf-8') as f_out:
+      python3 - "$PGHOST" "$PGPORT" "$PGUSER" "$DB_NAME" "$TMP_DIR" "$SQL_PATH" "$CSV_REL" <<'PY2'
+import os, csv, sys, subprocess
+PGHOST, PGPORT, PGUSER, DBNAME, TMP_DIR, SQL_PATH, CSV_REL = sys.argv[1:8]
+env = os.environ.copy()
+if 'PGPASSWORD' in os.environ:
+    env['PGPASSWORD'] = os.environ['PGPASSWORD']
+
+def psql(q):
+    out = subprocess.check_output(['psql','-h',PGHOST,'-p',PGPORT,'-U',PGUSER,'-d',DBNAME,'-At','-c',q], env=env).decode().strip()
+    return [x for x in out.split('\n') if x]
+
+actual = psql("select column_name from information_schema.columns where table_schema='ida' and table_name='key_policy_def' order by ordinal_position")
+req = set(psql("select column_name from information_schema.columns where table_schema='ida' and table_name='key_policy_def' and is_nullable='NO' and column_default is null"))
+
+csv_path = os.path.join(TMP_DIR, CSV_REL) if CSV_REL else ''
+if not CSV_REL or not os.path.exists(csv_path):
+    sys.exit(0)
+
+with open(csv_path, newline='', encoding='utf-8') as f_in:
     r = csv.DictReader(f_in)
-    fields = [h for h in r.fieldnames if h.lower() != 'pre_expire_days']
-    w = csv.DictWriter(f_out, fieldnames=fields)
-    w.writeheader()
-    for row in r:
-        row.pop('pre_expire_days', None)
-        w.writerow({k: row.get(k, '') for k in fields})
-print(out)
+    headers = r.fieldnames or []
+    hdr_map = {h.lower(): h for h in headers}
+    cols = [c for c in actual if c.lower() in hdr_map]
+    if not cols or any(c not in [x.lower() for x in cols] for c in req):
+        # if required missing, do nothing
+        sys.exit(0)
+    out_path = csv_path + '.filtered.csv'
+    with open(out_path, 'w', newline='', encoding='utf-8') as f_out:
+        w = csv.DictWriter(f_out, fieldnames=[hdr_map[c.lower()] for c in cols])
+        w.writeheader()
+        for row in r:
+            w.writerow({hdr_map[c.lower()]: row.get(hdr_map[c.lower()], '') for c in cols})
+    # rewrite COPY line in SQL
+    rel_dir = os.path.dirname(CSV_REL)
+    rel_new = os.path.join(rel_dir, os.path.basename(out_path)) if rel_dir else os.path.basename(out_path)
+    import re
+    with open(SQL_PATH, encoding='utf-8') as f:
+        s = f.read()
+    s = re.sub(r"(\\COPY\s+ida\.key_policy_def\s*)\([^)]*\)(\s*FROM\s*')([^']+)(')",
+               lambda m: f"{m.group(1)}({','.join(cols)}){m.group(2)}{rel_new}{m.group(4)}",
+               s, flags=re.IGNORECASE)
+    with open(SQL_PATH, 'w', encoding='utf-8') as f:
+        f.write(s)
 PY2
-          NEW_CSV="$SRC_CSV.filtered.csv"
-          # remove column from COPY list and point to filtered CSV
-          sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\b,?pre_expire_days\b([^)]*\))/\1\2/I" "$SQL_PATH"
-          REL_DIR=$(dirname "$CSV_REL")
-          REL_NEW=$(basename "$NEW_CSV")
-          [[ -n "$REL_DIR" && "$REL_DIR" != "." ]] && REL_NEW="$REL_DIR/$REL_NEW"
-          sed -i -E "s#(ida\\.key_policy_def[^)]*\)[^\n]*FROM[[:space:]]+'[^']+'#\1 FROM '$REL_NEW'#I" "$SQL_PATH"
-        fi
-      fi
     fi
-    # Last-resort: forcibly drop pre_expire_days token from COPY column list
-    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\s*,\s*pre_expire_days\b/\1/I" "$SQL_PATH"
-    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\()\s*pre_expire_days\s*,/\1/I" "$SQL_PATH"
   fi
 
   (

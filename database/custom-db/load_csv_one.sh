@@ -226,6 +226,9 @@ with open(csv_path, newline='', encoding='utf-8') as f_in:
         f.write(s)
 PY2
     fi
+    # Also ensure we drop access_allowed from column list if present
+    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\s*,\s*access_allowed\b/\1/I" "$SQL_PATH"
+    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\()\s*access_allowed\s*,/\1/I" "$SQL_PATH"
   fi
 
   (

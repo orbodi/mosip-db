@@ -101,7 +101,10 @@ def get_required_columns(schema, table):
     out = subprocess.check_output(cmd, env=env).decode().strip()
     return [c for c in out.split('\n') if c]
 
-COPY_RE = re.compile(r"^\\COPY\s+((?P<schema>\w+)\.)?(?P<table>\w+)\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'", re.IGNORECASE)
+COPY_RE = re.compile(
+    r"^\s*\\COPY\s+((?P<schema>\w+)|\"(?P<schemaq>[^\"]+)\")\.?((?P<table>\w+)|\"(?P<tableq>[^\"]+)\")\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'",
+    re.IGNORECASE,
+)
 
 def sanitize_sql(sql_path):
     with open(sql_path, encoding='utf-8') as f:
@@ -111,8 +114,8 @@ def sanitize_sql(sql_path):
         m = COPY_RE.search(line)
         if not m:
             continue
-        schema = m.group('schema') or 'public'
-        table = m.group('table')
+        schema = (m.group('schema') or m.group('schemaq') or 'public')
+        table = (m.group('table') or m.group('tableq'))
         cols = [c.strip().strip('"') for c in m.group('cols').split(',') if c.strip()]
         csv_rel = m.group('csv')
         csv_path = os.path.join(os.path.dirname(sql_path), csv_rel)

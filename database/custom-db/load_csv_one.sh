@@ -208,6 +208,9 @@ PY2
         fi
       fi
     fi
+    # Last-resort: forcibly drop pre_expire_days token from COPY column list
+    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\s*,\s*pre_expire_days\b/\1/I" "$SQL_PATH"
+    sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\()\s*pre_expire_days\s*,/\1/I" "$SQL_PATH"
   fi
 
   (

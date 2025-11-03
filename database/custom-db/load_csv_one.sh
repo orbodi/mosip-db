@@ -79,8 +79,6 @@ import os, re, sys, csv, subprocess, shlex
 PGHOST, PGPORT, PGUSER, DBNAME, TMP_DIR = sys.argv[1:6]
 PGPASSWORD = os.environ.get('PGPASSWORD', '')
 
-copy_re = re.compile(r"^\\\\COPY\s+([a-zA-Z0-9_]+)\.)?([a-zA-Z0-9_]+)\s*\(([^)]*)\)\s+FROM\s+'([^']+)'", re.IGNORECASE)
-
 def get_actual_columns(schema, table):
     q = f"select column_name from information_schema.columns where table_schema={shlex.quote(schema)!r} and table_name={shlex.quote(table)!r} order by ordinal_position"
     env = os.environ.copy()
@@ -90,48 +88,36 @@ def get_actual_columns(schema, table):
     out = subprocess.check_output(cmd, env=env).decode().strip()
     return [c for c in out.split('\n') if c]
 
+COPY_RE = re.compile(r"^\\COPY\s+((?P<schema>\w+)\.)?(?P<table>\w+)\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'", re.IGNORECASE)
+
 def sanitize_sql(sql_path):
     with open(sql_path, encoding='utf-8') as f:
         lines = f.readlines()
     changed = False
     for i, line in enumerate(lines):
-        m = re.search(r"^\\\\COPY\s+([a-zA-Z0-9_]+)\.)?([a-zA-Z0-9_]+)\s*\(([^)]*)\)\s+FROM\s+'([^']+)'", line, re.IGNORECASE)
+        m = COPY_RE.search(line)
         if not m:
             continue
-        full = m.group(0)
-        # extract schema, table, columns, csv path
-        # handle optional schema
-        rest = line.strip()
-        # more robust parse
-        mm = re.match(r"^\\\\COPY\s+((?P<schema>[a-zA-Z0-9_]+)\.)?(?P<table>[a-zA-Z0-9_]+)\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'", rest, re.IGNORECASE)
-        if not mm:
-            continue
-        schema = mm.group('schema') or 'public'
-        table = mm.group('table')
-        cols = [c.strip().strip('"') for c in mm.group('cols').split(',') if c.strip()]
-        csv_rel = mm.group('csv')
+        schema = m.group('schema') or 'public'
+        table = m.group('table')
+        cols = [c.strip().strip('"') for c in m.group('cols').split(',') if c.strip()]
+        csv_rel = m.group('csv')
         csv_path = os.path.join(os.path.dirname(sql_path), csv_rel)
         if not os.path.exists(csv_path):
-            # skip if CSV not found
             continue
         try:
             actual_cols = get_actual_columns(schema, table)
         except subprocess.CalledProcessError:
             continue
-        # intersect while preserving original COPY column order
         keep = [c for c in cols if c in actual_cols]
         if not keep:
             continue
-        # Filter CSV to keep only these columns (if header available)
-        filtered_csv = None
         try:
             with open(csv_path, newline='', encoding='utf-8') as f_in:
                 r = csv.DictReader(f_in)
                 if r.fieldnames:
-                    # Keep only columns present both in CSV and keep list
                     csv_keep = [c for c in keep if c in r.fieldnames]
                     if not csv_keep:
-                        # cannot realign
                         pass
                     else:
                         filtered_csv = csv_path + '.filtered.csv'
@@ -140,14 +126,13 @@ def sanitize_sql(sql_path):
                             w.writeheader()
                             for row in r:
                                 w.writerow({k: row.get(k, '') for k in csv_keep})
-                        # update COPY line in SQL
                         cols_str = ','.join(csv_keep)
-                        new_line = re.sub(r"\(([^)]*)\)", f"({cols_str})", line, count=1)
-                        new_line = new_line.replace(csv_rel, os.path.basename(filtered_csv))
+                        new_line = COPY_RE.sub(lambda mm: mm.group(0)
+                            .replace(mm.group('cols'), cols_str)
+                            .replace(mm.group('csv'), os.path.basename(filtered_csv)), line, count=1)
                         lines[i] = new_line
                         changed = True
         except Exception:
-            # ignore CSV issues; leave as is
             pass
     if changed:
         with open(sql_path, 'w', encoding='utf-8') as f:

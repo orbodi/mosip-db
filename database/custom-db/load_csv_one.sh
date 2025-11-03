@@ -238,12 +238,22 @@ PY2
 import csv, sys
 src, dst = sys.argv[1], sys.argv[2]
 keep = ['app_id','key_validity_duration','is_active','cr_by','cr_dtimes']
-with open(src, newline='', encoding='utf-8') as f_in, open(dst, 'w', newline='', encoding='utf-8') as f_out:
+with open(src, newline='', encoding='utf-8') as f_in:
     r = csv.DictReader(f_in)
-    w = csv.DictWriter(f_out, fieldnames=keep)
-    w.writeheader()
-    for row in r:
-        w.writerow({k: row.get(k, '') for k in keep})
+    if not r.fieldnames:
+        sys.exit(1)
+    # Build case-insensitive mapping from original headers
+    hdr_map = {h.lower(): h for h in r.fieldnames}
+    with open(dst, 'w', newline='', encoding='utf-8') as f_out:
+        w = csv.DictWriter(f_out, fieldnames=keep)
+        w.writeheader()
+        for row in r:
+            # Map from original column names (case-insensitive) to output
+            out_row = {}
+            for out_col in keep:
+                orig_col = hdr_map.get(out_col.lower())
+                out_row[out_col] = row.get(orig_col, '') if orig_col else ''
+            w.writerow(out_row)
 PY3
     fi
   fi

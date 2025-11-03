@@ -35,7 +35,7 @@ credentials/
 # Database Files
 # ===========================================
 *.sql.backup
-*.dump
+#*.dump
 *.bak
 backup_*.sql
 backup_*.dump

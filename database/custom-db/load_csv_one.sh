@@ -127,9 +127,12 @@ def sanitize_sql(sql_path):
                             for row in r:
                                 w.writerow({k: row.get(k, '') for k in csv_keep})
                         cols_str = ','.join(csv_keep)
+                        # Preserve original relative directory of CSV path
+                        rel_dir = os.path.dirname(csv_rel)
+                        rel_filtered = os.path.join(rel_dir, os.path.basename(filtered_csv)) if rel_dir else os.path.basename(filtered_csv)
                         new_line = COPY_RE.sub(lambda mm: mm.group(0)
                             .replace(mm.group('cols'), cols_str)
-                            .replace(mm.group('csv'), os.path.basename(filtered_csv)), line, count=1)
+                            .replace(mm.group('csv'), rel_filtered), line, count=1)
                         lines[i] = new_line
                         changed = True
         except Exception:

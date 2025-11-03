@@ -1,0 +1,17 @@
+﻿;
+; Archive created at 2025-11-03 10:52:45
+;     dbname: postgres
+;     TOC Entries: 7
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+6; 3079 2414776 EXTENSION - dblink 
+4629; 0 0 COMMENT - EXTENSION dblink 

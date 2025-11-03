@@ -1,0 +1,62 @@
+﻿;
+; Archive created at 2025-11-03 10:52:45
+;     dbname: mosip_websub
+;     TOC Entries: 53
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+4675; 0 0 ACL - SCHEMA public enterprisedb
+14; 2615 21733 SCHEMA - websub websubuser
+4676; 0 0 ACL - SCHEMA websub websubuser
+6; 3079 21734 EXTENSION - dblink 
+4677; 0 0 COMMENT - EXTENSION dblink 
+7; 3079 21780 EXTENSION - postgres_fdw 
+4678; 0 0 COMMENT - EXTENSION postgres_fdw 
+383; 1259 21784 TABLE websub message_delivery_failed websubuser
+4679; 0 0 ACL websub TABLE message_delivery_failed websubuser
+384; 1259 21790 TABLE websub message_delivery_success websubuser
+4680; 0 0 ACL websub TABLE message_delivery_success websubuser
+385; 1259 21796 TABLE websub message_store websubuser
+4681; 0 0 ACL websub TABLE message_store websubuser
+386; 1259 21802 TABLE websub subscription websubuser
+4682; 0 0 COMMENT websub TABLE subscription websubuser
+4683; 0 0 COMMENT websub COLUMN subscription.topic websubuser
+4684; 0 0 COMMENT websub COLUMN subscription.callback websubuser
+4685; 0 0 COMMENT websub COLUMN subscription.secret websubuser
+4686; 0 0 COMMENT websub COLUMN subscription.lease_seconds websubuser
+4687; 0 0 COMMENT websub COLUMN subscription.created_at websubuser
+4688; 0 0 COMMENT websub COLUMN subscription.cr_by websubuser
+4689; 0 0 COMMENT websub COLUMN subscription.cr_dtimes websubuser
+4690; 0 0 COMMENT websub COLUMN subscription.upd_by websubuser
+4691; 0 0 COMMENT websub COLUMN subscription.upd_dtimes websubuser
+4692; 0 0 COMMENT websub COLUMN subscription.is_deleted websubuser
+4693; 0 0 COMMENT websub COLUMN subscription.del_dtimes websubuser
+4694; 0 0 ACL websub TABLE subscription websubuser
+387; 1259 21808 TABLE websub topic websubuser
+4695; 0 0 COMMENT websub TABLE topic websubuser
+4696; 0 0 COMMENT websub COLUMN topic.topic websubuser
+4697; 0 0 COMMENT websub COLUMN topic.cr_by websubuser
+4698; 0 0 COMMENT websub COLUMN topic.cr_dtimes websubuser
+4699; 0 0 COMMENT websub COLUMN topic.upd_by websubuser
+4700; 0 0 COMMENT websub COLUMN topic.upd_dtimes websubuser
+4701; 0 0 COMMENT websub COLUMN topic.is_deleted websubuser
+4702; 0 0 COMMENT websub COLUMN topic.del_dtimes websubuser
+4703; 0 0 ACL websub TABLE topic websubuser
+4418; 2606 21815 CONSTRAINT websub message_delivery_failed message_delivery_failed_pk websubuser
+4421; 2606 21817 CONSTRAINT websub message_delivery_success message_delivery_success_pk websubuser
+4423; 2606 21819 CONSTRAINT websub message_store message_store_pk websubuser
+4429; 2606 21821 CONSTRAINT websub topic pk_topic websubuser
+4427; 2606 21823 CONSTRAINT websub subscription subscription_pk websubuser
+4416; 1259 21824 INDEX websub message_delivery_failed_delivery_failed_dtimes_idx websubuser
+4419; 1259 21825 INDEX websub message_delivery_success_delivery_success_dtimes_idx websubuser
+4424; 1259 21826 INDEX websub message_store_pub_dtimes_idx websubuser
+4425; 1259 21827 INDEX websub message_store_topic_hash_idx websubuser
+3344; 826 21828 DEFAULT ACL websub DEFAULT PRIVILEGES FOR TABLES websubuser

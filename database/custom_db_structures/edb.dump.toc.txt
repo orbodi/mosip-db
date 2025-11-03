@@ -1,0 +1,43 @@
+﻿;
+; Archive created at 2025-11-03 10:52:19
+;     dbname: edb
+;     TOC Entries: 33
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+4679; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2414830 EXTENSION - dblink 
+4680; 0 0 COMMENT - EXTENSION dblink 
+7; 3079 670889 EXTENSION - pg_stat_statements 
+4681; 0 0 COMMENT - EXTENSION pg_stat_statements 
+4682; 0 0 ACL pg_catalog FUNCTION pg_ls_dir(text) enterprisedb
+381; 1259 25946 TABLE public db_count enterprisedb
+4683; 0 0 ACL public TABLE db_count enterprisedb
+4684; 0 0 ACL public TABLE pg_stat_statements enterprisedb
+384; 1259 670908 SEQUENCE public tab_ppm_seq enterprisedb
+4685; 0 0 ACL public SEQUENCE tab_ppm_seq enterprisedb
+383; 1259 670899 TABLE public tab_ppm_sql enterprisedb
+4686; 0 0 ACL public TABLE tab_ppm_sql enterprisedb
+387; 1259 26648451 VIEW public v_snap_30min_summary enterprisedb
+4687; 0 0 ACL public TABLE v_snap_30min_summary enterprisedb
+386; 1259 26648151 VIEW public v_snap_summary enterprisedb
+4688; 0 0 ACL public TABLE v_snap_summary enterprisedb
+388; 1259 26648636 VIEW public v_snap_summary_30min enterprisedb
+4689; 0 0 ACL public TABLE v_snap_summary_30min enterprisedb
+389; 1259 26648658 VIEW public v_snap_summary_daily enterprisedb
+4690; 0 0 ACL public TABLE v_snap_summary_daily enterprisedb
+390; 1259 26648717 VIEW public v_snap_summary_mixed enterprisedb
+4691; 0 0 ACL public TABLE v_snap_summary_mixed enterprisedb
+4426; 1259 670905 INDEX public tab_ppm_sql_idx01 enterprisedb
+4427; 1259 670906 INDEX public tab_ppm_sql_idx02 enterprisedb
+4428; 1259 670907 INDEX public tab_ppm_sql_idx03 enterprisedb
+3354; 826 26647128 DEFAULT ACL public DEFAULT PRIVILEGES FOR SEQUENCES enterprisedb
+3353; 826 26647127 DEFAULT ACL public DEFAULT PRIVILEGES FOR TABLES enterprisedb

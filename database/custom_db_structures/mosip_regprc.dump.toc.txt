@@ -1,0 +1,538 @@
+﻿;
+; Archive created at 2025-11-03 10:52:44
+;     dbname: mosip_regprc
+;     TOC Entries: 529
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+17; 2615 8104674 SCHEMA - fms regprcuser
+13; 2615 1179797 SCHEMA - mportal regprcuser
+5416; 0 0 ACL - SCHEMA public enterprisedb
+19; 2615 21390 SCHEMA - regprc postgres
+5417; 0 0 ACL - SCHEMA regprc postgres
+18; 2615 1716331 SCHEMA - support regprcuser
+5418; 0 0 ACL - SCHEMA support regprcuser
+6; 3079 2415751 EXTENSION - dblink 
+5419; 0 0 COMMENT - EXTENSION dblink 
+8; 3079 20103839 EXTENSION - pg_stat_statements 
+5420; 0 0 COMMENT - EXTENSION pg_stat_statements 
+7; 3079 18559134 EXTENSION - pg_trgm 
+5421; 0 0 COMMENT - EXTENSION pg_trgm 
+5422; 0 0 ACL pg_catalog FUNCTION pg_ls_dir(text) enterprisedb
+5423; 0 0 ACL pg_catalog FUNCTION pg_stat_file(filename text, OUT size bigint, OUT access timestamp with time zone, OUT modification timestamp with time zone, OUT change timestamp with time zone, OUT creation timestamp with time zone, OUT isdir boolean) enterprisedb
+860; 1255 24563573 FUNCTION regprc rid_to_timestamp(text) regprcuser
+461; 1259 8104676 TABLE fms data_moble_info regprcuser
+462; 1259 8104679 TABLE fms engine_abstraction regprcuser
+463; 1259 8104685 TABLE fms engine_activation regprcuser
+464; 1259 8104688 TABLE fms engine_data_list_meta regprcuser
+465; 1259 8104691 TABLE fms engine_data_list_records regprcuser
+466; 1259 8104697 TABLE fms engine_data_lists regprcuser
+467; 1259 8104700 TABLE fms engine_field regprcuser
+468; 1259 8104703 TABLE fms engine_model regprcuser
+469; 1259 8104709 TABLE fms engine_model_conf regprcuser
+470; 1259 8104715 TABLE fms engine_pre_item regprcuser
+471; 1259 8104721 TABLE fms engine_rule regprcuser
+472; 1259 8104727 TABLE fms engine_rule_history regprcuser
+474; 1259 8104735 TABLE fms users regprcuser
+473; 1259 8104733 SEQUENCE fms users_id_seq regprcuser
+5424; 0 0 SEQUENCE OWNED BY fms users_id_seq regprcuser
+435; 1259 1200582 TABLE mportal databasechangelog regprcuser
+434; 1259 1200575 TABLE mportal databasechangeloglock regprcuser
+443; 1259 1200627 TABLE mportal mportal_audits regprcuser
+442; 1259 1200625 SEQUENCE mportal mportal_audits_id_seq regprcuser
+437; 1259 1200590 TABLE mportal mportal_users regprcuser
+436; 1259 1200588 SEQUENCE mportal mportal_users_id_seq regprcuser
+439; 1259 1200604 TABLE mportal mportal_users_linked_citizens regprcuser
+438; 1259 1200602 SEQUENCE mportal mportal_users_linked_citizens_id_seq regprcuser
+441; 1259 1200615 TABLE mportal mportal_users_sessions regprcuser
+440; 1259 1200613 SEQUENCE mportal mportal_users_sessions_id_seq regprcuser
+386; 1259 21391 TABLE regprc abis_application regprcuser
+5425; 0 0 COMMENT regprc TABLE abis_application regprcuser
+5426; 0 0 COMMENT regprc COLUMN abis_application.code regprcuser
+5427; 0 0 COMMENT regprc COLUMN abis_application.name regprcuser
+5428; 0 0 COMMENT regprc COLUMN abis_application.descr regprcuser
+5429; 0 0 COMMENT regprc COLUMN abis_application.status_code regprcuser
+5430; 0 0 COMMENT regprc COLUMN abis_application.status_update_dtimes regprcuser
+5431; 0 0 COMMENT regprc COLUMN abis_application.lang_code regprcuser
+5432; 0 0 COMMENT regprc COLUMN abis_application.cr_by regprcuser
+5433; 0 0 COMMENT regprc COLUMN abis_application.cr_dtimes regprcuser
+5434; 0 0 COMMENT regprc COLUMN abis_application.upd_by regprcuser
+5435; 0 0 COMMENT regprc COLUMN abis_application.upd_dtimes regprcuser
+5436; 0 0 COMMENT regprc COLUMN abis_application.is_deleted regprcuser
+5437; 0 0 COMMENT regprc COLUMN abis_application.del_dtimes regprcuser
+5438; 0 0 ACL regprc TABLE abis_application regprcuser
+387; 1259 21398 TABLE regprc abis_request regprcuser
+5439; 0 0 COMMENT regprc TABLE abis_request regprcuser
+5440; 0 0 COMMENT regprc COLUMN abis_request.id regprcuser
+5441; 0 0 COMMENT regprc COLUMN abis_request.req_batch_id regprcuser
+5442; 0 0 COMMENT regprc COLUMN abis_request.abis_app_code regprcuser
+5443; 0 0 COMMENT regprc COLUMN abis_request.request_type regprcuser
+5444; 0 0 COMMENT regprc COLUMN abis_request.request_dtimes regprcuser
+5445; 0 0 COMMENT regprc COLUMN abis_request.bio_ref_id regprcuser
+5446; 0 0 COMMENT regprc COLUMN abis_request.ref_regtrn_id regprcuser
+5447; 0 0 COMMENT regprc COLUMN abis_request.req_text regprcuser
+5448; 0 0 COMMENT regprc COLUMN abis_request.status_code regprcuser
+5449; 0 0 COMMENT regprc COLUMN abis_request.status_comment regprcuser
+5450; 0 0 COMMENT regprc COLUMN abis_request.lang_code regprcuser
+5451; 0 0 COMMENT regprc COLUMN abis_request.cr_by regprcuser
+5452; 0 0 COMMENT regprc COLUMN abis_request.cr_dtimes regprcuser
+5453; 0 0 COMMENT regprc COLUMN abis_request.upd_by regprcuser
+5454; 0 0 COMMENT regprc COLUMN abis_request.upd_dtimes regprcuser
+5455; 0 0 COMMENT regprc COLUMN abis_request.is_deleted regprcuser
+5456; 0 0 COMMENT regprc COLUMN abis_request.del_dtimes regprcuser
+5457; 0 0 ACL regprc TABLE abis_request regprcuser
+388; 1259 21405 TABLE regprc abis_response regprcuser
+5458; 0 0 COMMENT regprc TABLE abis_response regprcuser
+5459; 0 0 COMMENT regprc COLUMN abis_response.id regprcuser
+5460; 0 0 COMMENT regprc COLUMN abis_response.abis_req_id regprcuser
+5461; 0 0 COMMENT regprc COLUMN abis_response.resp_dtimes regprcuser
+5462; 0 0 COMMENT regprc COLUMN abis_response.resp_text regprcuser
+5463; 0 0 COMMENT regprc COLUMN abis_response.status_code regprcuser
+5464; 0 0 COMMENT regprc COLUMN abis_response.status_comment regprcuser
+5465; 0 0 COMMENT regprc COLUMN abis_response.lang_code regprcuser
+5466; 0 0 COMMENT regprc COLUMN abis_response.cr_by regprcuser
+5467; 0 0 COMMENT regprc COLUMN abis_response.cr_dtimes regprcuser
+5468; 0 0 COMMENT regprc COLUMN abis_response.upd_by regprcuser
+5469; 0 0 COMMENT regprc COLUMN abis_response.upd_dtimes regprcuser
+5470; 0 0 COMMENT regprc COLUMN abis_response.is_deleted regprcuser
+5471; 0 0 COMMENT regprc COLUMN abis_response.del_dtimes regprcuser
+5472; 0 0 ACL regprc TABLE abis_response regprcuser
+389; 1259 21412 TABLE regprc abis_response_det postgres
+5473; 0 0 ACL regprc TABLE abis_response_det postgres
+423; 1259 23140 TABLE regprc printing_orders regprcuser
+5474; 0 0 ACL regprc TABLE printing_orders regprcuser
+427; 1259 23163 TABLE regprc printing_shipped_cards regprcuser
+5475; 0 0 ACL regprc TABLE printing_shipped_cards regprcuser
+479; 1259 17527716 VIEW regprc cards_status_delivered jfassinou
+5476; 0 0 ACL regprc TABLE cards_status_delivered jfassinou
+488; 1259 24003893 VIEW regprc cards_status_notdelivered jfassinou
+5477; 0 0 ACL regprc TABLE cards_status_notdelivered jfassinou
+497; 1259 29879114 VIEW regprc cards_total_gen jfassinou
+414; 1259 21595 TABLE regprc registration regprcuser
+5478; 0 0 COMMENT regprc TABLE registration regprcuser
+5479; 0 0 COMMENT regprc COLUMN registration.id regprcuser
+5480; 0 0 COMMENT regprc COLUMN registration.reg_type regprcuser
+5481; 0 0 COMMENT regprc COLUMN registration.ref_reg_id regprcuser
+5482; 0 0 COMMENT regprc COLUMN registration.applicant_type regprcuser
+5483; 0 0 COMMENT regprc COLUMN registration.status_code regprcuser
+5484; 0 0 COMMENT regprc COLUMN registration.lang_code regprcuser
+5485; 0 0 COMMENT regprc COLUMN registration.status_comment regprcuser
+5486; 0 0 COMMENT regprc COLUMN registration.latest_trn_id regprcuser
+5487; 0 0 COMMENT regprc COLUMN registration.latest_trn_type_code regprcuser
+5488; 0 0 COMMENT regprc COLUMN registration.latest_trn_status_code regprcuser
+5489; 0 0 COMMENT regprc COLUMN registration.latest_trn_dtimes regprcuser
+5490; 0 0 COMMENT regprc COLUMN registration.reg_process_retry_count regprcuser
+5491; 0 0 COMMENT regprc COLUMN registration.reg_stage_name regprcuser
+5492; 0 0 COMMENT regprc COLUMN registration.trn_retry_count regprcuser
+5493; 0 0 COMMENT regprc COLUMN registration.pkt_cr_dtimes regprcuser
+5494; 0 0 COMMENT regprc COLUMN registration.is_active regprcuser
+5495; 0 0 COMMENT regprc COLUMN registration.cr_by regprcuser
+5496; 0 0 COMMENT regprc COLUMN registration.cr_dtimes regprcuser
+5497; 0 0 COMMENT regprc COLUMN registration.upd_by regprcuser
+5498; 0 0 COMMENT regprc COLUMN registration.upd_dtimes regprcuser
+5499; 0 0 COMMENT regprc COLUMN registration.is_deleted regprcuser
+5500; 0 0 COMMENT regprc COLUMN registration.del_dtimes regprcuser
+5501; 0 0 ACL regprc TABLE registration regprcuser
+489; 1259 24235766 VIEW regprc daily_count_details jfassinou
+5502; 0 0 ACL regprc TABLE daily_count_details jfassinou
+490; 1259 24240912 VIEW regprc count_reg_summary jfassinou
+5503; 0 0 ACL regprc TABLE count_reg_summary jfassinou
+390; 1259 21419 TABLE regprc databasechangelog regprcuser
+5504; 0 0 ACL regprc TABLE databasechangelog regprcuser
+391; 1259 21425 TABLE regprc databasechangeloglock regprcuser
+5505; 0 0 ACL regprc TABLE databasechangeloglock regprcuser
+433; 1259 1050406 TABLE regprc dms_mosip_packets regprcuser
+5506; 0 0 ACL regprc TABLE dms_mosip_packets regprcuser
+392; 1259 21428 TABLE regprc ext_stage_messages regprcuser
+5507; 0 0 ACL regprc TABLE ext_stage_messages regprcuser
+393; 1259 21434 TABLE regprc fms_api_attributes regprcuser
+5508; 0 0 ACL regprc TABLE fms_api_attributes regprcuser
+394; 1259 21442 TABLE regprc fms_case_details regprcuser
+5509; 0 0 ACL regprc TABLE fms_case_details regprcuser
+395; 1259 21449 TABLE regprc fms_cases regprcuser
+5510; 0 0 ACL regprc TABLE fms_cases regprcuser
+396; 1259 21456 TABLE regprc fms_condition_criteria regprcuser
+5511; 0 0 COMMENT regprc COLUMN fms_condition_criteria.crit_id regprcuser
+5512; 0 0 ACL regprc TABLE fms_condition_criteria regprcuser
+397; 1259 21463 TABLE regprc fms_model_attributes regprcuser
+5513; 0 0 ACL regprc TABLE fms_model_attributes regprcuser
+398; 1259 21473 TABLE regprc fms_model_scenario regprcuser
+5514; 0 0 COMMENT regprc COLUMN fms_model_scenario.risk_action regprcuser
+5515; 0 0 ACL regprc TABLE fms_model_scenario regprcuser
+399; 1259 21481 TABLE regprc fms_reference_value regprcuser
+5516; 0 0 ACL regprc TABLE fms_reference_value regprcuser
+475; 1259 8116084 TABLE regprc fms_transaction_fields regprcuser
+5517; 0 0 ACL regprc TABLE fms_transaction_fields regprcuser
+400; 1259 21494 TABLE regprc fms_transactions regprcuser
+5518; 0 0 ACL regprc TABLE fms_transactions regprcuser
+401; 1259 21500 TABLE regprc fms_user_roles regprcuser
+5519; 0 0 ACL regprc TABLE fms_user_roles regprcuser
+402; 1259 21503 TABLE regprc fms_users regprcuser
+5520; 0 0 ACL regprc TABLE fms_users regprcuser
+403; 1259 21506 SEQUENCE regprc fmscasedetailseq postgres
+5521; 0 0 ACL regprc SEQUENCE fmscasedetailseq postgres
+404; 1259 21508 SEQUENCE regprc fmscases postgres
+5522; 0 0 ACL regprc SEQUENCE fmscases postgres
+405; 1259 21510 SEQUENCE regprc hibernate_sequence postgres
+5523; 0 0 ACL regprc SEQUENCE hibernate_sequence postgres
+406; 1259 21512 TABLE regprc individual_demographic_dedup regprcuser
+5524; 0 0 COMMENT regprc TABLE individual_demographic_dedup regprcuser
+5525; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.reg_id regprcuser
+5526; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.name regprcuser
+5527; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.dob regprcuser
+5528; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.gender regprcuser
+5529; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.mobile_number regprcuser
+5530; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.email regprcuser
+5531; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.pincode regprcuser
+5532; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.lang_code regprcuser
+5533; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.is_active regprcuser
+5534; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.cr_by regprcuser
+5535; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.cr_dtimes regprcuser
+5536; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.upd_by regprcuser
+5537; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.upd_dtimes regprcuser
+5538; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.is_deleted regprcuser
+5539; 0 0 COMMENT regprc COLUMN individual_demographic_dedup.del_dtimes regprcuser
+5540; 0 0 ACL regprc TABLE individual_demographic_dedup regprcuser
+447; 1259 1701649 TABLE regprc individual_demographic_dedup_delte regprcuser
+5541; 0 0 ACL regprc TABLE individual_demographic_dedup_delte regprcuser
+483; 1259 18092034 TABLE regprc kafka_handler_events regprcuser
+5542; 0 0 ACL regprc TABLE kafka_handler_events regprcuser
+484; 1259 20047010 TABLE regprc kafka_handler_events_bkp1 regprcuser
+5543; 0 0 ACL regprc TABLE kafka_handler_events_bkp1 regprcuser
+482; 1259 18092032 SEQUENCE regprc kafka_handler_events_id_seq regprcuser
+5544; 0 0 ACL regprc SEQUENCE kafka_handler_events_id_seq regprcuser
+481; 1259 18092005 TABLE regprc kafka_handler_history_events regprcuser
+5545; 0 0 ACL regprc TABLE kafka_handler_history_events regprcuser
+480; 1259 18092003 SEQUENCE regprc kafka_handler_history_events_id_seq regprcuser
+5546; 0 0 ACL regprc SEQUENCE kafka_handler_history_events_id_seq regprcuser
+456; 1259 3626509 VIEW regprc kit_21012025 jfassinou
+5547; 0 0 ACL regprc TABLE kit_21012025 jfassinou
+458; 1259 3854248 VIEW regprc kit_22012025 jfassinou
+5548; 0 0 ACL regprc TABLE kit_22012025 jfassinou
+444; 1259 1217632 VIEW regprc kit_used jfassinou
+5549; 0 0 ACL regprc TABLE kit_used jfassinou
+457; 1259 3628978 VIEW regprc kit_missing_21012025 jfassinou
+5550; 0 0 ACL regprc TABLE kit_missing_21012025 jfassinou
+446; 1259 1286229 VIEW regprc kit_used_all jfassinou
+5551; 0 0 ACL regprc TABLE kit_used_all jfassinou
+476; 1259 9336458 VIEW regprc kit_used_today jfassinou
+5552; 0 0 ACL regprc TABLE kit_used_today jfassinou
+487; 1259 20172795 TABLE regprc listeregid_adju regprcuser
+5553; 0 0 ACL regprc TABLE listeregid_adju regprcuser
+419; 1259 21630 TABLE regprc rid_uin_link regprcuser
+5554; 0 0 ACL regprc TABLE rid_uin_link regprcuser
+486; 1259 20143539 VIEW regprc niu_update jfassinou
+5555; 0 0 ACL regprc TABLE niu_update jfassinou
+431; 1259 670922 TABLE regprc packet_biometric_score regprcuser
+5556; 0 0 ACL regprc TABLE packet_biometric_score regprcuser
+5557; 0 0 ACL regprc TABLE pg_stat_statements enterprisedb
+407; 1259 21519 TABLE regprc portal_lost_pack regprcuser
+5558; 0 0 ACL regprc TABLE portal_lost_pack regprcuser
+408; 1259 21522 TABLE regprc postal_notification regprcuser
+5559; 0 0 ACL regprc TABLE postal_notification regprcuser
+494; 1259 25337669 VIEW regprc printing_anomalie jfassinou
+5560; 0 0 ACL regprc TABLE printing_anomalie jfassinou
+496; 1259 25338305 VIEW regprc printing_anomalie_all  jfassinou
+5561; 0 0 ACL regprc TABLE "printing_anomalie_all " jfassinou
+495; 1259 25337745 VIEW regprc printing_anomalie_details  jfassinou
+5562; 0 0 ACL regprc TABLE "printing_anomalie_details " jfassinou
+425; 1259 23152 TABLE regprc printing_orders_details regprcuser
+5563; 0 0 ACL regprc TABLE printing_orders_details regprcuser
+424; 1259 23150 SEQUENCE regprc printing_orders_details_id_seq regprcuser
+5564; 0 0 ACL regprc SEQUENCE printing_orders_details_id_seq regprcuser
+422; 1259 23138 SEQUENCE regprc printing_orders_id_seq regprcuser
+5565; 0 0 ACL regprc SEQUENCE printing_orders_id_seq regprcuser
+429; 1259 23174 TABLE regprc printing_processing_jobs regprcuser
+5566; 0 0 ACL regprc TABLE printing_processing_jobs regprcuser
+428; 1259 23172 SEQUENCE regprc printing_processing_jobs_id_seq regprcuser
+5567; 0 0 ACL regprc SEQUENCE printing_processing_jobs_id_seq regprcuser
+426; 1259 23161 SEQUENCE regprc printing_shipped_cards_id_seq regprcuser
+5568; 0 0 ACL regprc SEQUENCE printing_shipped_cards_id_seq regprcuser
+409; 1259 21561 TABLE regprc r_type regprcuser
+5569; 0 0 ACL regprc TABLE r_type regprcuser
+410; 1259 21567 TABLE regprc reg_bio_ref regprcuser
+5570; 0 0 COMMENT regprc TABLE reg_bio_ref regprcuser
+5571; 0 0 COMMENT regprc COLUMN reg_bio_ref.reg_id regprcuser
+5572; 0 0 COMMENT regprc COLUMN reg_bio_ref.bio_ref_id regprcuser
+5573; 0 0 COMMENT regprc COLUMN reg_bio_ref.is_active regprcuser
+5574; 0 0 COMMENT regprc COLUMN reg_bio_ref.cr_by regprcuser
+5575; 0 0 COMMENT regprc COLUMN reg_bio_ref.cr_dtimes regprcuser
+5576; 0 0 COMMENT regprc COLUMN reg_bio_ref.upd_by regprcuser
+5577; 0 0 COMMENT regprc COLUMN reg_bio_ref.upd_dtimes regprcuser
+5578; 0 0 COMMENT regprc COLUMN reg_bio_ref.is_deleted regprcuser
+5579; 0 0 COMMENT regprc COLUMN reg_bio_ref.del_dtimes regprcuser
+5580; 0 0 ACL regprc TABLE reg_bio_ref regprcuser
+411; 1259 21574 TABLE regprc reg_demo_dedupe_list regprcuser
+5581; 0 0 COMMENT regprc TABLE reg_demo_dedupe_list regprcuser
+5582; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.regtrn_id regprcuser
+5583; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.matched_reg_id regprcuser
+5584; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.reg_id regprcuser
+5585; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.cr_by regprcuser
+5586; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.cr_dtimes regprcuser
+5587; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.upd_by regprcuser
+5588; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.upd_dtimes regprcuser
+5589; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.is_deleted regprcuser
+5590; 0 0 COMMENT regprc COLUMN reg_demo_dedupe_list.del_dtimes regprcuser
+5591; 0 0 ACL regprc TABLE reg_demo_dedupe_list regprcuser
+493; 1259 24923729 VIEW regprc reg_lost jfassinou
+5592; 0 0 ACL regprc TABLE reg_lost jfassinou
+412; 1259 21581 TABLE regprc reg_lost_uin_det regprcuser
+5593; 0 0 COMMENT regprc TABLE reg_lost_uin_det regprcuser
+5594; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.reg_id regprcuser
+5595; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.latest_reg_id regprcuser
+5596; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.cr_by regprcuser
+5597; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.cr_dtimes regprcuser
+5598; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.upd_by regprcuser
+5599; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.upd_dtimes regprcuser
+5600; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.is_deleted regprcuser
+5601; 0 0 COMMENT regprc COLUMN reg_lost_uin_det.del_dtimes regprcuser
+5602; 0 0 ACL regprc TABLE reg_lost_uin_det regprcuser
+413; 1259 21588 TABLE regprc reg_manual_verification regprcuser
+5603; 0 0 COMMENT regprc TABLE reg_manual_verification regprcuser
+5604; 0 0 COMMENT regprc COLUMN reg_manual_verification.reg_id regprcuser
+5605; 0 0 COMMENT regprc COLUMN reg_manual_verification.matched_ref_id regprcuser
+5606; 0 0 COMMENT regprc COLUMN reg_manual_verification.matched_ref_type regprcuser
+5607; 0 0 COMMENT regprc COLUMN reg_manual_verification.mv_usr_id regprcuser
+5608; 0 0 COMMENT regprc COLUMN reg_manual_verification.ref_regtrn_id regprcuser
+5609; 0 0 COMMENT regprc COLUMN reg_manual_verification.request_id regprcuser
+5610; 0 0 COMMENT regprc COLUMN reg_manual_verification.res_text regprcuser
+5611; 0 0 COMMENT regprc COLUMN reg_manual_verification.status_code regprcuser
+5612; 0 0 COMMENT regprc COLUMN reg_manual_verification.reason_code regprcuser
+5613; 0 0 COMMENT regprc COLUMN reg_manual_verification.status_comment regprcuser
+5614; 0 0 COMMENT regprc COLUMN reg_manual_verification.trntyp_code regprcuser
+5615; 0 0 COMMENT regprc COLUMN reg_manual_verification.lang_code regprcuser
+5616; 0 0 COMMENT regprc COLUMN reg_manual_verification.is_active regprcuser
+5617; 0 0 COMMENT regprc COLUMN reg_manual_verification.cr_by regprcuser
+5618; 0 0 COMMENT regprc COLUMN reg_manual_verification.cr_dtimes regprcuser
+5619; 0 0 COMMENT regprc COLUMN reg_manual_verification.upd_by regprcuser
+5620; 0 0 COMMENT regprc COLUMN reg_manual_verification.upd_dtimes regprcuser
+5621; 0 0 COMMENT regprc COLUMN reg_manual_verification.is_deleted regprcuser
+5622; 0 0 COMMENT regprc COLUMN reg_manual_verification.del_dtimes regprcuser
+5623; 0 0 ACL regprc TABLE reg_manual_verification regprcuser
+491; 1259 24923721 VIEW regprc reg_new jfassinou
+5624; 0 0 ACL regprc TABLE reg_new jfassinou
+492; 1259 24923725 VIEW regprc reg_update jfassinou
+5625; 0 0 ACL regprc TABLE reg_update jfassinou
+417; 1259 21617 TABLE regprc registration_transaction regprcuser
+5626; 0 0 COMMENT regprc TABLE registration_transaction regprcuser
+5627; 0 0 COMMENT regprc COLUMN registration_transaction.id regprcuser
+5628; 0 0 COMMENT regprc COLUMN registration_transaction.reg_id regprcuser
+5629; 0 0 COMMENT regprc COLUMN registration_transaction.trn_type_code regprcuser
+5630; 0 0 COMMENT regprc COLUMN registration_transaction.remarks regprcuser
+5631; 0 0 COMMENT regprc COLUMN registration_transaction.parent_regtrn_id regprcuser
+5632; 0 0 COMMENT regprc COLUMN registration_transaction.ref_id regprcuser
+5633; 0 0 COMMENT regprc COLUMN registration_transaction.ref_id_type regprcuser
+5634; 0 0 COMMENT regprc COLUMN registration_transaction.status_code regprcuser
+5635; 0 0 COMMENT regprc COLUMN registration_transaction.sub_status_code regprcuser
+5636; 0 0 COMMENT regprc COLUMN registration_transaction.lang_code regprcuser
+5637; 0 0 COMMENT regprc COLUMN registration_transaction.status_comment regprcuser
+5638; 0 0 COMMENT regprc COLUMN registration_transaction.cr_by regprcuser
+5639; 0 0 COMMENT regprc COLUMN registration_transaction.cr_dtimes regprcuser
+5640; 0 0 COMMENT regprc COLUMN registration_transaction.upd_by regprcuser
+5641; 0 0 COMMENT regprc COLUMN registration_transaction.upd_dtimes regprcuser
+5642; 0 0 COMMENT regprc COLUMN registration_transaction.is_deleted regprcuser
+5643; 0 0 COMMENT regprc COLUMN registration_transaction.del_dtimes regprcuser
+5644; 0 0 ACL regprc TABLE registration_transaction regprcuser
+477; 1259 11607815 VIEW regprc registration_analysis_by_rid jfassinou
+5645; 0 0 ACL regprc TABLE registration_analysis_by_rid jfassinou
+415; 1259 21602 TABLE regprc registration_center regprcuser
+5646; 0 0 ACL regprc TABLE registration_center regprcuser
+416; 1259 21608 TABLE regprc registration_list regprcuser
+5647; 0 0 COMMENT regprc TABLE registration_list regprcuser
+5648; 0 0 COMMENT regprc COLUMN registration_list.id regprcuser
+5649; 0 0 COMMENT regprc COLUMN registration_list.reg_id regprcuser
+5650; 0 0 COMMENT regprc COLUMN registration_list.reg_type regprcuser
+5651; 0 0 COMMENT regprc COLUMN registration_list.packet_checksum regprcuser
+5652; 0 0 COMMENT regprc COLUMN registration_list.packet_size regprcuser
+5653; 0 0 COMMENT regprc COLUMN registration_list.client_status_code regprcuser
+5654; 0 0 COMMENT regprc COLUMN registration_list.client_status_comment regprcuser
+5655; 0 0 COMMENT regprc COLUMN registration_list.additional_info regprcuser
+5656; 0 0 COMMENT regprc COLUMN registration_list.status_code regprcuser
+5657; 0 0 COMMENT regprc COLUMN registration_list.status_comment regprcuser
+5658; 0 0 COMMENT regprc COLUMN registration_list.lang_code regprcuser
+5659; 0 0 COMMENT regprc COLUMN registration_list.cr_by regprcuser
+5660; 0 0 COMMENT regprc COLUMN registration_list.cr_dtimes regprcuser
+5661; 0 0 COMMENT regprc COLUMN registration_list.upd_by regprcuser
+5662; 0 0 COMMENT regprc COLUMN registration_list.upd_dtimes regprcuser
+5663; 0 0 COMMENT regprc COLUMN registration_list.is_deleted regprcuser
+5664; 0 0 COMMENT regprc COLUMN registration_list.del_dtimes regprcuser
+5665; 0 0 ACL regprc TABLE registration_list regprcuser
+453; 1259 2462789 VIEW regprc registration_par_center jfassinou
+5666; 0 0 ACL regprc TABLE registration_par_center jfassinou
+454; 1259 3151162 VIEW regprc registration_par_center_bydate jfassinou
+5667; 0 0 ACL regprc TABLE registration_par_center_bydate jfassinou
+432; 1259 1050400 TABLE regprc registration_transaction_validate regprcuser
+5668; 0 0 ACL regprc TABLE registration_transaction_validate regprcuser
+418; 1259 21624 TABLE regprc rid_seq regprcuser
+5669; 0 0 COMMENT regprc TABLE rid_seq regprcuser
+5670; 0 0 COMMENT regprc COLUMN rid_seq.regcntr_id regprcuser
+5671; 0 0 COMMENT regprc COLUMN rid_seq.machine_id regprcuser
+5672; 0 0 COMMENT regprc COLUMN rid_seq.curr_seq_no regprcuser
+5673; 0 0 COMMENT regprc COLUMN rid_seq.cr_by regprcuser
+5674; 0 0 COMMENT regprc COLUMN rid_seq.cr_dtimes regprcuser
+5675; 0 0 COMMENT regprc COLUMN rid_seq.upd_by regprcuser
+5676; 0 0 COMMENT regprc COLUMN rid_seq.upd_dtimes regprcuser
+5677; 0 0 ACL regprc TABLE rid_seq regprcuser
+430; 1259 670917 TABLE regprc rspm regprcuser
+5678; 0 0 ACL regprc TABLE rspm regprcuser
+420; 1259 21633 TABLE regprc transaction_type regprcuser
+5679; 0 0 COMMENT regprc TABLE transaction_type regprcuser
+5680; 0 0 COMMENT regprc COLUMN transaction_type.code regprcuser
+5681; 0 0 COMMENT regprc COLUMN transaction_type.descr regprcuser
+5682; 0 0 COMMENT regprc COLUMN transaction_type.lang_code regprcuser
+5683; 0 0 COMMENT regprc COLUMN transaction_type.is_active regprcuser
+5684; 0 0 COMMENT regprc COLUMN transaction_type.cr_by regprcuser
+5685; 0 0 COMMENT regprc COLUMN transaction_type.cr_dtimes regprcuser
+5686; 0 0 COMMENT regprc COLUMN transaction_type.upd_by regprcuser
+5687; 0 0 COMMENT regprc COLUMN transaction_type.upd_dtimes regprcuser
+5688; 0 0 COMMENT regprc COLUMN transaction_type.is_deleted regprcuser
+5689; 0 0 COMMENT regprc COLUMN transaction_type.del_dtimes regprcuser
+5690; 0 0 ACL regprc TABLE transaction_type regprcuser
+445; 1259 1217798 TABLE regprc uin_h regprcuser
+5691; 0 0 ACL regprc TABLE uin_h regprcuser
+421; 1259 21640 TABLE regprc user_role_map regprcuser
+5692; 0 0 ACL regprc TABLE user_role_map regprcuser
+478; 1259 16707313 VIEW regprc vip_list jfassinou
+5693; 0 0 ACL regprc TABLE vip_list jfassinou
+499; 1259 30367025 TABLE support bioref regprcuser
+460; 1259 7696046 TABLE support ddmfield regprcuser
+500; 1259 31455973 TABLE support machine_master regprcuser
+448; 1259 1716377 TABLE support packet_api_support regprcuser
+449; 1259 1716402 TABLE support packet_query_support regprcuser
+501; 1259 32599521 TABLE support reg_to_charge_abis regprcuser
+498; 1259 30190314 TABLE support rid_backup regprcuser
+459; 1259 7661563 TABLE support rspm_details regprcuser
+451; 1259 1716414 TABLE support support_config regprcuser
+450; 1259 1716410 SEQUENCE support support_config_id_seq regprcuser
+455; 1259 3368700 TABLE support uin_h regprcuser
+4981; 2604 8104738 DEFAULT fms users id regprcuser
+5089; 2606 1200579 CONSTRAINT mportal databasechangeloglock databasechangeloglock_pkey regprcuser
+5101; 2606 1200637 CONSTRAINT mportal mportal_audits mportal_audits_id_pk regprcuser
+5103; 2606 1200639 CONSTRAINT mportal mportal_audits mportal_audits_log_id_key regprcuser
+5091; 2606 1200599 CONSTRAINT mportal mportal_users mportal_users_id_pk regprcuser
+5095; 2606 1200610 CONSTRAINT mportal mportal_users_linked_citizens mportal_users_linked_citizens_id_pk regprcuser
+5097; 2606 1200612 CONSTRAINT mportal mportal_users_linked_citizens mportal_users_linked_citizens_uin_key regprcuser
+5093; 2606 1200601 CONSTRAINT mportal mportal_users mportal_users_main_uin_key regprcuser
+5099; 2606 1200624 CONSTRAINT mportal mportal_users_sessions mportal_users_sessions_id_pk regprcuser
+4991; 2606 3412870 CONSTRAINT regprc abis_request abis_request_pk regprcuser
+4993; 2606 3412872 CONSTRAINT regprc abis_request abis_request_un regprcuser
+4997; 2606 3412874 CONSTRAINT regprc abis_response abis_response_pk regprcuser
+4999; 2606 3412876 CONSTRAINT regprc abis_response abis_response_un regprcuser
+5001; 2606 21644 CONSTRAINT regprc databasechangeloglock databasechangeloglock_pkey regprcuser
+5087; 2606 2476020 CONSTRAINT regprc dms_mosip_packets dms_mosip_packets_pk regprcuser
+5013; 2606 10346770 CONSTRAINT regprc fms_cases fms_cases_un regprcuser
+5010; 2606 21646 CONSTRAINT regprc fms_case_details fms_risk_details_pkey regprcuser
+5024; 2606 1705044 CONSTRAINT regprc individual_demographic_dedup individual_demographic_dedup_un regprcuser
+5126; 2606 18092044 CONSTRAINT regprc kafka_handler_events kafka_handler_events_id_pk regprcuser
+5124; 2606 18092015 CONSTRAINT regprc kafka_handler_history_events kafka_handler_history_events_id_pk regprcuser
+5084; 2606 1063863 CONSTRAINT regprc packet_biometric_score packet_biometric_score_pk regprcuser
+5033; 2606 21648 CONSTRAINT regprc registration pk_reg_id regprcuser
+5047; 2606 21650 CONSTRAINT regprc registration_transaction pk_regtrn_id regprcuser
+5071; 2606 23160 CONSTRAINT regprc printing_orders_details pprinting_orders_details_id_pk regprcuser
+5064; 2606 23147 CONSTRAINT regprc printing_orders printing_orders_id_pk regprcuser
+5067; 2606 1050327 CONSTRAINT regprc printing_orders printing_orders_un regprcuser
+5069; 2606 1050329 CONSTRAINT regprc printing_orders printing_orders_un_request_id regprcuser
+5080; 2606 23179 CONSTRAINT regprc printing_processing_jobs printing_processing_jobs_id_pk regprcuser
+5082; 2606 23181 CONSTRAINT regprc printing_processing_jobs printing_processing_jobs_job_id_key regprcuser
+5077; 2606 23171 CONSTRAINT regprc printing_shipped_cards printing_shipped_cards_id_pk regprcuser
+5029; 2606 3412889 CONSTRAINT regprc reg_manual_verification reg_manual_verification_pk regprcuser
+5040; 2606 304686 CONSTRAINT regprc registration_list registration_list_pk regprcuser
+5051; 2606 299910 CONSTRAINT regprc rid_uin_link rid_uin_link_pk regprcuser
+5055; 2606 1704979 CONSTRAINT regprc rid_uin_link rid_uin_link_un regprcuser
+5057; 2606 3412891 CONSTRAINT regprc transaction_type transaction_type_pk regprcuser
+5105; 2606 1716389 CONSTRAINT support packet_api_support packet_api_support_pkey regprcuser
+5107; 2606 1716409 CONSTRAINT support packet_query_support packet_query_support_pk regprcuser
+5109; 2606 1716421 CONSTRAINT support support_config support_config_pk regprcuser
+5114; 2606 6725490 CONSTRAINT support uin_h uin_h_pk regprcuser
+5002; 1259 21663 INDEX regprc ext_stage_messages_entry_date_idx regprcuser
+5003; 1259 21664 INDEX regprc ext_stage_messages_msg_address_idx regprcuser
+5004; 1259 21665 INDEX regprc ext_stage_messages_msg_type_idx regprcuser
+5011; 1259 21666 INDEX regprc fms_cases_regid_idx regprcuser
+5005; 1259 21667 INDEX regprc id_uidx regprcuser
+5117; 1259 8116091 INDEX regprc idx3_fms_transaction_fields regprcuser
+5118; 1259 8116092 INDEX regprc idx4_fms_transaction_fields regprcuser
+5119; 1259 8116093 INDEX regprc idx5_fms_transaction_fields regprcuser
+4994; 1259 21671 INDEX regprc idx_abis_req_regtrn_id regprcuser
+5026; 1259 21672 INDEX regprc idx_bio_ref_id regprcuser
+5030; 1259 21673 INDEX regprc idx_cr_dtimes_latest_st_cd regprcuser
+5021; 1259 21674 INDEX regprc idx_idemogd_namedob regprcuser
+5122; 1259 18092022 INDEX regprc idx_kafak_events_history_message_id regprcuser
+5027; 1259 21675 INDEX regprc idx_low_bio_ref_id regprcuser
+5058; 1259 18559213 INDEX regprc idx_printing_orders_uin_trgm regprcuser
+5031; 1259 21676 INDEX regprc idx_reg_latest_trn_dtimes regprcuser
+5041; 1259 21677 INDEX regprc idx_reg_trn_reg_id regprcuser
+5042; 1259 21678 INDEX regprc idx_reg_trn_status_code regprcuser
+5043; 1259 21679 INDEX regprc idx_reg_trn_trntypecode regprcuser
+5044; 1259 21680 INDEX regprc idx_reg_trn_upd_dtimes regprcuser
+5037; 1259 39060 INDEX regprc idx_reglist_id_crdt_type regprcuser
+5038; 1259 21681 INDEX regprc idx_reglist_reg_id regprcuser
+5059; 1259 19425968 INDEX regprc idx_rid_printing_orders_trgm regprcuser
+5045; 1259 21682 INDEX regprc idx_trn_reg_id_cr_dt_ty_co regprcuser
+5060; 1259 19425941 INDEX regprc idx_uin_printing_orders_trgm regprcuser
+4995; 1259 21683 INDEX regprc idx_user_detail_cntr_id regprcuser
+5022; 1259 1701518 INDEX regprc individual_demographic_dedup_reg_id_idx regprcuser
+5127; 1259 20032009 INDEX regprc kafka_handler_events_source_topic_idx regprcuser
+5085; 1259 670928 INDEX regprc packet_biometric_score_reg_id_idx regprcuser
+5025; 1259 21684 INDEX regprc postal_notif_regid_status_idx regprcuser
+5061; 1259 24564914 INDEX regprc printing_orders_cr_dtimes_idx regprcuser
+5072; 1259 1050101 INDEX regprc printing_orders_details_request_id_idx regprcuser
+5073; 1259 11204876 INDEX regprc printing_orders_details_status_code_idx regprcuser
+5062; 1259 1050100 INDEX regprc printing_orders_entry_date_idx regprcuser
+5065; 1259 1050082 INDEX regprc printing_orders_prc_status_idx regprcuser
+5074; 1259 19425929 INDEX regprc printing_shipped_cards_delivery_date_idx regprcuser
+5075; 1259 10837601 INDEX regprc printing_shipped_cards_delivery_mode_idx regprcuser
+5078; 1259 1050102 INDEX regprc printing_shipped_cards_request_id_idx regprcuser
+5036; 1259 21685 INDEX regprc reg_center_addr_idx regprcuser
+5006; 1259 21686 INDEX regprc reg_id_idx regprcuser
+5034; 1259 11204630 INDEX regprc registration_reg_type_idx regprcuser
+5035; 1259 16687013 INDEX regprc registration_status_comment_idx regprcuser
+5048; 1259 21687 INDEX regprc rid_uin_link_entry_date_idx regprcuser
+5049; 1259 21688 INDEX regprc rid_uin_link_idx regprcuser
+5052; 1259 21689 INDEX regprc rid_uin_link_reg_id_idx regprcuser
+5053; 1259 21690 INDEX regprc rid_uin_link_uin_idx regprcuser
+5120; 1259 8116094 INDEX regprc uidx1_fms_transaction_fields regprcuser
+5014; 1259 21692 INDEX regprc uidx2_fms_condition_criteria regprcuser
+5121; 1259 8116095 INDEX regprc uidx2_fms_transaction_fields regprcuser
+5016; 1259 21694 INDEX regprc uidx_fms_attributes regprcuser
+5017; 1259 21695 INDEX regprc uidx_fms_attributes_id regprcuser
+5015; 1259 21696 INDEX regprc uidx_fms_condition_criteria regprcuser
+5018; 1259 21697 INDEX regprc uidx_fms_model_scenario regprcuser
+5019; 1259 21698 INDEX regprc uidx_fms_reference_value regprcuser
+5020; 1259 21699 INDEX regprc uidx_fms_transactions regprcuser
+5007; 1259 21700 INDEX regprc uidx_id_fms_api_attributes regprcuser
+5008; 1259 21701 INDEX regprc uidx_name_fms_api_attributes regprcuser
+5128; 1259 30461255 INDEX support bioref_bioref_idx regprcuser
+5116; 1259 20147897 INDEX support ddmfield_rid_idx regprcuser
+5110; 1259 18451720 INDEX support uin_h_cr_dtimes_idx regprcuser
+5111; 1259 18451138 INDEX support uin_h_ida_created_idx regprcuser
+5112; 1259 18451195 INDEX support uin_h_ida_created_idx_1 regprcuser
+5115; 1259 6690323 INDEX support uin_h_reg_id_idx regprcuser
+5129; 2606 3412877 FK CONSTRAINT regprc abis_response abis_response_fk regprcuser
+5130; 2606 21702 FK CONSTRAINT regprc individual_demographic_dedup fk_idemogd_reg regprcuser
+5131; 2606 21707 FK CONSTRAINT regprc reg_bio_ref fk_regbrf_reg regprcuser
+5132; 2606 21712 FK CONSTRAINT regprc reg_demo_dedupe_list fk_regded_regtrn regprcuser
+5136; 2606 21717 FK CONSTRAINT regprc registration_transaction fk_regtrn_reg regprcuser
+5133; 2606 21722 FK CONSTRAINT regprc reg_lost_uin_det fk_rlostd_reg regprcuser
+5134; 2606 21727 FK CONSTRAINT regprc reg_manual_verification fk_rmnlver_reg regprcuser
+5135; 2606 3412902 FK CONSTRAINT regprc reg_manual_verification reg_manual_verification_fk regprcuser
+5137; 2606 1716422 FK CONSTRAINT support support_config support_config_packet_api_support_fk regprcuser
+5138; 2606 1716427 FK CONSTRAINT support support_config support_config_packet_query_support_fk regprcuser
+5396; 6104 24589 PUBLICATION - dbz_publication enterprisedb
+5401; 6106 18099248 PUBLICATION TABLE regprc dbz_publication printing_orders enterprisedb
+5402; 6106 18099339 PUBLICATION TABLE regprc dbz_publication printing_orders_details enterprisedb
+5403; 6106 18099343 PUBLICATION TABLE regprc dbz_publication printing_processing_jobs enterprisedb
+5404; 6106 18099346 PUBLICATION TABLE regprc dbz_publication printing_shipped_cards enterprisedb
+5398; 6106 299899 PUBLICATION TABLE regprc dbz_publication registration enterprisedb
+5400; 6106 299902 PUBLICATION TABLE regprc dbz_publication registration_list enterprisedb
+5399; 6106 299901 PUBLICATION TABLE regprc dbz_publication registration_transaction enterprisedb
+5397; 6106 299897 PUBLICATION TABLE regprc dbz_publication rid_uin_link enterprisedb
+3859; 826 26646124 DEFAULT ACL regprc DEFAULT PRIVILEGES FOR SEQUENCES enterprisedb
+3858; 826 26646123 DEFAULT ACL regprc DEFAULT PRIVILEGES FOR TABLES enterprisedb

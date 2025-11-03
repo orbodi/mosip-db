@@ -1,0 +1,130 @@
+﻿;
+; Archive created at 2025-11-03 10:52:36
+;     dbname: mosip_kernel
+;     TOC Entries: 121
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 19730 SCHEMA - kernel postgres
+4735; 0 0 ACL - SCHEMA kernel postgres
+4736; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415521 EXTENSION - dblink 
+4737; 0 0 COMMENT - EXTENSION dblink 
+768; 1255 19731 PROCEDURE kernel reserveavailableidsinkernelprid(character varying, character varying, character varying, character varying[]) postgres
+392; 1259 7675163 TABLE kernel databasechangelog kerneluser
+4738; 0 0 ACL kernel TABLE databasechangelog kerneluser
+391; 1259 7675158 TABLE kernel databasechangeloglock kerneluser
+4739; 0 0 ACL kernel TABLE databasechangeloglock kerneluser
+381; 1259 19732 SEQUENCE kernel hibernate_sequence postgres
+4740; 0 0 ACL kernel SEQUENCE hibernate_sequence postgres
+382; 1259 19734 TABLE kernel kernel_notifications_audit kerneluser
+4741; 0 0 ACL kernel TABLE kernel_notifications_audit kerneluser
+383; 1259 19740 TABLE kernel otp_transaction kerneluser
+4742; 0 0 COMMENT kernel TABLE otp_transaction kerneluser
+4743; 0 0 COMMENT kernel COLUMN otp_transaction.id kerneluser
+4744; 0 0 COMMENT kernel COLUMN otp_transaction.ref_id kerneluser
+4745; 0 0 COMMENT kernel COLUMN otp_transaction.ref_id_type kerneluser
+4746; 0 0 COMMENT kernel COLUMN otp_transaction.otp kerneluser
+4747; 0 0 COMMENT kernel COLUMN otp_transaction.generated_dtimes kerneluser
+4748; 0 0 COMMENT kernel COLUMN otp_transaction.expiry_dtimes kerneluser
+4749; 0 0 COMMENT kernel COLUMN otp_transaction.validation_retry_count kerneluser
+4750; 0 0 COMMENT kernel COLUMN otp_transaction.status_code kerneluser
+4751; 0 0 COMMENT kernel COLUMN otp_transaction.lang_code kerneluser
+4752; 0 0 COMMENT kernel COLUMN otp_transaction.cr_by kerneluser
+4753; 0 0 COMMENT kernel COLUMN otp_transaction.cr_dtimes kerneluser
+4754; 0 0 COMMENT kernel COLUMN otp_transaction.upd_by kerneluser
+4755; 0 0 COMMENT kernel COLUMN otp_transaction.upd_dtimes kerneluser
+4756; 0 0 COMMENT kernel COLUMN otp_transaction.is_deleted kerneluser
+4757; 0 0 COMMENT kernel COLUMN otp_transaction.del_dtimes kerneluser
+4758; 0 0 ACL kernel TABLE otp_transaction kerneluser
+384; 1259 19747 TABLE kernel prid kerneluser
+4759; 0 0 COMMENT kernel TABLE prid kerneluser
+4760; 0 0 COMMENT kernel COLUMN prid.prid kerneluser
+4761; 0 0 COMMENT kernel COLUMN prid.prid_status kerneluser
+4762; 0 0 COMMENT kernel COLUMN prid.cr_by kerneluser
+4763; 0 0 COMMENT kernel COLUMN prid.cr_dtimes kerneluser
+4764; 0 0 COMMENT kernel COLUMN prid.upd_by kerneluser
+4765; 0 0 COMMENT kernel COLUMN prid.upd_dtimes kerneluser
+4766; 0 0 COMMENT kernel COLUMN prid.is_deleted kerneluser
+4767; 0 0 COMMENT kernel COLUMN prid.del_dtimes kerneluser
+4768; 0 0 ACL kernel TABLE prid kerneluser
+394; 1259 7675171 TABLE kernel secret_totp_trace kerneluser
+4769; 0 0 ACL kernel TABLE secret_totp_trace kerneluser
+393; 1259 7675169 SEQUENCE kernel secret_totp_trace_id_seq kerneluser
+385; 1259 19754 TABLE kernel sms_notifications kerneluser
+4770; 0 0 ACL kernel TABLE sms_notifications kerneluser
+386; 1259 19760 TABLE kernel uin kerneluser
+4771; 0 0 COMMENT kernel TABLE uin kerneluser
+4772; 0 0 COMMENT kernel COLUMN uin.uin kerneluser
+4773; 0 0 COMMENT kernel COLUMN uin.uin_status kerneluser
+4774; 0 0 COMMENT kernel COLUMN uin.cr_by kerneluser
+4775; 0 0 COMMENT kernel COLUMN uin.cr_dtimes kerneluser
+4776; 0 0 COMMENT kernel COLUMN uin.upd_by kerneluser
+4777; 0 0 COMMENT kernel COLUMN uin.upd_dtimes kerneluser
+4778; 0 0 COMMENT kernel COLUMN uin.is_deleted kerneluser
+4779; 0 0 COMMENT kernel COLUMN uin.del_dtimes kerneluser
+4780; 0 0 ACL kernel TABLE uin kerneluser
+387; 1259 19767 TABLE kernel uin_assigned kerneluser
+4781; 0 0 COMMENT kernel TABLE uin_assigned kerneluser
+4782; 0 0 COMMENT kernel COLUMN uin_assigned.uin kerneluser
+4783; 0 0 COMMENT kernel COLUMN uin_assigned.uin_status kerneluser
+4784; 0 0 COMMENT kernel COLUMN uin_assigned.cr_by kerneluser
+4785; 0 0 COMMENT kernel COLUMN uin_assigned.cr_dtimes kerneluser
+4786; 0 0 COMMENT kernel COLUMN uin_assigned.upd_by kerneluser
+4787; 0 0 COMMENT kernel COLUMN uin_assigned.upd_dtimes kerneluser
+4788; 0 0 COMMENT kernel COLUMN uin_assigned.is_deleted kerneluser
+4789; 0 0 COMMENT kernel COLUMN uin_assigned.del_dtimes kerneluser
+4790; 0 0 ACL kernel TABLE uin_assigned kerneluser
+396; 1259 7675181 TABLE kernel uin_pin kerneluser
+4791; 0 0 ACL kernel TABLE uin_pin kerneluser
+395; 1259 7675179 SEQUENCE kernel uin_pin_id_seq kerneluser
+398; 1259 7675191 TABLE kernel uin_secret kerneluser
+4792; 0 0 ACL kernel TABLE uin_secret kerneluser
+397; 1259 7675189 SEQUENCE kernel uin_secret_id_seq kerneluser
+388; 1259 19774 TABLE kernel vid kerneluser
+4793; 0 0 COMMENT kernel TABLE vid kerneluser
+4794; 0 0 COMMENT kernel COLUMN vid.vid kerneluser
+4795; 0 0 COMMENT kernel COLUMN vid.expiry_dtimes kerneluser
+4796; 0 0 COMMENT kernel COLUMN vid.vid_status kerneluser
+4797; 0 0 COMMENT kernel COLUMN vid.cr_by kerneluser
+4798; 0 0 COMMENT kernel COLUMN vid.cr_dtimes kerneluser
+4799; 0 0 COMMENT kernel COLUMN vid.upd_by kerneluser
+4800; 0 0 COMMENT kernel COLUMN vid.upd_dtimes kerneluser
+4801; 0 0 COMMENT kernel COLUMN vid.is_deleted kerneluser
+4802; 0 0 COMMENT kernel COLUMN vid.del_dtimes kerneluser
+4803; 0 0 ACL kernel TABLE vid kerneluser
+389; 1259 19781 TABLE kernel vid_assigned kerneluser
+4804; 0 0 COMMENT kernel TABLE vid_assigned kerneluser
+4805; 0 0 COMMENT kernel COLUMN vid_assigned.vid kerneluser
+4806; 0 0 COMMENT kernel COLUMN vid_assigned.expiry_dtimes kerneluser
+4807; 0 0 COMMENT kernel COLUMN vid_assigned.vid_status kerneluser
+4808; 0 0 COMMENT kernel COLUMN vid_assigned.cr_by kerneluser
+4809; 0 0 COMMENT kernel COLUMN vid_assigned.cr_dtimes kerneluser
+4810; 0 0 COMMENT kernel COLUMN vid_assigned.upd_by kerneluser
+4811; 0 0 COMMENT kernel COLUMN vid_assigned.upd_dtimes kerneluser
+4812; 0 0 COMMENT kernel COLUMN vid_assigned.is_deleted kerneluser
+4813; 0 0 COMMENT kernel COLUMN vid_assigned.del_dtimes kerneluser
+4814; 0 0 ACL kernel TABLE vid_assigned kerneluser
+4479; 2606 7675162 CONSTRAINT kernel databasechangeloglock databasechangeloglock_pkey kerneluser
+4467; 2606 19789 CONSTRAINT kernel otp_transaction pk_otptrn_id kerneluser
+4469; 2606 19791 CONSTRAINT kernel prid pk_prid_id kerneluser
+4471; 2606 19793 CONSTRAINT kernel uin pk_uin_id kerneluser
+4473; 2606 19795 CONSTRAINT kernel uin_assigned pk_uinass_id kerneluser
+4475; 2606 19797 CONSTRAINT kernel vid pk_vid_id kerneluser
+4477; 2606 19799 CONSTRAINT kernel vid_assigned pk_vida_id kerneluser
+4481; 2606 7675178 CONSTRAINT kernel secret_totp_trace secret_totp_trace_pkey kerneluser
+4485; 2606 7675188 CONSTRAINT kernel uin_pin uin_pin_pkey kerneluser
+4488; 2606 7675198 CONSTRAINT kernel uin_secret uin_secret_pkey kerneluser
+4465; 1259 11009972 INDEX kernel kernel_notifications_audit_entry_date_idx kerneluser
+4482; 1259 18380114 INDEX kernel secret_totp_trace_secret_idx kerneluser
+4483; 1259 7675206 INDEX kernel uin_pin_pin_idx kerneluser
+4486; 1259 7675205 INDEX kernel uin_pin_uin_idx kerneluser
+4489; 1259 7675199 INDEX kernel uin_secret_secret_idx kerneluser

@@ -1,0 +1,675 @@
+﻿;
+; Archive created at 2025-11-03 10:52:20
+;     dbname: giteadb
+;     TOC Entries: 665
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 16690 SCHEMA - gitea_schema gitea_db
+5619; 0 0 ACL - SCHEMA gitea_schema gitea_db
+5620; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415060 EXTENSION - dblink 
+5621; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 16691 TABLE gitea_schema access gitea_db
+5622; 0 0 ACL gitea_schema TABLE access gitea_db
+382; 1259 16694 SEQUENCE gitea_schema access_id_seq gitea_db
+5623; 0 0 SEQUENCE OWNED BY gitea_schema access_id_seq gitea_db
+383; 1259 16696 TABLE gitea_schema access_token gitea_db
+5624; 0 0 ACL gitea_schema TABLE access_token gitea_db
+384; 1259 16702 SEQUENCE gitea_schema access_token_id_seq gitea_db
+5625; 0 0 SEQUENCE OWNED BY gitea_schema access_token_id_seq gitea_db
+385; 1259 16704 TABLE gitea_schema action gitea_db
+5626; 0 0 ACL gitea_schema TABLE action gitea_db
+386; 1259 16712 SEQUENCE gitea_schema action_id_seq gitea_db
+5627; 0 0 SEQUENCE OWNED BY gitea_schema action_id_seq gitea_db
+387; 1259 16714 TABLE gitea_schema attachment gitea_db
+5628; 0 0 ACL gitea_schema TABLE attachment gitea_db
+388; 1259 16720 SEQUENCE gitea_schema attachment_id_seq gitea_db
+5629; 0 0 SEQUENCE OWNED BY gitea_schema attachment_id_seq gitea_db
+389; 1259 16722 TABLE gitea_schema collaboration gitea_db
+5630; 0 0 ACL gitea_schema TABLE collaboration gitea_db
+390; 1259 16726 SEQUENCE gitea_schema collaboration_id_seq gitea_db
+5631; 0 0 SEQUENCE OWNED BY gitea_schema collaboration_id_seq gitea_db
+391; 1259 16728 TABLE gitea_schema comment gitea_db
+5632; 0 0 ACL gitea_schema TABLE comment gitea_db
+392; 1259 16735 SEQUENCE gitea_schema comment_id_seq gitea_db
+5633; 0 0 SEQUENCE OWNED BY gitea_schema comment_id_seq gitea_db
+393; 1259 16737 TABLE gitea_schema commit_status gitea_db
+5634; 0 0 ACL gitea_schema TABLE commit_status gitea_db
+394; 1259 16743 SEQUENCE gitea_schema commit_status_id_seq gitea_db
+5635; 0 0 SEQUENCE OWNED BY gitea_schema commit_status_id_seq gitea_db
+395; 1259 16745 TABLE gitea_schema deleted_branch gitea_db
+5636; 0 0 ACL gitea_schema TABLE deleted_branch gitea_db
+396; 1259 16751 SEQUENCE gitea_schema deleted_branch_id_seq gitea_db
+5637; 0 0 SEQUENCE OWNED BY gitea_schema deleted_branch_id_seq gitea_db
+397; 1259 16753 TABLE gitea_schema deploy_key gitea_db
+5638; 0 0 ACL gitea_schema TABLE deploy_key gitea_db
+398; 1259 16760 SEQUENCE gitea_schema deploy_key_id_seq gitea_db
+5639; 0 0 SEQUENCE OWNED BY gitea_schema deploy_key_id_seq gitea_db
+399; 1259 16762 TABLE gitea_schema email_address gitea_db
+5640; 0 0 ACL gitea_schema TABLE email_address gitea_db
+400; 1259 16769 SEQUENCE gitea_schema email_address_id_seq gitea_db
+5641; 0 0 SEQUENCE OWNED BY gitea_schema email_address_id_seq gitea_db
+401; 1259 16771 TABLE gitea_schema email_hash gitea_db
+5642; 0 0 ACL gitea_schema TABLE email_hash gitea_db
+402; 1259 16774 TABLE gitea_schema external_login_user gitea_db
+5643; 0 0 ACL gitea_schema TABLE external_login_user gitea_db
+403; 1259 16780 TABLE gitea_schema follow gitea_db
+5644; 0 0 ACL gitea_schema TABLE follow gitea_db
+404; 1259 16783 SEQUENCE gitea_schema follow_id_seq gitea_db
+5645; 0 0 SEQUENCE OWNED BY gitea_schema follow_id_seq gitea_db
+405; 1259 16785 TABLE gitea_schema gpg_key gitea_db
+5646; 0 0 ACL gitea_schema TABLE gpg_key gitea_db
+406; 1259 16792 SEQUENCE gitea_schema gpg_key_id_seq gitea_db
+5647; 0 0 SEQUENCE OWNED BY gitea_schema gpg_key_id_seq gitea_db
+407; 1259 16794 TABLE gitea_schema gpg_key_import gitea_db
+5648; 0 0 ACL gitea_schema TABLE gpg_key_import gitea_db
+408; 1259 16800 TABLE gitea_schema hook_task gitea_db
+5649; 0 0 ACL gitea_schema TABLE hook_task gitea_db
+409; 1259 16806 SEQUENCE gitea_schema hook_task_id_seq gitea_db
+5650; 0 0 SEQUENCE OWNED BY gitea_schema hook_task_id_seq gitea_db
+410; 1259 16808 TABLE gitea_schema issue gitea_db
+5651; 0 0 ACL gitea_schema TABLE issue gitea_db
+411; 1259 16815 TABLE gitea_schema issue_assignees gitea_db
+5652; 0 0 ACL gitea_schema TABLE issue_assignees gitea_db
+412; 1259 16818 SEQUENCE gitea_schema issue_assignees_id_seq gitea_db
+5653; 0 0 SEQUENCE OWNED BY gitea_schema issue_assignees_id_seq gitea_db
+413; 1259 16820 TABLE gitea_schema issue_dependency gitea_db
+5654; 0 0 ACL gitea_schema TABLE issue_dependency gitea_db
+414; 1259 16823 SEQUENCE gitea_schema issue_dependency_id_seq gitea_db
+5655; 0 0 SEQUENCE OWNED BY gitea_schema issue_dependency_id_seq gitea_db
+415; 1259 16825 SEQUENCE gitea_schema issue_id_seq gitea_db
+5656; 0 0 SEQUENCE OWNED BY gitea_schema issue_id_seq gitea_db
+416; 1259 16827 TABLE gitea_schema issue_index gitea_db
+5657; 0 0 ACL gitea_schema TABLE issue_index gitea_db
+417; 1259 16830 TABLE gitea_schema issue_label gitea_db
+5658; 0 0 ACL gitea_schema TABLE issue_label gitea_db
+418; 1259 16833 SEQUENCE gitea_schema issue_label_id_seq gitea_db
+5659; 0 0 SEQUENCE OWNED BY gitea_schema issue_label_id_seq gitea_db
+419; 1259 16835 TABLE gitea_schema issue_user gitea_db
+5660; 0 0 ACL gitea_schema TABLE issue_user gitea_db
+420; 1259 16838 SEQUENCE gitea_schema issue_user_id_seq gitea_db
+5661; 0 0 SEQUENCE OWNED BY gitea_schema issue_user_id_seq gitea_db
+421; 1259 16840 TABLE gitea_schema issue_watch gitea_db
+5662; 0 0 ACL gitea_schema TABLE issue_watch gitea_db
+422; 1259 16843 SEQUENCE gitea_schema issue_watch_id_seq gitea_db
+5663; 0 0 SEQUENCE OWNED BY gitea_schema issue_watch_id_seq gitea_db
+423; 1259 16845 TABLE gitea_schema label gitea_db
+5664; 0 0 ACL gitea_schema TABLE label gitea_db
+424; 1259 16851 SEQUENCE gitea_schema label_id_seq gitea_db
+5665; 0 0 SEQUENCE OWNED BY gitea_schema label_id_seq gitea_db
+425; 1259 16853 TABLE gitea_schema language_stat gitea_db
+5666; 0 0 ACL gitea_schema TABLE language_stat gitea_db
+426; 1259 16857 SEQUENCE gitea_schema language_stat_id_seq gitea_db
+5667; 0 0 SEQUENCE OWNED BY gitea_schema language_stat_id_seq gitea_db
+427; 1259 16859 TABLE gitea_schema lfs_lock gitea_db
+5668; 0 0 ACL gitea_schema TABLE lfs_lock gitea_db
+428; 1259 16865 SEQUENCE gitea_schema lfs_lock_id_seq gitea_db
+5669; 0 0 SEQUENCE OWNED BY gitea_schema lfs_lock_id_seq gitea_db
+429; 1259 16867 TABLE gitea_schema lfs_meta_object gitea_db
+5670; 0 0 ACL gitea_schema TABLE lfs_meta_object gitea_db
+430; 1259 16870 SEQUENCE gitea_schema lfs_meta_object_id_seq gitea_db
+5671; 0 0 SEQUENCE OWNED BY gitea_schema lfs_meta_object_id_seq gitea_db
+431; 1259 16872 TABLE gitea_schema login_source gitea_db
+5672; 0 0 ACL gitea_schema TABLE login_source gitea_db
+432; 1259 16880 SEQUENCE gitea_schema login_source_id_seq gitea_db
+5673; 0 0 SEQUENCE OWNED BY gitea_schema login_source_id_seq gitea_db
+433; 1259 16882 TABLE gitea_schema milestone gitea_db
+5674; 0 0 ACL gitea_schema TABLE milestone gitea_db
+434; 1259 16888 SEQUENCE gitea_schema milestone_id_seq gitea_db
+5675; 0 0 SEQUENCE OWNED BY gitea_schema milestone_id_seq gitea_db
+435; 1259 16890 TABLE gitea_schema mirror gitea_db
+5676; 0 0 ACL gitea_schema TABLE mirror gitea_db
+436; 1259 16898 SEQUENCE gitea_schema mirror_id_seq gitea_db
+5677; 0 0 SEQUENCE OWNED BY gitea_schema mirror_id_seq gitea_db
+437; 1259 16900 TABLE gitea_schema notice gitea_db
+5678; 0 0 ACL gitea_schema TABLE notice gitea_db
+438; 1259 16906 SEQUENCE gitea_schema notice_id_seq gitea_db
+5679; 0 0 SEQUENCE OWNED BY gitea_schema notice_id_seq gitea_db
+439; 1259 16908 TABLE gitea_schema notification gitea_db
+5680; 0 0 ACL gitea_schema TABLE notification gitea_db
+440; 1259 16911 SEQUENCE gitea_schema notification_id_seq gitea_db
+5681; 0 0 SEQUENCE OWNED BY gitea_schema notification_id_seq gitea_db
+441; 1259 16913 TABLE gitea_schema oauth2_application gitea_db
+5682; 0 0 ACL gitea_schema TABLE oauth2_application gitea_db
+442; 1259 16919 SEQUENCE gitea_schema oauth2_application_id_seq gitea_db
+5683; 0 0 SEQUENCE OWNED BY gitea_schema oauth2_application_id_seq gitea_db
+443; 1259 16921 TABLE gitea_schema oauth2_authorization_code gitea_db
+5684; 0 0 ACL gitea_schema TABLE oauth2_authorization_code gitea_db
+444; 1259 16927 SEQUENCE gitea_schema oauth2_authorization_code_id_seq gitea_db
+5685; 0 0 SEQUENCE OWNED BY gitea_schema oauth2_authorization_code_id_seq gitea_db
+445; 1259 16929 TABLE gitea_schema oauth2_grant gitea_db
+5686; 0 0 ACL gitea_schema TABLE oauth2_grant gitea_db
+446; 1259 16936 SEQUENCE gitea_schema oauth2_grant_id_seq gitea_db
+5687; 0 0 SEQUENCE OWNED BY gitea_schema oauth2_grant_id_seq gitea_db
+447; 1259 16938 TABLE gitea_schema oauth2_session gitea_db
+5688; 0 0 ACL gitea_schema TABLE oauth2_session gitea_db
+448; 1259 16944 TABLE gitea_schema org_user gitea_db
+5689; 0 0 ACL gitea_schema TABLE org_user gitea_db
+449; 1259 16947 SEQUENCE gitea_schema org_user_id_seq gitea_db
+5690; 0 0 SEQUENCE OWNED BY gitea_schema org_user_id_seq gitea_db
+450; 1259 16949 TABLE gitea_schema project gitea_db
+5691; 0 0 ACL gitea_schema TABLE project gitea_db
+451; 1259 16955 TABLE gitea_schema project_board gitea_db
+5692; 0 0 ACL gitea_schema TABLE project_board gitea_db
+452; 1259 16960 SEQUENCE gitea_schema project_board_id_seq gitea_db
+5693; 0 0 SEQUENCE OWNED BY gitea_schema project_board_id_seq gitea_db
+453; 1259 16962 SEQUENCE gitea_schema project_id_seq gitea_db
+5694; 0 0 SEQUENCE OWNED BY gitea_schema project_id_seq gitea_db
+454; 1259 16964 TABLE gitea_schema project_issue gitea_db
+5695; 0 0 ACL gitea_schema TABLE project_issue gitea_db
+455; 1259 16967 SEQUENCE gitea_schema project_issue_id_seq gitea_db
+5696; 0 0 SEQUENCE OWNED BY gitea_schema project_issue_id_seq gitea_db
+456; 1259 16969 TABLE gitea_schema protected_branch gitea_db
+5697; 0 0 ACL gitea_schema TABLE protected_branch gitea_db
+457; 1259 16986 SEQUENCE gitea_schema protected_branch_id_seq gitea_db
+5698; 0 0 SEQUENCE OWNED BY gitea_schema protected_branch_id_seq gitea_db
+458; 1259 16988 TABLE gitea_schema protected_tag gitea_db
+5699; 0 0 ACL gitea_schema TABLE protected_tag gitea_db
+459; 1259 16994 SEQUENCE gitea_schema protected_tag_id_seq gitea_db
+5700; 0 0 SEQUENCE OWNED BY gitea_schema protected_tag_id_seq gitea_db
+460; 1259 16996 TABLE gitea_schema public_key gitea_db
+5701; 0 0 ACL gitea_schema TABLE public_key gitea_db
+461; 1259 17005 SEQUENCE gitea_schema public_key_id_seq gitea_db
+5702; 0 0 SEQUENCE OWNED BY gitea_schema public_key_id_seq gitea_db
+462; 1259 17007 TABLE gitea_schema pull_request gitea_db
+5703; 0 0 ACL gitea_schema TABLE pull_request gitea_db
+463; 1259 17013 SEQUENCE gitea_schema pull_request_id_seq gitea_db
+5704; 0 0 SEQUENCE OWNED BY gitea_schema pull_request_id_seq gitea_db
+464; 1259 17015 TABLE gitea_schema push_mirror gitea_db
+5705; 0 0 ACL gitea_schema TABLE push_mirror gitea_db
+465; 1259 17021 SEQUENCE gitea_schema push_mirror_id_seq gitea_db
+5706; 0 0 SEQUENCE OWNED BY gitea_schema push_mirror_id_seq gitea_db
+466; 1259 17023 TABLE gitea_schema reaction gitea_db
+5707; 0 0 ACL gitea_schema TABLE reaction gitea_db
+467; 1259 17030 SEQUENCE gitea_schema reaction_id_seq gitea_db
+5708; 0 0 SEQUENCE OWNED BY gitea_schema reaction_id_seq gitea_db
+468; 1259 17032 TABLE gitea_schema release gitea_db
+5709; 0 0 ACL gitea_schema TABLE release gitea_db
+469; 1259 17041 SEQUENCE gitea_schema release_id_seq gitea_db
+5710; 0 0 SEQUENCE OWNED BY gitea_schema release_id_seq gitea_db
+470; 1259 17043 TABLE gitea_schema repo_archiver gitea_db
+5711; 0 0 ACL gitea_schema TABLE repo_archiver gitea_db
+471; 1259 17046 SEQUENCE gitea_schema repo_archiver_id_seq gitea_db
+5712; 0 0 SEQUENCE OWNED BY gitea_schema repo_archiver_id_seq gitea_db
+472; 1259 17048 TABLE gitea_schema repo_indexer_status gitea_db
+5713; 0 0 ACL gitea_schema TABLE repo_indexer_status gitea_db
+473; 1259 17052 SEQUENCE gitea_schema repo_indexer_status_id_seq gitea_db
+5714; 0 0 SEQUENCE OWNED BY gitea_schema repo_indexer_status_id_seq gitea_db
+474; 1259 17054 TABLE gitea_schema repo_redirect gitea_db
+5715; 0 0 ACL gitea_schema TABLE repo_redirect gitea_db
+475; 1259 17057 SEQUENCE gitea_schema repo_redirect_id_seq gitea_db
+5716; 0 0 SEQUENCE OWNED BY gitea_schema repo_redirect_id_seq gitea_db
+476; 1259 17059 TABLE gitea_schema repo_topic gitea_db
+5717; 0 0 ACL gitea_schema TABLE repo_topic gitea_db
+477; 1259 17062 TABLE gitea_schema repo_transfer gitea_db
+5718; 0 0 ACL gitea_schema TABLE repo_transfer gitea_db
+478; 1259 17068 SEQUENCE gitea_schema repo_transfer_id_seq gitea_db
+5719; 0 0 SEQUENCE OWNED BY gitea_schema repo_transfer_id_seq gitea_db
+479; 1259 17070 TABLE gitea_schema repo_unit gitea_db
+5720; 0 0 ACL gitea_schema TABLE repo_unit gitea_db
+480; 1259 17076 SEQUENCE gitea_schema repo_unit_id_seq gitea_db
+5721; 0 0 SEQUENCE OWNED BY gitea_schema repo_unit_id_seq gitea_db
+481; 1259 17078 TABLE gitea_schema repository gitea_db
+5722; 0 0 ACL gitea_schema TABLE repository gitea_db
+482; 1259 17094 SEQUENCE gitea_schema repository_id_seq gitea_db
+5723; 0 0 SEQUENCE OWNED BY gitea_schema repository_id_seq gitea_db
+483; 1259 17096 TABLE gitea_schema review gitea_db
+5724; 0 0 ACL gitea_schema TABLE review gitea_db
+484; 1259 17106 SEQUENCE gitea_schema review_id_seq gitea_db
+5725; 0 0 SEQUENCE OWNED BY gitea_schema review_id_seq gitea_db
+485; 1259 17108 TABLE gitea_schema session gitea_db
+5726; 0 0 ACL gitea_schema TABLE session gitea_db
+486; 1259 17114 TABLE gitea_schema star gitea_db
+5727; 0 0 ACL gitea_schema TABLE star gitea_db
+487; 1259 17117 SEQUENCE gitea_schema star_id_seq gitea_db
+5728; 0 0 SEQUENCE OWNED BY gitea_schema star_id_seq gitea_db
+488; 1259 17119 TABLE gitea_schema stopwatch gitea_db
+5729; 0 0 ACL gitea_schema TABLE stopwatch gitea_db
+489; 1259 17122 SEQUENCE gitea_schema stopwatch_id_seq gitea_db
+5730; 0 0 SEQUENCE OWNED BY gitea_schema stopwatch_id_seq gitea_db
+490; 1259 17124 TABLE gitea_schema task gitea_db
+5731; 0 0 ACL gitea_schema TABLE task gitea_db
+491; 1259 17130 SEQUENCE gitea_schema task_id_seq gitea_db
+5732; 0 0 SEQUENCE OWNED BY gitea_schema task_id_seq gitea_db
+492; 1259 17132 TABLE gitea_schema team gitea_db
+5733; 0 0 ACL gitea_schema TABLE team gitea_db
+493; 1259 17140 SEQUENCE gitea_schema team_id_seq gitea_db
+5734; 0 0 SEQUENCE OWNED BY gitea_schema team_id_seq gitea_db
+494; 1259 17142 TABLE gitea_schema team_repo gitea_db
+5735; 0 0 ACL gitea_schema TABLE team_repo gitea_db
+495; 1259 17145 SEQUENCE gitea_schema team_repo_id_seq gitea_db
+5736; 0 0 SEQUENCE OWNED BY gitea_schema team_repo_id_seq gitea_db
+496; 1259 17147 TABLE gitea_schema team_unit gitea_db
+5737; 0 0 ACL gitea_schema TABLE team_unit gitea_db
+497; 1259 17150 SEQUENCE gitea_schema team_unit_id_seq gitea_db
+5738; 0 0 SEQUENCE OWNED BY gitea_schema team_unit_id_seq gitea_db
+498; 1259 17152 TABLE gitea_schema team_user gitea_db
+5739; 0 0 ACL gitea_schema TABLE team_user gitea_db
+499; 1259 17155 SEQUENCE gitea_schema team_user_id_seq gitea_db
+5740; 0 0 SEQUENCE OWNED BY gitea_schema team_user_id_seq gitea_db
+500; 1259 17157 TABLE gitea_schema topic gitea_db
+5741; 0 0 ACL gitea_schema TABLE topic gitea_db
+501; 1259 17160 SEQUENCE gitea_schema topic_id_seq gitea_db
+5742; 0 0 SEQUENCE OWNED BY gitea_schema topic_id_seq gitea_db
+502; 1259 17162 TABLE gitea_schema tracked_time gitea_db
+5743; 0 0 ACL gitea_schema TABLE tracked_time gitea_db
+503; 1259 17166 SEQUENCE gitea_schema tracked_time_id_seq gitea_db
+5744; 0 0 SEQUENCE OWNED BY gitea_schema tracked_time_id_seq gitea_db
+504; 1259 17168 TABLE gitea_schema two_factor gitea_db
+5745; 0 0 ACL gitea_schema TABLE two_factor gitea_db
+505; 1259 17174 SEQUENCE gitea_schema two_factor_id_seq gitea_db
+5746; 0 0 SEQUENCE OWNED BY gitea_schema two_factor_id_seq gitea_db
+506; 1259 17176 TABLE gitea_schema u2f_registration gitea_db
+5747; 0 0 ACL gitea_schema TABLE u2f_registration gitea_db
+507; 1259 17182 SEQUENCE gitea_schema u2f_registration_id_seq gitea_db
+5748; 0 0 SEQUENCE OWNED BY gitea_schema u2f_registration_id_seq gitea_db
+508; 1259 17184 TABLE gitea_schema upload gitea_db
+5749; 0 0 ACL gitea_schema TABLE upload gitea_db
+509; 1259 17187 SEQUENCE gitea_schema upload_id_seq gitea_db
+5750; 0 0 SEQUENCE OWNED BY gitea_schema upload_id_seq gitea_db
+510; 1259 17189 TABLE gitea_schema user gitea_db
+5751; 0 0 ACL gitea_schema TABLE "user" gitea_db
+511; 1259 17209 SEQUENCE gitea_schema user_id_seq gitea_db
+5752; 0 0 SEQUENCE OWNED BY gitea_schema user_id_seq gitea_db
+512; 1259 17211 TABLE gitea_schema user_open_id gitea_db
+5753; 0 0 ACL gitea_schema TABLE user_open_id gitea_db
+513; 1259 17215 SEQUENCE gitea_schema user_open_id_id_seq gitea_db
+5754; 0 0 SEQUENCE OWNED BY gitea_schema user_open_id_id_seq gitea_db
+514; 1259 17217 TABLE gitea_schema user_redirect gitea_db
+5755; 0 0 ACL gitea_schema TABLE user_redirect gitea_db
+515; 1259 17220 SEQUENCE gitea_schema user_redirect_id_seq gitea_db
+5756; 0 0 SEQUENCE OWNED BY gitea_schema user_redirect_id_seq gitea_db
+516; 1259 17222 TABLE gitea_schema version gitea_db
+5757; 0 0 ACL gitea_schema TABLE version gitea_db
+517; 1259 17225 SEQUENCE gitea_schema version_id_seq gitea_db
+5758; 0 0 SEQUENCE OWNED BY gitea_schema version_id_seq gitea_db
+518; 1259 17227 TABLE gitea_schema watch gitea_db
+5759; 0 0 ACL gitea_schema TABLE watch gitea_db
+519; 1259 17231 SEQUENCE gitea_schema watch_id_seq gitea_db
+5760; 0 0 SEQUENCE OWNED BY gitea_schema watch_id_seq gitea_db
+520; 1259 17233 TABLE gitea_schema webhook gitea_db
+5761; 0 0 ACL gitea_schema TABLE webhook gitea_db
+521; 1259 17239 SEQUENCE gitea_schema webhook_id_seq gitea_db
+5762; 0 0 SEQUENCE OWNED BY gitea_schema webhook_id_seq gitea_db
+4857; 2604 17241 DEFAULT gitea_schema access id gitea_db
+4858; 2604 17242 DEFAULT gitea_schema access_token id gitea_db
+4861; 2604 17243 DEFAULT gitea_schema action id gitea_db
+4865; 2604 17244 DEFAULT gitea_schema attachment id gitea_db
+4867; 2604 17245 DEFAULT gitea_schema collaboration id gitea_db
+4869; 2604 17246 DEFAULT gitea_schema comment id gitea_db
+4870; 2604 17247 DEFAULT gitea_schema commit_status id gitea_db
+4871; 2604 17248 DEFAULT gitea_schema deleted_branch id gitea_db
+4873; 2604 17249 DEFAULT gitea_schema deploy_key id gitea_db
+4875; 2604 17250 DEFAULT gitea_schema email_address id gitea_db
+4876; 2604 17251 DEFAULT gitea_schema follow id gitea_db
+4878; 2604 17252 DEFAULT gitea_schema gpg_key id gitea_db
+4879; 2604 17253 DEFAULT gitea_schema hook_task id gitea_db
+4881; 2604 17254 DEFAULT gitea_schema issue id gitea_db
+4882; 2604 17255 DEFAULT gitea_schema issue_assignees id gitea_db
+4883; 2604 17256 DEFAULT gitea_schema issue_dependency id gitea_db
+4884; 2604 17257 DEFAULT gitea_schema issue_label id gitea_db
+4885; 2604 17258 DEFAULT gitea_schema issue_user id gitea_db
+4886; 2604 17259 DEFAULT gitea_schema issue_watch id gitea_db
+4887; 2604 17260 DEFAULT gitea_schema label id gitea_db
+4889; 2604 17261 DEFAULT gitea_schema language_stat id gitea_db
+4890; 2604 17262 DEFAULT gitea_schema lfs_lock id gitea_db
+4891; 2604 17263 DEFAULT gitea_schema lfs_meta_object id gitea_db
+4894; 2604 17264 DEFAULT gitea_schema login_source id gitea_db
+4895; 2604 17265 DEFAULT gitea_schema milestone id gitea_db
+4898; 2604 17266 DEFAULT gitea_schema mirror id gitea_db
+4899; 2604 17267 DEFAULT gitea_schema notice id gitea_db
+4900; 2604 17268 DEFAULT gitea_schema notification id gitea_db
+4901; 2604 17269 DEFAULT gitea_schema oauth2_application id gitea_db
+4902; 2604 17270 DEFAULT gitea_schema oauth2_authorization_code id gitea_db
+4904; 2604 17271 DEFAULT gitea_schema oauth2_grant id gitea_db
+4905; 2604 17272 DEFAULT gitea_schema org_user id gitea_db
+4906; 2604 17273 DEFAULT gitea_schema project id gitea_db
+4909; 2604 17274 DEFAULT gitea_schema project_board id gitea_db
+4910; 2604 17275 DEFAULT gitea_schema project_issue id gitea_db
+4922; 2604 17276 DEFAULT gitea_schema protected_branch id gitea_db
+4923; 2604 17277 DEFAULT gitea_schema protected_tag id gitea_db
+4927; 2604 17278 DEFAULT gitea_schema public_key id gitea_db
+4928; 2604 17279 DEFAULT gitea_schema pull_request id gitea_db
+4929; 2604 17280 DEFAULT gitea_schema push_mirror id gitea_db
+4931; 2604 17281 DEFAULT gitea_schema reaction id gitea_db
+4935; 2604 17282 DEFAULT gitea_schema release id gitea_db
+4936; 2604 17283 DEFAULT gitea_schema repo_archiver id gitea_db
+4938; 2604 17284 DEFAULT gitea_schema repo_indexer_status id gitea_db
+4939; 2604 17285 DEFAULT gitea_schema repo_redirect id gitea_db
+4940; 2604 17286 DEFAULT gitea_schema repo_transfer id gitea_db
+4941; 2604 17287 DEFAULT gitea_schema repo_unit id gitea_db
+4952; 2604 17288 DEFAULT gitea_schema repository id gitea_db
+4957; 2604 17289 DEFAULT gitea_schema review id gitea_db
+4958; 2604 17290 DEFAULT gitea_schema star id gitea_db
+4959; 2604 17291 DEFAULT gitea_schema stopwatch id gitea_db
+4960; 2604 17292 DEFAULT gitea_schema task id gitea_db
+4963; 2604 17293 DEFAULT gitea_schema team id gitea_db
+4964; 2604 17294 DEFAULT gitea_schema team_repo id gitea_db
+4965; 2604 17295 DEFAULT gitea_schema team_unit id gitea_db
+4966; 2604 17296 DEFAULT gitea_schema team_user id gitea_db
+4967; 2604 17297 DEFAULT gitea_schema topic id gitea_db
+4969; 2604 17298 DEFAULT gitea_schema tracked_time id gitea_db
+4970; 2604 17299 DEFAULT gitea_schema two_factor id gitea_db
+4971; 2604 17300 DEFAULT gitea_schema u2f_registration id gitea_db
+4972; 2604 17301 DEFAULT gitea_schema upload id gitea_db
+4987; 2604 17302 DEFAULT gitea_schema user id gitea_db
+4989; 2604 17303 DEFAULT gitea_schema user_open_id id gitea_db
+4990; 2604 17304 DEFAULT gitea_schema user_redirect id gitea_db
+4991; 2604 17305 DEFAULT gitea_schema version id gitea_db
+4993; 2604 17306 DEFAULT gitea_schema watch id gitea_db
+4994; 2604 17307 DEFAULT gitea_schema webhook id gitea_db
+4997; 2606 17309 CONSTRAINT gitea_schema access access_pkey gitea_db
+5003; 2606 17311 CONSTRAINT gitea_schema access_token access_token_pkey gitea_db
+5012; 2606 17313 CONSTRAINT gitea_schema action action_pkey gitea_db
+5018; 2606 17315 CONSTRAINT gitea_schema attachment attachment_pkey gitea_db
+5025; 2606 17317 CONSTRAINT gitea_schema collaboration collaboration_pkey gitea_db
+5036; 2606 17319 CONSTRAINT gitea_schema comment comment_pkey gitea_db
+5045; 2606 17321 CONSTRAINT gitea_schema commit_status commit_status_pkey gitea_db
+5051; 2606 17323 CONSTRAINT gitea_schema deleted_branch deleted_branch_pkey gitea_db
+5056; 2606 17325 CONSTRAINT gitea_schema deploy_key deploy_key_pkey gitea_db
+5061; 2606 17327 CONSTRAINT gitea_schema email_address email_address_pkey gitea_db
+5064; 2606 17329 CONSTRAINT gitea_schema email_hash email_hash_pkey gitea_db
+5068; 2606 17331 CONSTRAINT gitea_schema external_login_user external_login_user_pkey gitea_db
+5072; 2606 17333 CONSTRAINT gitea_schema follow follow_pkey gitea_db
+5078; 2606 17335 CONSTRAINT gitea_schema gpg_key_import gpg_key_import_pkey gitea_db
+5076; 2606 17337 CONSTRAINT gitea_schema gpg_key gpg_key_pkey gitea_db
+5081; 2606 17339 CONSTRAINT gitea_schema hook_task hook_task_pkey gitea_db
+5098; 2606 17341 CONSTRAINT gitea_schema issue_assignees issue_assignees_pkey gitea_db
+5101; 2606 17343 CONSTRAINT gitea_schema issue_dependency issue_dependency_pkey gitea_db
+5105; 2606 17345 CONSTRAINT gitea_schema issue_index issue_index_pkey gitea_db
+5108; 2606 17347 CONSTRAINT gitea_schema issue_label issue_label_pkey gitea_db
+5094; 2606 17349 CONSTRAINT gitea_schema issue issue_pkey gitea_db
+5111; 2606 17351 CONSTRAINT gitea_schema issue_user issue_user_pkey gitea_db
+5114; 2606 17353 CONSTRAINT gitea_schema issue_watch issue_watch_pkey gitea_db
+5120; 2606 17355 CONSTRAINT gitea_schema label label_pkey gitea_db
+5126; 2606 17357 CONSTRAINT gitea_schema language_stat language_stat_pkey gitea_db
+5130; 2606 17359 CONSTRAINT gitea_schema lfs_lock lfs_lock_pkey gitea_db
+5135; 2606 17361 CONSTRAINT gitea_schema lfs_meta_object lfs_meta_object_pkey gitea_db
+5142; 2606 17363 CONSTRAINT gitea_schema login_source login_source_pkey gitea_db
+5147; 2606 17365 CONSTRAINT gitea_schema milestone milestone_pkey gitea_db
+5152; 2606 17367 CONSTRAINT gitea_schema mirror mirror_pkey gitea_db
+5155; 2606 17369 CONSTRAINT gitea_schema notice notice_pkey gitea_db
+5166; 2606 17371 CONSTRAINT gitea_schema notification notification_pkey gitea_db
+5172; 2606 17373 CONSTRAINT gitea_schema oauth2_application oauth2_application_pkey gitea_db
+5176; 2606 17375 CONSTRAINT gitea_schema oauth2_authorization_code oauth2_authorization_code_pkey gitea_db
+5181; 2606 17377 CONSTRAINT gitea_schema oauth2_grant oauth2_grant_pkey gitea_db
+5184; 2606 17379 CONSTRAINT gitea_schema oauth2_session oauth2_session_pkey gitea_db
+5190; 2606 17381 CONSTRAINT gitea_schema org_user org_user_pkey gitea_db
+5202; 2606 17383 CONSTRAINT gitea_schema project_board project_board_pkey gitea_db
+5207; 2606 17385 CONSTRAINT gitea_schema project_issue project_issue_pkey gitea_db
+5197; 2606 17387 CONSTRAINT gitea_schema project project_pkey gitea_db
+5210; 2606 17389 CONSTRAINT gitea_schema protected_branch protected_branch_pkey gitea_db
+5212; 2606 17391 CONSTRAINT gitea_schema protected_tag protected_tag_pkey gitea_db
+5216; 2606 17393 CONSTRAINT gitea_schema public_key public_key_pkey gitea_db
+5224; 2606 17395 CONSTRAINT gitea_schema pull_request pull_request_pkey gitea_db
+5228; 2606 17397 CONSTRAINT gitea_schema push_mirror push_mirror_pkey gitea_db
+5238; 2606 17399 CONSTRAINT gitea_schema reaction reaction_pkey gitea_db
+5246; 2606 17401 CONSTRAINT gitea_schema release release_pkey gitea_db
+5251; 2606 17403 CONSTRAINT gitea_schema repo_archiver repo_archiver_pkey gitea_db
+5254; 2606 17405 CONSTRAINT gitea_schema repo_indexer_status repo_indexer_status_pkey gitea_db
+5258; 2606 17407 CONSTRAINT gitea_schema repo_redirect repo_redirect_pkey gitea_db
+5260; 2606 17409 CONSTRAINT gitea_schema repo_topic repo_topic_pkey gitea_db
+5264; 2606 17411 CONSTRAINT gitea_schema repo_transfer repo_transfer_pkey gitea_db
+5268; 2606 17413 CONSTRAINT gitea_schema repo_unit repo_unit_pkey gitea_db
+5285; 2606 17415 CONSTRAINT gitea_schema repository repository_pkey gitea_db
+5291; 2606 17417 CONSTRAINT gitea_schema review review_pkey gitea_db
+5293; 2606 17419 CONSTRAINT gitea_schema session session_pkey gitea_db
+5297; 2606 17421 CONSTRAINT gitea_schema star star_pkey gitea_db
+5301; 2606 17423 CONSTRAINT gitea_schema stopwatch stopwatch_pkey gitea_db
+5307; 2606 17425 CONSTRAINT gitea_schema task task_pkey gitea_db
+5310; 2606 17427 CONSTRAINT gitea_schema team team_pkey gitea_db
+5314; 2606 17429 CONSTRAINT gitea_schema team_repo team_repo_pkey gitea_db
+5318; 2606 17431 CONSTRAINT gitea_schema team_unit team_unit_pkey gitea_db
+5322; 2606 17433 CONSTRAINT gitea_schema team_user team_user_pkey gitea_db
+5327; 2606 17435 CONSTRAINT gitea_schema topic topic_pkey gitea_db
+5331; 2606 17437 CONSTRAINT gitea_schema tracked_time tracked_time_pkey gitea_db
+5336; 2606 17439 CONSTRAINT gitea_schema two_factor two_factor_pkey gitea_db
+5341; 2606 17441 CONSTRAINT gitea_schema u2f_registration u2f_registration_pkey gitea_db
+5344; 2606 17443 CONSTRAINT gitea_schema upload upload_pkey gitea_db
+5356; 2606 17445 CONSTRAINT gitea_schema user_open_id user_open_id_pkey gitea_db
+5352; 2606 17447 CONSTRAINT gitea_schema user user_pkey gitea_db
+5360; 2606 17449 CONSTRAINT gitea_schema user_redirect user_redirect_pkey gitea_db
+5362; 2606 17451 CONSTRAINT gitea_schema version version_pkey gitea_db
+5367; 2606 17453 CONSTRAINT gitea_schema watch watch_pkey gitea_db
+5374; 2606 17455 CONSTRAINT gitea_schema webhook webhook_pkey gitea_db
+4998; 1259 17456 INDEX gitea_schema IDX_access_token_created_unix gitea_db
+4999; 1259 17457 INDEX gitea_schema IDX_access_token_uid gitea_db
+5000; 1259 17458 INDEX gitea_schema IDX_access_token_updated_unix gitea_db
+5004; 1259 17459 INDEX gitea_schema IDX_action_act_user_id gitea_db
+5005; 1259 17460 INDEX gitea_schema IDX_action_comment_id gitea_db
+5006; 1259 17461 INDEX gitea_schema IDX_action_created_unix gitea_db
+5007; 1259 17462 INDEX gitea_schema IDX_action_is_deleted gitea_db
+5008; 1259 17463 INDEX gitea_schema IDX_action_is_private gitea_db
+5009; 1259 17464 INDEX gitea_schema IDX_action_repo_id gitea_db
+5010; 1259 17465 INDEX gitea_schema IDX_action_user_id gitea_db
+5013; 1259 17466 INDEX gitea_schema IDX_attachment_issue_id gitea_db
+5014; 1259 17467 INDEX gitea_schema IDX_attachment_release_id gitea_db
+5015; 1259 17468 INDEX gitea_schema IDX_attachment_uploader_id gitea_db
+5019; 1259 17469 INDEX gitea_schema IDX_collaboration_created_unix gitea_db
+5020; 1259 17470 INDEX gitea_schema IDX_collaboration_repo_id gitea_db
+5021; 1259 17471 INDEX gitea_schema IDX_collaboration_updated_unix gitea_db
+5022; 1259 17472 INDEX gitea_schema IDX_collaboration_user_id gitea_db
+5026; 1259 17473 INDEX gitea_schema IDX_comment_created_unix gitea_db
+5027; 1259 17474 INDEX gitea_schema IDX_comment_issue_id gitea_db
+5028; 1259 17475 INDEX gitea_schema IDX_comment_poster_id gitea_db
+5029; 1259 17476 INDEX gitea_schema IDX_comment_ref_comment_id gitea_db
+5030; 1259 17477 INDEX gitea_schema IDX_comment_ref_issue_id gitea_db
+5031; 1259 17478 INDEX gitea_schema IDX_comment_ref_repo_id gitea_db
+5032; 1259 17479 INDEX gitea_schema IDX_comment_review_id gitea_db
+5033; 1259 17480 INDEX gitea_schema IDX_comment_type gitea_db
+5034; 1259 17481 INDEX gitea_schema IDX_comment_updated_unix gitea_db
+5037; 1259 17482 INDEX gitea_schema IDX_commit_status_context_hash gitea_db
+5038; 1259 17483 INDEX gitea_schema IDX_commit_status_created_unix gitea_db
+5039; 1259 17484 INDEX gitea_schema IDX_commit_status_index gitea_db
+5040; 1259 17485 INDEX gitea_schema IDX_commit_status_repo_id gitea_db
+5041; 1259 17486 INDEX gitea_schema IDX_commit_status_sha gitea_db
+5042; 1259 17487 INDEX gitea_schema IDX_commit_status_updated_unix gitea_db
+5046; 1259 17488 INDEX gitea_schema IDX_deleted_branch_deleted_by_id gitea_db
+5047; 1259 17489 INDEX gitea_schema IDX_deleted_branch_deleted_unix gitea_db
+5048; 1259 17490 INDEX gitea_schema IDX_deleted_branch_repo_id gitea_db
+5052; 1259 17491 INDEX gitea_schema IDX_deploy_key_key_id gitea_db
+5053; 1259 17492 INDEX gitea_schema IDX_deploy_key_repo_id gitea_db
+5057; 1259 17493 INDEX gitea_schema IDX_email_address_uid gitea_db
+5065; 1259 17494 INDEX gitea_schema IDX_external_login_user_provider gitea_db
+5066; 1259 17495 INDEX gitea_schema IDX_external_login_user_user_id gitea_db
+5069; 1259 17496 INDEX gitea_schema IDX_follow_created_unix gitea_db
+5073; 1259 17497 INDEX gitea_schema IDX_gpg_key_key_id gitea_db
+5074; 1259 17498 INDEX gitea_schema IDX_gpg_key_owner_id gitea_db
+5079; 1259 17499 INDEX gitea_schema IDX_hook_task_repo_id gitea_db
+5095; 1259 17500 INDEX gitea_schema IDX_issue_assignees_assignee_id gitea_db
+5096; 1259 17501 INDEX gitea_schema IDX_issue_assignees_issue_id gitea_db
+5082; 1259 17502 INDEX gitea_schema IDX_issue_closed_unix gitea_db
+5083; 1259 17503 INDEX gitea_schema IDX_issue_created_unix gitea_db
+5084; 1259 17504 INDEX gitea_schema IDX_issue_deadline_unix gitea_db
+5102; 1259 17505 INDEX gitea_schema IDX_issue_index_max_index gitea_db
+5085; 1259 17506 INDEX gitea_schema IDX_issue_is_closed gitea_db
+5086; 1259 17507 INDEX gitea_schema IDX_issue_is_pull gitea_db
+5087; 1259 17508 INDEX gitea_schema IDX_issue_milestone_id gitea_db
+5088; 1259 17509 INDEX gitea_schema IDX_issue_original_author_id gitea_db
+5089; 1259 17510 INDEX gitea_schema IDX_issue_poster_id gitea_db
+5090; 1259 17511 INDEX gitea_schema IDX_issue_repo_id gitea_db
+5091; 1259 17512 INDEX gitea_schema IDX_issue_updated_unix gitea_db
+5109; 1259 17513 INDEX gitea_schema IDX_issue_user_uid gitea_db
+5115; 1259 17514 INDEX gitea_schema IDX_label_created_unix gitea_db
+5116; 1259 17515 INDEX gitea_schema IDX_label_org_id gitea_db
+5117; 1259 17516 INDEX gitea_schema IDX_label_repo_id gitea_db
+5118; 1259 17517 INDEX gitea_schema IDX_label_updated_unix gitea_db
+5121; 1259 17518 INDEX gitea_schema IDX_language_stat_created_unix gitea_db
+5122; 1259 17519 INDEX gitea_schema IDX_language_stat_language gitea_db
+5123; 1259 17520 INDEX gitea_schema IDX_language_stat_repo_id gitea_db
+5127; 1259 17521 INDEX gitea_schema IDX_lfs_lock_owner_id gitea_db
+5128; 1259 17522 INDEX gitea_schema IDX_lfs_lock_repo_id gitea_db
+5131; 1259 17523 INDEX gitea_schema IDX_lfs_meta_object_oid gitea_db
+5132; 1259 17524 INDEX gitea_schema IDX_lfs_meta_object_repository_id gitea_db
+5136; 1259 17525 INDEX gitea_schema IDX_login_source_created_unix gitea_db
+5137; 1259 17526 INDEX gitea_schema IDX_login_source_is_actived gitea_db
+5138; 1259 17527 INDEX gitea_schema IDX_login_source_is_sync_enabled gitea_db
+5139; 1259 17528 INDEX gitea_schema IDX_login_source_updated_unix gitea_db
+5143; 1259 17529 INDEX gitea_schema IDX_milestone_created_unix gitea_db
+5144; 1259 17530 INDEX gitea_schema IDX_milestone_repo_id gitea_db
+5145; 1259 17531 INDEX gitea_schema IDX_milestone_updated_unix gitea_db
+5148; 1259 17532 INDEX gitea_schema IDX_mirror_next_update_unix gitea_db
+5149; 1259 17533 INDEX gitea_schema IDX_mirror_repo_id gitea_db
+5150; 1259 17534 INDEX gitea_schema IDX_mirror_updated_unix gitea_db
+5153; 1259 17535 INDEX gitea_schema IDX_notice_created_unix gitea_db
+5156; 1259 17536 INDEX gitea_schema IDX_notification_commit_id gitea_db
+5157; 1259 17537 INDEX gitea_schema IDX_notification_created_unix gitea_db
+5158; 1259 17538 INDEX gitea_schema IDX_notification_issue_id gitea_db
+5159; 1259 17539 INDEX gitea_schema IDX_notification_repo_id gitea_db
+5160; 1259 17540 INDEX gitea_schema IDX_notification_source gitea_db
+5161; 1259 17541 INDEX gitea_schema IDX_notification_status gitea_db
+5162; 1259 17542 INDEX gitea_schema IDX_notification_updated_by gitea_db
+5163; 1259 17543 INDEX gitea_schema IDX_notification_updated_unix gitea_db
+5164; 1259 17544 INDEX gitea_schema IDX_notification_user_id gitea_db
+5167; 1259 17545 INDEX gitea_schema IDX_oauth2_application_created_unix gitea_db
+5168; 1259 17546 INDEX gitea_schema IDX_oauth2_application_uid gitea_db
+5169; 1259 17547 INDEX gitea_schema IDX_oauth2_application_updated_unix gitea_db
+5173; 1259 17548 INDEX gitea_schema IDX_oauth2_authorization_code_valid_until gitea_db
+5177; 1259 17549 INDEX gitea_schema IDX_oauth2_grant_application_id gitea_db
+5178; 1259 17550 INDEX gitea_schema IDX_oauth2_grant_user_id gitea_db
+5182; 1259 17551 INDEX gitea_schema IDX_oauth2_session_expires_unix gitea_db
+5185; 1259 17552 INDEX gitea_schema IDX_org_user_is_public gitea_db
+5186; 1259 17553 INDEX gitea_schema IDX_org_user_org_id gitea_db
+5187; 1259 17554 INDEX gitea_schema IDX_org_user_uid gitea_db
+5198; 1259 17555 INDEX gitea_schema IDX_project_board_created_unix gitea_db
+5199; 1259 17556 INDEX gitea_schema IDX_project_board_project_id gitea_db
+5200; 1259 17557 INDEX gitea_schema IDX_project_board_updated_unix gitea_db
+5191; 1259 17558 INDEX gitea_schema IDX_project_created_unix gitea_db
+5192; 1259 17559 INDEX gitea_schema IDX_project_is_closed gitea_db
+5203; 1259 17560 INDEX gitea_schema IDX_project_issue_issue_id gitea_db
+5204; 1259 17561 INDEX gitea_schema IDX_project_issue_project_board_id gitea_db
+5205; 1259 17562 INDEX gitea_schema IDX_project_issue_project_id gitea_db
+5193; 1259 17563 INDEX gitea_schema IDX_project_repo_id gitea_db
+5194; 1259 17564 INDEX gitea_schema IDX_project_title gitea_db
+5195; 1259 17565 INDEX gitea_schema IDX_project_updated_unix gitea_db
+5213; 1259 17566 INDEX gitea_schema IDX_public_key_fingerprint gitea_db
+5214; 1259 17567 INDEX gitea_schema IDX_public_key_owner_id gitea_db
+5217; 1259 17568 INDEX gitea_schema IDX_pull_request_base_repo_id gitea_db
+5218; 1259 17569 INDEX gitea_schema IDX_pull_request_has_merged gitea_db
+5219; 1259 17570 INDEX gitea_schema IDX_pull_request_head_repo_id gitea_db
+5220; 1259 17571 INDEX gitea_schema IDX_pull_request_issue_id gitea_db
+5221; 1259 17572 INDEX gitea_schema IDX_pull_request_merged_unix gitea_db
+5222; 1259 17573 INDEX gitea_schema IDX_pull_request_merger_id gitea_db
+5225; 1259 17574 INDEX gitea_schema IDX_push_mirror_last_update gitea_db
+5226; 1259 17575 INDEX gitea_schema IDX_push_mirror_repo_id gitea_db
+5229; 1259 17576 INDEX gitea_schema IDX_reaction_comment_id gitea_db
+5230; 1259 17577 INDEX gitea_schema IDX_reaction_created_unix gitea_db
+5231; 1259 17578 INDEX gitea_schema IDX_reaction_issue_id gitea_db
+5232; 1259 17579 INDEX gitea_schema IDX_reaction_original_author gitea_db
+5233; 1259 17580 INDEX gitea_schema IDX_reaction_original_author_id gitea_db
+5234; 1259 17581 INDEX gitea_schema IDX_reaction_type gitea_db
+5235; 1259 17582 INDEX gitea_schema IDX_reaction_user_id gitea_db
+5239; 1259 17583 INDEX gitea_schema IDX_release_created_unix gitea_db
+5240; 1259 17584 INDEX gitea_schema IDX_release_original_author_id gitea_db
+5241; 1259 17585 INDEX gitea_schema IDX_release_publisher_id gitea_db
+5242; 1259 17586 INDEX gitea_schema IDX_release_repo_id gitea_db
+5243; 1259 17587 INDEX gitea_schema IDX_release_tag_name gitea_db
+5247; 1259 17588 INDEX gitea_schema IDX_repo_archiver_created_unix gitea_db
+5248; 1259 17589 INDEX gitea_schema IDX_repo_archiver_repo_id gitea_db
+5252; 1259 17590 INDEX gitea_schema IDX_repo_indexer_status_s gitea_db
+5255; 1259 17591 INDEX gitea_schema IDX_repo_redirect_lower_name gitea_db
+5261; 1259 17592 INDEX gitea_schema IDX_repo_transfer_created_unix gitea_db
+5262; 1259 17593 INDEX gitea_schema IDX_repo_transfer_updated_unix gitea_db
+5265; 1259 17594 INDEX gitea_schema IDX_repo_unit_created_unix gitea_db
+5266; 1259 17595 INDEX gitea_schema IDX_repo_unit_s gitea_db
+5269; 1259 17596 INDEX gitea_schema IDX_repository_created_unix gitea_db
+5270; 1259 17597 INDEX gitea_schema IDX_repository_fork_id gitea_db
+5271; 1259 17598 INDEX gitea_schema IDX_repository_is_archived gitea_db
+5272; 1259 17599 INDEX gitea_schema IDX_repository_is_empty gitea_db
+5273; 1259 17600 INDEX gitea_schema IDX_repository_is_fork gitea_db
+5274; 1259 17601 INDEX gitea_schema IDX_repository_is_mirror gitea_db
+5275; 1259 17602 INDEX gitea_schema IDX_repository_is_private gitea_db
+5276; 1259 17603 INDEX gitea_schema IDX_repository_is_template gitea_db
+5277; 1259 17604 INDEX gitea_schema IDX_repository_lower_name gitea_db
+5278; 1259 17605 INDEX gitea_schema IDX_repository_name gitea_db
+5279; 1259 17606 INDEX gitea_schema IDX_repository_original_service_type gitea_db
+5280; 1259 17607 INDEX gitea_schema IDX_repository_owner_id gitea_db
+5281; 1259 17608 INDEX gitea_schema IDX_repository_template_id gitea_db
+5282; 1259 17609 INDEX gitea_schema IDX_repository_updated_unix gitea_db
+5286; 1259 17610 INDEX gitea_schema IDX_review_created_unix gitea_db
+5287; 1259 17611 INDEX gitea_schema IDX_review_issue_id gitea_db
+5288; 1259 17612 INDEX gitea_schema IDX_review_reviewer_id gitea_db
+5289; 1259 17613 INDEX gitea_schema IDX_review_updated_unix gitea_db
+5294; 1259 17614 INDEX gitea_schema IDX_star_created_unix gitea_db
+5298; 1259 17615 INDEX gitea_schema IDX_stopwatch_issue_id gitea_db
+5299; 1259 17616 INDEX gitea_schema IDX_stopwatch_user_id gitea_db
+5302; 1259 17617 INDEX gitea_schema IDX_task_doer_id gitea_db
+5303; 1259 17618 INDEX gitea_schema IDX_task_owner_id gitea_db
+5304; 1259 17619 INDEX gitea_schema IDX_task_repo_id gitea_db
+5305; 1259 17620 INDEX gitea_schema IDX_task_status gitea_db
+5308; 1259 17621 INDEX gitea_schema IDX_team_org_id gitea_db
+5311; 1259 17622 INDEX gitea_schema IDX_team_repo_org_id gitea_db
+5315; 1259 17623 INDEX gitea_schema IDX_team_unit_org_id gitea_db
+5319; 1259 17624 INDEX gitea_schema IDX_team_user_org_id gitea_db
+5323; 1259 17625 INDEX gitea_schema IDX_topic_created_unix gitea_db
+5324; 1259 17626 INDEX gitea_schema IDX_topic_updated_unix gitea_db
+5328; 1259 17627 INDEX gitea_schema IDX_tracked_time_issue_id gitea_db
+5329; 1259 17628 INDEX gitea_schema IDX_tracked_time_user_id gitea_db
+5332; 1259 17629 INDEX gitea_schema IDX_two_factor_created_unix gitea_db
+5333; 1259 17630 INDEX gitea_schema IDX_two_factor_updated_unix gitea_db
+5337; 1259 17631 INDEX gitea_schema IDX_u2f_registration_created_unix gitea_db
+5338; 1259 17632 INDEX gitea_schema IDX_u2f_registration_updated_unix gitea_db
+5339; 1259 17633 INDEX gitea_schema IDX_u2f_registration_user_id gitea_db
+5345; 1259 17634 INDEX gitea_schema IDX_user_created_unix gitea_db
+5346; 1259 17635 INDEX gitea_schema IDX_user_is_active gitea_db
+5347; 1259 17636 INDEX gitea_schema IDX_user_last_login_unix gitea_db
+5353; 1259 17637 INDEX gitea_schema IDX_user_open_id_uid gitea_db
+5357; 1259 17638 INDEX gitea_schema IDX_user_redirect_lower_name gitea_db
+5348; 1259 17639 INDEX gitea_schema IDX_user_updated_unix gitea_db
+5363; 1259 17640 INDEX gitea_schema IDX_watch_created_unix gitea_db
+5364; 1259 17641 INDEX gitea_schema IDX_watch_updated_unix gitea_db
+5368; 1259 17642 INDEX gitea_schema IDX_webhook_created_unix gitea_db
+5369; 1259 17643 INDEX gitea_schema IDX_webhook_is_active gitea_db
+5370; 1259 17644 INDEX gitea_schema IDX_webhook_org_id gitea_db
+5371; 1259 17645 INDEX gitea_schema IDX_webhook_repo_id gitea_db
+5372; 1259 17646 INDEX gitea_schema IDX_webhook_updated_unix gitea_db
+4995; 1259 17647 INDEX gitea_schema UQE_access_s gitea_db
+5001; 1259 17648 INDEX gitea_schema UQE_access_token_token_hash gitea_db
+5016; 1259 17649 INDEX gitea_schema UQE_attachment_uuid gitea_db
+5023; 1259 17650 INDEX gitea_schema UQE_collaboration_s gitea_db
+5043; 1259 17651 INDEX gitea_schema UQE_commit_status_repo_sha_index gitea_db
+5049; 1259 17652 INDEX gitea_schema UQE_deleted_branch_s gitea_db
+5054; 1259 17653 INDEX gitea_schema UQE_deploy_key_s gitea_db
+5058; 1259 17654 INDEX gitea_schema UQE_email_address_email gitea_db
+5059; 1259 17655 INDEX gitea_schema UQE_email_address_lower_email gitea_db
+5062; 1259 17656 INDEX gitea_schema UQE_email_hash_email gitea_db
+5070; 1259 17657 INDEX gitea_schema UQE_follow_follow gitea_db
+5099; 1259 17658 INDEX gitea_schema UQE_issue_dependency_issue_dependency gitea_db
+5103; 1259 17659 INDEX gitea_schema UQE_issue_index_group_id gitea_db
+5106; 1259 17660 INDEX gitea_schema UQE_issue_label_s gitea_db
+5092; 1259 17661 INDEX gitea_schema UQE_issue_repo_index gitea_db
+5112; 1259 17662 INDEX gitea_schema UQE_issue_watch_watch gitea_db
+5124; 1259 17663 INDEX gitea_schema UQE_language_stat_s gitea_db
+5133; 1259 17664 INDEX gitea_schema UQE_lfs_meta_object_s gitea_db
+5140; 1259 17665 INDEX gitea_schema UQE_login_source_name gitea_db
+5170; 1259 17666 INDEX gitea_schema UQE_oauth2_application_client_id gitea_db
+5174; 1259 17667 INDEX gitea_schema UQE_oauth2_authorization_code_code gitea_db
+5179; 1259 17668 INDEX gitea_schema UQE_oauth2_grant_user_application gitea_db
+5188; 1259 17669 INDEX gitea_schema UQE_org_user_s gitea_db
+5208; 1259 17670 INDEX gitea_schema UQE_protected_branch_s gitea_db
+5236; 1259 17671 INDEX gitea_schema UQE_reaction_s gitea_db
+5244; 1259 17672 INDEX gitea_schema UQE_release_n gitea_db
+5249; 1259 17673 INDEX gitea_schema UQE_repo_archiver_s gitea_db
+5256; 1259 17674 INDEX gitea_schema UQE_repo_redirect_s gitea_db
+5283; 1259 17675 INDEX gitea_schema UQE_repository_s gitea_db
+5295; 1259 17676 INDEX gitea_schema UQE_star_s gitea_db
+5312; 1259 17677 INDEX gitea_schema UQE_team_repo_s gitea_db
+5316; 1259 17678 INDEX gitea_schema UQE_team_unit_s gitea_db
+5320; 1259 17679 INDEX gitea_schema UQE_team_user_s gitea_db
+5325; 1259 17680 INDEX gitea_schema UQE_topic_name gitea_db
+5334; 1259 17681 INDEX gitea_schema UQE_two_factor_uid gitea_db
+5342; 1259 17682 INDEX gitea_schema UQE_upload_uuid gitea_db
+5349; 1259 17683 INDEX gitea_schema UQE_user_lower_name gitea_db
+5350; 1259 17684 INDEX gitea_schema UQE_user_name gitea_db
+5354; 1259 17685 INDEX gitea_schema UQE_user_open_id_uri gitea_db
+5358; 1259 17686 INDEX gitea_schema UQE_user_redirect_s gitea_db
+5365; 1259 17687 INDEX gitea_schema UQE_watch_watch gitea_db

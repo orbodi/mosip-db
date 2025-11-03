@@ -1,0 +1,177 @@
+﻿;
+; Archive created at 2025-11-03 10:52:32
+;     dbname: mosip_ida
+;     TOC Entries: 168
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+11; 2615 25153 SCHEMA - ida idauser
+4805; 0 0 ACL - SCHEMA ida idauser
+4806; 0 0 ACL - SCHEMA public enterprisedb
+13; 2615 3368717 SCHEMA - support idauser
+4807; 0 0 ACL - SCHEMA support idauser
+6; 3079 2415382 EXTENSION - dblink 
+4808; 0 0 COMMENT - EXTENSION dblink 
+382; 1259 25154 TABLE ida auth_transaction idauser
+4809; 0 0 ACL ida TABLE auth_transaction idauser
+406; 1259 24924159 VIEW ida auth_trans jfassinou
+383; 1259 25161 TABLE ida batch_job_execution idauser
+4810; 0 0 ACL ida TABLE batch_job_execution idauser
+384; 1259 25167 TABLE ida batch_job_execution_context idauser
+4811; 0 0 ACL ida TABLE batch_job_execution_context idauser
+385; 1259 25173 TABLE ida batch_job_execution_params idauser
+4812; 0 0 ACL ida TABLE batch_job_execution_params idauser
+386; 1259 25176 SEQUENCE ida batch_job_execution_seq postgres
+4813; 0 0 ACL ida SEQUENCE batch_job_execution_seq postgres
+387; 1259 25178 TABLE ida batch_job_instance idauser
+4814; 0 0 ACL ida TABLE batch_job_instance idauser
+388; 1259 25184 SEQUENCE ida batch_job_seq postgres
+4815; 0 0 ACL ida SEQUENCE batch_job_seq postgres
+389; 1259 25186 TABLE ida batch_step_execution idauser
+4816; 0 0 ACL ida TABLE batch_step_execution idauser
+390; 1259 25192 TABLE ida batch_step_execution_context idauser
+4817; 0 0 ACL ida TABLE batch_step_execution_context idauser
+391; 1259 25198 SEQUENCE ida batch_step_execution_seq postgres
+4818; 0 0 ACL ida SEQUENCE batch_step_execution_seq postgres
+392; 1259 25200 TABLE ida ca_cert_store idauser
+4819; 0 0 COMMENT ida TABLE ca_cert_store idauser
+4820; 0 0 COMMENT ida COLUMN ca_cert_store.cert_id idauser
+4821; 0 0 COMMENT ida COLUMN ca_cert_store.cert_subject idauser
+4822; 0 0 COMMENT ida COLUMN ca_cert_store.cert_issuer idauser
+4823; 0 0 COMMENT ida COLUMN ca_cert_store.issuer_id idauser
+4824; 0 0 COMMENT ida COLUMN ca_cert_store.cert_not_before idauser
+4825; 0 0 COMMENT ida COLUMN ca_cert_store.cert_not_after idauser
+4826; 0 0 COMMENT ida COLUMN ca_cert_store.crl_uri idauser
+4827; 0 0 COMMENT ida COLUMN ca_cert_store.cert_data idauser
+4828; 0 0 COMMENT ida COLUMN ca_cert_store.cert_thumbprint idauser
+4829; 0 0 COMMENT ida COLUMN ca_cert_store.cert_serial_no idauser
+4830; 0 0 COMMENT ida COLUMN ca_cert_store.partner_domain idauser
+4831; 0 0 COMMENT ida COLUMN ca_cert_store.cr_by idauser
+4832; 0 0 COMMENT ida COLUMN ca_cert_store.cr_dtimes idauser
+4833; 0 0 COMMENT ida COLUMN ca_cert_store.upd_by idauser
+4834; 0 0 COMMENT ida COLUMN ca_cert_store.upd_dtimes idauser
+4835; 0 0 COMMENT ida COLUMN ca_cert_store.is_deleted idauser
+4836; 0 0 COMMENT ida COLUMN ca_cert_store.del_dtimes idauser
+4837; 0 0 ACL ida TABLE ca_cert_store idauser
+393; 1259 25207 TABLE ida credential_event_store idauser
+4838; 0 0 COMMENT ida TABLE credential_event_store idauser
+4839; 0 0 COMMENT ida COLUMN credential_event_store.event_id idauser
+4840; 0 0 COMMENT ida COLUMN credential_event_store.event_topic idauser
+4841; 0 0 COMMENT ida COLUMN credential_event_store.credential_transaction_id idauser
+4842; 0 0 COMMENT ida COLUMN credential_event_store.publisher idauser
+4843; 0 0 COMMENT ida COLUMN credential_event_store.published_on_dtimes idauser
+4844; 0 0 COMMENT ida COLUMN credential_event_store.event_object idauser
+4845; 0 0 COMMENT ida COLUMN credential_event_store.status_code idauser
+4846; 0 0 COMMENT ida COLUMN credential_event_store.retry_count idauser
+4847; 0 0 COMMENT ida COLUMN credential_event_store.cr_by idauser
+4848; 0 0 COMMENT ida COLUMN credential_event_store.cr_dtimes idauser
+4849; 0 0 COMMENT ida COLUMN credential_event_store.upd_by idauser
+4850; 0 0 COMMENT ida COLUMN credential_event_store.upd_dtimes idauser
+4851; 0 0 COMMENT ida COLUMN credential_event_store.is_deleted idauser
+4852; 0 0 COMMENT ida COLUMN credential_event_store.del_dtimes idauser
+4853; 0 0 ACL ida TABLE credential_event_store idauser
+394; 1259 25214 TABLE ida data_encrypt_keystore idauser
+4854; 0 0 ACL ida TABLE data_encrypt_keystore idauser
+395; 1259 25220 TABLE ida hotlist_cache idauser
+4855; 0 0 COMMENT ida TABLE hotlist_cache idauser
+4856; 0 0 COMMENT ida COLUMN hotlist_cache.id_hash idauser
+4857; 0 0 COMMENT ida COLUMN hotlist_cache.id_type idauser
+4858; 0 0 COMMENT ida COLUMN hotlist_cache.status idauser
+4859; 0 0 COMMENT ida COLUMN hotlist_cache.start_timestamp idauser
+4860; 0 0 COMMENT ida COLUMN hotlist_cache.expiry_timestamp idauser
+4861; 0 0 ACL ida TABLE hotlist_cache idauser
+396; 1259 25223 TABLE ida identity_cache idauser
+4862; 0 0 ACL ida TABLE identity_cache idauser
+397; 1259 25230 TABLE ida key_alias idauser
+4863; 0 0 COMMENT ida TABLE key_alias idauser
+4864; 0 0 COMMENT ida COLUMN key_alias.id idauser
+4865; 0 0 COMMENT ida COLUMN key_alias.app_id idauser
+4866; 0 0 COMMENT ida COLUMN key_alias.ref_id idauser
+4867; 0 0 COMMENT ida COLUMN key_alias.key_gen_dtimes idauser
+4868; 0 0 COMMENT ida COLUMN key_alias.key_expire_dtimes idauser
+4869; 0 0 COMMENT ida COLUMN key_alias.status_code idauser
+4870; 0 0 COMMENT ida COLUMN key_alias.lang_code idauser
+4871; 0 0 COMMENT ida COLUMN key_alias.cr_by idauser
+4872; 0 0 COMMENT ida COLUMN key_alias.cr_dtimes idauser
+4873; 0 0 COMMENT ida COLUMN key_alias.upd_by idauser
+4874; 0 0 COMMENT ida COLUMN key_alias.upd_dtimes idauser
+4875; 0 0 COMMENT ida COLUMN key_alias.is_deleted idauser
+4876; 0 0 COMMENT ida COLUMN key_alias.del_dtimes idauser
+4877; 0 0 ACL ida TABLE key_alias idauser
+398; 1259 25237 TABLE ida key_policy_def idauser
+4878; 0 0 COMMENT ida TABLE key_policy_def idauser
+4879; 0 0 COMMENT ida COLUMN key_policy_def.app_id idauser
+4880; 0 0 COMMENT ida COLUMN key_policy_def.key_validity_duration idauser
+4881; 0 0 COMMENT ida COLUMN key_policy_def.is_active idauser
+4882; 0 0 COMMENT ida COLUMN key_policy_def.cr_by idauser
+4883; 0 0 COMMENT ida COLUMN key_policy_def.cr_dtimes idauser
+4884; 0 0 COMMENT ida COLUMN key_policy_def.upd_by idauser
+4885; 0 0 COMMENT ida COLUMN key_policy_def.upd_dtimes idauser
+4886; 0 0 COMMENT ida COLUMN key_policy_def.is_deleted idauser
+4887; 0 0 COMMENT ida COLUMN key_policy_def.del_dtimes idauser
+4888; 0 0 ACL ida TABLE key_policy_def idauser
+399; 1259 25244 TABLE ida key_policy_def_h idauser
+4889; 0 0 ACL ida TABLE key_policy_def_h idauser
+400; 1259 25251 TABLE ida key_store idauser
+4890; 0 0 COMMENT ida TABLE key_store idauser
+4891; 0 0 COMMENT ida COLUMN key_store.id idauser
+4892; 0 0 COMMENT ida COLUMN key_store.master_key idauser
+4893; 0 0 COMMENT ida COLUMN key_store.private_key idauser
+4894; 0 0 COMMENT ida COLUMN key_store.certificate_data idauser
+4895; 0 0 COMMENT ida COLUMN key_store.cr_by idauser
+4896; 0 0 COMMENT ida COLUMN key_store.cr_dtimes idauser
+4897; 0 0 COMMENT ida COLUMN key_store.upd_by idauser
+4898; 0 0 COMMENT ida COLUMN key_store.upd_dtimes idauser
+4899; 0 0 COMMENT ida COLUMN key_store.is_deleted idauser
+4900; 0 0 COMMENT ida COLUMN key_store.del_dtimes idauser
+4901; 0 0 ACL ida TABLE key_store idauser
+401; 1259 25258 TABLE ida otp_transaction idauser
+4902; 0 0 ACL ida TABLE otp_transaction idauser
+402; 1259 25265 TABLE ida uin_auth_lock idauser
+4903; 0 0 ACL ida TABLE uin_auth_lock idauser
+403; 1259 25272 TABLE ida uin_hash_salt idauser
+4904; 0 0 ACL ida TABLE uin_hash_salt idauser
+405; 1259 3368718 TABLE support uin_h idauser
+4513; 2606 25306 CONSTRAINT ida batch_job_execution_context batch_job_execution_context_pkey idauser
+4511; 2606 25308 CONSTRAINT ida batch_job_execution batch_job_execution_pkey idauser
+4515; 2606 25310 CONSTRAINT ida batch_job_instance batch_job_instance_pkey idauser
+4519; 2606 25312 CONSTRAINT ida batch_step_execution_context batch_step_execution_context_pkey idauser
+4517; 2606 25314 CONSTRAINT ida batch_step_execution batch_step_execution_pkey idauser
+4509; 2606 25316 CONSTRAINT ida auth_transaction pk_authtrn_id idauser
+4521; 2606 25318 CONSTRAINT ida ca_cert_store pk_cacs_id idauser
+4525; 2606 25320 CONSTRAINT ida credential_event_store pk_ces_id idauser
+4527; 2606 25322 CONSTRAINT ida data_encrypt_keystore pk_dekstr_id idauser
+4529; 2606 25324 CONSTRAINT ida hotlist_cache pk_idHashidType idauser
+4534; 2606 25326 CONSTRAINT ida identity_cache pk_idcache_id idauser
+4536; 2606 25328 CONSTRAINT ida key_alias pk_keymals_id idauser
+4538; 2606 25330 CONSTRAINT ida key_policy_def pk_keypdef_id idauser
+4540; 2606 25332 CONSTRAINT ida key_policy_def_h pk_keypdefh_id idauser
+4542; 2606 25334 CONSTRAINT ida key_store pk_keystr_id idauser
+4544; 2606 25336 CONSTRAINT ida otp_transaction pk_otpt_id idauser
+4546; 2606 25338 CONSTRAINT ida uin_auth_lock pk_uinal idauser
+4548; 2606 25340 CONSTRAINT ida uin_hash_salt pk_uinhs idauser
+4507; 1259 25341 INDEX ida auth_transaction_cr_dtimes_idx idauser
+4522; 1259 12452042 INDEX ida credential_event_store_cr_dtimes_idx idauser
+4523; 1259 12757258 INDEX ida credential_event_store_status_code_idx idauser
+4530; 1259 19504615 INDEX ida identity_cache_token_id_idx idauser
+4531; 1259 25342 INDEX ida idx_identity_cache_cr_dtimes idauser
+4532; 1259 25343 INDEX ida idx_identity_cache_upd_dtimes idauser
+4549; 1259 11529505 INDEX support uin_h_available_idx idauser
+4550; 1259 11528944 INDEX support uin_h_id_hash_idx idauser
+4552; 2606 25344 FK CONSTRAINT ida batch_job_execution_context job_exec_ctx_fk idauser
+4553; 2606 25349 FK CONSTRAINT ida batch_job_execution_params job_exec_params_fk idauser
+4554; 2606 25354 FK CONSTRAINT ida batch_step_execution job_execution_step_fk idauser
+4551; 2606 25359 FK CONSTRAINT ida batch_job_execution job_instance_execution_fk idauser
+4555; 2606 25364 FK CONSTRAINT ida batch_step_execution_context step_exec_ctx_fk idauser
+4791; 6104 18118176 PUBLICATION - dbz_publication enterprisedb
+4792; 6106 18118207 PUBLICATION TABLE ida dbz_publication auth_transaction enterprisedb
+4793; 6106 18118210 PUBLICATION TABLE ida dbz_publication otp_transaction enterprisedb
+3424; 826 18118503 DEFAULT ACL ida DEFAULT PRIVILEGES FOR TABLES enterprisedb

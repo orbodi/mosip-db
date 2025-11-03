@@ -1,0 +1,25 @@
+﻿;
+; Archive created at 2025-11-03 10:52:16
+;     dbname: auaudit
+;     TOC Entries: 15
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+4641; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2414922 EXTENSION - dblink 
+4642; 0 0 COMMENT - EXTENSION dblink 
+380; 1259 16436 TABLE public audit_data ausrvuser
+4643; 0 0 ACL public TABLE audit_data ausrvuser
+381; 1259 16442 SEQUENCE public hibernate_sequence ausrvuser
+4394; 2606 16445 CONSTRAINT public audit_data audit_data_pkey ausrvuser
+4629; 6104 18117799 PUBLICATION - dbz_publication enterprisedb
+4630; 6106 18117820 PUBLICATION TABLE public dbz_publication audit_data enterprisedb
+3321; 826 18118014 DEFAULT ACL public DEFAULT PRIVILEGES FOR TABLES enterprisedb

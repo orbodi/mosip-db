@@ -1,0 +1,1332 @@
+﻿;
+; Archive created at 2025-11-03 10:52:39
+;     dbname: mosip_master
+;     TOC Entries: 1323
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+11; 2615 22096 SCHEMA - master postgres
+5503; 0 0 ACL - SCHEMA master postgres
+5504; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2414968 EXTENSION - dblink 
+5505; 0 0 COMMENT - EXTENSION dblink 
+480; 1259 1052637 TABLE master location masteruser
+5506; 0 0 ACL master TABLE location masteruser
+488; 1259 4983702 VIEW master Regions jfassinou
+5507; 0 0 ACL master TABLE "Regions" jfassinou
+381; 1259 22097 TABLE master admin_param masteruser
+5508; 0 0 COMMENT master TABLE admin_param masteruser
+5509; 0 0 COMMENT master COLUMN admin_param.code masteruser
+5510; 0 0 COMMENT master COLUMN admin_param.name masteruser
+5511; 0 0 COMMENT master COLUMN admin_param.val masteruser
+5512; 0 0 COMMENT master COLUMN admin_param.typ masteruser
+5513; 0 0 COMMENT master COLUMN admin_param.lang_code masteruser
+5514; 0 0 COMMENT master COLUMN admin_param.is_active masteruser
+5515; 0 0 COMMENT master COLUMN admin_param.cr_by masteruser
+5516; 0 0 COMMENT master COLUMN admin_param.cr_dtimes masteruser
+5517; 0 0 COMMENT master COLUMN admin_param.upd_by masteruser
+5518; 0 0 COMMENT master COLUMN admin_param.upd_dtimes masteruser
+5519; 0 0 COMMENT master COLUMN admin_param.is_deleted masteruser
+5520; 0 0 COMMENT master COLUMN admin_param.del_dtimes masteruser
+5521; 0 0 ACL master TABLE admin_param masteruser
+382; 1259 22104 TABLE master app_authentication_method masteruser
+5522; 0 0 COMMENT master TABLE app_authentication_method masteruser
+5523; 0 0 COMMENT master COLUMN app_authentication_method.app_id masteruser
+5524; 0 0 COMMENT master COLUMN app_authentication_method.process_id masteruser
+5525; 0 0 COMMENT master COLUMN app_authentication_method.role_code masteruser
+5526; 0 0 COMMENT master COLUMN app_authentication_method.auth_method_code masteruser
+5527; 0 0 COMMENT master COLUMN app_authentication_method.method_seq masteruser
+5528; 0 0 COMMENT master COLUMN app_authentication_method.lang_code masteruser
+5529; 0 0 COMMENT master COLUMN app_authentication_method.is_active masteruser
+5530; 0 0 COMMENT master COLUMN app_authentication_method.cr_by masteruser
+5531; 0 0 COMMENT master COLUMN app_authentication_method.cr_dtimes masteruser
+5532; 0 0 COMMENT master COLUMN app_authentication_method.upd_by masteruser
+5533; 0 0 COMMENT master COLUMN app_authentication_method.upd_dtimes masteruser
+5534; 0 0 COMMENT master COLUMN app_authentication_method.is_deleted masteruser
+5535; 0 0 COMMENT master COLUMN app_authentication_method.del_dtimes masteruser
+5536; 0 0 ACL master TABLE app_authentication_method masteruser
+383; 1259 22111 TABLE master app_detail masteruser
+5537; 0 0 COMMENT master TABLE app_detail masteruser
+5538; 0 0 COMMENT master COLUMN app_detail.id masteruser
+5539; 0 0 COMMENT master COLUMN app_detail.name masteruser
+5540; 0 0 COMMENT master COLUMN app_detail.descr masteruser
+5541; 0 0 COMMENT master COLUMN app_detail.lang_code masteruser
+5542; 0 0 COMMENT master COLUMN app_detail.is_active masteruser
+5543; 0 0 COMMENT master COLUMN app_detail.cr_by masteruser
+5544; 0 0 COMMENT master COLUMN app_detail.cr_dtimes masteruser
+5545; 0 0 COMMENT master COLUMN app_detail.upd_by masteruser
+5546; 0 0 COMMENT master COLUMN app_detail.upd_dtimes masteruser
+5547; 0 0 COMMENT master COLUMN app_detail.is_deleted masteruser
+5548; 0 0 COMMENT master COLUMN app_detail.del_dtimes masteruser
+5549; 0 0 ACL master TABLE app_detail masteruser
+384; 1259 22118 TABLE master app_role_priority masteruser
+5550; 0 0 COMMENT master TABLE app_role_priority masteruser
+5551; 0 0 COMMENT master COLUMN app_role_priority.app_id masteruser
+5552; 0 0 COMMENT master COLUMN app_role_priority.process_id masteruser
+5553; 0 0 COMMENT master COLUMN app_role_priority.role_code masteruser
+5554; 0 0 COMMENT master COLUMN app_role_priority.priority masteruser
+5555; 0 0 COMMENT master COLUMN app_role_priority.lang_code masteruser
+5556; 0 0 COMMENT master COLUMN app_role_priority.is_active masteruser
+5557; 0 0 COMMENT master COLUMN app_role_priority.cr_by masteruser
+5558; 0 0 COMMENT master COLUMN app_role_priority.cr_dtimes masteruser
+5559; 0 0 COMMENT master COLUMN app_role_priority.upd_by masteruser
+5560; 0 0 COMMENT master COLUMN app_role_priority.upd_dtimes masteruser
+5561; 0 0 COMMENT master COLUMN app_role_priority.is_deleted masteruser
+5562; 0 0 COMMENT master COLUMN app_role_priority.del_dtimes masteruser
+5563; 0 0 ACL master TABLE app_role_priority masteruser
+385; 1259 22125 TABLE master appl_form_type masteruser
+5564; 0 0 COMMENT master TABLE appl_form_type masteruser
+5565; 0 0 COMMENT master COLUMN appl_form_type.code masteruser
+5566; 0 0 COMMENT master COLUMN appl_form_type.name masteruser
+5567; 0 0 COMMENT master COLUMN appl_form_type.descr masteruser
+5568; 0 0 COMMENT master COLUMN appl_form_type.lang_code masteruser
+5569; 0 0 COMMENT master COLUMN appl_form_type.is_active masteruser
+5570; 0 0 COMMENT master COLUMN appl_form_type.cr_by masteruser
+5571; 0 0 COMMENT master COLUMN appl_form_type.cr_dtimes masteruser
+5572; 0 0 COMMENT master COLUMN appl_form_type.upd_by masteruser
+5573; 0 0 COMMENT master COLUMN appl_form_type.upd_dtimes masteruser
+5574; 0 0 COMMENT master COLUMN appl_form_type.is_deleted masteruser
+5575; 0 0 COMMENT master COLUMN appl_form_type.del_dtimes masteruser
+5576; 0 0 ACL master TABLE appl_form_type masteruser
+386; 1259 22132 TABLE master applicant_valid_document masteruser
+5577; 0 0 COMMENT master TABLE applicant_valid_document masteruser
+5578; 0 0 COMMENT master COLUMN applicant_valid_document.apptyp_code masteruser
+5579; 0 0 COMMENT master COLUMN applicant_valid_document.doccat_code masteruser
+5580; 0 0 COMMENT master COLUMN applicant_valid_document.doctyp_code masteruser
+5581; 0 0 COMMENT master COLUMN applicant_valid_document.lang_code masteruser
+5582; 0 0 COMMENT master COLUMN applicant_valid_document.is_active masteruser
+5583; 0 0 COMMENT master COLUMN applicant_valid_document.cr_by masteruser
+5584; 0 0 COMMENT master COLUMN applicant_valid_document.cr_dtimes masteruser
+5585; 0 0 COMMENT master COLUMN applicant_valid_document.upd_by masteruser
+5586; 0 0 COMMENT master COLUMN applicant_valid_document.upd_dtimes masteruser
+5587; 0 0 COMMENT master COLUMN applicant_valid_document.is_deleted masteruser
+5588; 0 0 COMMENT master COLUMN applicant_valid_document.del_dtimes masteruser
+5589; 0 0 ACL master TABLE applicant_valid_document masteruser
+387; 1259 22139 TABLE master authentication_method masteruser
+5590; 0 0 COMMENT master TABLE authentication_method masteruser
+5591; 0 0 COMMENT master COLUMN authentication_method.code masteruser
+5592; 0 0 COMMENT master COLUMN authentication_method.method_seq masteruser
+5593; 0 0 COMMENT master COLUMN authentication_method.lang_code masteruser
+5594; 0 0 COMMENT master COLUMN authentication_method.is_active masteruser
+5595; 0 0 COMMENT master COLUMN authentication_method.cr_by masteruser
+5596; 0 0 COMMENT master COLUMN authentication_method.cr_dtimes masteruser
+5597; 0 0 COMMENT master COLUMN authentication_method.upd_by masteruser
+5598; 0 0 COMMENT master COLUMN authentication_method.upd_dtimes masteruser
+5599; 0 0 COMMENT master COLUMN authentication_method.is_deleted masteruser
+5600; 0 0 COMMENT master COLUMN authentication_method.del_dtimes masteruser
+5601; 0 0 ACL master TABLE authentication_method masteruser
+388; 1259 22146 TABLE master authentication_type masteruser
+5602; 0 0 COMMENT master TABLE authentication_type masteruser
+5603; 0 0 COMMENT master COLUMN authentication_type.code masteruser
+5604; 0 0 COMMENT master COLUMN authentication_type.descr masteruser
+5605; 0 0 COMMENT master COLUMN authentication_type.lang_code masteruser
+5606; 0 0 COMMENT master COLUMN authentication_type.is_active masteruser
+5607; 0 0 COMMENT master COLUMN authentication_type.cr_by masteruser
+5608; 0 0 COMMENT master COLUMN authentication_type.cr_dtimes masteruser
+5609; 0 0 COMMENT master COLUMN authentication_type.upd_by masteruser
+5610; 0 0 COMMENT master COLUMN authentication_type.upd_dtimes masteruser
+5611; 0 0 COMMENT master COLUMN authentication_type.is_deleted masteruser
+5612; 0 0 COMMENT master COLUMN authentication_type.del_dtimes masteruser
+5613; 0 0 ACL master TABLE authentication_type masteruser
+389; 1259 22153 TABLE master batch_job_execution masteruser
+5614; 0 0 ACL master TABLE batch_job_execution masteruser
+390; 1259 22159 TABLE master batch_job_execution_context masteruser
+5615; 0 0 ACL master TABLE batch_job_execution_context masteruser
+391; 1259 22165 TABLE master batch_job_execution_params masteruser
+5616; 0 0 ACL master TABLE batch_job_execution_params masteruser
+392; 1259 22168 SEQUENCE master batch_job_execution_seq postgres
+5617; 0 0 ACL master SEQUENCE batch_job_execution_seq postgres
+393; 1259 22170 TABLE master batch_job_instance masteruser
+5618; 0 0 ACL master TABLE batch_job_instance masteruser
+394; 1259 22173 SEQUENCE master batch_job_seq postgres
+5619; 0 0 ACL master SEQUENCE batch_job_seq postgres
+395; 1259 22175 TABLE master batch_step_execution masteruser
+5620; 0 0 ACL master TABLE batch_step_execution masteruser
+396; 1259 22181 TABLE master batch_step_execution_context masteruser
+5621; 0 0 ACL master TABLE batch_step_execution_context masteruser
+397; 1259 22187 SEQUENCE master batch_step_execution_seq postgres
+5622; 0 0 ACL master SEQUENCE batch_step_execution_seq postgres
+398; 1259 22189 TABLE master biometric_attribute masteruser
+5623; 0 0 COMMENT master TABLE biometric_attribute masteruser
+5624; 0 0 COMMENT master COLUMN biometric_attribute.code masteruser
+5625; 0 0 COMMENT master COLUMN biometric_attribute.name masteruser
+5626; 0 0 COMMENT master COLUMN biometric_attribute.descr masteruser
+5627; 0 0 COMMENT master COLUMN biometric_attribute.bmtyp_code masteruser
+5628; 0 0 COMMENT master COLUMN biometric_attribute.lang_code masteruser
+5629; 0 0 COMMENT master COLUMN biometric_attribute.is_active masteruser
+5630; 0 0 COMMENT master COLUMN biometric_attribute.cr_by masteruser
+5631; 0 0 COMMENT master COLUMN biometric_attribute.cr_dtimes masteruser
+5632; 0 0 COMMENT master COLUMN biometric_attribute.upd_by masteruser
+5633; 0 0 COMMENT master COLUMN biometric_attribute.upd_dtimes masteruser
+5634; 0 0 COMMENT master COLUMN biometric_attribute.is_deleted masteruser
+5635; 0 0 COMMENT master COLUMN biometric_attribute.del_dtimes masteruser
+5636; 0 0 ACL master TABLE biometric_attribute masteruser
+399; 1259 22196 TABLE master biometric_type masteruser
+5637; 0 0 COMMENT master TABLE biometric_type masteruser
+5638; 0 0 COMMENT master COLUMN biometric_type.code masteruser
+5639; 0 0 COMMENT master COLUMN biometric_type.name masteruser
+5640; 0 0 COMMENT master COLUMN biometric_type.descr masteruser
+5641; 0 0 COMMENT master COLUMN biometric_type.lang_code masteruser
+5642; 0 0 COMMENT master COLUMN biometric_type.is_active masteruser
+5643; 0 0 COMMENT master COLUMN biometric_type.cr_by masteruser
+5644; 0 0 COMMENT master COLUMN biometric_type.cr_dtimes masteruser
+5645; 0 0 COMMENT master COLUMN biometric_type.upd_by masteruser
+5646; 0 0 COMMENT master COLUMN biometric_type.upd_dtimes masteruser
+5647; 0 0 COMMENT master COLUMN biometric_type.is_deleted masteruser
+5648; 0 0 COMMENT master COLUMN biometric_type.del_dtimes masteruser
+5649; 0 0 ACL master TABLE biometric_type masteruser
+400; 1259 22203 TABLE master blacklisted_words masteruser
+5650; 0 0 COMMENT master TABLE blacklisted_words masteruser
+5651; 0 0 COMMENT master COLUMN blacklisted_words.word masteruser
+5652; 0 0 COMMENT master COLUMN blacklisted_words.descr masteruser
+5653; 0 0 COMMENT master COLUMN blacklisted_words.lang_code masteruser
+5654; 0 0 COMMENT master COLUMN blacklisted_words.is_active masteruser
+5655; 0 0 COMMENT master COLUMN blacklisted_words.cr_by masteruser
+5656; 0 0 COMMENT master COLUMN blacklisted_words.cr_dtimes masteruser
+5657; 0 0 COMMENT master COLUMN blacklisted_words.upd_by masteruser
+5658; 0 0 COMMENT master COLUMN blacklisted_words.upd_dtimes masteruser
+5659; 0 0 COMMENT master COLUMN blacklisted_words.is_deleted masteruser
+5660; 0 0 COMMENT master COLUMN blacklisted_words.del_dtimes masteruser
+5661; 0 0 ACL master TABLE blacklisted_words masteruser
+401; 1259 22210 TABLE master bulkupload_transaction masteruser
+5662; 0 0 COMMENT master TABLE bulkupload_transaction masteruser
+5663; 0 0 COMMENT master COLUMN bulkupload_transaction.id masteruser
+5664; 0 0 COMMENT master COLUMN bulkupload_transaction.entity_name masteruser
+5665; 0 0 COMMENT master COLUMN bulkupload_transaction.upload_operation masteruser
+5666; 0 0 COMMENT master COLUMN bulkupload_transaction.status_code masteruser
+5667; 0 0 COMMENT master COLUMN bulkupload_transaction.record_count masteruser
+5668; 0 0 COMMENT master COLUMN bulkupload_transaction.uploaded_by masteruser
+5669; 0 0 COMMENT master COLUMN bulkupload_transaction.upload_category masteruser
+5670; 0 0 COMMENT master COLUMN bulkupload_transaction.uploaded_dtimes masteruser
+5671; 0 0 COMMENT master COLUMN bulkupload_transaction.upload_description masteruser
+5672; 0 0 COMMENT master COLUMN bulkupload_transaction.lang_code masteruser
+5673; 0 0 COMMENT master COLUMN bulkupload_transaction.is_active masteruser
+5674; 0 0 COMMENT master COLUMN bulkupload_transaction.cr_by masteruser
+5675; 0 0 COMMENT master COLUMN bulkupload_transaction.cr_dtimes masteruser
+5676; 0 0 COMMENT master COLUMN bulkupload_transaction.upd_by masteruser
+5677; 0 0 COMMENT master COLUMN bulkupload_transaction.upd_dtimes masteruser
+5678; 0 0 COMMENT master COLUMN bulkupload_transaction.is_deleted masteruser
+5679; 0 0 COMMENT master COLUMN bulkupload_transaction.del_dtimes masteruser
+5680; 0 0 ACL master TABLE bulkupload_transaction masteruser
+402; 1259 22217 TABLE master ca_cert_store masteruser
+5681; 0 0 ACL master TABLE ca_cert_store masteruser
+485; 1259 4983690 VIEW master cantons jfassinou
+5682; 0 0 ACL master TABLE cantons jfassinou
+403; 1259 22223 TABLE master center postgres
+5683; 0 0 ACL master TABLE center postgres
+447; 1259 22518 TABLE master registration_center masteruser
+5684; 0 0 COMMENT master TABLE registration_center masteruser
+5685; 0 0 COMMENT master COLUMN registration_center.id masteruser
+5686; 0 0 COMMENT master COLUMN registration_center.name masteruser
+5687; 0 0 COMMENT master COLUMN registration_center.cntrtyp_code masteruser
+5688; 0 0 COMMENT master COLUMN registration_center.addr_line1 masteruser
+5689; 0 0 COMMENT master COLUMN registration_center.addr_line2 masteruser
+5690; 0 0 COMMENT master COLUMN registration_center.addr_line3 masteruser
+5691; 0 0 COMMENT master COLUMN registration_center.latitude masteruser
+5692; 0 0 COMMENT master COLUMN registration_center.longitude masteruser
+5693; 0 0 COMMENT master COLUMN registration_center.location_code masteruser
+5694; 0 0 COMMENT master COLUMN registration_center.contact_phone masteruser
+5695; 0 0 COMMENT master COLUMN registration_center.contact_person masteruser
+5696; 0 0 COMMENT master COLUMN registration_center.number_of_kiosks masteruser
+5697; 0 0 COMMENT master COLUMN registration_center.working_hours masteruser
+5698; 0 0 COMMENT master COLUMN registration_center.per_kiosk_process_time masteruser
+5699; 0 0 COMMENT master COLUMN registration_center.center_start_time masteruser
+5700; 0 0 COMMENT master COLUMN registration_center.center_end_time masteruser
+5701; 0 0 COMMENT master COLUMN registration_center.lunch_start_time masteruser
+5702; 0 0 COMMENT master COLUMN registration_center.lunch_end_time masteruser
+5703; 0 0 COMMENT master COLUMN registration_center.time_zone masteruser
+5704; 0 0 COMMENT master COLUMN registration_center.holiday_loc_code masteruser
+5705; 0 0 COMMENT master COLUMN registration_center.zone_code masteruser
+5706; 0 0 COMMENT master COLUMN registration_center.lang_code masteruser
+5707; 0 0 COMMENT master COLUMN registration_center.is_active masteruser
+5708; 0 0 COMMENT master COLUMN registration_center.cr_by masteruser
+5709; 0 0 COMMENT master COLUMN registration_center.cr_dtimes masteruser
+5710; 0 0 COMMENT master COLUMN registration_center.upd_by masteruser
+5711; 0 0 COMMENT master COLUMN registration_center.upd_dtimes masteruser
+5712; 0 0 COMMENT master COLUMN registration_center.is_deleted masteruser
+5713; 0 0 COMMENT master COLUMN registration_center.del_dtimes masteruser
+5714; 0 0 ACL master TABLE registration_center masteruser
+483; 1259 4983611 VIEW master centers jfassinou
+5715; 0 0 ACL master TABLE centers jfassinou
+486; 1259 4983694 VIEW master communes jfassinou
+5716; 0 0 ACL master TABLE communes jfassinou
+404; 1259 22229 TABLE master daysofweek_list masteruser
+5717; 0 0 COMMENT master TABLE daysofweek_list masteruser
+5718; 0 0 COMMENT master COLUMN daysofweek_list.code masteruser
+5719; 0 0 COMMENT master COLUMN daysofweek_list.name masteruser
+5720; 0 0 COMMENT master COLUMN daysofweek_list.day_seq masteruser
+5721; 0 0 COMMENT master COLUMN daysofweek_list.is_global_working masteruser
+5722; 0 0 COMMENT master COLUMN daysofweek_list.lang_code masteruser
+5723; 0 0 COMMENT master COLUMN daysofweek_list.is_active masteruser
+5724; 0 0 COMMENT master COLUMN daysofweek_list.cr_by masteruser
+5725; 0 0 COMMENT master COLUMN daysofweek_list.cr_dtimes masteruser
+5726; 0 0 COMMENT master COLUMN daysofweek_list.upd_by masteruser
+5727; 0 0 COMMENT master COLUMN daysofweek_list.upd_dtimes masteruser
+5728; 0 0 COMMENT master COLUMN daysofweek_list.is_deleted masteruser
+5729; 0 0 COMMENT master COLUMN daysofweek_list.del_dtimes masteruser
+5730; 0 0 ACL master TABLE daysofweek_list masteruser
+405; 1259 22236 TABLE master device_master masteruser
+5731; 0 0 COMMENT master TABLE device_master masteruser
+5732; 0 0 COMMENT master COLUMN device_master.id masteruser
+5733; 0 0 COMMENT master COLUMN device_master.name masteruser
+5734; 0 0 COMMENT master COLUMN device_master.mac_address masteruser
+5735; 0 0 COMMENT master COLUMN device_master.serial_num masteruser
+5736; 0 0 COMMENT master COLUMN device_master.ip_address masteruser
+5737; 0 0 COMMENT master COLUMN device_master.validity_end_dtimes masteruser
+5738; 0 0 COMMENT master COLUMN device_master.dspec_id masteruser
+5739; 0 0 COMMENT master COLUMN device_master.zone_code masteruser
+5740; 0 0 COMMENT master COLUMN device_master.regcntr_id masteruser
+5741; 0 0 COMMENT master COLUMN device_master.lang_code masteruser
+5742; 0 0 COMMENT master COLUMN device_master.is_active masteruser
+5743; 0 0 COMMENT master COLUMN device_master.cr_by masteruser
+5744; 0 0 COMMENT master COLUMN device_master.cr_dtimes masteruser
+5745; 0 0 COMMENT master COLUMN device_master.upd_by masteruser
+5746; 0 0 COMMENT master COLUMN device_master.upd_dtimes masteruser
+5747; 0 0 COMMENT master COLUMN device_master.is_deleted masteruser
+5748; 0 0 COMMENT master COLUMN device_master.del_dtimes masteruser
+5749; 0 0 ACL master TABLE device_master masteruser
+406; 1259 22243 TABLE master device_master_h masteruser
+5750; 0 0 COMMENT master TABLE device_master_h masteruser
+5751; 0 0 COMMENT master COLUMN device_master_h.id masteruser
+5752; 0 0 COMMENT master COLUMN device_master_h.name masteruser
+5753; 0 0 COMMENT master COLUMN device_master_h.mac_address masteruser
+5754; 0 0 COMMENT master COLUMN device_master_h.serial_num masteruser
+5755; 0 0 COMMENT master COLUMN device_master_h.ip_address masteruser
+5756; 0 0 COMMENT master COLUMN device_master_h.validity_end_dtimes masteruser
+5757; 0 0 COMMENT master COLUMN device_master_h.dspec_id masteruser
+5758; 0 0 COMMENT master COLUMN device_master_h.zone_code masteruser
+5759; 0 0 COMMENT master COLUMN device_master_h.lang_code masteruser
+5760; 0 0 COMMENT master COLUMN device_master_h.is_active masteruser
+5761; 0 0 COMMENT master COLUMN device_master_h.cr_by masteruser
+5762; 0 0 COMMENT master COLUMN device_master_h.cr_dtimes masteruser
+5763; 0 0 COMMENT master COLUMN device_master_h.upd_by masteruser
+5764; 0 0 COMMENT master COLUMN device_master_h.upd_dtimes masteruser
+5765; 0 0 COMMENT master COLUMN device_master_h.is_deleted masteruser
+5766; 0 0 COMMENT master COLUMN device_master_h.del_dtimes masteruser
+5767; 0 0 COMMENT master COLUMN device_master_h.eff_dtimes masteruser
+5768; 0 0 ACL master TABLE device_master_h masteruser
+407; 1259 22250 TABLE master device_provider masteruser
+5769; 0 0 ACL master TABLE device_provider masteruser
+408; 1259 22256 TABLE master device_provider_h masteruser
+5770; 0 0 ACL master TABLE device_provider_h masteruser
+409; 1259 22262 TABLE master device_spec masteruser
+5771; 0 0 COMMENT master TABLE device_spec masteruser
+5772; 0 0 COMMENT master COLUMN device_spec.id masteruser
+5773; 0 0 COMMENT master COLUMN device_spec.name masteruser
+5774; 0 0 COMMENT master COLUMN device_spec.brand masteruser
+5775; 0 0 COMMENT master COLUMN device_spec.model masteruser
+5776; 0 0 COMMENT master COLUMN device_spec.dtyp_code masteruser
+5777; 0 0 COMMENT master COLUMN device_spec.min_driver_ver masteruser
+5778; 0 0 COMMENT master COLUMN device_spec.descr masteruser
+5779; 0 0 COMMENT master COLUMN device_spec.lang_code masteruser
+5780; 0 0 COMMENT master COLUMN device_spec.is_active masteruser
+5781; 0 0 COMMENT master COLUMN device_spec.cr_by masteruser
+5782; 0 0 COMMENT master COLUMN device_spec.cr_dtimes masteruser
+5783; 0 0 COMMENT master COLUMN device_spec.upd_by masteruser
+5784; 0 0 COMMENT master COLUMN device_spec.upd_dtimes masteruser
+5785; 0 0 COMMENT master COLUMN device_spec.is_deleted masteruser
+5786; 0 0 COMMENT master COLUMN device_spec.del_dtimes masteruser
+5787; 0 0 ACL master TABLE device_spec masteruser
+410; 1259 22269 TABLE master device_type masteruser
+5788; 0 0 COMMENT master TABLE device_type masteruser
+5789; 0 0 COMMENT master COLUMN device_type.code masteruser
+5790; 0 0 COMMENT master COLUMN device_type.name masteruser
+5791; 0 0 COMMENT master COLUMN device_type.descr masteruser
+5792; 0 0 COMMENT master COLUMN device_type.lang_code masteruser
+5793; 0 0 COMMENT master COLUMN device_type.is_active masteruser
+5794; 0 0 COMMENT master COLUMN device_type.cr_by masteruser
+5795; 0 0 COMMENT master COLUMN device_type.cr_dtimes masteruser
+5796; 0 0 COMMENT master COLUMN device_type.upd_by masteruser
+5797; 0 0 COMMENT master COLUMN device_type.upd_dtimes masteruser
+5798; 0 0 COMMENT master COLUMN device_type.is_deleted masteruser
+5799; 0 0 COMMENT master COLUMN device_type.del_dtimes masteruser
+5800; 0 0 ACL master TABLE device_type masteruser
+411; 1259 22276 TABLE master doc_category masteruser
+5801; 0 0 COMMENT master TABLE doc_category masteruser
+5802; 0 0 COMMENT master COLUMN doc_category.code masteruser
+5803; 0 0 COMMENT master COLUMN doc_category.name masteruser
+5804; 0 0 COMMENT master COLUMN doc_category.descr masteruser
+5805; 0 0 COMMENT master COLUMN doc_category.lang_code masteruser
+5806; 0 0 COMMENT master COLUMN doc_category.is_active masteruser
+5807; 0 0 COMMENT master COLUMN doc_category.cr_by masteruser
+5808; 0 0 COMMENT master COLUMN doc_category.cr_dtimes masteruser
+5809; 0 0 COMMENT master COLUMN doc_category.upd_by masteruser
+5810; 0 0 COMMENT master COLUMN doc_category.upd_dtimes masteruser
+5811; 0 0 COMMENT master COLUMN doc_category.is_deleted masteruser
+5812; 0 0 COMMENT master COLUMN doc_category.del_dtimes masteruser
+5813; 0 0 ACL master TABLE doc_category masteruser
+412; 1259 22283 TABLE master doc_format masteruser
+5814; 0 0 COMMENT master TABLE doc_format masteruser
+5815; 0 0 COMMENT master COLUMN doc_format.code masteruser
+5816; 0 0 COMMENT master COLUMN doc_format.name masteruser
+5817; 0 0 COMMENT master COLUMN doc_format.descr masteruser
+5818; 0 0 COMMENT master COLUMN doc_format.lang_code masteruser
+5819; 0 0 COMMENT master COLUMN doc_format.is_active masteruser
+5820; 0 0 COMMENT master COLUMN doc_format.cr_by masteruser
+5821; 0 0 COMMENT master COLUMN doc_format.cr_dtimes masteruser
+5822; 0 0 COMMENT master COLUMN doc_format.upd_by masteruser
+5823; 0 0 COMMENT master COLUMN doc_format.upd_dtimes masteruser
+5824; 0 0 COMMENT master COLUMN doc_format.is_deleted masteruser
+5825; 0 0 COMMENT master COLUMN doc_format.del_dtimes masteruser
+5826; 0 0 ACL master TABLE doc_format masteruser
+413; 1259 22290 TABLE master doc_type masteruser
+5827; 0 0 COMMENT master TABLE doc_type masteruser
+5828; 0 0 COMMENT master COLUMN doc_type.code masteruser
+5829; 0 0 COMMENT master COLUMN doc_type.name masteruser
+5830; 0 0 COMMENT master COLUMN doc_type.descr masteruser
+5831; 0 0 COMMENT master COLUMN doc_type.lang_code masteruser
+5832; 0 0 COMMENT master COLUMN doc_type.is_active masteruser
+5833; 0 0 COMMENT master COLUMN doc_type.cr_by masteruser
+5834; 0 0 COMMENT master COLUMN doc_type.cr_dtimes masteruser
+5835; 0 0 COMMENT master COLUMN doc_type.upd_by masteruser
+5836; 0 0 COMMENT master COLUMN doc_type.upd_dtimes masteruser
+5837; 0 0 COMMENT master COLUMN doc_type.is_deleted masteruser
+5838; 0 0 COMMENT master COLUMN doc_type.del_dtimes masteruser
+5839; 0 0 ACL master TABLE doc_type masteruser
+476; 1259 1050417 TABLE master dynamic_field masteruser
+5840; 0 0 ACL master TABLE dynamic_field masteruser
+414; 1259 22297 TABLE master dynamic_field_12112024 masteruser
+5841; 0 0 COMMENT master TABLE dynamic_field_12112024 masteruser
+5842; 0 0 COMMENT master COLUMN dynamic_field_12112024.id masteruser
+5843; 0 0 COMMENT master COLUMN dynamic_field_12112024.name masteruser
+5844; 0 0 COMMENT master COLUMN dynamic_field_12112024.description masteruser
+5845; 0 0 COMMENT master COLUMN dynamic_field_12112024.data_type masteruser
+5846; 0 0 COMMENT master COLUMN dynamic_field_12112024.value_json masteruser
+5847; 0 0 COMMENT master COLUMN dynamic_field_12112024.lang_code masteruser
+5848; 0 0 COMMENT master COLUMN dynamic_field_12112024.is_active masteruser
+5849; 0 0 COMMENT master COLUMN dynamic_field_12112024.cr_by masteruser
+5850; 0 0 COMMENT master COLUMN dynamic_field_12112024.cr_dtimes masteruser
+5851; 0 0 COMMENT master COLUMN dynamic_field_12112024.upd_by masteruser
+5852; 0 0 COMMENT master COLUMN dynamic_field_12112024.upd_dtimes masteruser
+5853; 0 0 COMMENT master COLUMN dynamic_field_12112024.is_deleted masteruser
+5854; 0 0 COMMENT master COLUMN dynamic_field_12112024.del_dtimes masteruser
+5855; 0 0 ACL master TABLE dynamic_field_12112024 masteruser
+473; 1259 188484 TABLE master dynamic_field_2 masteruser
+5856; 0 0 ACL master TABLE dynamic_field_2 masteruser
+470; 1259 24757 TABLE master dynamic_field_bkb masteruser
+5857; 0 0 ACL master TABLE dynamic_field_bkb masteruser
+478; 1259 1051057 TABLE master dynamic_field_uat masteruser
+5858; 0 0 ACL master TABLE dynamic_field_uat masteruser
+415; 1259 22304 TABLE master foundational_trust_provider masteruser
+5859; 0 0 ACL master TABLE foundational_trust_provider masteruser
+416; 1259 22310 TABLE master foundational_trust_provider_h masteruser
+5860; 0 0 ACL master TABLE foundational_trust_provider_h masteruser
+417; 1259 22316 TABLE master gender masteruser
+5861; 0 0 COMMENT master TABLE gender masteruser
+5862; 0 0 COMMENT master COLUMN gender.code masteruser
+5863; 0 0 COMMENT master COLUMN gender.name masteruser
+5864; 0 0 COMMENT master COLUMN gender.lang_code masteruser
+5865; 0 0 COMMENT master COLUMN gender.is_active masteruser
+5866; 0 0 COMMENT master COLUMN gender.cr_by masteruser
+5867; 0 0 COMMENT master COLUMN gender.cr_dtimes masteruser
+5868; 0 0 COMMENT master COLUMN gender.upd_by masteruser
+5869; 0 0 COMMENT master COLUMN gender.upd_dtimes masteruser
+5870; 0 0 COMMENT master COLUMN gender.is_deleted masteruser
+5871; 0 0 COMMENT master COLUMN gender.del_dtimes masteruser
+5872; 0 0 ACL master TABLE gender masteruser
+418; 1259 22323 TABLE master global_param masteruser
+5873; 0 0 COMMENT master TABLE global_param masteruser
+5874; 0 0 COMMENT master COLUMN global_param.code masteruser
+5875; 0 0 COMMENT master COLUMN global_param.name masteruser
+5876; 0 0 COMMENT master COLUMN global_param.val masteruser
+5877; 0 0 COMMENT master COLUMN global_param.typ masteruser
+5878; 0 0 COMMENT master COLUMN global_param.lang_code masteruser
+5879; 0 0 COMMENT master COLUMN global_param.is_active masteruser
+5880; 0 0 COMMENT master COLUMN global_param.cr_by masteruser
+5881; 0 0 COMMENT master COLUMN global_param.cr_dtimes masteruser
+5882; 0 0 COMMENT master COLUMN global_param.upd_by masteruser
+5883; 0 0 COMMENT master COLUMN global_param.upd_dtimes masteruser
+5884; 0 0 COMMENT master COLUMN global_param.is_deleted masteruser
+5885; 0 0 COMMENT master COLUMN global_param.del_dtimes masteruser
+5886; 0 0 ACL master TABLE global_param masteruser
+419; 1259 22330 TABLE master id_type masteruser
+5887; 0 0 COMMENT master TABLE id_type masteruser
+5888; 0 0 COMMENT master COLUMN id_type.code masteruser
+5889; 0 0 COMMENT master COLUMN id_type.name masteruser
+5890; 0 0 COMMENT master COLUMN id_type.descr masteruser
+5891; 0 0 COMMENT master COLUMN id_type.lang_code masteruser
+5892; 0 0 COMMENT master COLUMN id_type.is_active masteruser
+5893; 0 0 COMMENT master COLUMN id_type.cr_by masteruser
+5894; 0 0 COMMENT master COLUMN id_type.cr_dtimes masteruser
+5895; 0 0 COMMENT master COLUMN id_type.upd_by masteruser
+5896; 0 0 COMMENT master COLUMN id_type.upd_dtimes masteruser
+5897; 0 0 COMMENT master COLUMN id_type.is_deleted masteruser
+5898; 0 0 COMMENT master COLUMN id_type.del_dtimes masteruser
+5899; 0 0 ACL master TABLE id_type masteruser
+420; 1259 22337 TABLE master identity_schema masteruser
+5900; 0 0 COMMENT master TABLE identity_schema masteruser
+5901; 0 0 COMMENT master COLUMN identity_schema.id masteruser
+5902; 0 0 COMMENT master COLUMN identity_schema.id_version masteruser
+5903; 0 0 COMMENT master COLUMN identity_schema.title masteruser
+5904; 0 0 COMMENT master COLUMN identity_schema.description masteruser
+5905; 0 0 COMMENT master COLUMN identity_schema.id_attr_json masteruser
+5906; 0 0 COMMENT master COLUMN identity_schema.schema_json masteruser
+5907; 0 0 COMMENT master COLUMN identity_schema.status_code masteruser
+5908; 0 0 COMMENT master COLUMN identity_schema.add_props masteruser
+5909; 0 0 COMMENT master COLUMN identity_schema.effective_from masteruser
+5910; 0 0 COMMENT master COLUMN identity_schema.lang_code masteruser
+5911; 0 0 COMMENT master COLUMN identity_schema.is_active masteruser
+5912; 0 0 COMMENT master COLUMN identity_schema.cr_by masteruser
+5913; 0 0 COMMENT master COLUMN identity_schema.cr_dtimes masteruser
+5914; 0 0 COMMENT master COLUMN identity_schema.upd_by masteruser
+5915; 0 0 COMMENT master COLUMN identity_schema.upd_dtimes masteruser
+5916; 0 0 COMMENT master COLUMN identity_schema.is_deleted masteruser
+5917; 0 0 COMMENT master COLUMN identity_schema.del_dtimes masteruser
+5918; 0 0 ACL master TABLE identity_schema masteruser
+421; 1259 22344 TABLE master individual_type masteruser
+5919; 0 0 COMMENT master TABLE individual_type masteruser
+5920; 0 0 COMMENT master COLUMN individual_type.code masteruser
+5921; 0 0 COMMENT master COLUMN individual_type.name masteruser
+5922; 0 0 COMMENT master COLUMN individual_type.lang_code masteruser
+5923; 0 0 COMMENT master COLUMN individual_type.is_active masteruser
+5924; 0 0 COMMENT master COLUMN individual_type.cr_by masteruser
+5925; 0 0 COMMENT master COLUMN individual_type.cr_dtimes masteruser
+5926; 0 0 COMMENT master COLUMN individual_type.upd_by masteruser
+5927; 0 0 COMMENT master COLUMN individual_type.upd_dtimes masteruser
+5928; 0 0 COMMENT master COLUMN individual_type.is_deleted masteruser
+5929; 0 0 COMMENT master COLUMN individual_type.del_dtimes masteruser
+5930; 0 0 ACL master TABLE individual_type masteruser
+422; 1259 22351 TABLE master introducer_type masteruser
+5931; 0 0 COMMENT master TABLE introducer_type masteruser
+5932; 0 0 COMMENT master COLUMN introducer_type.code masteruser
+5933; 0 0 COMMENT master COLUMN introducer_type.name masteruser
+5934; 0 0 COMMENT master COLUMN introducer_type.descr masteruser
+5935; 0 0 COMMENT master COLUMN introducer_type.lang_code masteruser
+5936; 0 0 COMMENT master COLUMN introducer_type.is_active masteruser
+5937; 0 0 COMMENT master COLUMN introducer_type.cr_by masteruser
+5938; 0 0 COMMENT master COLUMN introducer_type.cr_dtimes masteruser
+5939; 0 0 COMMENT master COLUMN introducer_type.upd_by masteruser
+5940; 0 0 COMMENT master COLUMN introducer_type.upd_dtimes masteruser
+5941; 0 0 COMMENT master COLUMN introducer_type.is_deleted masteruser
+5942; 0 0 COMMENT master COLUMN introducer_type.del_dtimes masteruser
+5943; 0 0 ACL master TABLE introducer_type masteruser
+423; 1259 22358 TABLE master language masteruser
+5944; 0 0 COMMENT master TABLE language masteruser
+5945; 0 0 COMMENT master COLUMN language.code masteruser
+5946; 0 0 COMMENT master COLUMN language.name masteruser
+5947; 0 0 COMMENT master COLUMN language.family masteruser
+5948; 0 0 COMMENT master COLUMN language.native_name masteruser
+5949; 0 0 COMMENT master COLUMN language.is_active masteruser
+5950; 0 0 COMMENT master COLUMN language.cr_by masteruser
+5951; 0 0 COMMENT master COLUMN language.cr_dtimes masteruser
+5952; 0 0 COMMENT master COLUMN language.upd_by masteruser
+5953; 0 0 COMMENT master COLUMN language.upd_dtimes masteruser
+5954; 0 0 COMMENT master COLUMN language.is_deleted masteruser
+5955; 0 0 COMMENT master COLUMN language.del_dtimes masteruser
+5956; 0 0 ACL master TABLE language masteruser
+424; 1259 22365 TABLE master loc_hierarchy_list masteruser
+5957; 0 0 COMMENT master TABLE loc_hierarchy_list masteruser
+5958; 0 0 COMMENT master COLUMN loc_hierarchy_list.hierarchy_level masteruser
+5959; 0 0 COMMENT master COLUMN loc_hierarchy_list.hierarchy_level_name masteruser
+5960; 0 0 COMMENT master COLUMN loc_hierarchy_list.lang_code masteruser
+5961; 0 0 COMMENT master COLUMN loc_hierarchy_list.is_active masteruser
+5962; 0 0 COMMENT master COLUMN loc_hierarchy_list.cr_by masteruser
+5963; 0 0 COMMENT master COLUMN loc_hierarchy_list.cr_dtimes masteruser
+5964; 0 0 COMMENT master COLUMN loc_hierarchy_list.upd_by masteruser
+5965; 0 0 COMMENT master COLUMN loc_hierarchy_list.upd_dtimes masteruser
+5966; 0 0 COMMENT master COLUMN loc_hierarchy_list.is_deleted masteruser
+5967; 0 0 COMMENT master COLUMN loc_hierarchy_list.del_dtimes masteruser
+5968; 0 0 ACL master TABLE loc_hierarchy_list masteruser
+425; 1259 22372 TABLE master loc_holiday masteruser
+5969; 0 0 COMMENT master TABLE loc_holiday masteruser
+5970; 0 0 COMMENT master COLUMN loc_holiday.id masteruser
+5971; 0 0 COMMENT master COLUMN loc_holiday.location_code masteruser
+5972; 0 0 COMMENT master COLUMN loc_holiday.holiday_date masteruser
+5973; 0 0 COMMENT master COLUMN loc_holiday.holiday_name masteruser
+5974; 0 0 COMMENT master COLUMN loc_holiday.holiday_desc masteruser
+5975; 0 0 COMMENT master COLUMN loc_holiday.lang_code masteruser
+5976; 0 0 COMMENT master COLUMN loc_holiday.is_active masteruser
+5977; 0 0 COMMENT master COLUMN loc_holiday.cr_by masteruser
+5978; 0 0 COMMENT master COLUMN loc_holiday.cr_dtimes masteruser
+5979; 0 0 COMMENT master COLUMN loc_holiday.upd_by masteruser
+5980; 0 0 COMMENT master COLUMN loc_holiday.upd_dtimes masteruser
+5981; 0 0 COMMENT master COLUMN loc_holiday.is_deleted masteruser
+5982; 0 0 COMMENT master COLUMN loc_holiday.del_dtimes masteruser
+5983; 0 0 ACL master TABLE loc_holiday masteruser
+474; 1259 1050042 TABLE master location-bkp-01102024 masteruser
+5984; 0 0 ACL master TABLE "location-bkp-01102024" masteruser
+426; 1259 22379 TABLE master location-bkp-25112024 masteruser
+5985; 0 0 COMMENT master TABLE "location-bkp-25112024" masteruser
+5986; 0 0 COMMENT master COLUMN "location-bkp-25112024".code masteruser
+5987; 0 0 COMMENT master COLUMN "location-bkp-25112024".name masteruser
+5988; 0 0 COMMENT master COLUMN "location-bkp-25112024".hierarchy_level masteruser
+5989; 0 0 COMMENT master COLUMN "location-bkp-25112024".hierarchy_level_name masteruser
+5990; 0 0 COMMENT master COLUMN "location-bkp-25112024".parent_loc_code masteruser
+5991; 0 0 COMMENT master COLUMN "location-bkp-25112024".lang_code masteruser
+5992; 0 0 COMMENT master COLUMN "location-bkp-25112024".is_active masteruser
+5993; 0 0 COMMENT master COLUMN "location-bkp-25112024".cr_by masteruser
+5994; 0 0 COMMENT master COLUMN "location-bkp-25112024".cr_dtimes masteruser
+5995; 0 0 COMMENT master COLUMN "location-bkp-25112024".upd_by masteruser
+5996; 0 0 COMMENT master COLUMN "location-bkp-25112024".upd_dtimes masteruser
+5997; 0 0 COMMENT master COLUMN "location-bkp-25112024".is_deleted masteruser
+5998; 0 0 COMMENT master COLUMN "location-bkp-25112024".del_dtimes masteruser
+5999; 0 0 ACL master TABLE "location-bkp-25112024" masteruser
+472; 1259 24985 TABLE master location-old masteruser
+6000; 0 0 ACL master TABLE "location-old" masteruser
+482; 1259 3280775 TABLE master location_27122024 masteruser
+6001; 0 0 ACL master TABLE location_27122024 masteruser
+484; 1259 4983686 VIEW master locations jfassinou
+6002; 0 0 ACL master TABLE locations jfassinou
+427; 1259 22386 TABLE master machine_master masteruser
+6003; 0 0 COMMENT master TABLE machine_master masteruser
+6004; 0 0 COMMENT master COLUMN machine_master.id masteruser
+6005; 0 0 COMMENT master COLUMN machine_master.name masteruser
+6006; 0 0 COMMENT master COLUMN machine_master.mac_address masteruser
+6007; 0 0 COMMENT master COLUMN machine_master.serial_num masteruser
+6008; 0 0 COMMENT master COLUMN machine_master.ip_address masteruser
+6009; 0 0 COMMENT master COLUMN machine_master.validity_end_dtimes masteruser
+6010; 0 0 COMMENT master COLUMN machine_master.mspec_id masteruser
+6011; 0 0 COMMENT master COLUMN machine_master.public_key masteruser
+6012; 0 0 COMMENT master COLUMN machine_master.key_index masteruser
+6013; 0 0 COMMENT master COLUMN machine_master.sign_public_key masteruser
+6014; 0 0 COMMENT master COLUMN machine_master.sign_key_index masteruser
+6015; 0 0 COMMENT master COLUMN machine_master.zone_code masteruser
+6016; 0 0 COMMENT master COLUMN machine_master.regcntr_id masteruser
+6017; 0 0 COMMENT master COLUMN machine_master.lang_code masteruser
+6018; 0 0 COMMENT master COLUMN machine_master.is_active masteruser
+6019; 0 0 COMMENT master COLUMN machine_master.cr_by masteruser
+6020; 0 0 COMMENT master COLUMN machine_master.cr_dtimes masteruser
+6021; 0 0 COMMENT master COLUMN machine_master.upd_by masteruser
+6022; 0 0 COMMENT master COLUMN machine_master.upd_dtimes masteruser
+6023; 0 0 COMMENT master COLUMN machine_master.is_deleted masteruser
+6024; 0 0 COMMENT master COLUMN machine_master.del_dtimes masteruser
+6025; 0 0 ACL master TABLE machine_master masteruser
+471; 1259 24802 TABLE master machine_master_bkp masteruser
+6026; 0 0 ACL master TABLE machine_master_bkp masteruser
+428; 1259 22393 TABLE master machine_master_h masteruser
+6027; 0 0 COMMENT master TABLE machine_master_h masteruser
+6028; 0 0 COMMENT master COLUMN machine_master_h.id masteruser
+6029; 0 0 COMMENT master COLUMN machine_master_h.name masteruser
+6030; 0 0 COMMENT master COLUMN machine_master_h.mac_address masteruser
+6031; 0 0 COMMENT master COLUMN machine_master_h.serial_num masteruser
+6032; 0 0 COMMENT master COLUMN machine_master_h.ip_address masteruser
+6033; 0 0 COMMENT master COLUMN machine_master_h.validity_end_dtimes masteruser
+6034; 0 0 COMMENT master COLUMN machine_master_h.mspec_id masteruser
+6035; 0 0 COMMENT master COLUMN machine_master_h.public_key masteruser
+6036; 0 0 COMMENT master COLUMN machine_master_h.key_index masteruser
+6037; 0 0 COMMENT master COLUMN machine_master_h.sign_public_key masteruser
+6038; 0 0 COMMENT master COLUMN machine_master_h.sign_key_index masteruser
+6039; 0 0 COMMENT master COLUMN machine_master_h.zone_code masteruser
+6040; 0 0 COMMENT master COLUMN machine_master_h.regcntr_id masteruser
+6041; 0 0 COMMENT master COLUMN machine_master_h.lang_code masteruser
+6042; 0 0 COMMENT master COLUMN machine_master_h.is_active masteruser
+6043; 0 0 COMMENT master COLUMN machine_master_h.cr_by masteruser
+6044; 0 0 COMMENT master COLUMN machine_master_h.cr_dtimes masteruser
+6045; 0 0 COMMENT master COLUMN machine_master_h.upd_by masteruser
+6046; 0 0 COMMENT master COLUMN machine_master_h.upd_dtimes masteruser
+6047; 0 0 COMMENT master COLUMN machine_master_h.is_deleted masteruser
+6048; 0 0 COMMENT master COLUMN machine_master_h.del_dtimes masteruser
+6049; 0 0 COMMENT master COLUMN machine_master_h.eff_dtimes masteruser
+6050; 0 0 ACL master TABLE machine_master_h masteruser
+429; 1259 22400 TABLE master machine_spec masteruser
+6051; 0 0 COMMENT master TABLE machine_spec masteruser
+6052; 0 0 COMMENT master COLUMN machine_spec.id masteruser
+6053; 0 0 COMMENT master COLUMN machine_spec.name masteruser
+6054; 0 0 COMMENT master COLUMN machine_spec.brand masteruser
+6055; 0 0 COMMENT master COLUMN machine_spec.model masteruser
+6056; 0 0 COMMENT master COLUMN machine_spec.mtyp_code masteruser
+6057; 0 0 COMMENT master COLUMN machine_spec.min_driver_ver masteruser
+6058; 0 0 COMMENT master COLUMN machine_spec.descr masteruser
+6059; 0 0 COMMENT master COLUMN machine_spec.lang_code masteruser
+6060; 0 0 COMMENT master COLUMN machine_spec.is_active masteruser
+6061; 0 0 COMMENT master COLUMN machine_spec.cr_by masteruser
+6062; 0 0 COMMENT master COLUMN machine_spec.cr_dtimes masteruser
+6063; 0 0 COMMENT master COLUMN machine_spec.upd_by masteruser
+6064; 0 0 COMMENT master COLUMN machine_spec.upd_dtimes masteruser
+6065; 0 0 COMMENT master COLUMN machine_spec.is_deleted masteruser
+6066; 0 0 COMMENT master COLUMN machine_spec.del_dtimes masteruser
+6067; 0 0 ACL master TABLE machine_spec masteruser
+430; 1259 22407 TABLE master machine_type masteruser
+6068; 0 0 COMMENT master TABLE machine_type masteruser
+6069; 0 0 COMMENT master COLUMN machine_type.code masteruser
+6070; 0 0 COMMENT master COLUMN machine_type.name masteruser
+6071; 0 0 COMMENT master COLUMN machine_type.descr masteruser
+6072; 0 0 COMMENT master COLUMN machine_type.lang_code masteruser
+6073; 0 0 COMMENT master COLUMN machine_type.is_active masteruser
+6074; 0 0 COMMENT master COLUMN machine_type.cr_by masteruser
+6075; 0 0 COMMENT master COLUMN machine_type.cr_dtimes masteruser
+6076; 0 0 COMMENT master COLUMN machine_type.upd_by masteruser
+6077; 0 0 COMMENT master COLUMN machine_type.upd_dtimes masteruser
+6078; 0 0 COMMENT master COLUMN machine_type.is_deleted masteruser
+6079; 0 0 COMMENT master COLUMN machine_type.del_dtimes masteruser
+6080; 0 0 ACL master TABLE machine_type masteruser
+431; 1259 22414 TABLE master message_list masteruser
+6081; 0 0 COMMENT master TABLE message_list masteruser
+6082; 0 0 COMMENT master COLUMN message_list.code masteruser
+6083; 0 0 COMMENT master COLUMN message_list.message masteruser
+6084; 0 0 COMMENT master COLUMN message_list.descr masteruser
+6085; 0 0 COMMENT master COLUMN message_list.msg_type masteruser
+6086; 0 0 COMMENT master COLUMN message_list.msg_grp masteruser
+6087; 0 0 COMMENT master COLUMN message_list.lang_code masteruser
+6088; 0 0 COMMENT master COLUMN message_list.is_active masteruser
+6089; 0 0 COMMENT master COLUMN message_list.cr_by masteruser
+6090; 0 0 COMMENT master COLUMN message_list.cr_dtimes masteruser
+6091; 0 0 COMMENT master COLUMN message_list.upd_by masteruser
+6092; 0 0 COMMENT master COLUMN message_list.upd_dtimes masteruser
+6093; 0 0 COMMENT master COLUMN message_list.is_deleted masteruser
+6094; 0 0 COMMENT master COLUMN message_list.del_dtimes masteruser
+6095; 0 0 ACL master TABLE message_list masteruser
+432; 1259 22421 TABLE master mid_seq masteruser
+6096; 0 0 COMMENT master TABLE mid_seq masteruser
+6097; 0 0 COMMENT master COLUMN mid_seq.curr_seq_no masteruser
+6098; 0 0 COMMENT master COLUMN mid_seq.cr_by masteruser
+6099; 0 0 COMMENT master COLUMN mid_seq.cr_dtimes masteruser
+6100; 0 0 COMMENT master COLUMN mid_seq.upd_by masteruser
+6101; 0 0 COMMENT master COLUMN mid_seq.upd_dtimes masteruser
+6102; 0 0 ACL master TABLE mid_seq masteruser
+433; 1259 22427 TABLE master module_detail masteruser
+6103; 0 0 COMMENT master TABLE module_detail masteruser
+6104; 0 0 COMMENT master COLUMN module_detail.id masteruser
+6105; 0 0 COMMENT master COLUMN module_detail.name masteruser
+6106; 0 0 COMMENT master COLUMN module_detail.descr masteruser
+6107; 0 0 COMMENT master COLUMN module_detail.lang_code masteruser
+6108; 0 0 COMMENT master COLUMN module_detail.is_active masteruser
+6109; 0 0 COMMENT master COLUMN module_detail.cr_by masteruser
+6110; 0 0 COMMENT master COLUMN module_detail.cr_dtimes masteruser
+6111; 0 0 COMMENT master COLUMN module_detail.upd_by masteruser
+6112; 0 0 COMMENT master COLUMN module_detail.upd_dtimes masteruser
+6113; 0 0 COMMENT master COLUMN module_detail.is_deleted masteruser
+6114; 0 0 COMMENT master COLUMN module_detail.del_dtimes masteruser
+6115; 0 0 ACL master TABLE module_detail masteruser
+434; 1259 22434 TABLE master mosip_device_service masteruser
+6116; 0 0 ACL master TABLE mosip_device_service masteruser
+435; 1259 22440 TABLE master mosip_device_service_h masteruser
+6117; 0 0 ACL master TABLE mosip_device_service_h masteruser
+487; 1259 4983698 VIEW master prefectures jfassinou
+6118; 0 0 ACL master TABLE prefectures jfassinou
+490; 1259 26136093 TABLE master printing_orders_centers masteruser
+436; 1259 22446 TABLE master process_list masteruser
+6119; 0 0 COMMENT master TABLE process_list masteruser
+6120; 0 0 COMMENT master COLUMN process_list.id masteruser
+6121; 0 0 COMMENT master COLUMN process_list.name masteruser
+6122; 0 0 COMMENT master COLUMN process_list.descr masteruser
+6123; 0 0 COMMENT master COLUMN process_list.lang_code masteruser
+6124; 0 0 COMMENT master COLUMN process_list.is_active masteruser
+6125; 0 0 COMMENT master COLUMN process_list.cr_by masteruser
+6126; 0 0 COMMENT master COLUMN process_list.cr_dtimes masteruser
+6127; 0 0 COMMENT master COLUMN process_list.upd_by masteruser
+6128; 0 0 COMMENT master COLUMN process_list.upd_dtimes masteruser
+6129; 0 0 COMMENT master COLUMN process_list.is_deleted masteruser
+6130; 0 0 COMMENT master COLUMN process_list.del_dtimes masteruser
+6131; 0 0 ACL master TABLE process_list masteruser
+437; 1259 22453 TABLE master rcid_seq masteruser
+6132; 0 0 COMMENT master TABLE rcid_seq masteruser
+6133; 0 0 COMMENT master COLUMN rcid_seq.curr_seq_no masteruser
+6134; 0 0 COMMENT master COLUMN rcid_seq.cr_by masteruser
+6135; 0 0 COMMENT master COLUMN rcid_seq.cr_dtimes masteruser
+6136; 0 0 COMMENT master COLUMN rcid_seq.upd_by masteruser
+6137; 0 0 COMMENT master COLUMN rcid_seq.upd_dtimes masteruser
+6138; 0 0 ACL master TABLE rcid_seq masteruser
+438; 1259 22459 TABLE master reason_category masteruser
+6139; 0 0 COMMENT master TABLE reason_category masteruser
+6140; 0 0 COMMENT master COLUMN reason_category.code masteruser
+6141; 0 0 COMMENT master COLUMN reason_category.name masteruser
+6142; 0 0 COMMENT master COLUMN reason_category.descr masteruser
+6143; 0 0 COMMENT master COLUMN reason_category.lang_code masteruser
+6144; 0 0 COMMENT master COLUMN reason_category.is_active masteruser
+6145; 0 0 COMMENT master COLUMN reason_category.cr_by masteruser
+6146; 0 0 COMMENT master COLUMN reason_category.cr_dtimes masteruser
+6147; 0 0 COMMENT master COLUMN reason_category.upd_by masteruser
+6148; 0 0 COMMENT master COLUMN reason_category.upd_dtimes masteruser
+6149; 0 0 COMMENT master COLUMN reason_category.is_deleted masteruser
+6150; 0 0 COMMENT master COLUMN reason_category.del_dtimes masteruser
+6151; 0 0 ACL master TABLE reason_category masteruser
+439; 1259 22466 TABLE master reason_list masteruser
+6152; 0 0 COMMENT master TABLE reason_list masteruser
+6153; 0 0 COMMENT master COLUMN reason_list.code masteruser
+6154; 0 0 COMMENT master COLUMN reason_list.name masteruser
+6155; 0 0 COMMENT master COLUMN reason_list.descr masteruser
+6156; 0 0 COMMENT master COLUMN reason_list.rsncat_code masteruser
+6157; 0 0 COMMENT master COLUMN reason_list.lang_code masteruser
+6158; 0 0 COMMENT master COLUMN reason_list.is_active masteruser
+6159; 0 0 COMMENT master COLUMN reason_list.cr_by masteruser
+6160; 0 0 COMMENT master COLUMN reason_list.cr_dtimes masteruser
+6161; 0 0 COMMENT master COLUMN reason_list.upd_by masteruser
+6162; 0 0 COMMENT master COLUMN reason_list.upd_dtimes masteruser
+6163; 0 0 COMMENT master COLUMN reason_list.is_deleted masteruser
+6164; 0 0 COMMENT master COLUMN reason_list.del_dtimes masteruser
+6165; 0 0 ACL master TABLE reason_list masteruser
+440; 1259 22473 TABLE master reg_center_type masteruser
+6166; 0 0 COMMENT master TABLE reg_center_type masteruser
+6167; 0 0 COMMENT master COLUMN reg_center_type.code masteruser
+6168; 0 0 COMMENT master COLUMN reg_center_type.name masteruser
+6169; 0 0 COMMENT master COLUMN reg_center_type.descr masteruser
+6170; 0 0 COMMENT master COLUMN reg_center_type.lang_code masteruser
+6171; 0 0 COMMENT master COLUMN reg_center_type.is_active masteruser
+6172; 0 0 COMMENT master COLUMN reg_center_type.cr_by masteruser
+6173; 0 0 COMMENT master COLUMN reg_center_type.cr_dtimes masteruser
+6174; 0 0 COMMENT master COLUMN reg_center_type.upd_by masteruser
+6175; 0 0 COMMENT master COLUMN reg_center_type.upd_dtimes masteruser
+6176; 0 0 COMMENT master COLUMN reg_center_type.is_deleted masteruser
+6177; 0 0 COMMENT master COLUMN reg_center_type.del_dtimes masteruser
+6178; 0 0 ACL master TABLE reg_center_type masteruser
+441; 1259 22480 TABLE master reg_device_sub_type masteruser
+6179; 0 0 ACL master TABLE reg_device_sub_type masteruser
+442; 1259 22486 TABLE master reg_device_type masteruser
+6180; 0 0 ACL master TABLE reg_device_type masteruser
+443; 1259 22492 TABLE master reg_exceptional_holiday masteruser
+6181; 0 0 COMMENT master TABLE reg_exceptional_holiday masteruser
+6182; 0 0 COMMENT master COLUMN reg_exceptional_holiday.regcntr_id masteruser
+6183; 0 0 COMMENT master COLUMN reg_exceptional_holiday.hol_date masteruser
+6184; 0 0 COMMENT master COLUMN reg_exceptional_holiday.hol_name masteruser
+6185; 0 0 COMMENT master COLUMN reg_exceptional_holiday.hol_reason masteruser
+6186; 0 0 COMMENT master COLUMN reg_exceptional_holiday.lang_code masteruser
+6187; 0 0 COMMENT master COLUMN reg_exceptional_holiday.is_active masteruser
+6188; 0 0 COMMENT master COLUMN reg_exceptional_holiday.cr_by masteruser
+6189; 0 0 COMMENT master COLUMN reg_exceptional_holiday.cr_dtimes masteruser
+6190; 0 0 COMMENT master COLUMN reg_exceptional_holiday.upd_by masteruser
+6191; 0 0 COMMENT master COLUMN reg_exceptional_holiday.upd_dtimes masteruser
+6192; 0 0 COMMENT master COLUMN reg_exceptional_holiday.is_deleted masteruser
+6193; 0 0 COMMENT master COLUMN reg_exceptional_holiday.del_dtimes masteruser
+6194; 0 0 ACL master TABLE reg_exceptional_holiday masteruser
+444; 1259 22499 TABLE master reg_working_nonworking masteruser
+6195; 0 0 COMMENT master TABLE reg_working_nonworking masteruser
+6196; 0 0 COMMENT master COLUMN reg_working_nonworking.regcntr_id masteruser
+6197; 0 0 COMMENT master COLUMN reg_working_nonworking.day_code masteruser
+6198; 0 0 COMMENT master COLUMN reg_working_nonworking.lang_code masteruser
+6199; 0 0 COMMENT master COLUMN reg_working_nonworking.is_working masteruser
+6200; 0 0 COMMENT master COLUMN reg_working_nonworking.is_active masteruser
+6201; 0 0 COMMENT master COLUMN reg_working_nonworking.cr_by masteruser
+6202; 0 0 COMMENT master COLUMN reg_working_nonworking.cr_dtimes masteruser
+6203; 0 0 COMMENT master COLUMN reg_working_nonworking.upd_by masteruser
+6204; 0 0 COMMENT master COLUMN reg_working_nonworking.upd_dtimes masteruser
+6205; 0 0 COMMENT master COLUMN reg_working_nonworking.is_deleted masteruser
+6206; 0 0 COMMENT master COLUMN reg_working_nonworking.del_dtimes masteruser
+6207; 0 0 ACL master TABLE reg_working_nonworking masteruser
+445; 1259 22506 TABLE master registered_device_master masteruser
+6208; 0 0 ACL master TABLE registered_device_master masteruser
+446; 1259 22512 TABLE master registered_device_master_h masteruser
+6209; 0 0 ACL master TABLE registered_device_master_h masteruser
+479; 1259 1051377 TABLE master registration_center_21112024 masteruser
+6210; 0 0 COMMENT master COLUMN registration_center_21112024.id masteruser
+6211; 0 0 COMMENT master COLUMN registration_center_21112024.name masteruser
+6212; 0 0 COMMENT master COLUMN registration_center_21112024.cntrtyp_code masteruser
+6213; 0 0 COMMENT master COLUMN registration_center_21112024.addr_line1 masteruser
+6214; 0 0 COMMENT master COLUMN registration_center_21112024.addr_line2 masteruser
+6215; 0 0 COMMENT master COLUMN registration_center_21112024.addr_line3 masteruser
+6216; 0 0 COMMENT master COLUMN registration_center_21112024.latitude masteruser
+6217; 0 0 COMMENT master COLUMN registration_center_21112024.longitude masteruser
+6218; 0 0 COMMENT master COLUMN registration_center_21112024.location_code masteruser
+6219; 0 0 COMMENT master COLUMN registration_center_21112024.contact_phone masteruser
+6220; 0 0 COMMENT master COLUMN registration_center_21112024.contact_person masteruser
+6221; 0 0 COMMENT master COLUMN registration_center_21112024.number_of_kiosks masteruser
+6222; 0 0 COMMENT master COLUMN registration_center_21112024.working_hours masteruser
+6223; 0 0 COMMENT master COLUMN registration_center_21112024.per_kiosk_process_time masteruser
+6224; 0 0 COMMENT master COLUMN registration_center_21112024.center_start_time masteruser
+6225; 0 0 COMMENT master COLUMN registration_center_21112024.center_end_time masteruser
+6226; 0 0 COMMENT master COLUMN registration_center_21112024.lunch_start_time masteruser
+6227; 0 0 COMMENT master COLUMN registration_center_21112024.lunch_end_time masteruser
+6228; 0 0 COMMENT master COLUMN registration_center_21112024.time_zone masteruser
+6229; 0 0 COMMENT master COLUMN registration_center_21112024.holiday_loc_code masteruser
+6230; 0 0 COMMENT master COLUMN registration_center_21112024.zone_code masteruser
+6231; 0 0 COMMENT master COLUMN registration_center_21112024.lang_code masteruser
+6232; 0 0 COMMENT master COLUMN registration_center_21112024.is_active masteruser
+6233; 0 0 COMMENT master COLUMN registration_center_21112024.cr_by masteruser
+6234; 0 0 COMMENT master COLUMN registration_center_21112024.cr_dtimes masteruser
+6235; 0 0 COMMENT master COLUMN registration_center_21112024.upd_by masteruser
+6236; 0 0 COMMENT master COLUMN registration_center_21112024.upd_dtimes masteruser
+6237; 0 0 COMMENT master COLUMN registration_center_21112024.is_deleted masteruser
+6238; 0 0 COMMENT master COLUMN registration_center_21112024.del_dtimes masteruser
+6239; 0 0 ACL master TABLE registration_center_21112024 masteruser
+475; 1259 1050064 TABLE master registration_center_bkp_0110024 masteruser
+6240; 0 0 ACL master TABLE registration_center_bkp_0110024 masteruser
+448; 1259 22525 TABLE master registration_center_h masteruser
+6241; 0 0 COMMENT master TABLE registration_center_h masteruser
+6242; 0 0 COMMENT master COLUMN registration_center_h.id masteruser
+6243; 0 0 COMMENT master COLUMN registration_center_h.name masteruser
+6244; 0 0 COMMENT master COLUMN registration_center_h.cntrtyp_code masteruser
+6245; 0 0 COMMENT master COLUMN registration_center_h.addr_line1 masteruser
+6246; 0 0 COMMENT master COLUMN registration_center_h.addr_line2 masteruser
+6247; 0 0 COMMENT master COLUMN registration_center_h.addr_line3 masteruser
+6248; 0 0 COMMENT master COLUMN registration_center_h.latitude masteruser
+6249; 0 0 COMMENT master COLUMN registration_center_h.longitude masteruser
+6250; 0 0 COMMENT master COLUMN registration_center_h.location_code masteruser
+6251; 0 0 COMMENT master COLUMN registration_center_h.contact_phone masteruser
+6252; 0 0 COMMENT master COLUMN registration_center_h.contact_person masteruser
+6253; 0 0 COMMENT master COLUMN registration_center_h.number_of_kiosks masteruser
+6254; 0 0 COMMENT master COLUMN registration_center_h.working_hours masteruser
+6255; 0 0 COMMENT master COLUMN registration_center_h.per_kiosk_process_time masteruser
+6256; 0 0 COMMENT master COLUMN registration_center_h.center_start_time masteruser
+6257; 0 0 COMMENT master COLUMN registration_center_h.center_end_time masteruser
+6258; 0 0 COMMENT master COLUMN registration_center_h.lunch_start_time masteruser
+6259; 0 0 COMMENT master COLUMN registration_center_h.lunch_end_time masteruser
+6260; 0 0 COMMENT master COLUMN registration_center_h.time_zone masteruser
+6261; 0 0 COMMENT master COLUMN registration_center_h.holiday_loc_code masteruser
+6262; 0 0 COMMENT master COLUMN registration_center_h.zone_code masteruser
+6263; 0 0 COMMENT master COLUMN registration_center_h.lang_code masteruser
+6264; 0 0 COMMENT master COLUMN registration_center_h.is_active masteruser
+6265; 0 0 COMMENT master COLUMN registration_center_h.cr_by masteruser
+6266; 0 0 COMMENT master COLUMN registration_center_h.cr_dtimes masteruser
+6267; 0 0 COMMENT master COLUMN registration_center_h.upd_by masteruser
+6268; 0 0 COMMENT master COLUMN registration_center_h.upd_dtimes masteruser
+6269; 0 0 COMMENT master COLUMN registration_center_h.is_deleted masteruser
+6270; 0 0 COMMENT master COLUMN registration_center_h.del_dtimes masteruser
+6271; 0 0 COMMENT master COLUMN registration_center_h.eff_dtimes masteruser
+6272; 0 0 ACL master TABLE registration_center_h masteruser
+489; 1259 7661577 TABLE master registration_centers_zone1_zone2 masteruser
+6273; 0 0 ACL master TABLE registration_centers_zone1_zone2 masteruser
+449; 1259 22532 TABLE master role_list masteruser
+6274; 0 0 COMMENT master TABLE role_list masteruser
+6275; 0 0 COMMENT master COLUMN role_list.code masteruser
+6276; 0 0 COMMENT master COLUMN role_list.descr masteruser
+6277; 0 0 COMMENT master COLUMN role_list.lang_code masteruser
+6278; 0 0 COMMENT master COLUMN role_list.is_active masteruser
+6279; 0 0 COMMENT master COLUMN role_list.cr_by masteruser
+6280; 0 0 COMMENT master COLUMN role_list.cr_dtimes masteruser
+6281; 0 0 COMMENT master COLUMN role_list.upd_by masteruser
+6282; 0 0 COMMENT master COLUMN role_list.upd_dtimes masteruser
+6283; 0 0 COMMENT master COLUMN role_list.is_deleted masteruser
+6284; 0 0 COMMENT master COLUMN role_list.del_dtimes masteruser
+6285; 0 0 ACL master TABLE role_list masteruser
+450; 1259 22539 TABLE master schema_def masteruser
+6286; 0 0 ACL master TABLE schema_def masteruser
+451; 1259 22545 TABLE master schema_definition masteruser
+6287; 0 0 COMMENT master TABLE schema_definition masteruser
+6288; 0 0 COMMENT master COLUMN schema_definition.id masteruser
+6289; 0 0 COMMENT master COLUMN schema_definition.def_type masteruser
+6290; 0 0 COMMENT master COLUMN schema_definition.def_name masteruser
+6291; 0 0 COMMENT master COLUMN schema_definition.add_props masteruser
+6292; 0 0 COMMENT master COLUMN schema_definition.def_json masteruser
+6293; 0 0 COMMENT master COLUMN schema_definition.is_active masteruser
+6294; 0 0 COMMENT master COLUMN schema_definition.cr_by masteruser
+6295; 0 0 COMMENT master COLUMN schema_definition.cr_dtimes masteruser
+6296; 0 0 COMMENT master COLUMN schema_definition.upd_by masteruser
+6297; 0 0 COMMENT master COLUMN schema_definition.upd_dtimes masteruser
+6298; 0 0 COMMENT master COLUMN schema_definition.is_deleted masteruser
+6299; 0 0 COMMENT master COLUMN schema_definition.del_dtimes masteruser
+6300; 0 0 ACL master TABLE schema_definition masteruser
+452; 1259 22552 TABLE master screen_authorization masteruser
+6301; 0 0 COMMENT master TABLE screen_authorization masteruser
+6302; 0 0 COMMENT master COLUMN screen_authorization.screen_id masteruser
+6303; 0 0 COMMENT master COLUMN screen_authorization.role_code masteruser
+6304; 0 0 COMMENT master COLUMN screen_authorization.lang_code masteruser
+6305; 0 0 COMMENT master COLUMN screen_authorization.is_permitted masteruser
+6306; 0 0 COMMENT master COLUMN screen_authorization.is_active masteruser
+6307; 0 0 COMMENT master COLUMN screen_authorization.cr_by masteruser
+6308; 0 0 COMMENT master COLUMN screen_authorization.cr_dtimes masteruser
+6309; 0 0 COMMENT master COLUMN screen_authorization.upd_by masteruser
+6310; 0 0 COMMENT master COLUMN screen_authorization.upd_dtimes masteruser
+6311; 0 0 COMMENT master COLUMN screen_authorization.is_deleted masteruser
+6312; 0 0 COMMENT master COLUMN screen_authorization.del_dtimes masteruser
+6313; 0 0 ACL master TABLE screen_authorization masteruser
+453; 1259 22559 TABLE master screen_detail masteruser
+6314; 0 0 COMMENT master TABLE screen_detail masteruser
+6315; 0 0 COMMENT master COLUMN screen_detail.id masteruser
+6316; 0 0 COMMENT master COLUMN screen_detail.app_id masteruser
+6317; 0 0 COMMENT master COLUMN screen_detail.name masteruser
+6318; 0 0 COMMENT master COLUMN screen_detail.descr masteruser
+6319; 0 0 COMMENT master COLUMN screen_detail.lang_code masteruser
+6320; 0 0 COMMENT master COLUMN screen_detail.is_active masteruser
+6321; 0 0 COMMENT master COLUMN screen_detail.cr_by masteruser
+6322; 0 0 COMMENT master COLUMN screen_detail.cr_dtimes masteruser
+6323; 0 0 COMMENT master COLUMN screen_detail.upd_by masteruser
+6324; 0 0 COMMENT master COLUMN screen_detail.upd_dtimes masteruser
+6325; 0 0 COMMENT master COLUMN screen_detail.is_deleted masteruser
+6326; 0 0 COMMENT master COLUMN screen_detail.del_dtimes masteruser
+6327; 0 0 ACL master TABLE screen_detail masteruser
+454; 1259 22566 TABLE master status_list masteruser
+6328; 0 0 COMMENT master TABLE status_list masteruser
+6329; 0 0 COMMENT master COLUMN status_list.code masteruser
+6330; 0 0 COMMENT master COLUMN status_list.descr masteruser
+6331; 0 0 COMMENT master COLUMN status_list.status_seq masteruser
+6332; 0 0 COMMENT master COLUMN status_list.sttyp_code masteruser
+6333; 0 0 COMMENT master COLUMN status_list.lang_code masteruser
+6334; 0 0 COMMENT master COLUMN status_list.is_active masteruser
+6335; 0 0 COMMENT master COLUMN status_list.cr_by masteruser
+6336; 0 0 COMMENT master COLUMN status_list.cr_dtimes masteruser
+6337; 0 0 COMMENT master COLUMN status_list.upd_by masteruser
+6338; 0 0 COMMENT master COLUMN status_list.upd_dtimes masteruser
+6339; 0 0 COMMENT master COLUMN status_list.is_deleted masteruser
+6340; 0 0 COMMENT master COLUMN status_list.del_dtimes masteruser
+6341; 0 0 ACL master TABLE status_list masteruser
+455; 1259 22573 TABLE master status_type masteruser
+6342; 0 0 COMMENT master TABLE status_type masteruser
+6343; 0 0 COMMENT master COLUMN status_type.code masteruser
+6344; 0 0 COMMENT master COLUMN status_type.name masteruser
+6345; 0 0 COMMENT master COLUMN status_type.descr masteruser
+6346; 0 0 COMMENT master COLUMN status_type.lang_code masteruser
+6347; 0 0 COMMENT master COLUMN status_type.is_active masteruser
+6348; 0 0 COMMENT master COLUMN status_type.cr_by masteruser
+6349; 0 0 COMMENT master COLUMN status_type.cr_dtimes masteruser
+6350; 0 0 COMMENT master COLUMN status_type.upd_by masteruser
+6351; 0 0 COMMENT master COLUMN status_type.upd_dtimes masteruser
+6352; 0 0 COMMENT master COLUMN status_type.is_deleted masteruser
+6353; 0 0 COMMENT master COLUMN status_type.del_dtimes masteruser
+6354; 0 0 ACL master TABLE status_type masteruser
+456; 1259 22580 TABLE master sync_job_def masteruser
+6355; 0 0 COMMENT master TABLE sync_job_def masteruser
+6356; 0 0 COMMENT master COLUMN sync_job_def.id masteruser
+6357; 0 0 COMMENT master COLUMN sync_job_def.name masteruser
+6358; 0 0 COMMENT master COLUMN sync_job_def.api_name masteruser
+6359; 0 0 COMMENT master COLUMN sync_job_def.parent_syncjob_id masteruser
+6360; 0 0 COMMENT master COLUMN sync_job_def.sync_freq masteruser
+6361; 0 0 COMMENT master COLUMN sync_job_def.lock_duration masteruser
+6362; 0 0 COMMENT master COLUMN sync_job_def.lang_code masteruser
+6363; 0 0 COMMENT master COLUMN sync_job_def.is_active masteruser
+6364; 0 0 COMMENT master COLUMN sync_job_def.cr_by masteruser
+6365; 0 0 COMMENT master COLUMN sync_job_def.cr_dtimes masteruser
+6366; 0 0 COMMENT master COLUMN sync_job_def.upd_by masteruser
+6367; 0 0 COMMENT master COLUMN sync_job_def.upd_dtimes masteruser
+6368; 0 0 COMMENT master COLUMN sync_job_def.is_deleted masteruser
+6369; 0 0 COMMENT master COLUMN sync_job_def.del_dtimes masteruser
+6370; 0 0 ACL master TABLE sync_job_def masteruser
+477; 1259 1051041 TABLE master template masteruser
+6371; 0 0 ACL master TABLE template masteruser
+457; 1259 22587 TABLE master template_19112024 masteruser
+6372; 0 0 COMMENT master TABLE template_19112024 masteruser
+6373; 0 0 COMMENT master COLUMN template_19112024.id masteruser
+6374; 0 0 COMMENT master COLUMN template_19112024.name masteruser
+6375; 0 0 COMMENT master COLUMN template_19112024.descr masteruser
+6376; 0 0 COMMENT master COLUMN template_19112024.file_format_code masteruser
+6377; 0 0 COMMENT master COLUMN template_19112024.model masteruser
+6378; 0 0 COMMENT master COLUMN template_19112024.file_txt masteruser
+6379; 0 0 COMMENT master COLUMN template_19112024.module_id masteruser
+6380; 0 0 COMMENT master COLUMN template_19112024.module_name masteruser
+6381; 0 0 COMMENT master COLUMN template_19112024.template_typ_code masteruser
+6382; 0 0 COMMENT master COLUMN template_19112024.lang_code masteruser
+6383; 0 0 COMMENT master COLUMN template_19112024.is_active masteruser
+6384; 0 0 COMMENT master COLUMN template_19112024.cr_by masteruser
+6385; 0 0 COMMENT master COLUMN template_19112024.cr_dtimes masteruser
+6386; 0 0 COMMENT master COLUMN template_19112024.upd_by masteruser
+6387; 0 0 COMMENT master COLUMN template_19112024.upd_dtimes masteruser
+6388; 0 0 COMMENT master COLUMN template_19112024.is_deleted masteruser
+6389; 0 0 COMMENT master COLUMN template_19112024.del_dtimes masteruser
+6390; 0 0 ACL master TABLE template_19112024 masteruser
+469; 1259 24737 TABLE master template_bk masteruser
+6391; 0 0 ACL master TABLE template_bk masteruser
+458; 1259 22594 TABLE master template_file_format masteruser
+6392; 0 0 COMMENT master TABLE template_file_format masteruser
+6393; 0 0 COMMENT master COLUMN template_file_format.code masteruser
+6394; 0 0 COMMENT master COLUMN template_file_format.descr masteruser
+6395; 0 0 COMMENT master COLUMN template_file_format.lang_code masteruser
+6396; 0 0 COMMENT master COLUMN template_file_format.is_active masteruser
+6397; 0 0 COMMENT master COLUMN template_file_format.cr_by masteruser
+6398; 0 0 COMMENT master COLUMN template_file_format.cr_dtimes masteruser
+6399; 0 0 COMMENT master COLUMN template_file_format.upd_by masteruser
+6400; 0 0 COMMENT master COLUMN template_file_format.upd_dtimes masteruser
+6401; 0 0 COMMENT master COLUMN template_file_format.is_deleted masteruser
+6402; 0 0 COMMENT master COLUMN template_file_format.del_dtimes masteruser
+6403; 0 0 ACL master TABLE template_file_format masteruser
+459; 1259 22601 TABLE master template_type masteruser
+6404; 0 0 COMMENT master TABLE template_type masteruser
+6405; 0 0 COMMENT master COLUMN template_type.code masteruser
+6406; 0 0 COMMENT master COLUMN template_type.descr masteruser
+6407; 0 0 COMMENT master COLUMN template_type.lang_code masteruser
+6408; 0 0 COMMENT master COLUMN template_type.is_active masteruser
+6409; 0 0 COMMENT master COLUMN template_type.cr_by masteruser
+6410; 0 0 COMMENT master COLUMN template_type.cr_dtimes masteruser
+6411; 0 0 COMMENT master COLUMN template_type.upd_by masteruser
+6412; 0 0 COMMENT master COLUMN template_type.upd_dtimes masteruser
+6413; 0 0 COMMENT master COLUMN template_type.is_deleted masteruser
+6414; 0 0 COMMENT master COLUMN template_type.del_dtimes masteruser
+6415; 0 0 ACL master TABLE template_type masteruser
+460; 1259 22608 TABLE master title masteruser
+6416; 0 0 COMMENT master TABLE title masteruser
+6417; 0 0 COMMENT master COLUMN title.code masteruser
+6418; 0 0 COMMENT master COLUMN title.name masteruser
+6419; 0 0 COMMENT master COLUMN title.descr masteruser
+6420; 0 0 COMMENT master COLUMN title.lang_code masteruser
+6421; 0 0 COMMENT master COLUMN title.is_active masteruser
+6422; 0 0 COMMENT master COLUMN title.cr_by masteruser
+6423; 0 0 COMMENT master COLUMN title.cr_dtimes masteruser
+6424; 0 0 COMMENT master COLUMN title.upd_by masteruser
+6425; 0 0 COMMENT master COLUMN title.upd_dtimes masteruser
+6426; 0 0 COMMENT master COLUMN title.is_deleted masteruser
+6427; 0 0 COMMENT master COLUMN title.del_dtimes masteruser
+6428; 0 0 ACL master TABLE title masteruser
+461; 1259 22615 TABLE master tspid_seq masteruser
+6429; 0 0 COMMENT master TABLE tspid_seq masteruser
+6430; 0 0 COMMENT master COLUMN tspid_seq.curr_seq_no masteruser
+6431; 0 0 COMMENT master COLUMN tspid_seq.cr_by masteruser
+6432; 0 0 COMMENT master COLUMN tspid_seq.cr_dtimes masteruser
+6433; 0 0 COMMENT master COLUMN tspid_seq.upd_by masteruser
+6434; 0 0 COMMENT master COLUMN tspid_seq.upd_dtimes masteruser
+6435; 0 0 ACL master TABLE tspid_seq masteruser
+462; 1259 22621 TABLE master user_detail masteruser
+6436; 0 0 COMMENT master TABLE user_detail masteruser
+6437; 0 0 COMMENT master COLUMN user_detail.id masteruser
+6438; 0 0 COMMENT master COLUMN user_detail.uin masteruser
+6439; 0 0 COMMENT master COLUMN user_detail.name masteruser
+6440; 0 0 COMMENT master COLUMN user_detail.email masteruser
+6441; 0 0 COMMENT master COLUMN user_detail.mobile masteruser
+6442; 0 0 COMMENT master COLUMN user_detail.status_code masteruser
+6443; 0 0 COMMENT master COLUMN user_detail.regcntr_id masteruser
+6444; 0 0 COMMENT master COLUMN user_detail.lang_code masteruser
+6445; 0 0 COMMENT master COLUMN user_detail.last_login_dtimes masteruser
+6446; 0 0 COMMENT master COLUMN user_detail.last_login_method masteruser
+6447; 0 0 COMMENT master COLUMN user_detail.is_active masteruser
+6448; 0 0 COMMENT master COLUMN user_detail.cr_by masteruser
+6449; 0 0 COMMENT master COLUMN user_detail.cr_dtimes masteruser
+6450; 0 0 COMMENT master COLUMN user_detail.upd_by masteruser
+6451; 0 0 COMMENT master COLUMN user_detail.upd_dtimes masteruser
+6452; 0 0 COMMENT master COLUMN user_detail.is_deleted masteruser
+6453; 0 0 COMMENT master COLUMN user_detail.del_dtimes masteruser
+6454; 0 0 ACL master TABLE user_detail masteruser
+463; 1259 22628 TABLE master user_detail_h masteruser
+6455; 0 0 COMMENT master TABLE user_detail_h masteruser
+6456; 0 0 COMMENT master COLUMN user_detail_h.id masteruser
+6457; 0 0 COMMENT master COLUMN user_detail_h.uin masteruser
+6458; 0 0 COMMENT master COLUMN user_detail_h.name masteruser
+6459; 0 0 COMMENT master COLUMN user_detail_h.email masteruser
+6460; 0 0 COMMENT master COLUMN user_detail_h.mobile masteruser
+6461; 0 0 COMMENT master COLUMN user_detail_h.status_code masteruser
+6462; 0 0 COMMENT master COLUMN user_detail_h.lang_code masteruser
+6463; 0 0 COMMENT master COLUMN user_detail_h.last_login_dtimes masteruser
+6464; 0 0 COMMENT master COLUMN user_detail_h.last_login_method masteruser
+6465; 0 0 COMMENT master COLUMN user_detail_h.is_active masteruser
+6466; 0 0 COMMENT master COLUMN user_detail_h.cr_by masteruser
+6467; 0 0 COMMENT master COLUMN user_detail_h.cr_dtimes masteruser
+6468; 0 0 COMMENT master COLUMN user_detail_h.upd_by masteruser
+6469; 0 0 COMMENT master COLUMN user_detail_h.upd_dtimes masteruser
+6470; 0 0 COMMENT master COLUMN user_detail_h.is_deleted masteruser
+6471; 0 0 COMMENT master COLUMN user_detail_h.del_dtimes masteruser
+6472; 0 0 COMMENT master COLUMN user_detail_h.eff_dtimes masteruser
+6473; 0 0 ACL master TABLE user_detail_h masteruser
+464; 1259 22635 TABLE master valid_document masteruser
+6474; 0 0 COMMENT master TABLE valid_document masteruser
+6475; 0 0 COMMENT master COLUMN valid_document.doctyp_code masteruser
+6476; 0 0 COMMENT master COLUMN valid_document.doccat_code masteruser
+6477; 0 0 COMMENT master COLUMN valid_document.lang_code masteruser
+6478; 0 0 COMMENT master COLUMN valid_document.is_active masteruser
+6479; 0 0 COMMENT master COLUMN valid_document.cr_by masteruser
+6480; 0 0 COMMENT master COLUMN valid_document.cr_dtimes masteruser
+6481; 0 0 COMMENT master COLUMN valid_document.upd_by masteruser
+6482; 0 0 COMMENT master COLUMN valid_document.upd_dtimes masteruser
+6483; 0 0 COMMENT master COLUMN valid_document.is_deleted masteruser
+6484; 0 0 COMMENT master COLUMN valid_document.del_dtimes masteruser
+6485; 0 0 ACL master TABLE valid_document masteruser
+465; 1259 22642 TABLE master zone masteruser
+6486; 0 0 COMMENT master TABLE zone masteruser
+6487; 0 0 COMMENT master COLUMN zone.code masteruser
+6488; 0 0 COMMENT master COLUMN zone.name masteruser
+6489; 0 0 COMMENT master COLUMN zone.hierarchy_level masteruser
+6490; 0 0 COMMENT master COLUMN zone.hierarchy_level_name masteruser
+6491; 0 0 COMMENT master COLUMN zone.hierarchy_path masteruser
+6492; 0 0 COMMENT master COLUMN zone.parent_zone_code masteruser
+6493; 0 0 COMMENT master COLUMN zone.lang_code masteruser
+6494; 0 0 COMMENT master COLUMN zone.is_active masteruser
+6495; 0 0 COMMENT master COLUMN zone.cr_by masteruser
+6496; 0 0 COMMENT master COLUMN zone.cr_dtimes masteruser
+6497; 0 0 COMMENT master COLUMN zone.upd_by masteruser
+6498; 0 0 COMMENT master COLUMN zone.upd_dtimes masteruser
+6499; 0 0 COMMENT master COLUMN zone.is_deleted masteruser
+6500; 0 0 COMMENT master COLUMN zone.del_dtimes masteruser
+6501; 0 0 ACL master TABLE zone masteruser
+466; 1259 22649 TABLE master zone_user masteruser
+6502; 0 0 COMMENT master TABLE zone_user masteruser
+6503; 0 0 COMMENT master COLUMN zone_user.zone_code masteruser
+6504; 0 0 COMMENT master COLUMN zone_user.usr_id masteruser
+6505; 0 0 COMMENT master COLUMN zone_user.lang_code masteruser
+6506; 0 0 COMMENT master COLUMN zone_user.is_active masteruser
+6507; 0 0 COMMENT master COLUMN zone_user.cr_by masteruser
+6508; 0 0 COMMENT master COLUMN zone_user.cr_dtimes masteruser
+6509; 0 0 COMMENT master COLUMN zone_user.upd_by masteruser
+6510; 0 0 COMMENT master COLUMN zone_user.upd_dtimes masteruser
+6511; 0 0 COMMENT master COLUMN zone_user.is_deleted masteruser
+6512; 0 0 COMMENT master COLUMN zone_user.del_dtimes masteruser
+6513; 0 0 ACL master TABLE zone_user masteruser
+467; 1259 22656 TABLE master zone_user_h masteruser
+6514; 0 0 COMMENT master TABLE zone_user_h masteruser
+6515; 0 0 COMMENT master COLUMN zone_user_h.zone_code masteruser
+6516; 0 0 COMMENT master COLUMN zone_user_h.usr_id masteruser
+6517; 0 0 COMMENT master COLUMN zone_user_h.lang_code masteruser
+6518; 0 0 COMMENT master COLUMN zone_user_h.is_active masteruser
+6519; 0 0 COMMENT master COLUMN zone_user_h.cr_by masteruser
+6520; 0 0 COMMENT master COLUMN zone_user_h.cr_dtimes masteruser
+6521; 0 0 COMMENT master COLUMN zone_user_h.upd_by masteruser
+6522; 0 0 COMMENT master COLUMN zone_user_h.upd_dtimes masteruser
+6523; 0 0 COMMENT master COLUMN zone_user_h.is_deleted masteruser
+6524; 0 0 COMMENT master COLUMN zone_user_h.del_dtimes masteruser
+6525; 0 0 COMMENT master COLUMN zone_user_h.eff_dtimes masteruser
+6526; 0 0 ACL master TABLE zone_user_h masteruser
+468; 1259 22663 TABLE master zoneuser_detail masteruser
+6527; 0 0 ACL master TABLE zoneuser_detail masteruser
+5004; 2606 22686 CONSTRAINT master batch_job_execution_context batch_job_execution_context_pkey masteruser
+5001; 2606 22688 CONSTRAINT master batch_job_execution batch_job_execution_pkey masteruser
+5008; 2606 22690 CONSTRAINT master batch_job_instance batch_job_instance_pkey masteruser
+5016; 2606 22692 CONSTRAINT master batch_step_execution_context batch_step_execution_context_pkey masteruser
+5014; 2606 22694 CONSTRAINT master batch_step_execution batch_step_execution_pkey masteruser
+5026; 2606 22696 CONSTRAINT master ca_cert_store ca_cert_store_pk masteruser
+5038; 2606 22698 CONSTRAINT master device_provider_h device_provider_h_pkey masteruser
+5036; 2606 22700 CONSTRAINT master device_provider device_provider_pkey masteruser
+5181; 2606 18116336 CONSTRAINT master dynamic_field dynamic_field_pk masteruser
+5183; 2606 18116338 CONSTRAINT master dynamic_field dynamic_field_un masteruser
+5056; 2606 22702 CONSTRAINT master foundational_trust_provider_h foundational_trust_provider_h_pkey masteruser
+5054; 2606 22705 CONSTRAINT master foundational_trust_provider foundational_trust_provider_pkey masteruser
+5010; 2606 22707 CONSTRAINT master batch_job_instance job_inst_un masteruser
+5192; 2606 1052648 CONSTRAINT master location location_pk masteruser
+5102; 2606 22709 CONSTRAINT master mosip_device_service_h mosip_device_service_h_pkey masteruser
+5100; 2606 22711 CONSTRAINT master mosip_device_service mosip_device_service_pkey masteruser
+4979; 2606 22713 CONSTRAINT master admin_param pk_admparm_code masteruser
+4981; 2606 22715 CONSTRAINT master app_authentication_method pk_appauthm_id masteruser
+4985; 2606 22717 CONSTRAINT master app_detail pk_appdtl_id masteruser
+4990; 2606 22719 CONSTRAINT master appl_form_type pk_applftyp_code masteruser
+4996; 2606 22721 CONSTRAINT master authentication_method pk_authm_code masteruser
+4998; 2606 22723 CONSTRAINT master authentication_type pk_authtyp_code masteruser
+4994; 2606 22725 CONSTRAINT master applicant_valid_document pk_avaldoc_code masteruser
+5022; 2606 22727 CONSTRAINT master blacklisted_words pk_blwrd_code masteruser
+5018; 2606 22729 CONSTRAINT master biometric_attribute pk_bmattr_code masteruser
+5020; 2606 22731 CONSTRAINT master biometric_type pk_bmtyp_code masteruser
+5024; 2606 22733 CONSTRAINT master bulkupload_transaction pk_butrn_id masteruser
+5118; 2606 22735 CONSTRAINT master reg_center_type pk_cntrtyp_id masteruser
+5029; 2606 22737 CONSTRAINT master daysofweek_list pk_daysofweek_code masteruser
+5034; 2606 22739 CONSTRAINT master device_master_h pk_devicem_h_id masteruser
+5032; 2606 22741 CONSTRAINT master device_master pk_devicem_id masteruser
+5044; 2606 22743 CONSTRAINT master doc_category pk_doccat_code masteruser
+5046; 2606 22745 CONSTRAINT master doc_format pk_docfmt_code masteruser
+5048; 2606 22747 CONSTRAINT master doc_type pk_doctyp_code masteruser
+5040; 2606 22749 CONSTRAINT master device_spec pk_dspec_code masteruser
+5042; 2606 22751 CONSTRAINT master device_type pk_dtyp_code masteruser
+5124; 2606 22753 CONSTRAINT master reg_exceptional_holiday pk_exceptional_hol masteruser
+5060; 2606 22755 CONSTRAINT master global_param pk_glbparm_code masteruser
+5058; 2606 22757 CONSTRAINT master gender pk_gndr_code masteruser
+5064; 2606 22759 CONSTRAINT master identity_schema pk_idsch_id masteruser
+5062; 2606 22761 CONSTRAINT master id_type pk_idtyp_code masteruser
+5066; 2606 22763 CONSTRAINT master individual_type pk_indvtyp_code masteruser
+5068; 2606 22765 CONSTRAINT master introducer_type pk_intyp_code masteruser
+5070; 2606 22767 CONSTRAINT master language pk_lang_code masteruser
+5080; 2606 22769 CONSTRAINT master location-bkp-25112024 pk_loc_code masteruser
+5072; 2606 22771 CONSTRAINT master loc_hierarchy_list pk_loc_hierlst masteruser
+5074; 2606 22773 CONSTRAINT master loc_holiday pk_lochol_id masteruser
+5088; 2606 22775 CONSTRAINT master machine_master_h pk_machm_h_id masteruser
+5086; 2606 22777 CONSTRAINT master machine_master pk_machm_id masteruser
+5096; 2606 22779 CONSTRAINT master mid_seq pk_midseq_id masteruser
+5098; 2606 22781 CONSTRAINT master module_detail pk_moddtl_code masteruser
+5094; 2606 22783 CONSTRAINT master message_list pk_msglst_code masteruser
+5090; 2606 22785 CONSTRAINT master machine_spec pk_mspec_code masteruser
+5092; 2606 22787 CONSTRAINT master machine_type pk_mtyp_code masteruser
+5110; 2606 22789 CONSTRAINT master process_list pk_prclst_id masteruser
+5112; 2606 22791 CONSTRAINT master rcid_seq pk_rcidseq_id masteruser
+5133; 2606 22793 CONSTRAINT master registration_center pk_regcntr_code masteruser
+5186; 2606 1051385 CONSTRAINT master registration_center_21112024 pk_regcntr_code_1 masteruser
+5136; 2606 22795 CONSTRAINT master registration_center_h pk_regcntr_h_code masteruser
+5138; 2606 22797 CONSTRAINT master role_list pk_rolelst_code masteruser
+4987; 2606 22799 CONSTRAINT master app_role_priority pk_roleprt_id masteruser
+5114; 2606 22801 CONSTRAINT master reason_category pk_rsncat_code masteruser
+5116; 2606 22803 CONSTRAINT master reason_list pk_rsnlst_code masteruser
+5142; 2606 22805 CONSTRAINT master schema_definition pk_schdef_id masteruser
+5050; 2606 22807 CONSTRAINT master dynamic_field_12112024 pk_schfld_id masteruser
+5144; 2606 22809 CONSTRAINT master screen_authorization pk_scrauth_screen_id masteruser
+5146; 2606 22811 CONSTRAINT master screen_detail pk_scrdtl_id masteruser
+5148; 2606 22813 CONSTRAINT master status_list pk_status_code masteruser
+5150; 2606 22815 CONSTRAINT master status_type pk_sttyp_code masteruser
+5152; 2606 22817 CONSTRAINT master sync_job_def pk_syncjob_id masteruser
+5156; 2606 22819 CONSTRAINT master template_file_format pk_tffmt_code masteruser
+5154; 2606 22821 CONSTRAINT master template_19112024 pk_tmplt_id masteruser
+5158; 2606 22823 CONSTRAINT master template_type pk_tmpltyp_code masteruser
+5162; 2606 22825 CONSTRAINT master tspid_seq pk_tspidseq_id masteruser
+5160; 2606 22827 CONSTRAINT master title pk_ttl_code masteruser
+5167; 2606 22829 CONSTRAINT master user_detail_h pk_usrdtl_h_id masteruser
+5165; 2606 22831 CONSTRAINT master user_detail pk_usrdtl_id masteruser
+5169; 2606 22833 CONSTRAINT master valid_document pk_valdoc_code masteruser
+5126; 2606 22835 CONSTRAINT master reg_working_nonworking pk_working_nonworking masteruser
+5171; 2606 22837 CONSTRAINT master zone pk_zone_code masteruser
+5175; 2606 22839 CONSTRAINT master zone_user pk_zoneuser masteruser
+5179; 2606 22841 CONSTRAINT master zoneuser_detail pk_zoneuser_detail masteruser
+5177; 2606 22843 CONSTRAINT master zone_user_h pk_zoneuserh masteruser
+5120; 2606 22845 CONSTRAINT master reg_device_sub_type reg_device_sub_type_pkey masteruser
+5122; 2606 22847 CONSTRAINT master reg_device_type reg_device_type_pkey masteruser
+5130; 2606 22849 CONSTRAINT master registered_device_master_h registered_device_master_h_pkey masteruser
+5128; 2606 22851 CONSTRAINT master registered_device_master registered_device_master_pkey masteruser
+5140; 2606 22853 CONSTRAINT master schema_def schema_def_pkey masteruser
+5104; 2606 22855 CONSTRAINT master mosip_device_service_h uk_4x88tmm8alfwbpie3iafy2eh1 masteruser
+5106; 2606 22857 CONSTRAINT master mosip_device_service_h uk_5aqu1aapd3pslu1xc6gnngj7x masteruser
+5108; 2606 22859 CONSTRAINT master mosip_device_service_h uk_bc4vvj4bocqjeay48ipj7spb1 masteruser
+5173; 2606 22861 CONSTRAINT master zone uk_hierpath masteruser
+5076; 2606 22863 CONSTRAINT master loc_holiday uk_lochol_name masteruser
+5052; 2606 22865 CONSTRAINT master dynamic_field_12112024 uk_schfld_name masteruser
+5005; 1259 22866 INDEX master bat_job_exec_par_job_exec_id_idx masteruser
+5006; 1259 22867 INDEX master bat_job_inst_job_name_key_idx masteruser
+5011; 1259 22868 INDEX master bat_step_ex_job_ex_id_idx masteruser
+4999; 1259 22869 INDEX master batch_job_execution_job_instance_id_idx masteruser
+5012; 1259 22870 INDEX master batch_step_execution_job_execution_id_idx masteruser
+4991; 1259 22871 INDEX master idx_app_val_doc_cr_dtimes masteruser
+4992; 1259 22872 INDEX master idx_app_val_doc_upd_dtimes masteruser
+4983; 1259 22873 INDEX master idx_appdtl_name masteruser
+5030; 1259 22874 INDEX master idx_device_master_cntr_id masteruser
+5077; 1259 22875 INDEX master idx_location_cr_dtimes masteruser
+5081; 1259 22876 INDEX master idx_mac_master_cntr_id masteruser
+5082; 1259 22877 INDEX master idx_mac_master_cr_dtimes masteruser
+5083; 1259 22878 INDEX master idx_mac_master_regcntr_id masteruser
+5084; 1259 22879 INDEX master idx_mac_master_sign_key_idx masteruser
+5131; 1259 22880 INDEX master idx_reg_centr_loc_code masteruser
+5184; 1259 1051386 INDEX master idx_reg_centr_loc_code_1 masteruser
+5163; 1259 22881 INDEX master idx_user_detail_cntr_id masteruser
+5002; 1259 22882 INDEX master job_exec_job_inst_id_idx masteruser
+5187; 1259 1052650 INDEX master location_2_cr_dtimes_idx masteruser
+5188; 1259 1052649 INDEX master location_2_parent_loc_code_idx masteruser
+5189; 1259 1052651 INDEX master location_2_upd_dtimes_idx masteruser
+5190; 1259 18473576 INDEX master location_is_active_idx masteruser
+5078; 1259 22883 INDEX master location_parent_loc_code_idx masteruser
+5027; 1259 22884 INDEX master pk_cacs_id masteruser
+5134; 1259 18473578 INDEX master registration_center_location_code_idx masteruser
+4982; 1259 22885 INDEX master uk_appauthm_id masteruser
+4988; 1259 22886 INDEX master uk_roleprt_id masteruser
+5224; 2606 22887 FK CONSTRAINT master registered_device_master fk1d7xkdymiec280aeeqifdfeb9 masteruser
+5193; 2606 22892 FK CONSTRAINT master app_authentication_method fk_appauthm_appdtl masteruser
+5194; 2606 22897 FK CONSTRAINT master app_authentication_method fk_appauthm_authmeth masteruser
+5195; 2606 22902 FK CONSTRAINT master app_authentication_method fk_appauthm_prclst masteruser
+5196; 2606 22907 FK CONSTRAINT master app_authentication_method fk_appauthm_rolelst masteruser
+5200; 2606 22912 FK CONSTRAINT master applicant_valid_document fk_avaldoc_doccat masteruser
+5201; 2606 22917 FK CONSTRAINT master applicant_valid_document fk_avaldoc_doctyp masteruser
+5207; 2606 22922 FK CONSTRAINT master biometric_attribute fk_bmattr_bmtyp masteruser
+5208; 2606 22927 FK CONSTRAINT master device_master fk_devicem_center masteruser
+5209; 2606 22932 FK CONSTRAINT master device_master fk_devicem_dspec masteruser
+5210; 2606 22937 FK CONSTRAINT master device_master fk_devicem_zone masteruser
+5211; 2606 22942 FK CONSTRAINT master device_spec fk_dspec_dtyp masteruser
+5212; 2606 22947 FK CONSTRAINT master loc_holiday fk_lochol_loc masteruser
+5213; 2606 22952 FK CONSTRAINT master machine_master fk_machm_center masteruser
+5214; 2606 22957 FK CONSTRAINT master machine_master fk_machm_mspec masteruser
+5215; 2606 22962 FK CONSTRAINT master machine_master fk_machm_zone masteruser
+5216; 2606 22967 FK CONSTRAINT master machine_spec fk_mspec_mtyp masteruser
+5227; 2606 22972 FK CONSTRAINT master registration_center fk_regcntr_cntrtyp masteruser
+5229; 2606 1163376 FK CONSTRAINT master registration_center fk_regcntr_loc masteruser
+5228; 2606 22982 FK CONSTRAINT master registration_center fk_regcntr_zone masteruser
+5221; 2606 22987 FK CONSTRAINT master reg_exceptional_holiday fk_regeh_regcntr masteruser
+5197; 2606 22992 FK CONSTRAINT master app_role_priority fk_roleprt_appdtl masteruser
+5198; 2606 22997 FK CONSTRAINT master app_role_priority fk_roleprt_prclst masteruser
+5199; 2606 23002 FK CONSTRAINT master app_role_priority fk_roleprt_rolelst masteruser
+5220; 2606 23007 FK CONSTRAINT master reason_list fk_rsnlst_rsncat masteruser
+5222; 2606 23012 FK CONSTRAINT master reg_working_nonworking fk_rwn_daycode masteruser
+5223; 2606 23017 FK CONSTRAINT master reg_working_nonworking fk_rwn_regcntr masteruser
+5230; 2606 23022 FK CONSTRAINT master screen_authorization fk_scrauth_rolelst masteruser
+5231; 2606 23027 FK CONSTRAINT master screen_authorization fk_scrauth_scrdtl masteruser
+5232; 2606 23032 FK CONSTRAINT master screen_detail fk_scrdtl_appdtl masteruser
+5233; 2606 23037 FK CONSTRAINT master status_list fk_status_sttyp masteruser
+5234; 2606 23042 FK CONSTRAINT master template_19112024 fk_tmplt_moddtl masteruser
+5235; 2606 23047 FK CONSTRAINT master template_19112024 fk_tmplt_tffmt masteruser
+5236; 2606 23052 FK CONSTRAINT master template_19112024 fk_tmplt_tmpltyp masteruser
+5237; 2606 23057 FK CONSTRAINT master user_detail fk_usrdtl_center masteruser
+5238; 2606 23062 FK CONSTRAINT master valid_document fk_valdoc_doccat masteruser
+5239; 2606 23067 FK CONSTRAINT master valid_document fk_valdoc_doctyp masteruser
+5240; 2606 23072 FK CONSTRAINT master zone_user fk_zoneuser_zone masteruser
+5217; 2606 23077 FK CONSTRAINT master mosip_device_service fke0dq8xs78f5f2vyrpbosxl8ws masteruser
+5225; 2606 23082 FK CONSTRAINT master registered_device_master fkpfwp7p5q8vwwlwoavdkir4l7f masteruser
+5218; 2606 23087 FK CONSTRAINT master mosip_device_service fkq3tf3o4ay0wxgeuyyj0nr3ccb masteruser
+5219; 2606 23092 FK CONSTRAINT master mosip_device_service fktduqao7ety484kuto514cyniq masteruser
+5226; 2606 23097 FK CONSTRAINT master registered_device_master fktm84ruisl2jp9a350wd2f0ru masteruser
+5203; 2606 23102 FK CONSTRAINT master batch_job_execution_context job_exec_ctx_fk masteruser
+5204; 2606 23107 FK CONSTRAINT master batch_job_execution_params job_exec_params_fk masteruser
+5205; 2606 23112 FK CONSTRAINT master batch_step_execution job_exec_step_fk masteruser
+5202; 2606 23117 FK CONSTRAINT master batch_job_execution job_inst_exec_fk masteruser
+5206; 2606 23122 FK CONSTRAINT master batch_step_execution_context step_exec_ctx_fk masteruser
+5481; 6104 18099547 PUBLICATION - dbz_publication enterprisedb
+5483; 6106 18099602 PUBLICATION TABLE master dbz_publication applicant_valid_document enterprisedb
+5485; 6106 18099605 PUBLICATION TABLE master dbz_publication doc_category enterprisedb
+5486; 6106 18099607 PUBLICATION TABLE master dbz_publication doc_type enterprisedb
+5487; 6106 18099608 PUBLICATION TABLE master dbz_publication dynamic_field enterprisedb
+5482; 6106 18099555 PUBLICATION TABLE master dbz_publication location enterprisedb
+5488; 6106 18099609 PUBLICATION TABLE master dbz_publication machine_master enterprisedb
+5489; 6106 18099610 PUBLICATION TABLE master dbz_publication machine_spec enterprisedb
+5490; 6106 18099621 PUBLICATION TABLE master dbz_publication machine_type enterprisedb
+5484; 6106 18099603 PUBLICATION TABLE master dbz_publication registration_center enterprisedb
+5491; 6106 18099626 PUBLICATION TABLE master dbz_publication zone enterprisedb
+3843; 826 18099592 DEFAULT ACL master DEFAULT PRIVILEGES FOR TABLES enterprisedb

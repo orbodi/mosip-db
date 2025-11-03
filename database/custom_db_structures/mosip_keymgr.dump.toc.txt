@@ -1,0 +1,177 @@
+﻿;
+; Archive created at 2025-11-03 10:52:37
+;     dbname: mosip_keymgr
+;     TOC Entries: 168
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 19801 SCHEMA - keymgr postgres
+4717; 0 0 ACL - SCHEMA keymgr postgres
+4718; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415567 EXTENSION - dblink 
+4719; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 19802 TABLE keymgr ca_cert_store keymgruser
+4720; 0 0 COMMENT keymgr TABLE ca_cert_store keymgruser
+4721; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_id keymgruser
+4722; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_subject keymgruser
+4723; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_issuer keymgruser
+4724; 0 0 COMMENT keymgr COLUMN ca_cert_store.issuer_id keymgruser
+4725; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_not_before keymgruser
+4726; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_not_after keymgruser
+4727; 0 0 COMMENT keymgr COLUMN ca_cert_store.crl_uri keymgruser
+4728; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_data keymgruser
+4729; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_thumbprint keymgruser
+4730; 0 0 COMMENT keymgr COLUMN ca_cert_store.cert_serial_no keymgruser
+4731; 0 0 COMMENT keymgr COLUMN ca_cert_store.partner_domain keymgruser
+4732; 0 0 COMMENT keymgr COLUMN ca_cert_store.cr_by keymgruser
+4733; 0 0 COMMENT keymgr COLUMN ca_cert_store.cr_dtimes keymgruser
+4734; 0 0 COMMENT keymgr COLUMN ca_cert_store.upd_by keymgruser
+4735; 0 0 COMMENT keymgr COLUMN ca_cert_store.upd_dtimes keymgruser
+4736; 0 0 COMMENT keymgr COLUMN ca_cert_store.is_deleted keymgruser
+4737; 0 0 COMMENT keymgr COLUMN ca_cert_store.del_dtimes keymgruser
+4738; 0 0 ACL keymgr TABLE ca_cert_store keymgruser
+382; 1259 19809 TABLE keymgr data_encrypt_keystore keymgruser
+4739; 0 0 COMMENT keymgr TABLE data_encrypt_keystore keymgruser
+4740; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.id keymgruser
+4741; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.key keymgruser
+4742; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.key_status keymgruser
+4743; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.cr_by keymgruser
+4744; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.cr_dtimes keymgruser
+4745; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.upd_by keymgruser
+4746; 0 0 COMMENT keymgr COLUMN data_encrypt_keystore.upd_dtimes keymgruser
+4747; 0 0 ACL keymgr TABLE data_encrypt_keystore keymgruser
+392; 1259 9627843 TABLE keymgr ed25519_keys keymgruser
+4748; 0 0 ACL keymgr TABLE ed25519_keys keymgruser
+383; 1259 19815 TABLE keymgr key_alias keymgruser
+4749; 0 0 COMMENT keymgr TABLE key_alias keymgruser
+4750; 0 0 COMMENT keymgr COLUMN key_alias.id keymgruser
+4751; 0 0 COMMENT keymgr COLUMN key_alias.app_id keymgruser
+4752; 0 0 COMMENT keymgr COLUMN key_alias.ref_id keymgruser
+4753; 0 0 COMMENT keymgr COLUMN key_alias.key_gen_dtimes keymgruser
+4754; 0 0 COMMENT keymgr COLUMN key_alias.key_expire_dtimes keymgruser
+4755; 0 0 COMMENT keymgr COLUMN key_alias.status_code keymgruser
+4756; 0 0 COMMENT keymgr COLUMN key_alias.lang_code keymgruser
+4757; 0 0 COMMENT keymgr COLUMN key_alias.cr_by keymgruser
+4758; 0 0 COMMENT keymgr COLUMN key_alias.cr_dtimes keymgruser
+4759; 0 0 COMMENT keymgr COLUMN key_alias.upd_by keymgruser
+4760; 0 0 COMMENT keymgr COLUMN key_alias.upd_dtimes keymgruser
+4761; 0 0 COMMENT keymgr COLUMN key_alias.is_deleted keymgruser
+4762; 0 0 COMMENT keymgr COLUMN key_alias.del_dtimes keymgruser
+4763; 0 0 ACL keymgr TABLE key_alias keymgruser
+384; 1259 19822 TABLE keymgr key_policy_def keymgruser
+4764; 0 0 COMMENT keymgr TABLE key_policy_def keymgruser
+4765; 0 0 COMMENT keymgr COLUMN key_policy_def.app_id keymgruser
+4766; 0 0 COMMENT keymgr COLUMN key_policy_def.key_validity_duration keymgruser
+4767; 0 0 COMMENT keymgr COLUMN key_policy_def.is_active keymgruser
+4768; 0 0 COMMENT keymgr COLUMN key_policy_def.cr_by keymgruser
+4769; 0 0 COMMENT keymgr COLUMN key_policy_def.cr_dtimes keymgruser
+4770; 0 0 COMMENT keymgr COLUMN key_policy_def.upd_by keymgruser
+4771; 0 0 COMMENT keymgr COLUMN key_policy_def.upd_dtimes keymgruser
+4772; 0 0 COMMENT keymgr COLUMN key_policy_def.is_deleted keymgruser
+4773; 0 0 COMMENT keymgr COLUMN key_policy_def.del_dtimes keymgruser
+4774; 0 0 ACL keymgr TABLE key_policy_def keymgruser
+385; 1259 19829 TABLE keymgr key_policy_def_h keymgruser
+4775; 0 0 COMMENT keymgr TABLE key_policy_def_h keymgruser
+4776; 0 0 COMMENT keymgr COLUMN key_policy_def_h.app_id keymgruser
+4777; 0 0 COMMENT keymgr COLUMN key_policy_def_h.eff_dtimes keymgruser
+4778; 0 0 COMMENT keymgr COLUMN key_policy_def_h.key_validity_duration keymgruser
+4779; 0 0 COMMENT keymgr COLUMN key_policy_def_h.is_active keymgruser
+4780; 0 0 COMMENT keymgr COLUMN key_policy_def_h.cr_by keymgruser
+4781; 0 0 COMMENT keymgr COLUMN key_policy_def_h.cr_dtimes keymgruser
+4782; 0 0 COMMENT keymgr COLUMN key_policy_def_h.upd_by keymgruser
+4783; 0 0 COMMENT keymgr COLUMN key_policy_def_h.upd_dtimes keymgruser
+4784; 0 0 COMMENT keymgr COLUMN key_policy_def_h.is_deleted keymgruser
+4785; 0 0 COMMENT keymgr COLUMN key_policy_def_h.del_dtimes keymgruser
+4786; 0 0 ACL keymgr TABLE key_policy_def_h keymgruser
+386; 1259 19836 TABLE keymgr key_store keymgruser
+4787; 0 0 COMMENT keymgr TABLE key_store keymgruser
+4788; 0 0 COMMENT keymgr COLUMN key_store.id keymgruser
+4789; 0 0 COMMENT keymgr COLUMN key_store.master_key keymgruser
+4790; 0 0 COMMENT keymgr COLUMN key_store.private_key keymgruser
+4791; 0 0 COMMENT keymgr COLUMN key_store.certificate_data keymgruser
+4792; 0 0 COMMENT keymgr COLUMN key_store.cr_by keymgruser
+4793; 0 0 COMMENT keymgr COLUMN key_store.cr_dtimes keymgruser
+4794; 0 0 COMMENT keymgr COLUMN key_store.upd_by keymgruser
+4795; 0 0 COMMENT keymgr COLUMN key_store.upd_dtimes keymgruser
+4796; 0 0 COMMENT keymgr COLUMN key_store.is_deleted keymgruser
+4797; 0 0 COMMENT keymgr COLUMN key_store.del_dtimes keymgruser
+4798; 0 0 ACL keymgr TABLE key_store keymgruser
+387; 1259 19843 TABLE keymgr licensekey_list keymgruser
+4799; 0 0 COMMENT keymgr TABLE licensekey_list keymgruser
+4800; 0 0 COMMENT keymgr COLUMN licensekey_list.license_key keymgruser
+4801; 0 0 COMMENT keymgr COLUMN licensekey_list.created_dtime keymgruser
+4802; 0 0 COMMENT keymgr COLUMN licensekey_list.expiry_dtime keymgruser
+4803; 0 0 COMMENT keymgr COLUMN licensekey_list.is_active keymgruser
+4804; 0 0 COMMENT keymgr COLUMN licensekey_list.cr_by keymgruser
+4805; 0 0 COMMENT keymgr COLUMN licensekey_list.cr_dtimes keymgruser
+4806; 0 0 COMMENT keymgr COLUMN licensekey_list.upd_by keymgruser
+4807; 0 0 COMMENT keymgr COLUMN licensekey_list.upd_dtimes keymgruser
+4808; 0 0 COMMENT keymgr COLUMN licensekey_list.is_deleted keymgruser
+4809; 0 0 COMMENT keymgr COLUMN licensekey_list.del_dtimes keymgruser
+4810; 0 0 ACL keymgr TABLE licensekey_list keymgruser
+388; 1259 19850 TABLE keymgr licensekey_permission keymgruser
+4811; 0 0 COMMENT keymgr TABLE licensekey_permission keymgruser
+4812; 0 0 COMMENT keymgr COLUMN licensekey_permission.license_key keymgruser
+4813; 0 0 COMMENT keymgr COLUMN licensekey_permission.permission keymgruser
+4814; 0 0 COMMENT keymgr COLUMN licensekey_permission.is_active keymgruser
+4815; 0 0 COMMENT keymgr COLUMN licensekey_permission.cr_by keymgruser
+4816; 0 0 COMMENT keymgr COLUMN licensekey_permission.cr_dtimes keymgruser
+4817; 0 0 COMMENT keymgr COLUMN licensekey_permission.upd_by keymgruser
+4818; 0 0 COMMENT keymgr COLUMN licensekey_permission.upd_dtimes keymgruser
+4819; 0 0 COMMENT keymgr COLUMN licensekey_permission.is_deleted keymgruser
+4820; 0 0 COMMENT keymgr COLUMN licensekey_permission.del_dtimes keymgruser
+4821; 0 0 ACL keymgr TABLE licensekey_permission keymgruser
+389; 1259 19857 TABLE keymgr partner_cert_store keymgruser
+4822; 0 0 COMMENT keymgr TABLE partner_cert_store keymgruser
+4823; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_id keymgruser
+4824; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_subject keymgruser
+4825; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_issuer keymgruser
+4826; 0 0 COMMENT keymgr COLUMN partner_cert_store.issuer_id keymgruser
+4827; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_not_before keymgruser
+4828; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_not_after keymgruser
+4829; 0 0 COMMENT keymgr COLUMN partner_cert_store.partner_domain keymgruser
+4830; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_data keymgruser
+4831; 0 0 COMMENT keymgr COLUMN partner_cert_store.signed_cert_data keymgruser
+4832; 0 0 COMMENT keymgr COLUMN partner_cert_store.key_usage keymgruser
+4833; 0 0 COMMENT keymgr COLUMN partner_cert_store.organization_name keymgruser
+4834; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_thumbprint keymgruser
+4835; 0 0 COMMENT keymgr COLUMN partner_cert_store.cert_serial_no keymgruser
+4836; 0 0 COMMENT keymgr COLUMN partner_cert_store.cr_by keymgruser
+4837; 0 0 COMMENT keymgr COLUMN partner_cert_store.cr_dtimes keymgruser
+4838; 0 0 COMMENT keymgr COLUMN partner_cert_store.upd_by keymgruser
+4839; 0 0 COMMENT keymgr COLUMN partner_cert_store.upd_dtimes keymgruser
+4840; 0 0 COMMENT keymgr COLUMN partner_cert_store.is_deleted keymgruser
+4841; 0 0 COMMENT keymgr COLUMN partner_cert_store.del_dtimes keymgruser
+4842; 0 0 ACL keymgr TABLE partner_cert_store keymgruser
+390; 1259 19864 TABLE keymgr tsp_licensekey_map keymgruser
+4843; 0 0 COMMENT keymgr TABLE tsp_licensekey_map keymgruser
+4844; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.tsp_id keymgruser
+4845; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.license_key keymgruser
+4846; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.is_active keymgruser
+4847; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.cr_by keymgruser
+4848; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.cr_dtimes keymgruser
+4849; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.upd_by keymgruser
+4850; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.upd_dtimes keymgruser
+4851; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.is_deleted keymgruser
+4852; 0 0 COMMENT keymgr COLUMN tsp_licensekey_map.del_dtimes keymgruser
+4853; 0 0 ACL keymgr TABLE tsp_licensekey_map keymgruser
+4451; 2606 19872 CONSTRAINT keymgr ca_cert_store pk_cacs_id keymgruser
+4453; 2606 19874 CONSTRAINT keymgr data_encrypt_keystore pk_dekstr_id keymgruser
+4455; 2606 19876 CONSTRAINT keymgr key_alias pk_keymals_id keymgruser
+4457; 2606 19878 CONSTRAINT keymgr key_policy_def pk_keypdef_id keymgruser
+4459; 2606 19880 CONSTRAINT keymgr key_policy_def_h pk_keypdefh_id keymgruser
+4461; 2606 19882 CONSTRAINT keymgr key_store pk_keystr_id keymgruser
+4463; 2606 19884 CONSTRAINT keymgr licensekey_list pk_lkeylst keymgruser
+4465; 2606 19886 CONSTRAINT keymgr licensekey_permission pk_lkeyper keymgruser
+4467; 2606 19888 CONSTRAINT keymgr partner_cert_store pk_parcs_id keymgruser
+4469; 2606 19890 CONSTRAINT keymgr tsp_licensekey_map pk_tsplkeym keymgruser
+4470; 2606 19891 FK CONSTRAINT keymgr licensekey_permission fk_lkeyper keymgruser
+4471; 2606 19896 FK CONSTRAINT keymgr tsp_licensekey_map fk_tsplkeym keymgruser

@@ -1,0 +1,78 @@
+﻿;
+; Archive created at 2025-11-03 10:52:32
+;     dbname: mosip_idmap
+;     TOC Entries: 69
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 19580 SCHEMA - idmap postgres
+4671; 0 0 ACL - SCHEMA idmap postgres
+4672; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415428 EXTENSION - dblink 
+4673; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 19581 TABLE idmap uin_encrypt_salt idmapuser
+4674; 0 0 COMMENT idmap TABLE uin_encrypt_salt idmapuser
+4675; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.id idmapuser
+4676; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.salt idmapuser
+4677; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.cr_by idmapuser
+4678; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.cr_dtimes idmapuser
+4679; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.upd_by idmapuser
+4680; 0 0 COMMENT idmap COLUMN uin_encrypt_salt.upd_dtimes idmapuser
+4681; 0 0 ACL idmap TABLE uin_encrypt_salt idmapuser
+382; 1259 19587 TABLE idmap uin_hash_salt idmapuser
+4682; 0 0 COMMENT idmap TABLE uin_hash_salt idmapuser
+4683; 0 0 COMMENT idmap COLUMN uin_hash_salt.id idmapuser
+4684; 0 0 COMMENT idmap COLUMN uin_hash_salt.salt idmapuser
+4685; 0 0 COMMENT idmap COLUMN uin_hash_salt.cr_by idmapuser
+4686; 0 0 COMMENT idmap COLUMN uin_hash_salt.cr_dtimes idmapuser
+4687; 0 0 COMMENT idmap COLUMN uin_hash_salt.upd_by idmapuser
+4688; 0 0 COMMENT idmap COLUMN uin_hash_salt.upd_dtimes idmapuser
+4689; 0 0 ACL idmap TABLE uin_hash_salt idmapuser
+383; 1259 19593 TABLE idmap vid idmapuser
+4690; 0 0 COMMENT idmap TABLE vid idmapuser
+4691; 0 0 COMMENT idmap COLUMN vid.id idmapuser
+4692; 0 0 COMMENT idmap COLUMN vid.vid idmapuser
+4693; 0 0 COMMENT idmap COLUMN vid.uin_hash idmapuser
+4694; 0 0 COMMENT idmap COLUMN vid.uin idmapuser
+4695; 0 0 COMMENT idmap COLUMN vid.vidtyp_code idmapuser
+4696; 0 0 COMMENT idmap COLUMN vid.generated_dtimes idmapuser
+4697; 0 0 COMMENT idmap COLUMN vid.expiry_dtimes idmapuser
+4698; 0 0 COMMENT idmap COLUMN vid.status_code idmapuser
+4699; 0 0 COMMENT idmap COLUMN vid.cr_by idmapuser
+4700; 0 0 COMMENT idmap COLUMN vid.cr_dtimes idmapuser
+4701; 0 0 COMMENT idmap COLUMN vid.upd_by idmapuser
+4702; 0 0 COMMENT idmap COLUMN vid.upd_dtimes idmapuser
+4703; 0 0 COMMENT idmap COLUMN vid.is_deleted idmapuser
+4704; 0 0 COMMENT idmap COLUMN vid.del_dtimes idmapuser
+4705; 0 0 ACL idmap TABLE vid idmapuser
+384; 1259 19600 TABLE idmap vid_seed idmapuser
+4706; 0 0 COMMENT idmap TABLE vid_seed idmapuser
+4707; 0 0 COMMENT idmap COLUMN vid_seed.seed_no idmapuser
+4708; 0 0 COMMENT idmap COLUMN vid_seed.cr_by idmapuser
+4709; 0 0 COMMENT idmap COLUMN vid_seed.cr_dtimes idmapuser
+4710; 0 0 COMMENT idmap COLUMN vid_seed.is_deleted idmapuser
+4711; 0 0 COMMENT idmap COLUMN vid_seed.del_dtimes idmapuser
+4712; 0 0 ACL idmap TABLE vid_seed idmapuser
+385; 1259 19604 TABLE idmap vid_seq idmapuser
+4713; 0 0 COMMENT idmap TABLE vid_seq idmapuser
+4714; 0 0 COMMENT idmap COLUMN vid_seq.seq_no idmapuser
+4715; 0 0 COMMENT idmap COLUMN vid_seq.cr_by idmapuser
+4716; 0 0 COMMENT idmap COLUMN vid_seq.cr_dtimes idmapuser
+4717; 0 0 COMMENT idmap COLUMN vid_seq.is_deleted idmapuser
+4718; 0 0 COMMENT idmap COLUMN vid_seq.del_dtimes idmapuser
+4719; 0 0 ACL idmap TABLE vid_seq idmapuser
+4413; 2606 19609 CONSTRAINT idmap uin_encrypt_salt pk_uines idmapuser
+4415; 2606 19611 CONSTRAINT idmap uin_hash_salt pk_uinhs idmapuser
+4417; 2606 19613 CONSTRAINT idmap vid pk_vid idmapuser
+4423; 2606 19615 CONSTRAINT idmap vid_seed pk_vidsd idmapuser
+4425; 2606 19617 CONSTRAINT idmap vid_seq pk_vidseq idmapuser
+4419; 2606 19619 CONSTRAINT idmap vid uk_vid idmapuser
+4421; 2606 19621 CONSTRAINT idmap vid uk_vid_uinhash idmapuser

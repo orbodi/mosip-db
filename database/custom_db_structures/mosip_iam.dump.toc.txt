@@ -1,0 +1,123 @@
+﻿;
+; Archive created at 2025-11-03 10:52:30
+;     dbname: mosip_iam
+;     TOC Entries: 114
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+12; 2615 19319 SCHEMA - iam iamuser
+4635; 0 0 ACL - SCHEMA iam iamuser
+4636; 0 0 ACL - SCHEMA public enterprisedb
+380; 1259 19320 TABLE iam oauth_access_token postgres
+4637; 0 0 COMMENT iam TABLE oauth_access_token postgres
+4638; 0 0 COMMENT iam COLUMN oauth_access_token.auth_token postgres
+4639; 0 0 COMMENT iam COLUMN oauth_access_token.user_id postgres
+4640; 0 0 COMMENT iam COLUMN oauth_access_token.refresh_token postgres
+4641; 0 0 COMMENT iam COLUMN oauth_access_token.expiration_time postgres
+4642; 0 0 COMMENT iam COLUMN oauth_access_token.is_active postgres
+4643; 0 0 COMMENT iam COLUMN oauth_access_token.cr_by postgres
+4644; 0 0 COMMENT iam COLUMN oauth_access_token.cr_dtimes postgres
+4645; 0 0 COMMENT iam COLUMN oauth_access_token.upd_by postgres
+4646; 0 0 COMMENT iam COLUMN oauth_access_token.upd_dtimes postgres
+4647; 0 0 COMMENT iam COLUMN oauth_access_token.is_deleted postgres
+4648; 0 0 COMMENT iam COLUMN oauth_access_token.del_dtimes postgres
+4649; 0 0 ACL iam TABLE oauth_access_token postgres
+381; 1259 19327 TABLE iam role_list postgres
+4650; 0 0 COMMENT iam TABLE role_list postgres
+4651; 0 0 COMMENT iam COLUMN role_list.code postgres
+4652; 0 0 COMMENT iam COLUMN role_list.descr postgres
+4653; 0 0 COMMENT iam COLUMN role_list.lang_code postgres
+4654; 0 0 COMMENT iam COLUMN role_list.is_active postgres
+4655; 0 0 COMMENT iam COLUMN role_list.cr_by postgres
+4656; 0 0 COMMENT iam COLUMN role_list.cr_dtimes postgres
+4657; 0 0 COMMENT iam COLUMN role_list.upd_by postgres
+4658; 0 0 COMMENT iam COLUMN role_list.upd_dtimes postgres
+4659; 0 0 COMMENT iam COLUMN role_list.is_deleted postgres
+4660; 0 0 COMMENT iam COLUMN role_list.del_dtimes postgres
+4661; 0 0 ACL iam TABLE role_list postgres
+382; 1259 19334 TABLE iam user_detail postgres
+4662; 0 0 COMMENT iam TABLE user_detail postgres
+4663; 0 0 COMMENT iam COLUMN user_detail.id postgres
+4664; 0 0 COMMENT iam COLUMN user_detail.name postgres
+4665; 0 0 COMMENT iam COLUMN user_detail.email postgres
+4666; 0 0 COMMENT iam COLUMN user_detail.mobile postgres
+4667; 0 0 COMMENT iam COLUMN user_detail.status_code postgres
+4668; 0 0 COMMENT iam COLUMN user_detail.reg_id postgres
+4669; 0 0 COMMENT iam COLUMN user_detail.salt postgres
+4670; 0 0 COMMENT iam COLUMN user_detail.lang_code postgres
+4671; 0 0 COMMENT iam COLUMN user_detail.last_login_dtimes postgres
+4672; 0 0 COMMENT iam COLUMN user_detail.last_login_method postgres
+4673; 0 0 COMMENT iam COLUMN user_detail.is_active postgres
+4674; 0 0 COMMENT iam COLUMN user_detail.cr_by postgres
+4675; 0 0 COMMENT iam COLUMN user_detail.cr_dtimes postgres
+4676; 0 0 COMMENT iam COLUMN user_detail.upd_by postgres
+4677; 0 0 COMMENT iam COLUMN user_detail.upd_dtimes postgres
+4678; 0 0 COMMENT iam COLUMN user_detail.is_deleted postgres
+4679; 0 0 COMMENT iam COLUMN user_detail.del_dtimes postgres
+4680; 0 0 ACL iam TABLE user_detail postgres
+383; 1259 19341 TABLE iam user_detail_h postgres
+4681; 0 0 COMMENT iam TABLE user_detail_h postgres
+4682; 0 0 COMMENT iam COLUMN user_detail_h.id postgres
+4683; 0 0 COMMENT iam COLUMN user_detail_h.eff_dtimes postgres
+4684; 0 0 COMMENT iam COLUMN user_detail_h.name postgres
+4685; 0 0 COMMENT iam COLUMN user_detail_h.email postgres
+4686; 0 0 COMMENT iam COLUMN user_detail_h.mobile postgres
+4687; 0 0 COMMENT iam COLUMN user_detail_h.status_code postgres
+4688; 0 0 COMMENT iam COLUMN user_detail_h.reg_id postgres
+4689; 0 0 COMMENT iam COLUMN user_detail_h.salt postgres
+4690; 0 0 COMMENT iam COLUMN user_detail_h.lang_code postgres
+4691; 0 0 COMMENT iam COLUMN user_detail_h.last_login_dtimes postgres
+4692; 0 0 COMMENT iam COLUMN user_detail_h.last_login_method postgres
+4693; 0 0 COMMENT iam COLUMN user_detail_h.is_active postgres
+4694; 0 0 COMMENT iam COLUMN user_detail_h.cr_by postgres
+4695; 0 0 COMMENT iam COLUMN user_detail_h.cr_dtimes postgres
+4696; 0 0 COMMENT iam COLUMN user_detail_h.upd_by postgres
+4697; 0 0 COMMENT iam COLUMN user_detail_h.upd_dtimes postgres
+4698; 0 0 COMMENT iam COLUMN user_detail_h.is_deleted postgres
+4699; 0 0 COMMENT iam COLUMN user_detail_h.del_dtimes postgres
+4700; 0 0 ACL iam TABLE user_detail_h postgres
+384; 1259 19348 TABLE iam user_pwd postgres
+4701; 0 0 COMMENT iam TABLE user_pwd postgres
+4702; 0 0 COMMENT iam COLUMN user_pwd.usr_id postgres
+4703; 0 0 COMMENT iam COLUMN user_pwd.pwd postgres
+4704; 0 0 COMMENT iam COLUMN user_pwd.pwd_expiry_dtimes postgres
+4705; 0 0 COMMENT iam COLUMN user_pwd.status_code postgres
+4706; 0 0 COMMENT iam COLUMN user_pwd.lang_code postgres
+4707; 0 0 COMMENT iam COLUMN user_pwd.is_active postgres
+4708; 0 0 COMMENT iam COLUMN user_pwd.cr_by postgres
+4709; 0 0 COMMENT iam COLUMN user_pwd.cr_dtimes postgres
+4710; 0 0 COMMENT iam COLUMN user_pwd.upd_by postgres
+4711; 0 0 COMMENT iam COLUMN user_pwd.upd_dtimes postgres
+4712; 0 0 COMMENT iam COLUMN user_pwd.is_deleted postgres
+4713; 0 0 COMMENT iam COLUMN user_pwd.del_dtimes postgres
+4714; 0 0 ACL iam TABLE user_pwd postgres
+385; 1259 19355 TABLE iam user_role postgres
+4715; 0 0 COMMENT iam TABLE user_role postgres
+4716; 0 0 COMMENT iam COLUMN user_role.usr_id postgres
+4717; 0 0 COMMENT iam COLUMN user_role.role_code postgres
+4718; 0 0 COMMENT iam COLUMN user_role.lang_code postgres
+4719; 0 0 COMMENT iam COLUMN user_role.is_active postgres
+4720; 0 0 COMMENT iam COLUMN user_role.cr_by postgres
+4721; 0 0 COMMENT iam COLUMN user_role.cr_dtimes postgres
+4722; 0 0 COMMENT iam COLUMN user_role.upd_by postgres
+4723; 0 0 COMMENT iam COLUMN user_role.upd_dtimes postgres
+4724; 0 0 COMMENT iam COLUMN user_role.is_deleted postgres
+4725; 0 0 COMMENT iam COLUMN user_role.del_dtimes postgres
+4726; 0 0 ACL iam TABLE user_role postgres
+4376; 2606 19363 CONSTRAINT iam oauth_access_token pk_authat_id postgres
+4378; 2606 19365 CONSTRAINT iam role_list pk_rolelst_code postgres
+4382; 2606 19367 CONSTRAINT iam user_detail_h pk_usrdtl_h_id postgres
+4380; 2606 19369 CONSTRAINT iam user_detail pk_usrdtl_id postgres
+4384; 2606 19371 CONSTRAINT iam user_pwd pk_usrpwd_usr_id postgres
+4386; 2606 19373 CONSTRAINT iam user_role pk_usrrol_usr_id postgres
+4387; 2606 19374 FK CONSTRAINT iam user_pwd fk_usrpwd_usrdtl postgres
+4388; 2606 19379 FK CONSTRAINT iam user_role fk_usrrol_rolelst postgres
+4389; 2606 19384 FK CONSTRAINT iam user_role fk_usrrol_usrdtl postgres

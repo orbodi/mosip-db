@@ -1,0 +1,189 @@
+﻿;
+; Archive created at 2025-11-03 10:52:29
+;     dbname: mosip_authdevice
+;     TOC Entries: 180
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 19122 SCHEMA - authdevice postgres
+4713; 0 0 ACL - SCHEMA authdevice postgres
+4714; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415290 EXTENSION - dblink 
+4715; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 19123 TABLE authdevice device_detail authdeviceuser
+4716; 0 0 COMMENT authdevice TABLE device_detail authdeviceuser
+4717; 0 0 COMMENT authdevice COLUMN device_detail.id authdeviceuser
+4718; 0 0 COMMENT authdevice COLUMN device_detail.dprovider_id authdeviceuser
+4719; 0 0 COMMENT authdevice COLUMN device_detail.dtype_code authdeviceuser
+4720; 0 0 COMMENT authdevice COLUMN device_detail.dstype_code authdeviceuser
+4721; 0 0 COMMENT authdevice COLUMN device_detail.make authdeviceuser
+4722; 0 0 COMMENT authdevice COLUMN device_detail.model authdeviceuser
+4723; 0 0 COMMENT authdevice COLUMN device_detail.partner_org_name authdeviceuser
+4724; 0 0 COMMENT authdevice COLUMN device_detail.approval_status authdeviceuser
+4725; 0 0 COMMENT authdevice COLUMN device_detail.is_active authdeviceuser
+4726; 0 0 COMMENT authdevice COLUMN device_detail.cr_by authdeviceuser
+4727; 0 0 COMMENT authdevice COLUMN device_detail.cr_dtimes authdeviceuser
+4728; 0 0 COMMENT authdevice COLUMN device_detail.upd_by authdeviceuser
+4729; 0 0 COMMENT authdevice COLUMN device_detail.upd_dtimes authdeviceuser
+4730; 0 0 COMMENT authdevice COLUMN device_detail.is_deleted authdeviceuser
+4731; 0 0 COMMENT authdevice COLUMN device_detail.del_dtimes authdeviceuser
+4732; 0 0 ACL authdevice TABLE device_detail authdeviceuser
+382; 1259 19130 TABLE authdevice foundational_trust_provider authdeviceuser
+4733; 0 0 COMMENT authdevice TABLE foundational_trust_provider authdeviceuser
+4734; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.id authdeviceuser
+4735; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.is_active authdeviceuser
+4736; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.cr_by authdeviceuser
+4737; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.cr_dtimes authdeviceuser
+4738; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.upd_by authdeviceuser
+4739; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.upd_dtimes authdeviceuser
+4740; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.is_deleted authdeviceuser
+4741; 0 0 COMMENT authdevice COLUMN foundational_trust_provider.del_dtimes authdeviceuser
+4742; 0 0 ACL authdevice TABLE foundational_trust_provider authdeviceuser
+383; 1259 19137 TABLE authdevice ftp_chip_detail authdeviceuser
+4743; 0 0 COMMENT authdevice TABLE ftp_chip_detail authdeviceuser
+4744; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.id authdeviceuser
+4745; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.foundational_trust_provider_id authdeviceuser
+4746; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.make authdeviceuser
+4747; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.model authdeviceuser
+4748; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.certificate_alias authdeviceuser
+4749; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.partner_org_name authdeviceuser
+4750; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.is_active authdeviceuser
+4751; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.cr_by authdeviceuser
+4752; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.cr_dtimes authdeviceuser
+4753; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.upd_by authdeviceuser
+4754; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.upd_dtimes authdeviceuser
+4755; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.is_deleted authdeviceuser
+4756; 0 0 COMMENT authdevice COLUMN ftp_chip_detail.del_dtimes authdeviceuser
+4757; 0 0 ACL authdevice TABLE ftp_chip_detail authdeviceuser
+384; 1259 19144 TABLE authdevice reg_device_sub_type authdeviceuser
+4758; 0 0 COMMENT authdevice TABLE reg_device_sub_type authdeviceuser
+4759; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.code authdeviceuser
+4760; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.dtyp_code authdeviceuser
+4761; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.name authdeviceuser
+4762; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.descr authdeviceuser
+4763; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.is_active authdeviceuser
+4764; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.cr_by authdeviceuser
+4765; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.cr_dtimes authdeviceuser
+4766; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.upd_by authdeviceuser
+4767; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.upd_dtimes authdeviceuser
+4768; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.is_deleted authdeviceuser
+4769; 0 0 COMMENT authdevice COLUMN reg_device_sub_type.del_dtimes authdeviceuser
+4770; 0 0 ACL authdevice TABLE reg_device_sub_type authdeviceuser
+385; 1259 19151 TABLE authdevice reg_device_type authdeviceuser
+4771; 0 0 COMMENT authdevice TABLE reg_device_type authdeviceuser
+4772; 0 0 COMMENT authdevice COLUMN reg_device_type.code authdeviceuser
+4773; 0 0 COMMENT authdevice COLUMN reg_device_type.name authdeviceuser
+4774; 0 0 COMMENT authdevice COLUMN reg_device_type.descr authdeviceuser
+4775; 0 0 COMMENT authdevice COLUMN reg_device_type.is_active authdeviceuser
+4776; 0 0 COMMENT authdevice COLUMN reg_device_type.cr_by authdeviceuser
+4777; 0 0 COMMENT authdevice COLUMN reg_device_type.cr_dtimes authdeviceuser
+4778; 0 0 COMMENT authdevice COLUMN reg_device_type.upd_by authdeviceuser
+4779; 0 0 COMMENT authdevice COLUMN reg_device_type.upd_dtimes authdeviceuser
+4780; 0 0 COMMENT authdevice COLUMN reg_device_type.is_deleted authdeviceuser
+4781; 0 0 COMMENT authdevice COLUMN reg_device_type.del_dtimes authdeviceuser
+4782; 0 0 ACL authdevice TABLE reg_device_type authdeviceuser
+386; 1259 19158 TABLE authdevice registered_device_master authdeviceuser
+4783; 0 0 COMMENT authdevice TABLE registered_device_master authdeviceuser
+4784; 0 0 COMMENT authdevice COLUMN registered_device_master.code authdeviceuser
+4785; 0 0 COMMENT authdevice COLUMN registered_device_master.status_code authdeviceuser
+4786; 0 0 COMMENT authdevice COLUMN registered_device_master.device_id authdeviceuser
+4787; 0 0 COMMENT authdevice COLUMN registered_device_master.device_sub_id authdeviceuser
+4788; 0 0 COMMENT authdevice COLUMN registered_device_master.digital_id authdeviceuser
+4789; 0 0 COMMENT authdevice COLUMN registered_device_master.serial_number authdeviceuser
+4790; 0 0 COMMENT authdevice COLUMN registered_device_master.device_detail_id authdeviceuser
+4791; 0 0 COMMENT authdevice COLUMN registered_device_master.purpose authdeviceuser
+4792; 0 0 COMMENT authdevice COLUMN registered_device_master.firmware authdeviceuser
+4793; 0 0 COMMENT authdevice COLUMN registered_device_master.expiry_date authdeviceuser
+4794; 0 0 COMMENT authdevice COLUMN registered_device_master.certification_level authdeviceuser
+4795; 0 0 COMMENT authdevice COLUMN registered_device_master.foundational_trust_provider_id authdeviceuser
+4796; 0 0 COMMENT authdevice COLUMN registered_device_master.is_active authdeviceuser
+4797; 0 0 COMMENT authdevice COLUMN registered_device_master.cr_by authdeviceuser
+4798; 0 0 COMMENT authdevice COLUMN registered_device_master.cr_dtimes authdeviceuser
+4799; 0 0 COMMENT authdevice COLUMN registered_device_master.upd_by authdeviceuser
+4800; 0 0 COMMENT authdevice COLUMN registered_device_master.upd_dtimes authdeviceuser
+4801; 0 0 COMMENT authdevice COLUMN registered_device_master.is_deleted authdeviceuser
+4802; 0 0 COMMENT authdevice COLUMN registered_device_master.del_dtimes authdeviceuser
+4803; 0 0 ACL authdevice TABLE registered_device_master authdeviceuser
+387; 1259 19165 TABLE authdevice registered_device_master_h authdeviceuser
+4804; 0 0 COMMENT authdevice TABLE registered_device_master_h authdeviceuser
+4805; 0 0 COMMENT authdevice COLUMN registered_device_master_h.code authdeviceuser
+4806; 0 0 COMMENT authdevice COLUMN registered_device_master_h.status_code authdeviceuser
+4807; 0 0 COMMENT authdevice COLUMN registered_device_master_h.device_id authdeviceuser
+4808; 0 0 COMMENT authdevice COLUMN registered_device_master_h.device_sub_id authdeviceuser
+4809; 0 0 COMMENT authdevice COLUMN registered_device_master_h.digital_id authdeviceuser
+4810; 0 0 COMMENT authdevice COLUMN registered_device_master_h.serial_number authdeviceuser
+4811; 0 0 COMMENT authdevice COLUMN registered_device_master_h.device_detail_id authdeviceuser
+4812; 0 0 COMMENT authdevice COLUMN registered_device_master_h.purpose authdeviceuser
+4813; 0 0 COMMENT authdevice COLUMN registered_device_master_h.firmware authdeviceuser
+4814; 0 0 COMMENT authdevice COLUMN registered_device_master_h.expiry_date authdeviceuser
+4815; 0 0 COMMENT authdevice COLUMN registered_device_master_h.certification_level authdeviceuser
+4816; 0 0 COMMENT authdevice COLUMN registered_device_master_h.foundational_trust_provider_id authdeviceuser
+4817; 0 0 COMMENT authdevice COLUMN registered_device_master_h.is_active authdeviceuser
+4818; 0 0 COMMENT authdevice COLUMN registered_device_master_h.cr_by authdeviceuser
+4819; 0 0 COMMENT authdevice COLUMN registered_device_master_h.cr_dtimes authdeviceuser
+4820; 0 0 COMMENT authdevice COLUMN registered_device_master_h.upd_by authdeviceuser
+4821; 0 0 COMMENT authdevice COLUMN registered_device_master_h.upd_dtimes authdeviceuser
+4822; 0 0 COMMENT authdevice COLUMN registered_device_master_h.is_deleted authdeviceuser
+4823; 0 0 COMMENT authdevice COLUMN registered_device_master_h.del_dtimes authdeviceuser
+4824; 0 0 COMMENT authdevice COLUMN registered_device_master_h.eff_dtimes authdeviceuser
+4825; 0 0 ACL authdevice TABLE registered_device_master_h authdeviceuser
+388; 1259 19172 TABLE authdevice secure_biometric_interface authdeviceuser
+4826; 0 0 COMMENT authdevice TABLE secure_biometric_interface authdeviceuser
+4827; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.id authdeviceuser
+4828; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.sw_binary_hash authdeviceuser
+4829; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.sw_version authdeviceuser
+4830; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.device_detail_id authdeviceuser
+4831; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.sw_cr_dtimes authdeviceuser
+4832; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.sw_expiry_dtimes authdeviceuser
+4833; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.approval_status authdeviceuser
+4834; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.is_active authdeviceuser
+4835; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.cr_by authdeviceuser
+4836; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.cr_dtimes authdeviceuser
+4837; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.upd_by authdeviceuser
+4838; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.upd_dtimes authdeviceuser
+4839; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.is_deleted authdeviceuser
+4840; 0 0 COMMENT authdevice COLUMN secure_biometric_interface.del_dtimes authdeviceuser
+4841; 0 0 ACL authdevice TABLE secure_biometric_interface authdeviceuser
+389; 1259 19179 TABLE authdevice secure_biometric_interface_h authdeviceuser
+4842; 0 0 COMMENT authdevice TABLE secure_biometric_interface_h authdeviceuser
+4843; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.id authdeviceuser
+4844; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.sw_binary_hash authdeviceuser
+4845; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.sw_version authdeviceuser
+4846; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.device_detail_id authdeviceuser
+4847; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.sw_cr_dtimes authdeviceuser
+4848; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.sw_expiry_dtimes authdeviceuser
+4849; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.approval_status authdeviceuser
+4850; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.is_active authdeviceuser
+4851; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.cr_by authdeviceuser
+4852; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.cr_dtimes authdeviceuser
+4853; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.upd_by authdeviceuser
+4854; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.upd_dtimes authdeviceuser
+4855; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.is_deleted authdeviceuser
+4856; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.del_dtimes authdeviceuser
+4857; 0 0 COMMENT authdevice COLUMN secure_biometric_interface_h.eff_dtimes authdeviceuser
+4858; 0 0 ACL authdevice TABLE secure_biometric_interface_h authdeviceuser
+4441; 2606 19187 CONSTRAINT authdevice device_detail pk_devdtl_id authdeviceuser
+4447; 2606 19189 CONSTRAINT authdevice ftp_chip_detail pk_fcdtl_id authdeviceuser
+4445; 2606 19191 CONSTRAINT authdevice foundational_trust_provider pk_ftp_id authdeviceuser
+4461; 2606 19193 CONSTRAINT authdevice secure_biometric_interface_h pk_mdsh_id authdeviceuser
+4451; 2606 19195 CONSTRAINT authdevice reg_device_sub_type pk_rdstyp_code authdeviceuser
+4453; 2606 19197 CONSTRAINT authdevice reg_device_type pk_rdtyp_code authdeviceuser
+4457; 2606 19199 CONSTRAINT authdevice registered_device_master_h pk_regdevicemh_code authdeviceuser
+4455; 2606 19201 CONSTRAINT authdevice registered_device_master pk_regdevm_code authdeviceuser
+4459; 2606 19203 CONSTRAINT authdevice secure_biometric_interface pk_sbi_id authdeviceuser
+4443; 2606 19205 CONSTRAINT authdevice device_detail uk_devdtl_id authdeviceuser
+4449; 2606 19207 CONSTRAINT authdevice ftp_chip_detail uk_fcdtl_id authdeviceuser
+4462; 2606 19208 FK CONSTRAINT authdevice device_detail fk_devdtl_id authdeviceuser
+4463; 2606 19213 FK CONSTRAINT authdevice ftp_chip_detail fk_fcdtl_ftpid authdeviceuser
+4464; 2606 19218 FK CONSTRAINT authdevice reg_device_sub_type fk_rdstyp_dtype_code authdeviceuser
+4465; 2606 19223 FK CONSTRAINT authdevice registered_device_master fk_regdevm authdeviceuser
+4466; 2606 19228 FK CONSTRAINT authdevice registered_device_master fk_regdevm_ftpid authdeviceuser
+4467; 2606 19233 FK CONSTRAINT authdevice secure_biometric_interface fk_sbi_id authdeviceuser

@@ -1,0 +1,468 @@
+﻿;
+; Archive created at 2025-11-03 10:52:23
+;     dbname: keycloak
+;     TOC Entries: 458
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 17689 SCHEMA - keycloak_sc postgres
+5501; 0 0 COMMENT - SCHEMA keycloak_sc postgres
+5502; 0 0 ACL - SCHEMA keycloak_sc postgres
+5503; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415106 EXTENSION - dblink 
+5504; 0 0 COMMENT - EXTENSION dblink 
+811; 1255 17690 FUNCTION public change_owner_for_schema(text, text) postgres
+381; 1259 17691 TABLE keycloak_sc databasechangeloglock keycloak_user
+5505; 0 0 ACL keycloak_sc TABLE databasechangeloglock keycloak_user
+383; 1259 23308 TABLE public admin_event_entity keycloak_user
+5506; 0 0 ACL public TABLE admin_event_entity keycloak_user
+425; 1259 23758 TABLE public associated_policy keycloak_user
+5507; 0 0 ACL public TABLE associated_policy keycloak_user
+431; 1259 23863 TABLE public authentication_execution keycloak_user
+5508; 0 0 ACL public TABLE authentication_execution keycloak_user
+432; 1259 23871 TABLE public authentication_flow keycloak_user
+5509; 0 0 ACL public TABLE authentication_flow keycloak_user
+433; 1259 23883 TABLE public authenticator_config keycloak_user
+5510; 0 0 ACL public TABLE authenticator_config keycloak_user
+384; 1259 23316 TABLE public authenticator_config_entry keycloak_user
+5511; 0 0 ACL public TABLE authenticator_config_entry keycloak_user
+385; 1259 23324 TABLE public broker_link keycloak_user
+5512; 0 0 ACL public TABLE broker_link keycloak_user
+434; 1259 23889 TABLE public client keycloak_user
+5513; 0 0 ACL public TABLE client keycloak_user
+435; 1259 23912 TABLE public client_attributes keycloak_user
+5514; 0 0 ACL public TABLE client_attributes keycloak_user
+386; 1259 23332 TABLE public client_auth_flow_bindings keycloak_user
+5515; 0 0 ACL public TABLE client_auth_flow_bindings keycloak_user
+436; 1259 23928 TABLE public client_initial_access keycloak_user
+5516; 0 0 ACL public TABLE client_initial_access keycloak_user
+437; 1259 23934 TABLE public client_node_registrations keycloak_user
+5517; 0 0 ACL public TABLE client_node_registrations keycloak_user
+438; 1259 23939 TABLE public client_scope keycloak_user
+5518; 0 0 ACL public TABLE client_scope keycloak_user
+439; 1259 23950 TABLE public client_scope_attributes keycloak_user
+5519; 0 0 ACL public TABLE client_scope_attributes keycloak_user
+440; 1259 23959 TABLE public client_scope_client keycloak_user
+5520; 0 0 ACL public TABLE client_scope_client keycloak_user
+441; 1259 23967 TABLE public client_scope_role_mapping keycloak_user
+5521; 0 0 ACL public TABLE client_scope_role_mapping keycloak_user
+405; 1259 23495 TABLE public client_session keycloak_user
+5522; 0 0 ACL public TABLE client_session keycloak_user
+406; 1259 23509 TABLE public client_session_auth_status keycloak_user
+5523; 0 0 ACL public TABLE client_session_auth_status keycloak_user
+407; 1259 23519 TABLE public client_session_note keycloak_user
+5524; 0 0 ACL public TABLE client_session_note keycloak_user
+408; 1259 23532 TABLE public client_session_prot_mapper keycloak_user
+5525; 0 0 ACL public TABLE client_session_prot_mapper keycloak_user
+409; 1259 23542 TABLE public client_session_role keycloak_user
+5526; 0 0 ACL public TABLE client_session_role keycloak_user
+410; 1259 23552 TABLE public client_user_session_note keycloak_user
+5527; 0 0 ACL public TABLE client_user_session_note keycloak_user
+442; 1259 23974 TABLE public component keycloak_user
+5528; 0 0 ACL public TABLE component keycloak_user
+443; 1259 23984 TABLE public component_config keycloak_user
+5529; 0 0 ACL public TABLE component_config keycloak_user
+444; 1259 23993 TABLE public composite_role keycloak_user
+5530; 0 0 ACL public TABLE composite_role keycloak_user
+411; 1259 23565 TABLE public credential keycloak_user
+5531; 0 0 ACL public TABLE credential keycloak_user
+387; 1259 23337 TABLE public databasechangelog keycloak_user
+5532; 0 0 ACL public TABLE databasechangelog keycloak_user
+382; 1259 23298 TABLE public databasechangeloglock keycloak_user
+5533; 0 0 ACL public TABLE databasechangeloglock keycloak_user
+445; 1259 24000 TABLE public default_client_scope keycloak_user
+5534; 0 0 ACL public TABLE default_client_scope keycloak_user
+388; 1259 23343 TABLE public event_entity keycloak_user
+5535; 0 0 ACL public TABLE event_entity keycloak_user
+389; 1259 23351 TABLE public fed_user_attribute keycloak_user
+5536; 0 0 ACL public TABLE fed_user_attribute keycloak_user
+390; 1259 23360 TABLE public fed_user_consent keycloak_user
+5537; 0 0 ACL public TABLE fed_user_consent keycloak_user
+391; 1259 23371 TABLE public fed_user_consent_cl_scope keycloak_user
+5538; 0 0 ACL public TABLE fed_user_consent_cl_scope keycloak_user
+392; 1259 23376 TABLE public fed_user_credential keycloak_user
+5539; 0 0 ACL public TABLE fed_user_credential keycloak_user
+393; 1259 23386 TABLE public fed_user_group_membership keycloak_user
+5540; 0 0 ACL public TABLE fed_user_group_membership keycloak_user
+394; 1259 23393 TABLE public fed_user_required_action keycloak_user
+5541; 0 0 ACL public TABLE fed_user_required_action keycloak_user
+395; 1259 23404 TABLE public fed_user_role_mapping keycloak_user
+5542; 0 0 ACL public TABLE fed_user_role_mapping keycloak_user
+412; 1259 23579 TABLE public federated_identity keycloak_user
+5543; 0 0 ACL public TABLE federated_identity keycloak_user
+396; 1259 23411 TABLE public federated_user keycloak_user
+5544; 0 0 ACL public TABLE federated_user keycloak_user
+446; 1259 24008 TABLE public group_attribute keycloak_user
+5545; 0 0 ACL public TABLE group_attribute keycloak_user
+447; 1259 24018 TABLE public group_role_mapping keycloak_user
+5546; 0 0 ACL public TABLE group_role_mapping keycloak_user
+448; 1259 24024 TABLE public identity_provider keycloak_user
+5547; 0 0 ACL public TABLE identity_provider keycloak_user
+449; 1259 24041 TABLE public identity_provider_config keycloak_user
+5548; 0 0 ACL public TABLE identity_provider_config keycloak_user
+450; 1259 24049 TABLE public identity_provider_mapper keycloak_user
+5549; 0 0 ACL public TABLE identity_provider_mapper keycloak_user
+451; 1259 24058 TABLE public idp_mapper_config keycloak_user
+5550; 0 0 ACL public TABLE idp_mapper_config keycloak_user
+452; 1259 24066 TABLE public keycloak_group keycloak_user
+5551; 0 0 ACL public TABLE keycloak_group keycloak_user
+453; 1259 24073 TABLE public keycloak_role keycloak_user
+5552; 0 0 ACL public TABLE keycloak_role keycloak_user
+397; 1259 23419 TABLE public migration_model keycloak_user
+5553; 0 0 ACL public TABLE migration_model keycloak_user
+398; 1259 23426 TABLE public offline_client_session keycloak_user
+5554; 0 0 ACL public TABLE offline_client_session keycloak_user
+399; 1259 23437 TABLE public offline_user_session keycloak_user
+5555; 0 0 ACL public TABLE offline_user_session keycloak_user
+426; 1259 23774 TABLE public policy_config keycloak_user
+5556; 0 0 ACL public TABLE policy_config keycloak_user
+454; 1259 24086 TABLE public protocol_mapper keycloak_user
+5557; 0 0 ACL public TABLE protocol_mapper keycloak_user
+455; 1259 24096 TABLE public protocol_mapper_config keycloak_user
+5558; 0 0 ACL public TABLE protocol_mapper_config keycloak_user
+456; 1259 24104 TABLE public realm keycloak_user
+5559; 0 0 ACL public TABLE realm keycloak_user
+457; 1259 24143 TABLE public realm_attribute keycloak_user
+5560; 0 0 ACL public TABLE realm_attribute keycloak_user
+458; 1259 24152 TABLE public realm_default_groups keycloak_user
+5561; 0 0 ACL public TABLE realm_default_groups keycloak_user
+459; 1259 24168 TABLE public realm_enabled_event_types keycloak_user
+5562; 0 0 ACL public TABLE realm_enabled_event_types keycloak_user
+460; 1259 24174 TABLE public realm_events_listeners keycloak_user
+5563; 0 0 ACL public TABLE realm_events_listeners keycloak_user
+473; 1259 27012 TABLE public realm_localizations keycloak_user
+461; 1259 24180 TABLE public realm_required_credential keycloak_user
+5564; 0 0 ACL public TABLE realm_required_credential keycloak_user
+462; 1259 24190 TABLE public realm_smtp_config keycloak_user
+5565; 0 0 ACL public TABLE realm_smtp_config keycloak_user
+463; 1259 24198 TABLE public realm_supported_locales keycloak_user
+5566; 0 0 ACL public TABLE realm_supported_locales keycloak_user
+464; 1259 24204 TABLE public redirect_uris keycloak_user
+5567; 0 0 ACL public TABLE redirect_uris keycloak_user
+400; 1259 23447 TABLE public required_action_config keycloak_user
+5568; 0 0 ACL public TABLE required_action_config keycloak_user
+465; 1259 24210 TABLE public required_action_provider keycloak_user
+5569; 0 0 ACL public TABLE required_action_provider keycloak_user
+427; 1259 23787 TABLE public resource_attribute keycloak_user
+5570; 0 0 ACL public TABLE resource_attribute keycloak_user
+428; 1259 23801 TABLE public resource_policy keycloak_user
+5571; 0 0 ACL public TABLE resource_policy keycloak_user
+429; 1259 23817 TABLE public resource_scope keycloak_user
+5572; 0 0 ACL public TABLE resource_scope keycloak_user
+401; 1259 23455 TABLE public resource_server keycloak_user
+5573; 0 0 ACL public TABLE resource_server keycloak_user
+430; 1259 23833 TABLE public resource_server_perm_ticket keycloak_user
+5574; 0 0 ACL public TABLE resource_server_perm_ticket keycloak_user
+413; 1259 23594 TABLE public resource_server_policy keycloak_user
+5575; 0 0 ACL public TABLE resource_server_policy keycloak_user
+414; 1259 23610 TABLE public resource_server_resource keycloak_user
+5576; 0 0 ACL public TABLE resource_server_resource keycloak_user
+415; 1259 23627 TABLE public resource_server_scope keycloak_user
+5577; 0 0 ACL public TABLE resource_server_scope keycloak_user
+416; 1259 23643 TABLE public resource_uris keycloak_user
+5578; 0 0 ACL public TABLE resource_uris keycloak_user
+466; 1259 24221 TABLE public role_attribute keycloak_user
+5579; 0 0 ACL public TABLE role_attribute keycloak_user
+467; 1259 24230 TABLE public scope_mapping keycloak_user
+5580; 0 0 ACL public TABLE scope_mapping keycloak_user
+417; 1259 23653 TABLE public scope_policy keycloak_user
+5581; 0 0 ACL public TABLE scope_policy keycloak_user
+418; 1259 23669 TABLE public user_attribute keycloak_user
+5582; 0 0 ACL public TABLE user_attribute keycloak_user
+419; 1259 23684 TABLE public user_consent keycloak_user
+5583; 0 0 ACL public TABLE user_consent keycloak_user
+420; 1259 23700 TABLE public user_consent_client_scope keycloak_user
+5584; 0 0 ACL public TABLE user_consent_client_scope keycloak_user
+402; 1259 23462 TABLE public user_entity keycloak_user
+5585; 0 0 ACL public TABLE user_entity keycloak_user
+468; 1259 24236 TABLE public user_federation_config keycloak_user
+5586; 0 0 ACL public TABLE user_federation_config keycloak_user
+469; 1259 24244 TABLE public user_federation_mapper keycloak_user
+5587; 0 0 ACL public TABLE user_federation_mapper keycloak_user
+470; 1259 24254 TABLE public user_federation_mapper_config keycloak_user
+5588; 0 0 ACL public TABLE user_federation_mapper_config keycloak_user
+471; 1259 24262 TABLE public user_federation_provider keycloak_user
+5589; 0 0 ACL public TABLE user_federation_provider keycloak_user
+421; 1259 23711 TABLE public user_group_membership keycloak_user
+5590; 0 0 ACL public TABLE user_group_membership keycloak_user
+422; 1259 23722 TABLE public user_required_action keycloak_user
+5591; 0 0 ACL public TABLE user_required_action keycloak_user
+423; 1259 23734 TABLE public user_role_mapping keycloak_user
+5592; 0 0 ACL public TABLE user_role_mapping keycloak_user
+403; 1259 23478 TABLE public user_session keycloak_user
+5593; 0 0 ACL public TABLE user_session keycloak_user
+424; 1259 23745 TABLE public user_session_note keycloak_user
+5594; 0 0 ACL public TABLE user_session_note keycloak_user
+404; 1259 23487 TABLE public username_login_failure keycloak_user
+5595; 0 0 ACL public TABLE username_login_failure keycloak_user
+472; 1259 24271 TABLE public web_origins keycloak_user
+5596; 0 0 ACL public TABLE web_origins keycloak_user
+4891; 2606 18213 CONSTRAINT keycloak_sc databasechangeloglock pk_databasechangeloglock keycloak_user
+4960; 2606 23494 CONSTRAINT public username_login_failure CONSTRAINT_17-2 keycloak_user
+5118; 2606 24083 CONSTRAINT public keycloak_role UK_J3RWUVD56ONTGSUHOGM184WW2-2 keycloak_user
+4901; 2606 23336 CONSTRAINT public client_auth_flow_bindings c_cli_flow_bind keycloak_user
+5073; 2606 27025 CONSTRAINT public client_scope_client c_cli_scope_bind keycloak_user
+5060; 2606 23932 CONSTRAINT public client_initial_access cnstr_client_init_acc_pk keycloak_user
+5138; 2606 24158 CONSTRAINT public realm_default_groups con_group_id_def_groups keycloak_user
+4899; 2606 23331 CONSTRAINT public broker_link constr_broker_link_pk keycloak_user
+4973; 2606 23559 CONSTRAINT public client_user_session_note constr_cl_usr_ses_note keycloak_user
+5085; 2606 23991 CONSTRAINT public component_config constr_component_config_pk keycloak_user
+5081; 2606 23981 CONSTRAINT public component constr_component_pk keycloak_user
+4924; 2606 23401 CONSTRAINT public fed_user_required_action constr_fed_required_action keycloak_user
+4906; 2606 23358 CONSTRAINT public fed_user_attribute constr_fed_user_attr_pk keycloak_user
+4909; 2606 23367 CONSTRAINT public fed_user_consent constr_fed_user_consent_pk keycloak_user
+4916; 2606 23383 CONSTRAINT public fed_user_credential constr_fed_user_cred_pk keycloak_user
+4920; 2606 23390 CONSTRAINT public fed_user_group_membership constr_fed_user_group keycloak_user
+4928; 2606 23408 CONSTRAINT public fed_user_role_mapping constr_fed_user_role keycloak_user
+4932; 2606 23418 CONSTRAINT public federated_user constr_federated_user keycloak_user
+5140; 2606 24156 CONSTRAINT public realm_default_groups constr_realm_default_groups keycloak_user
+5143; 2606 24172 CONSTRAINT public realm_enabled_event_types constr_realm_enabl_event_types keycloak_user
+5146; 2606 24178 CONSTRAINT public realm_events_listeners constr_realm_events_listeners keycloak_user
+5153; 2606 24202 CONSTRAINT public realm_supported_locales constr_realm_supported_locales keycloak_user
+5102; 2606 24037 CONSTRAINT public identity_provider constraint_2b keycloak_user
+5057; 2606 23919 CONSTRAINT public client_attributes constraint_3c keycloak_user
+4903; 2606 23350 CONSTRAINT public event_entity constraint_4 keycloak_user
+4978; 2606 23586 CONSTRAINT public federated_identity constraint_40 keycloak_user
+5130; 2606 24139 CONSTRAINT public realm constraint_4a keycloak_user
+4971; 2606 23546 CONSTRAINT public client_session_role constraint_5 keycloak_user
+4958; 2606 23486 CONSTRAINT public user_session constraint_57 keycloak_user
+5176; 2606 24269 CONSTRAINT public user_federation_provider constraint_5c keycloak_user
+4967; 2606 23526 CONSTRAINT public client_session_note constraint_5e keycloak_user
+5052; 2606 23909 CONSTRAINT public client constraint_7 keycloak_user
+4962; 2606 23502 CONSTRAINT public client_session constraint_8 keycloak_user
+5165; 2606 24234 CONSTRAINT public scope_mapping constraint_81 keycloak_user
+5063; 2606 23938 CONSTRAINT public client_node_registrations constraint_84 keycloak_user
+5135; 2606 24150 CONSTRAINT public realm_attribute constraint_9 keycloak_user
+5149; 2606 24189 CONSTRAINT public realm_required_credential constraint_92 keycloak_user
+5120; 2606 24081 CONSTRAINT public keycloak_role constraint_a keycloak_user
+4895; 2606 23315 CONSTRAINT public admin_event_entity constraint_admin_event_entity keycloak_user
+4897; 2606 23323 CONSTRAINT public authenticator_config_entry constraint_auth_cfg_pk keycloak_user
+5042; 2606 23868 CONSTRAINT public authentication_execution constraint_auth_exec_pk keycloak_user
+5046; 2606 23881 CONSTRAINT public authentication_flow constraint_auth_flow_pk keycloak_user
+5049; 2606 23887 CONSTRAINT public authenticator_config constraint_auth_pk keycloak_user
+4965; 2606 23513 CONSTRAINT public client_session_auth_status constraint_auth_status_pk keycloak_user
+5020; 2606 23738 CONSTRAINT public user_role_mapping constraint_c keycloak_user
+5088; 2606 23997 CONSTRAINT public composite_role constraint_composite_role keycloak_user
+4969; 2606 23536 CONSTRAINT public client_session_prot_mapper constraint_cs_pmp_pk keycloak_user
+5107; 2606 24048 CONSTRAINT public identity_provider_config constraint_d keycloak_user
+5028; 2606 23781 CONSTRAINT public policy_config constraint_dpc keycloak_user
+5151; 2606 24197 CONSTRAINT public realm_smtp_config constraint_e keycloak_user
+4975; 2606 23572 CONSTRAINT public credential constraint_f keycloak_user
+5168; 2606 24243 CONSTRAINT public user_federation_config constraint_f9 keycloak_user
+5038; 2606 23840 CONSTRAINT public resource_server_perm_ticket constraint_fapmt keycloak_user
+4987; 2606 23618 CONSTRAINT public resource_server_resource constraint_farsr keycloak_user
+4982; 2606 23601 CONSTRAINT public resource_server_policy constraint_farsrp keycloak_user
+5025; 2606 23762 CONSTRAINT public associated_policy constraint_farsrpap keycloak_user
+5032; 2606 23805 CONSTRAINT public resource_policy constraint_farsrpp keycloak_user
+4992; 2606 23634 CONSTRAINT public resource_server_scope constraint_farsrs keycloak_user
+5035; 2606 23821 CONSTRAINT public resource_scope constraint_farsrsp keycloak_user
+4999; 2606 23657 CONSTRAINT public scope_policy constraint_farsrsps keycloak_user
+4951; 2606 23472 CONSTRAINT public user_entity constraint_fb keycloak_user
+5174; 2606 24261 CONSTRAINT public user_federation_mapper_config constraint_fedmapper_cfg_pm keycloak_user
+5170; 2606 24251 CONSTRAINT public user_federation_mapper constraint_fedmapperpm keycloak_user
+4914; 2606 23375 CONSTRAINT public fed_user_consent_cl_scope constraint_fgrntcsnt_clsc_pm keycloak_user
+5011; 2606 23704 CONSTRAINT public user_consent_client_scope constraint_grntcsnt_clsc_pm keycloak_user
+5006; 2606 23691 CONSTRAINT public user_consent constraint_grntcsnt_pm keycloak_user
+5114; 2606 24070 CONSTRAINT public keycloak_group constraint_group keycloak_user
+5096; 2606 24016 CONSTRAINT public group_attribute constraint_group_attribute_pk keycloak_user
+5099; 2606 24022 CONSTRAINT public group_role_mapping constraint_group_role keycloak_user
+5109; 2606 24056 CONSTRAINT public identity_provider_mapper constraint_idpm keycloak_user
+5112; 2606 24065 CONSTRAINT public idp_mapper_config constraint_idpmconfig keycloak_user
+4934; 2606 23424 CONSTRAINT public migration_model constraint_migmod keycloak_user
+4937; 2606 23435 CONSTRAINT public offline_client_session constraint_offl_cl_ses_pk3 keycloak_user
+4941; 2606 23445 CONSTRAINT public offline_user_session constraint_offl_us_ses_pk2 keycloak_user
+5124; 2606 24093 CONSTRAINT public protocol_mapper constraint_pcm keycloak_user
+5128; 2606 24103 CONSTRAINT public protocol_mapper_config constraint_pmconfig keycloak_user
+5156; 2606 24208 CONSTRAINT public redirect_uris constraint_redirect_uris keycloak_user
+4947; 2606 23454 CONSTRAINT public required_action_config constraint_req_act_cfg_pk keycloak_user
+5159; 2606 24219 CONSTRAINT public required_action_provider constraint_req_act_prv_pk keycloak_user
+5017; 2606 23727 CONSTRAINT public user_required_action constraint_required_action keycloak_user
+4997; 2606 23647 CONSTRAINT public resource_uris constraint_resour_uris_pk keycloak_user
+5162; 2606 24228 CONSTRAINT public role_attribute constraint_role_attribute_pk keycloak_user
+5002; 2606 23677 CONSTRAINT public user_attribute constraint_user_attribute_pk keycloak_user
+5014; 2606 23715 CONSTRAINT public user_group_membership constraint_user_group keycloak_user
+5023; 2606 23752 CONSTRAINT public user_session_note constraint_usn_pk keycloak_user
+5179; 2606 24275 CONSTRAINT public web_origins constraint_web_origins keycloak_user
+5071; 2606 23957 CONSTRAINT public client_scope_attributes pk_cl_tmpl_attr keycloak_user
+5066; 2606 23946 CONSTRAINT public client_scope pk_cli_template keycloak_user
+4893; 2606 23302 CONSTRAINT public databasechangeloglock pk_databasechangeloglock keycloak_user
+4949; 2606 23461 CONSTRAINT public resource_server pk_resource_server keycloak_user
+5079; 2606 23971 CONSTRAINT public client_scope_role_mapping pk_template_scope keycloak_user
+5094; 2606 24005 CONSTRAINT public default_client_scope r_def_cli_scope_bind keycloak_user
+5182; 2606 27019 CONSTRAINT public realm_localizations realm_localizations_pkey keycloak_user
+5030; 2606 23795 CONSTRAINT public resource_attribute res_attr_pk keycloak_user
+5116; 2606 24072 CONSTRAINT public keycloak_group sibling_names keycloak_user
+5105; 2606 24039 CONSTRAINT public identity_provider uk_2daelwnibji49avxsrtuf6xj33 keycloak_user
+5055; 2606 23911 CONSTRAINT public client uk_b71cjlbenv945rb6gcon438at keycloak_user
+5068; 2606 23948 CONSTRAINT public client_scope uk_cli_scope keycloak_user
+4954; 2606 23474 CONSTRAINT public user_entity uk_dykn684sl8up1crfei6eckhd7 keycloak_user
+4990; 2606 23620 CONSTRAINT public resource_server_resource uk_frsr6t700s9v50bu18ws5ha6 keycloak_user
+5040; 2606 23842 CONSTRAINT public resource_server_perm_ticket uk_frsr6t700s9v50bu18ws5pmt keycloak_user
+4985; 2606 23603 CONSTRAINT public resource_server_policy uk_frsrpt700s9v50bu18ws5ha6 keycloak_user
+4995; 2606 23636 CONSTRAINT public resource_server_scope uk_frsrst700s9v50bu18ws5ha6 keycloak_user
+5009; 2606 23693 CONSTRAINT public user_consent uk_jkuwuvd56ontgsuhogm8uewrt keycloak_user
+5133; 2606 24141 CONSTRAINT public realm uk_orvsdmla56612eaefiq6wl5oi keycloak_user
+4956; 2606 23476 CONSTRAINT public user_entity uk_ru8tt6t700s9v50bu18ws5ha6 keycloak_user
+5026; 1259 23773 INDEX public idx_assoc_pol_assoc_pol_id keycloak_user
+5050; 1259 23888 INDEX public idx_auth_config_realm keycloak_user
+5043; 1259 23869 INDEX public idx_auth_exec_flow keycloak_user
+5044; 1259 23870 INDEX public idx_auth_exec_realm_flow keycloak_user
+5047; 1259 23882 INDEX public idx_auth_flow_realm keycloak_user
+5074; 1259 27026 INDEX public idx_cl_clscope keycloak_user
+5058; 1259 27033 INDEX public idx_client_att_by_name_value keycloak_user
+5053; 1259 27010 INDEX public idx_client_id keycloak_user
+5061; 1259 23933 INDEX public idx_client_init_acc_realm keycloak_user
+4963; 1259 23508 INDEX public idx_client_session_session keycloak_user
+5069; 1259 23958 INDEX public idx_clscope_attrs keycloak_user
+5075; 1259 27023 INDEX public idx_clscope_cl keycloak_user
+5125; 1259 24094 INDEX public idx_clscope_protmap keycloak_user
+5076; 1259 23972 INDEX public idx_clscope_role keycloak_user
+5086; 1259 23992 INDEX public idx_compo_config_compo keycloak_user
+5082; 1259 23982 INDEX public idx_component_provider_type keycloak_user
+5083; 1259 23983 INDEX public idx_component_realm keycloak_user
+5089; 1259 23998 INDEX public idx_composite keycloak_user
+5090; 1259 23999 INDEX public idx_composite_child keycloak_user
+5091; 1259 24006 INDEX public idx_defcls_realm keycloak_user
+5092; 1259 24007 INDEX public idx_defcls_scope keycloak_user
+4904; 1259 27011 INDEX public idx_event_time keycloak_user
+4979; 1259 23592 INDEX public idx_fedidentity_feduser keycloak_user
+4980; 1259 23593 INDEX public idx_fedidentity_user keycloak_user
+4907; 1259 23359 INDEX public idx_fu_attribute keycloak_user
+4910; 1259 23368 INDEX public idx_fu_cnsnt_ext keycloak_user
+4911; 1259 23369 INDEX public idx_fu_consent keycloak_user
+4912; 1259 23370 INDEX public idx_fu_consent_ru keycloak_user
+4917; 1259 23384 INDEX public idx_fu_credential keycloak_user
+4918; 1259 23385 INDEX public idx_fu_credential_ru keycloak_user
+4921; 1259 23391 INDEX public idx_fu_group_membership keycloak_user
+4922; 1259 23392 INDEX public idx_fu_group_membership_ru keycloak_user
+4925; 1259 23402 INDEX public idx_fu_required_action keycloak_user
+4926; 1259 23403 INDEX public idx_fu_required_action_ru keycloak_user
+4929; 1259 23409 INDEX public idx_fu_role_mapping keycloak_user
+4930; 1259 23410 INDEX public idx_fu_role_mapping_ru keycloak_user
+5097; 1259 24017 INDEX public idx_group_attr_group keycloak_user
+5100; 1259 24023 INDEX public idx_group_role_mapp_group keycloak_user
+5110; 1259 24057 INDEX public idx_id_prov_mapp_realm keycloak_user
+5103; 1259 24040 INDEX public idx_ident_prov_realm keycloak_user
+5121; 1259 24084 INDEX public idx_keycloak_role_client keycloak_user
+5122; 1259 24085 INDEX public idx_keycloak_role_realm keycloak_user
+4938; 1259 27030 INDEX public idx_offline_css_preload keycloak_user
+4942; 1259 27031 INDEX public idx_offline_uss_by_user keycloak_user
+4943; 1259 27032 INDEX public idx_offline_uss_by_usersess keycloak_user
+4944; 1259 23446 INDEX public idx_offline_uss_createdon keycloak_user
+4945; 1259 27020 INDEX public idx_offline_uss_preload keycloak_user
+5126; 1259 24095 INDEX public idx_protocol_mapper_client keycloak_user
+5136; 1259 24151 INDEX public idx_realm_attr_realm keycloak_user
+5064; 1259 23949 INDEX public idx_realm_clscope keycloak_user
+5141; 1259 24159 INDEX public idx_realm_def_grp_realm keycloak_user
+5147; 1259 24179 INDEX public idx_realm_evt_list_realm keycloak_user
+5144; 1259 24173 INDEX public idx_realm_evt_types_realm keycloak_user
+5131; 1259 24142 INDEX public idx_realm_master_adm_cli keycloak_user
+5154; 1259 24203 INDEX public idx_realm_supp_local_realm keycloak_user
+5157; 1259 24209 INDEX public idx_redir_uri_client keycloak_user
+5160; 1259 24220 INDEX public idx_req_act_prov_realm keycloak_user
+5033; 1259 23816 INDEX public idx_res_policy_policy keycloak_user
+5036; 1259 23832 INDEX public idx_res_scope_scope keycloak_user
+4983; 1259 23609 INDEX public idx_res_serv_pol_res_serv keycloak_user
+4988; 1259 23626 INDEX public idx_res_srv_res_res_srv keycloak_user
+4993; 1259 23642 INDEX public idx_res_srv_scope_res_srv keycloak_user
+5163; 1259 24229 INDEX public idx_role_attribute keycloak_user
+5077; 1259 23973 INDEX public idx_role_clscope keycloak_user
+5166; 1259 24235 INDEX public idx_scope_mapping_role keycloak_user
+5000; 1259 23668 INDEX public idx_scope_policy_policy keycloak_user
+4935; 1259 23425 INDEX public idx_update_time keycloak_user
+4939; 1259 23436 INDEX public idx_us_sess_id_on_cl_sess keycloak_user
+5012; 1259 23710 INDEX public idx_usconsent_clscope keycloak_user
+5003; 1259 23683 INDEX public idx_user_attribute keycloak_user
+5004; 1259 27034 INDEX public idx_user_attribute_name keycloak_user
+5007; 1259 23699 INDEX public idx_user_consent keycloak_user
+4976; 1259 23578 INDEX public idx_user_credential keycloak_user
+4952; 1259 23477 INDEX public idx_user_email keycloak_user
+5015; 1259 23721 INDEX public idx_user_group_mapping keycloak_user
+5018; 1259 23733 INDEX public idx_user_reqactions keycloak_user
+5021; 1259 23744 INDEX public idx_user_role_mapping keycloak_user
+5171; 1259 24252 INDEX public idx_usr_fed_map_fed_prv keycloak_user
+5172; 1259 24253 INDEX public idx_usr_fed_map_realm keycloak_user
+5177; 1259 24270 INDEX public idx_usr_fed_prv_realm keycloak_user
+5180; 1259 24276 INDEX public idx_web_orig_client keycloak_user
+5184; 2606 23514 FK CONSTRAINT public client_session_auth_status auth_status_constraint keycloak_user
+5232; 2606 24402 FK CONSTRAINT public identity_provider fk2b4ebc52ae5c3b34 keycloak_user
+5220; 2606 24302 FK CONSTRAINT public client_attributes fk3c47c64beacca966 keycloak_user
+5190; 2606 23587 FK CONSTRAINT public federated_identity fk404288b92ef007a6 keycloak_user
+5222; 2606 24322 FK CONSTRAINT public client_node_registrations fk4129723ba992f594 keycloak_user
+5185; 2606 23527 FK CONSTRAINT public client_session_note fk5edfb00ff51c2736 keycloak_user
+5203; 2606 23753 FK CONSTRAINT public user_session_note fk5edfb00ff51d3472 keycloak_user
+5187; 2606 23547 FK CONSTRAINT public client_session_role fk_11b7sgqw18i532811v7o2dv76 keycloak_user
+5247; 2606 24507 FK CONSTRAINT public redirect_uris fk_1burs8pb4ouj97h5wuppahv9f keycloak_user
+5255; 2606 24552 FK CONSTRAINT public user_federation_provider fk_1fj32f6ptolw2qy60cd8n01e8 keycloak_user
+5186; 2606 23537 FK CONSTRAINT public client_session_prot_mapper fk_33a8sgqw18i532811v7o2dk89 keycloak_user
+5244; 2606 24492 FK CONSTRAINT public realm_required_credential fk_5hg65lybevavkqfki3kponh9v keycloak_user
+5207; 2606 23796 FK CONSTRAINT public resource_attribute fk_5hrm2vlf9ql5fu022kqepovbr keycloak_user
+5197; 2606 23678 FK CONSTRAINT public user_attribute fk_5hrm2vlf9ql5fu043kqepovbr keycloak_user
+5201; 2606 23728 FK CONSTRAINT public user_required_action fk_6qj3w1jw9cvafhe19bwsiuvmd keycloak_user
+5236; 2606 24427 FK CONSTRAINT public keycloak_role fk_6vyqfe4cn4wlq8r6kt5vdsj5c keycloak_user
+5245; 2606 24497 FK CONSTRAINT public realm_smtp_config fk_70ej8xdxgxd0b9hh6180irr0o keycloak_user
+5240; 2606 24457 FK CONSTRAINT public realm_attribute fk_8shxd6l3e9atqukacxgpffptw keycloak_user
+5227; 2606 24367 FK CONSTRAINT public composite_role fk_a63wvekftu8jo1pnj81e7mce2 keycloak_user
+5216; 2606 24277 FK CONSTRAINT public authentication_execution fk_auth_exec_flow keycloak_user
+5217; 2606 24282 FK CONSTRAINT public authentication_execution fk_auth_exec_realm keycloak_user
+5218; 2606 24287 FK CONSTRAINT public authentication_flow fk_auth_flow_realm keycloak_user
+5219; 2606 24292 FK CONSTRAINT public authenticator_config fk_auth_realm keycloak_user
+5183; 2606 23503 FK CONSTRAINT public client_session fk_b4ao2vcvat6ukau74wbwtfqo1 keycloak_user
+5202; 2606 23739 FK CONSTRAINT public user_role_mapping fk_c4fqv34p1mbylloxang7b1q3l keycloak_user
+5223; 2606 24332 FK CONSTRAINT public client_scope_attributes fk_cl_scope_attr_scope keycloak_user
+5224; 2606 24352 FK CONSTRAINT public client_scope_role_mapping fk_cl_scope_rm_scope keycloak_user
+5188; 2606 23560 FK CONSTRAINT public client_user_session_note fk_cl_usr_ses_note keycloak_user
+5237; 2606 24437 FK CONSTRAINT public protocol_mapper fk_cli_scope_mapper keycloak_user
+5221; 2606 24317 FK CONSTRAINT public client_initial_access fk_client_init_acc_realm keycloak_user
+5226; 2606 24362 FK CONSTRAINT public component_config fk_component_config keycloak_user
+5225; 2606 24357 FK CONSTRAINT public component fk_component_realm keycloak_user
+5241; 2606 24467 FK CONSTRAINT public realm_default_groups fk_def_groups_realm keycloak_user
+5254; 2606 24547 FK CONSTRAINT public user_federation_mapper_config fk_fedmapper_cfg keycloak_user
+5252; 2606 24537 FK CONSTRAINT public user_federation_mapper fk_fedmapperpm_fedprv keycloak_user
+5253; 2606 24542 FK CONSTRAINT public user_federation_mapper fk_fedmapperpm_realm keycloak_user
+5204; 2606 23763 FK CONSTRAINT public associated_policy fk_frsr5s213xcx4wnkog82ssrfy keycloak_user
+5195; 2606 23658 FK CONSTRAINT public scope_policy fk_frsrasp13xcx4wnkog82ssrfy keycloak_user
+5212; 2606 23843 FK CONSTRAINT public resource_server_perm_ticket fk_frsrho213xcx4wnkog82sspmt keycloak_user
+5192; 2606 23621 FK CONSTRAINT public resource_server_resource fk_frsrho213xcx4wnkog82ssrfy keycloak_user
+5213; 2606 23848 FK CONSTRAINT public resource_server_perm_ticket fk_frsrho213xcx4wnkog83sspmt keycloak_user
+5214; 2606 23853 FK CONSTRAINT public resource_server_perm_ticket fk_frsrho213xcx4wnkog84sspmt keycloak_user
+5205; 2606 23768 FK CONSTRAINT public associated_policy fk_frsrpas14xcx4wnkog82ssrfy keycloak_user
+5196; 2606 23663 FK CONSTRAINT public scope_policy fk_frsrpass3xcx4wnkog82ssrfy keycloak_user
+5215; 2606 23858 FK CONSTRAINT public resource_server_perm_ticket fk_frsrpo2128cx4wnkog82ssrfy keycloak_user
+5191; 2606 23604 FK CONSTRAINT public resource_server_policy fk_frsrpo213xcx4wnkog82ssrfy keycloak_user
+5210; 2606 23822 FK CONSTRAINT public resource_scope fk_frsrpos13xcx4wnkog82ssrfy keycloak_user
+5208; 2606 23806 FK CONSTRAINT public resource_policy fk_frsrpos53xcx4wnkog82ssrfy keycloak_user
+5209; 2606 23811 FK CONSTRAINT public resource_policy fk_frsrpp213xcx4wnkog82ssrfy keycloak_user
+5211; 2606 23827 FK CONSTRAINT public resource_scope fk_frsrps213xcx4wnkog82ssrfy keycloak_user
+5193; 2606 23637 FK CONSTRAINT public resource_server_scope fk_frsrso213xcx4wnkog82ssrfy keycloak_user
+5228; 2606 24372 FK CONSTRAINT public composite_role fk_gr7thllb9lu8q4vqa4524jjy8 keycloak_user
+5199; 2606 23705 FK CONSTRAINT public user_consent_client_scope fk_grntcsnt_clsc_usc keycloak_user
+5198; 2606 23694 FK CONSTRAINT public user_consent fk_grntcsnt_user keycloak_user
+5230; 2606 24387 FK CONSTRAINT public group_attribute fk_group_attribute_group keycloak_user
+5231; 2606 24392 FK CONSTRAINT public group_role_mapping fk_group_role_group keycloak_user
+5242; 2606 24482 FK CONSTRAINT public realm_enabled_event_types fk_h846o4h0w8epx5nwedrf5y69j keycloak_user
+5243; 2606 24487 FK CONSTRAINT public realm_events_listeners fk_h846o4h0w8epx5nxev9f5y69j keycloak_user
+5234; 2606 24412 FK CONSTRAINT public identity_provider_mapper fk_idpm_realm keycloak_user
+5235; 2606 24417 FK CONSTRAINT public idp_mapper_config fk_idpmconfig keycloak_user
+5256; 2606 24557 FK CONSTRAINT public web_origins fk_lojpho213xcx4wnkog82ssrfy keycloak_user
+5250; 2606 24522 FK CONSTRAINT public scope_mapping fk_ouse064plmlr732lxjcn1q5f1 keycloak_user
+5238; 2606 24442 FK CONSTRAINT public protocol_mapper fk_pcm_realm keycloak_user
+5189; 2606 23573 FK CONSTRAINT public credential fk_pfyr0glasqyl0dei3kl69r6v0 keycloak_user
+5239; 2606 24447 FK CONSTRAINT public protocol_mapper_config fk_pmconfig keycloak_user
+5229; 2606 24377 FK CONSTRAINT public default_client_scope fk_r_def_cli_scope_realm keycloak_user
+5248; 2606 24512 FK CONSTRAINT public required_action_provider fk_req_act_realm keycloak_user
+5194; 2606 23648 FK CONSTRAINT public resource_uris fk_resource_server_uris keycloak_user
+5249; 2606 24517 FK CONSTRAINT public role_attribute fk_role_attribute_id keycloak_user
+5246; 2606 24502 FK CONSTRAINT public realm_supported_locales fk_supported_locales_realm keycloak_user
+5251; 2606 24532 FK CONSTRAINT public user_federation_config fk_t13hpu1j94r2ebpekr39x5eu5 keycloak_user
+5200; 2606 23716 FK CONSTRAINT public user_group_membership fk_user_group_user keycloak_user
+5206; 2606 23782 FK CONSTRAINT public policy_config fkdc34197cf864c4e43 keycloak_user
+5233; 2606 24407 FK CONSTRAINT public identity_provider_config fkdc4897cf864c4e43 keycloak_user

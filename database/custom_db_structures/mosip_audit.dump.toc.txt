@@ -1,0 +1,32 @@
+﻿;
+; Archive created at 2025-11-03 10:52:28
+;     dbname: mosip_audit
+;     TOC Entries: 23
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+11; 2615 19112 SCHEMA - audit postgres
+4650; 0 0 ACL - SCHEMA audit postgres
+4651; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415244 EXTENSION - dblink 
+4652; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 19113 TABLE audit app_audit_log postgres
+4653; 0 0 ACL audit TABLE app_audit_log postgres
+383; 1259 10801442 TABLE audit app_audit_log_archive01 audituser
+4654; 0 0 ACL audit TABLE app_audit_log_archive01 audituser
+4398; 2606 19120 CONSTRAINT audit app_audit_log pk_audlog_log_id postgres
+4399; 1259 10830170 INDEX audit app_audit_log_archive01_log_id_idx audituser
+4635; 6104 18099728 PUBLICATION - dbz_publication enterprisedb
+4634; 6104 18085794 PUBLICATION - dbz_publication_audit enterprisedb
+4637; 6106 18085796 PUBLICATION TABLE audit dbz_publication_audit app_audit_log enterprisedb
+4638; 6106 18099744 PUBLICATION TABLE audit dbz_publication app_audit_log enterprisedb
+4636; 6106 18085795 PUBLICATION TABLE audit dbz_publication_audit app_audit_log_archive01 enterprisedb
+3325; 826 18085865 DEFAULT ACL audit DEFAULT PRIVILEGES FOR TABLES enterprisedb

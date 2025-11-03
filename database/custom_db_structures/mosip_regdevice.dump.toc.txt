@@ -1,0 +1,190 @@
+﻿;
+; Archive created at 2025-11-03 10:52:43
+;     dbname: mosip_regdevice
+;     TOC Entries: 181
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+4713; 0 0 ACL - SCHEMA public enterprisedb
+13; 2615 21273 SCHEMA - regdevice postgres
+4714; 0 0 ACL - SCHEMA regdevice postgres
+6; 3079 2415705 EXTENSION - dblink 
+4715; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 21274 TABLE regdevice device_detail postgres
+4716; 0 0 COMMENT regdevice TABLE device_detail postgres
+4717; 0 0 COMMENT regdevice COLUMN device_detail.id postgres
+4718; 0 0 COMMENT regdevice COLUMN device_detail.dprovider_id postgres
+4719; 0 0 COMMENT regdevice COLUMN device_detail.dtype_code postgres
+4720; 0 0 COMMENT regdevice COLUMN device_detail.dstype_code postgres
+4721; 0 0 COMMENT regdevice COLUMN device_detail.make postgres
+4722; 0 0 COMMENT regdevice COLUMN device_detail.model postgres
+4723; 0 0 COMMENT regdevice COLUMN device_detail.partner_org_name postgres
+4724; 0 0 COMMENT regdevice COLUMN device_detail.approval_status postgres
+4725; 0 0 COMMENT regdevice COLUMN device_detail.is_active postgres
+4726; 0 0 COMMENT regdevice COLUMN device_detail.cr_by postgres
+4727; 0 0 COMMENT regdevice COLUMN device_detail.cr_dtimes postgres
+4728; 0 0 COMMENT regdevice COLUMN device_detail.upd_by postgres
+4729; 0 0 COMMENT regdevice COLUMN device_detail.upd_dtimes postgres
+4730; 0 0 COMMENT regdevice COLUMN device_detail.is_deleted postgres
+4731; 0 0 COMMENT regdevice COLUMN device_detail.del_dtimes postgres
+4732; 0 0 ACL regdevice TABLE device_detail postgres
+382; 1259 21281 TABLE regdevice foundational_trust_provider postgres
+4733; 0 0 COMMENT regdevice TABLE foundational_trust_provider postgres
+4734; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.id postgres
+4735; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.partner_org_name postgres
+4736; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.is_active postgres
+4737; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.cr_by postgres
+4738; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.cr_dtimes postgres
+4739; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.upd_by postgres
+4740; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.upd_dtimes postgres
+4741; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.is_deleted postgres
+4742; 0 0 COMMENT regdevice COLUMN foundational_trust_provider.del_dtimes postgres
+4743; 0 0 ACL regdevice TABLE foundational_trust_provider postgres
+383; 1259 21288 TABLE regdevice ftp_chip_detail postgres
+4744; 0 0 COMMENT regdevice TABLE ftp_chip_detail postgres
+4745; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.id postgres
+4746; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.foundational_trust_provider_id postgres
+4747; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.make postgres
+4748; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.model postgres
+4749; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.certificate_alias postgres
+4750; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.partner_org_name postgres
+4751; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.is_active postgres
+4752; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.cr_by postgres
+4753; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.cr_dtimes postgres
+4754; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.upd_by postgres
+4755; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.upd_dtimes postgres
+4756; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.is_deleted postgres
+4757; 0 0 COMMENT regdevice COLUMN ftp_chip_detail.del_dtimes postgres
+4758; 0 0 ACL regdevice TABLE ftp_chip_detail postgres
+384; 1259 21295 TABLE regdevice reg_device_sub_type postgres
+4759; 0 0 COMMENT regdevice TABLE reg_device_sub_type postgres
+4760; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.code postgres
+4761; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.dtyp_code postgres
+4762; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.name postgres
+4763; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.descr postgres
+4764; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.is_active postgres
+4765; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.cr_by postgres
+4766; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.cr_dtimes postgres
+4767; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.upd_by postgres
+4768; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.upd_dtimes postgres
+4769; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.is_deleted postgres
+4770; 0 0 COMMENT regdevice COLUMN reg_device_sub_type.del_dtimes postgres
+4771; 0 0 ACL regdevice TABLE reg_device_sub_type postgres
+385; 1259 21302 TABLE regdevice reg_device_type postgres
+4772; 0 0 COMMENT regdevice TABLE reg_device_type postgres
+4773; 0 0 COMMENT regdevice COLUMN reg_device_type.code postgres
+4774; 0 0 COMMENT regdevice COLUMN reg_device_type.name postgres
+4775; 0 0 COMMENT regdevice COLUMN reg_device_type.descr postgres
+4776; 0 0 COMMENT regdevice COLUMN reg_device_type.is_active postgres
+4777; 0 0 COMMENT regdevice COLUMN reg_device_type.cr_by postgres
+4778; 0 0 COMMENT regdevice COLUMN reg_device_type.cr_dtimes postgres
+4779; 0 0 COMMENT regdevice COLUMN reg_device_type.upd_by postgres
+4780; 0 0 COMMENT regdevice COLUMN reg_device_type.upd_dtimes postgres
+4781; 0 0 COMMENT regdevice COLUMN reg_device_type.is_deleted postgres
+4782; 0 0 COMMENT regdevice COLUMN reg_device_type.del_dtimes postgres
+4783; 0 0 ACL regdevice TABLE reg_device_type postgres
+386; 1259 21309 TABLE regdevice registered_device_master postgres
+4784; 0 0 COMMENT regdevice TABLE registered_device_master postgres
+4785; 0 0 COMMENT regdevice COLUMN registered_device_master.code postgres
+4786; 0 0 COMMENT regdevice COLUMN registered_device_master.status_code postgres
+4787; 0 0 COMMENT regdevice COLUMN registered_device_master.device_id postgres
+4788; 0 0 COMMENT regdevice COLUMN registered_device_master.device_sub_id postgres
+4789; 0 0 COMMENT regdevice COLUMN registered_device_master.digital_id postgres
+4790; 0 0 COMMENT regdevice COLUMN registered_device_master.serial_number postgres
+4791; 0 0 COMMENT regdevice COLUMN registered_device_master.device_detail_id postgres
+4792; 0 0 COMMENT regdevice COLUMN registered_device_master.purpose postgres
+4793; 0 0 COMMENT regdevice COLUMN registered_device_master.firmware postgres
+4794; 0 0 COMMENT regdevice COLUMN registered_device_master.expiry_date postgres
+4795; 0 0 COMMENT regdevice COLUMN registered_device_master.certification_level postgres
+4796; 0 0 COMMENT regdevice COLUMN registered_device_master.foundational_trust_provider_id postgres
+4797; 0 0 COMMENT regdevice COLUMN registered_device_master.is_active postgres
+4798; 0 0 COMMENT regdevice COLUMN registered_device_master.cr_by postgres
+4799; 0 0 COMMENT regdevice COLUMN registered_device_master.cr_dtimes postgres
+4800; 0 0 COMMENT regdevice COLUMN registered_device_master.upd_by postgres
+4801; 0 0 COMMENT regdevice COLUMN registered_device_master.upd_dtimes postgres
+4802; 0 0 COMMENT regdevice COLUMN registered_device_master.is_deleted postgres
+4803; 0 0 COMMENT regdevice COLUMN registered_device_master.del_dtimes postgres
+4804; 0 0 ACL regdevice TABLE registered_device_master postgres
+387; 1259 21316 TABLE regdevice registered_device_master_h postgres
+4805; 0 0 COMMENT regdevice TABLE registered_device_master_h postgres
+4806; 0 0 COMMENT regdevice COLUMN registered_device_master_h.code postgres
+4807; 0 0 COMMENT regdevice COLUMN registered_device_master_h.status_code postgres
+4808; 0 0 COMMENT regdevice COLUMN registered_device_master_h.device_id postgres
+4809; 0 0 COMMENT regdevice COLUMN registered_device_master_h.device_sub_id postgres
+4810; 0 0 COMMENT regdevice COLUMN registered_device_master_h.digital_id postgres
+4811; 0 0 COMMENT regdevice COLUMN registered_device_master_h.serial_number postgres
+4812; 0 0 COMMENT regdevice COLUMN registered_device_master_h.device_detail_id postgres
+4813; 0 0 COMMENT regdevice COLUMN registered_device_master_h.purpose postgres
+4814; 0 0 COMMENT regdevice COLUMN registered_device_master_h.firmware postgres
+4815; 0 0 COMMENT regdevice COLUMN registered_device_master_h.expiry_date postgres
+4816; 0 0 COMMENT regdevice COLUMN registered_device_master_h.certification_level postgres
+4817; 0 0 COMMENT regdevice COLUMN registered_device_master_h.foundational_trust_provider_id postgres
+4818; 0 0 COMMENT regdevice COLUMN registered_device_master_h.is_active postgres
+4819; 0 0 COMMENT regdevice COLUMN registered_device_master_h.cr_by postgres
+4820; 0 0 COMMENT regdevice COLUMN registered_device_master_h.cr_dtimes postgres
+4821; 0 0 COMMENT regdevice COLUMN registered_device_master_h.upd_by postgres
+4822; 0 0 COMMENT regdevice COLUMN registered_device_master_h.upd_dtimes postgres
+4823; 0 0 COMMENT regdevice COLUMN registered_device_master_h.is_deleted postgres
+4824; 0 0 COMMENT regdevice COLUMN registered_device_master_h.del_dtimes postgres
+4825; 0 0 COMMENT regdevice COLUMN registered_device_master_h.eff_dtimes postgres
+4826; 0 0 ACL regdevice TABLE registered_device_master_h postgres
+388; 1259 21323 TABLE regdevice secure_biometric_interface postgres
+4827; 0 0 COMMENT regdevice TABLE secure_biometric_interface postgres
+4828; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.id postgres
+4829; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.sw_binary_hash postgres
+4830; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.sw_version postgres
+4831; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.device_detail_id postgres
+4832; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.sw_cr_dtimes postgres
+4833; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.sw_expiry_dtimes postgres
+4834; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.approval_status postgres
+4835; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.is_active postgres
+4836; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.cr_by postgres
+4837; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.cr_dtimes postgres
+4838; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.upd_by postgres
+4839; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.upd_dtimes postgres
+4840; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.is_deleted postgres
+4841; 0 0 COMMENT regdevice COLUMN secure_biometric_interface.del_dtimes postgres
+4842; 0 0 ACL regdevice TABLE secure_biometric_interface postgres
+389; 1259 21330 TABLE regdevice secure_biometric_interface_h postgres
+4843; 0 0 COMMENT regdevice TABLE secure_biometric_interface_h postgres
+4844; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.id postgres
+4845; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.sw_binary_hash postgres
+4846; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.sw_version postgres
+4847; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.device_detail_id postgres
+4848; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.sw_cr_dtimes postgres
+4849; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.sw_expiry_dtimes postgres
+4850; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.approval_status postgres
+4851; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.is_active postgres
+4852; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.cr_by postgres
+4853; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.cr_dtimes postgres
+4854; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.upd_by postgres
+4855; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.upd_dtimes postgres
+4856; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.is_deleted postgres
+4857; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.del_dtimes postgres
+4858; 0 0 COMMENT regdevice COLUMN secure_biometric_interface_h.eff_dtimes postgres
+4859; 0 0 ACL regdevice TABLE secure_biometric_interface_h postgres
+4441; 2606 21338 CONSTRAINT regdevice device_detail pk_devdtl_id postgres
+4447; 2606 21340 CONSTRAINT regdevice ftp_chip_detail pk_fcdtl_id postgres
+4445; 2606 21342 CONSTRAINT regdevice foundational_trust_provider pk_ftp_id postgres
+4461; 2606 21344 CONSTRAINT regdevice secure_biometric_interface_h pk_mdsh_id postgres
+4451; 2606 21346 CONSTRAINT regdevice reg_device_sub_type pk_rdstyp_code postgres
+4453; 2606 21348 CONSTRAINT regdevice reg_device_type pk_rdtyp_code postgres
+4457; 2606 21350 CONSTRAINT regdevice registered_device_master_h pk_regdevicemh_code postgres
+4455; 2606 21352 CONSTRAINT regdevice registered_device_master pk_regdevm_code postgres
+4459; 2606 21354 CONSTRAINT regdevice secure_biometric_interface pk_sbi_id postgres
+4443; 2606 21356 CONSTRAINT regdevice device_detail uk_devdtl_id postgres
+4449; 2606 21358 CONSTRAINT regdevice ftp_chip_detail uk_fcdtl_id postgres
+4462; 2606 21359 FK CONSTRAINT regdevice device_detail fk_devdtl_id postgres
+4463; 2606 21364 FK CONSTRAINT regdevice ftp_chip_detail fk_fcdtl_frpid postgres
+4464; 2606 21369 FK CONSTRAINT regdevice reg_device_sub_type fk_rdstyp_dtype_code postgres
+4465; 2606 21374 FK CONSTRAINT regdevice registered_device_master fk_regdevm postgres
+4466; 2606 21379 FK CONSTRAINT regdevice registered_device_master fk_regdevm_ftpid postgres
+4467; 2606 21384 FK CONSTRAINT regdevice secure_biometric_interface fk_sbi_id postgres

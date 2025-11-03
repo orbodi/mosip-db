@@ -1,0 +1,246 @@
+﻿;
+; Archive created at 2025-11-03 10:52:41
+;     dbname: mosip_prereg
+;     TOC Entries: 237
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+12; 2615 21140 SCHEMA - prereg postgres
+4781; 0 0 ACL - SCHEMA prereg postgres
+4782; 0 0 ACL - SCHEMA public enterprisedb
+7; 3079 2415659 EXTENSION - dblink 
+4783; 0 0 COMMENT - EXTENSION dblink 
+6; 3079 16595229 EXTENSION - pg_stat_statements 
+4784; 0 0 COMMENT - EXTENSION pg_stat_statements 
+779; 1255 21141 PROCEDURE prereg addemptygenericpreregrequestsforids(character varying, character varying, character varying[]) postgres
+382; 1259 21142 TABLE prereg applicant_demographic prereguser
+4785; 0 0 COMMENT prereg TABLE applicant_demographic prereguser
+4786; 0 0 COMMENT prereg COLUMN applicant_demographic.prereg_id prereguser
+4787; 0 0 COMMENT prereg COLUMN applicant_demographic.demog_detail prereguser
+4788; 0 0 COMMENT prereg COLUMN applicant_demographic.demog_detail_hash prereguser
+4789; 0 0 COMMENT prereg COLUMN applicant_demographic.encrypted_dtimes prereguser
+4790; 0 0 COMMENT prereg COLUMN applicant_demographic.status_code prereguser
+4791; 0 0 COMMENT prereg COLUMN applicant_demographic.lang_code prereguser
+4792; 0 0 COMMENT prereg COLUMN applicant_demographic.cr_appuser_id prereguser
+4793; 0 0 COMMENT prereg COLUMN applicant_demographic.cr_by prereguser
+4794; 0 0 COMMENT prereg COLUMN applicant_demographic.cr_dtimes prereguser
+4795; 0 0 COMMENT prereg COLUMN applicant_demographic.upd_by prereguser
+4796; 0 0 COMMENT prereg COLUMN applicant_demographic.upd_dtimes prereguser
+4797; 0 0 ACL prereg TABLE applicant_demographic prereguser
+383; 1259 21148 TABLE prereg applicant_demographic_consumed prereguser
+4798; 0 0 COMMENT prereg TABLE applicant_demographic_consumed prereguser
+4799; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.prereg_id prereguser
+4800; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.demog_detail prereguser
+4801; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.demog_detail_hash prereguser
+4802; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.encrypted_dtimes prereguser
+4803; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.status_code prereguser
+4804; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.lang_code prereguser
+4805; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.cr_appuser_id prereguser
+4806; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.cr_by prereguser
+4807; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.cr_dtimes prereguser
+4808; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.upd_by prereguser
+4809; 0 0 COMMENT prereg COLUMN applicant_demographic_consumed.upd_dtimes prereguser
+4810; 0 0 ACL prereg TABLE applicant_demographic_consumed prereguser
+409; 1259 31740448 TABLE prereg applicant_demographic_consumed_16102025 prereguser
+384; 1259 21154 TABLE prereg applicant_document prereguser
+4811; 0 0 COMMENT prereg TABLE applicant_document prereguser
+4812; 0 0 COMMENT prereg COLUMN applicant_document.id prereguser
+4813; 0 0 COMMENT prereg COLUMN applicant_document.prereg_id prereguser
+4814; 0 0 COMMENT prereg COLUMN applicant_document.doc_name prereguser
+4815; 0 0 COMMENT prereg COLUMN applicant_document.doc_cat_code prereguser
+4816; 0 0 COMMENT prereg COLUMN applicant_document.doc_typ_code prereguser
+4817; 0 0 COMMENT prereg COLUMN applicant_document.doc_file_format prereguser
+4818; 0 0 COMMENT prereg COLUMN applicant_document.doc_id prereguser
+4819; 0 0 COMMENT prereg COLUMN applicant_document.doc_hash prereguser
+4820; 0 0 COMMENT prereg COLUMN applicant_document.doc_ref_id prereguser
+4821; 0 0 COMMENT prereg COLUMN applicant_document.encrypted_dtimes prereguser
+4822; 0 0 COMMENT prereg COLUMN applicant_document.status_code prereguser
+4823; 0 0 COMMENT prereg COLUMN applicant_document.lang_code prereguser
+4824; 0 0 COMMENT prereg COLUMN applicant_document.cr_by prereguser
+4825; 0 0 COMMENT prereg COLUMN applicant_document.cr_dtimes prereguser
+4826; 0 0 COMMENT prereg COLUMN applicant_document.upd_by prereguser
+4827; 0 0 COMMENT prereg COLUMN applicant_document.upd_dtimes prereguser
+4828; 0 0 ACL prereg TABLE applicant_document prereguser
+385; 1259 21160 TABLE prereg applicant_document_consumed prereguser
+4829; 0 0 COMMENT prereg TABLE applicant_document_consumed prereguser
+4830; 0 0 COMMENT prereg COLUMN applicant_document_consumed.id prereguser
+4831; 0 0 COMMENT prereg COLUMN applicant_document_consumed.prereg_id prereguser
+4832; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_name prereguser
+4833; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_cat_code prereguser
+4834; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_typ_code prereguser
+4835; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_file_format prereguser
+4836; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_id prereguser
+4837; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_hash prereguser
+4838; 0 0 COMMENT prereg COLUMN applicant_document_consumed.doc_ref_id prereguser
+4839; 0 0 COMMENT prereg COLUMN applicant_document_consumed.encrypted_dtimes prereguser
+4840; 0 0 COMMENT prereg COLUMN applicant_document_consumed.status_code prereguser
+4841; 0 0 COMMENT prereg COLUMN applicant_document_consumed.lang_code prereguser
+4842; 0 0 COMMENT prereg COLUMN applicant_document_consumed.cr_by prereguser
+4843; 0 0 COMMENT prereg COLUMN applicant_document_consumed.cr_dtimes prereguser
+4844; 0 0 COMMENT prereg COLUMN applicant_document_consumed.upd_by prereguser
+4845; 0 0 COMMENT prereg COLUMN applicant_document_consumed.upd_dtimes prereguser
+4846; 0 0 ACL prereg TABLE applicant_document_consumed prereguser
+386; 1259 21166 TABLE prereg asi_app prereguser
+4847; 0 0 ACL prereg TABLE asi_app prereguser
+387; 1259 21172 TABLE prereg asi_doc prereguser
+4848; 0 0 ACL prereg TABLE asi_doc prereguser
+388; 1259 21178 TABLE prereg batch_job_execution prereguser
+4849; 0 0 ACL prereg TABLE batch_job_execution prereguser
+389; 1259 21184 TABLE prereg batch_job_execution_context prereguser
+4850; 0 0 ACL prereg TABLE batch_job_execution_context prereguser
+390; 1259 21190 TABLE prereg batch_job_execution_params prereguser
+4851; 0 0 ACL prereg TABLE batch_job_execution_params prereguser
+391; 1259 21193 SEQUENCE prereg batch_job_execution_seq postgres
+4852; 0 0 ACL prereg SEQUENCE batch_job_execution_seq postgres
+392; 1259 21195 TABLE prereg batch_job_instance prereguser
+4853; 0 0 ACL prereg TABLE batch_job_instance prereguser
+393; 1259 21198 SEQUENCE prereg batch_job_seq postgres
+4854; 0 0 ACL prereg SEQUENCE batch_job_seq postgres
+394; 1259 21200 TABLE prereg batch_step_execution prereguser
+4855; 0 0 ACL prereg TABLE batch_step_execution prereguser
+395; 1259 21206 TABLE prereg batch_step_execution_context prereguser
+4856; 0 0 ACL prereg TABLE batch_step_execution_context prereguser
+396; 1259 21212 SEQUENCE prereg batch_step_execution_seq postgres
+4857; 0 0 ACL prereg SEQUENCE batch_step_execution_seq postgres
+397; 1259 21214 TABLE prereg language_transliteration prereguser
+4858; 0 0 COMMENT prereg TABLE language_transliteration prereguser
+4859; 0 0 COMMENT prereg COLUMN language_transliteration.lang_from_code prereguser
+4860; 0 0 COMMENT prereg COLUMN language_transliteration.lang_to_code prereguser
+4861; 0 0 COMMENT prereg COLUMN language_transliteration.lang_id prereguser
+4862; 0 0 COMMENT prereg COLUMN language_transliteration.cr_by prereguser
+4863; 0 0 COMMENT prereg COLUMN language_transliteration.cr_dtimes prereguser
+4864; 0 0 COMMENT prereg COLUMN language_transliteration.upd_by prereguser
+4865; 0 0 COMMENT prereg COLUMN language_transliteration.upd_dtimes prereguser
+4866; 0 0 ACL prereg TABLE language_transliteration prereguser
+407; 1259 7679685 VIEW prereg monthly_prereg jfassinou
+4867; 0 0 ACL prereg TABLE monthly_prereg jfassinou
+398; 1259 21220 TABLE prereg otp_transaction prereguser
+4868; 0 0 COMMENT prereg TABLE otp_transaction prereguser
+4869; 0 0 COMMENT prereg COLUMN otp_transaction.id prereguser
+4870; 0 0 COMMENT prereg COLUMN otp_transaction.ref_id prereguser
+4871; 0 0 COMMENT prereg COLUMN otp_transaction.otp_hash prereguser
+4872; 0 0 COMMENT prereg COLUMN otp_transaction.generated_dtimes prereguser
+4873; 0 0 COMMENT prereg COLUMN otp_transaction.expiry_dtimes prereguser
+4874; 0 0 COMMENT prereg COLUMN otp_transaction.validation_retry_count prereguser
+4875; 0 0 COMMENT prereg COLUMN otp_transaction.status_code prereguser
+4876; 0 0 COMMENT prereg COLUMN otp_transaction.lang_code prereguser
+4877; 0 0 COMMENT prereg COLUMN otp_transaction.cr_by prereguser
+4878; 0 0 COMMENT prereg COLUMN otp_transaction.cr_dtimes prereguser
+4879; 0 0 COMMENT prereg COLUMN otp_transaction.upd_by prereguser
+4880; 0 0 COMMENT prereg COLUMN otp_transaction.upd_dtimes prereguser
+4881; 0 0 COMMENT prereg COLUMN otp_transaction.is_deleted prereguser
+4882; 0 0 COMMENT prereg COLUMN otp_transaction.del_dtimes prereguser
+4883; 0 0 ACL prereg TABLE otp_transaction prereguser
+4884; 0 0 ACL prereg TABLE pg_stat_statements enterprisedb
+399; 1259 21226 TABLE prereg pre_registration_transaction prereguser
+4885; 0 0 COMMENT prereg TABLE pre_registration_transaction prereguser
+4886; 0 0 COMMENT prereg COLUMN pre_registration_transaction.id prereguser
+4887; 0 0 COMMENT prereg COLUMN pre_registration_transaction.trn_type_code prereguser
+4888; 0 0 COMMENT prereg COLUMN pre_registration_transaction.parent_prereg_trn_id prereguser
+4889; 0 0 COMMENT prereg COLUMN pre_registration_transaction.status_code prereguser
+4890; 0 0 COMMENT prereg COLUMN pre_registration_transaction.status_comments prereguser
+4891; 0 0 COMMENT prereg COLUMN pre_registration_transaction.lang_code prereguser
+4892; 0 0 COMMENT prereg COLUMN pre_registration_transaction.cr_by prereguser
+4893; 0 0 COMMENT prereg COLUMN pre_registration_transaction.cr_dtimes prereguser
+4894; 0 0 COMMENT prereg COLUMN pre_registration_transaction.upd_by prereguser
+4895; 0 0 COMMENT prereg COLUMN pre_registration_transaction.upd_dtimes prereguser
+4896; 0 0 COMMENT prereg COLUMN pre_registration_transaction.is_deleted prereguser
+4897; 0 0 COMMENT prereg COLUMN pre_registration_transaction.del_dtimes prereguser
+4898; 0 0 ACL prereg TABLE pre_registration_transaction prereguser
+400; 1259 21232 TABLE prereg prid_seed prereguser
+4899; 0 0 COMMENT prereg TABLE prid_seed prereguser
+4900; 0 0 COMMENT prereg COLUMN prid_seed.seed_no prereguser
+4901; 0 0 COMMENT prereg COLUMN prid_seed.cr_by prereguser
+4902; 0 0 COMMENT prereg COLUMN prid_seed.cr_dtimes prereguser
+4903; 0 0 COMMENT prereg COLUMN prid_seed.is_deleted prereguser
+4904; 0 0 COMMENT prereg COLUMN prid_seed.del_dtimes prereguser
+4905; 0 0 ACL prereg TABLE prid_seed prereguser
+401; 1259 21235 TABLE prereg prid_seq prereguser
+4906; 0 0 COMMENT prereg TABLE prid_seq prereguser
+4907; 0 0 COMMENT prereg COLUMN prid_seq.seq_no prereguser
+4908; 0 0 COMMENT prereg COLUMN prid_seq.cr_by prereguser
+4909; 0 0 COMMENT prereg COLUMN prid_seq.cr_dtimes prereguser
+4910; 0 0 COMMENT prereg COLUMN prid_seq.is_deleted prereguser
+4911; 0 0 COMMENT prereg COLUMN prid_seq.del_dtimes prereguser
+4912; 0 0 ACL prereg TABLE prid_seq prereguser
+402; 1259 21238 TABLE prereg reg_appointment prereguser
+4913; 0 0 COMMENT prereg TABLE reg_appointment prereguser
+4914; 0 0 COMMENT prereg COLUMN reg_appointment.id prereguser
+4915; 0 0 COMMENT prereg COLUMN reg_appointment.regcntr_id prereguser
+4916; 0 0 COMMENT prereg COLUMN reg_appointment.prereg_id prereguser
+4917; 0 0 COMMENT prereg COLUMN reg_appointment.booking_dtimes prereguser
+4918; 0 0 COMMENT prereg COLUMN reg_appointment.appointment_date prereguser
+4919; 0 0 COMMENT prereg COLUMN reg_appointment.slot_from_time prereguser
+4920; 0 0 COMMENT prereg COLUMN reg_appointment.slot_to_time prereguser
+4921; 0 0 COMMENT prereg COLUMN reg_appointment.lang_code prereguser
+4922; 0 0 COMMENT prereg COLUMN reg_appointment.cr_by prereguser
+4923; 0 0 COMMENT prereg COLUMN reg_appointment.cr_dtimes prereguser
+4924; 0 0 COMMENT prereg COLUMN reg_appointment.upd_by prereguser
+4925; 0 0 COMMENT prereg COLUMN reg_appointment.upd_dtimes prereguser
+4926; 0 0 ACL prereg TABLE reg_appointment prereguser
+403; 1259 21244 TABLE prereg reg_appointment_consumed prereguser
+4927; 0 0 COMMENT prereg TABLE reg_appointment_consumed prereguser
+4928; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.id prereguser
+4929; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.regcntr_id prereguser
+4930; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.prereg_id prereguser
+4931; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.booking_dtimes prereguser
+4932; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.appointment_date prereguser
+4933; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.slot_from_time prereguser
+4934; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.slot_to_time prereguser
+4935; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.lang_code prereguser
+4936; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.cr_by prereguser
+4937; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.cr_dtimes prereguser
+4938; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.upd_by prereguser
+4939; 0 0 COMMENT prereg COLUMN reg_appointment_consumed.upd_dtimes prereguser
+4940; 0 0 ACL prereg TABLE reg_appointment_consumed prereguser
+404; 1259 21250 TABLE prereg reg_available_slot prereguser
+4941; 0 0 COMMENT prereg TABLE reg_available_slot prereguser
+4942; 0 0 COMMENT prereg COLUMN reg_available_slot.regcntr_id prereguser
+4943; 0 0 COMMENT prereg COLUMN reg_available_slot.availability_date prereguser
+4944; 0 0 COMMENT prereg COLUMN reg_available_slot.slot_from_time prereguser
+4945; 0 0 COMMENT prereg COLUMN reg_available_slot.slot_to_time prereguser
+4946; 0 0 COMMENT prereg COLUMN reg_available_slot.available_kiosks prereguser
+4947; 0 0 COMMENT prereg COLUMN reg_available_slot.cr_by prereguser
+4948; 0 0 COMMENT prereg COLUMN reg_available_slot.cr_dtimes prereguser
+4949; 0 0 COMMENT prereg COLUMN reg_available_slot.upd_by prereguser
+4950; 0 0 COMMENT prereg COLUMN reg_available_slot.upd_dtimes prereguser
+4951; 0 0 COMMENT prereg COLUMN reg_available_slot.is_deleted prereguser
+4952; 0 0 COMMENT prereg COLUMN reg_available_slot.del_dtimes prereguser
+4953; 0 0 ACL prereg TABLE reg_available_slot prereguser
+405; 1259 21256 TABLE prereg transaction_type prereguser
+4954; 0 0 COMMENT prereg TABLE transaction_type prereguser
+4955; 0 0 COMMENT prereg COLUMN transaction_type.code prereguser
+4956; 0 0 COMMENT prereg COLUMN transaction_type.descr prereguser
+4957; 0 0 COMMENT prereg COLUMN transaction_type.lang_code prereguser
+4958; 0 0 COMMENT prereg COLUMN transaction_type.is_active prereguser
+4959; 0 0 COMMENT prereg COLUMN transaction_type.cr_by prereguser
+4960; 0 0 COMMENT prereg COLUMN transaction_type.cr_dtimes prereguser
+4961; 0 0 COMMENT prereg COLUMN transaction_type.upd_by prereguser
+4962; 0 0 COMMENT prereg COLUMN transaction_type.upd_dtimes prereguser
+4963; 0 0 COMMENT prereg COLUMN transaction_type.is_deleted prereguser
+4964; 0 0 COMMENT prereg COLUMN transaction_type.del_dtimes prereguser
+4965; 0 0 ACL prereg TABLE transaction_type prereguser
+4517; 2606 31542841 CONSTRAINT prereg applicant_demographic_consumed applicant_demographic_consumed_pk prereguser
+4513; 2606 18142160 CONSTRAINT prereg applicant_demographic applicant_demographic_pk prereguser
+4519; 2606 11046002 CONSTRAINT prereg applicant_document applicant_document_pk prereguser
+4524; 2606 21263 CONSTRAINT prereg prid_seed pk_prsd prereguser
+4526; 2606 21265 CONSTRAINT prereg prid_seq pk_prseq prereguser
+4528; 2606 21267 CONSTRAINT prereg reg_available_slot pk_ravlslt_id prereguser
+4522; 2606 21269 CONSTRAINT prereg pre_registration_transaction preg_trn_pk prereguser
+4530; 2606 21271 CONSTRAINT prereg transaction_type ttype_pk prereguser
+4514; 1259 11045249 INDEX prereg applicant_demographic_prereg_id_idx prereguser
+4515; 1259 11045753 INDEX prereg applicant_demographic_status_code_idx prereguser
+4520; 1259 11146838 INDEX prereg applicant_document_prereg_id_idx prereguser
+4767; 6104 18118520 PUBLICATION - dbz_publication enterprisedb
+4768; 6106 18118569 PUBLICATION TABLE prereg dbz_publication applicant_demographic enterprisedb
+4769; 6106 31542783 PUBLICATION TABLE prereg dbz_publication applicant_demographic_consumed enterprisedb
+3440; 826 26646733 DEFAULT ACL prereg DEFAULT PRIVILEGES FOR SEQUENCES enterprisedb
+3439; 826 18118663 DEFAULT ACL prereg DEFAULT PRIVILEGES FOR TABLES enterprisedb

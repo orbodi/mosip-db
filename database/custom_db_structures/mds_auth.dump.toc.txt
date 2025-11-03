@@ -1,0 +1,62 @@
+﻿;
+; Archive created at 2025-11-03 10:52:26
+;     dbname: mds_auth
+;     TOC Entries: 52
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 18956 SCHEMA - mammsauth postgres
+4706; 0 0 ACL - SCHEMA mammsauth postgres
+4707; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415152 EXTENSION - dblink 
+4708; 0 0 COMMENT - EXTENSION dblink 
+381; 1259 18957 TABLE mammsauth device_activation postgres
+4709; 0 0 ACL mammsauth TABLE device_activation postgres
+382; 1259 18962 SEQUENCE mammsauth device_activation_id_seq postgres
+4710; 0 0 SEQUENCE OWNED BY mammsauth device_activation_id_seq postgres
+4711; 0 0 ACL mammsauth SEQUENCE device_activation_id_seq postgres
+383; 1259 18964 TABLE mammsauth device_info postgres
+4712; 0 0 ACL mammsauth TABLE device_info postgres
+384; 1259 18983 SEQUENCE mammsauth device_info_id_seq postgres
+4713; 0 0 SEQUENCE OWNED BY mammsauth device_info_id_seq postgres
+4714; 0 0 ACL mammsauth SEQUENCE device_info_id_seq postgres
+385; 1259 18985 TABLE mammsauth device_provision postgres
+4715; 0 0 ACL mammsauth TABLE device_provision postgres
+386; 1259 18993 SEQUENCE mammsauth device_provision_id_seq postgres
+4716; 0 0 SEQUENCE OWNED BY mammsauth device_provision_id_seq postgres
+4717; 0 0 ACL mammsauth SEQUENCE device_provision_id_seq postgres
+387; 1259 18995 TABLE mammsauth device_transaction postgres
+4718; 0 0 ACL mammsauth TABLE device_transaction postgres
+388; 1259 19002 SEQUENCE mammsauth device_transaction_id_seq postgres
+4719; 0 0 SEQUENCE OWNED BY mammsauth device_transaction_id_seq postgres
+4720; 0 0 ACL mammsauth SEQUENCE device_transaction_id_seq postgres
+389; 1259 19004 TABLE mammsauth mslogin postgres
+4721; 0 0 ACL mammsauth TABLE mslogin postgres
+390; 1259 19008 SEQUENCE mammsauth mslogin_id_seq postgres
+4722; 0 0 SEQUENCE OWNED BY mammsauth mslogin_id_seq postgres
+4723; 0 0 ACL mammsauth SEQUENCE mslogin_id_seq postgres
+391; 1259 19010 TABLE mammsauth userauth postgres
+4724; 0 0 ACL mammsauth TABLE userauth postgres
+392; 1259 19013 SEQUENCE mammsauth userauth_id_seq postgres
+4725; 0 0 SEQUENCE OWNED BY mammsauth userauth_id_seq postgres
+4726; 0 0 ACL mammsauth SEQUENCE userauth_id_seq postgres
+4427; 2604 19015 DEFAULT mammsauth device_activation id postgres
+4441; 2604 19016 DEFAULT mammsauth device_info id postgres
+4444; 2604 19017 DEFAULT mammsauth device_provision id postgres
+4446; 2604 19018 DEFAULT mammsauth device_transaction id postgres
+4448; 2604 19019 DEFAULT mammsauth mslogin id postgres
+4449; 2604 19020 DEFAULT mammsauth userauth id postgres
+4451; 2606 19022 CONSTRAINT mammsauth device_activation device_activation_pkey postgres
+4453; 2606 19024 CONSTRAINT mammsauth device_info device_info_pkey postgres
+4455; 2606 19026 CONSTRAINT mammsauth device_provision device_provision_pkey postgres
+4457; 2606 19028 CONSTRAINT mammsauth device_transaction device_transaction_pkey postgres
+4459; 2606 19030 CONSTRAINT mammsauth mslogin mslogin_pkey postgres
+4461; 2606 19032 CONSTRAINT mammsauth userauth userauth_pkey postgres

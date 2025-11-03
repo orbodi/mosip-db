@@ -1,0 +1,179 @@
+﻿;
+; Archive created at 2025-11-03 10:52:34
+;     dbname: mosip_idrepo
+;     TOC Entries: 170
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+13; 2615 19623 SCHEMA - idrepo postgres
+4724; 0 0 ACL - SCHEMA idrepo postgres
+4725; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415474 EXTENSION - dblink 
+4726; 0 0 COMMENT - EXTENSION dblink 
+391; 1259 7912679 TABLE idrepo rid_uin_link idrepouser
+4727; 0 0 ACL idrepo TABLE rid_uin_link idrepouser
+381; 1259 19624 TABLE idrepo uin idrepouser
+4728; 0 0 COMMENT idrepo TABLE uin idrepouser
+4729; 0 0 COMMENT idrepo COLUMN uin.uin_ref_id idrepouser
+4730; 0 0 COMMENT idrepo COLUMN uin.uin idrepouser
+4731; 0 0 COMMENT idrepo COLUMN uin.uin_hash idrepouser
+4732; 0 0 COMMENT idrepo COLUMN uin.uin_data idrepouser
+4733; 0 0 COMMENT idrepo COLUMN uin.uin_data_hash idrepouser
+4734; 0 0 COMMENT idrepo COLUMN uin.reg_id idrepouser
+4735; 0 0 COMMENT idrepo COLUMN uin.bio_ref_id idrepouser
+4736; 0 0 COMMENT idrepo COLUMN uin.status_code idrepouser
+4737; 0 0 COMMENT idrepo COLUMN uin.lang_code idrepouser
+4738; 0 0 COMMENT idrepo COLUMN uin.cr_by idrepouser
+4739; 0 0 COMMENT idrepo COLUMN uin.cr_dtimes idrepouser
+4740; 0 0 COMMENT idrepo COLUMN uin.upd_by idrepouser
+4741; 0 0 COMMENT idrepo COLUMN uin.upd_dtimes idrepouser
+4742; 0 0 COMMENT idrepo COLUMN uin.is_deleted idrepouser
+4743; 0 0 COMMENT idrepo COLUMN uin.del_dtimes idrepouser
+4744; 0 0 ACL idrepo TABLE uin idrepouser
+382; 1259 19631 TABLE idrepo uin_auth_lock idrepouser
+4745; 0 0 COMMENT idrepo TABLE uin_auth_lock idrepouser
+4746; 0 0 COMMENT idrepo COLUMN uin_auth_lock.uin_hash idrepouser
+4747; 0 0 COMMENT idrepo COLUMN uin_auth_lock.auth_type_code idrepouser
+4748; 0 0 COMMENT idrepo COLUMN uin_auth_lock.lock_request_datetime idrepouser
+4749; 0 0 COMMENT idrepo COLUMN uin_auth_lock.lock_start_datetime idrepouser
+4750; 0 0 COMMENT idrepo COLUMN uin_auth_lock.lock_end_datetime idrepouser
+4751; 0 0 COMMENT idrepo COLUMN uin_auth_lock.status_code idrepouser
+4752; 0 0 COMMENT idrepo COLUMN uin_auth_lock.lang_code idrepouser
+4753; 0 0 COMMENT idrepo COLUMN uin_auth_lock.cr_by idrepouser
+4754; 0 0 COMMENT idrepo COLUMN uin_auth_lock.cr_dtimes idrepouser
+4755; 0 0 COMMENT idrepo COLUMN uin_auth_lock.upd_by idrepouser
+4756; 0 0 COMMENT idrepo COLUMN uin_auth_lock.upd_dtimes idrepouser
+4757; 0 0 COMMENT idrepo COLUMN uin_auth_lock.is_deleted idrepouser
+4758; 0 0 COMMENT idrepo COLUMN uin_auth_lock.del_dtimes idrepouser
+4759; 0 0 ACL idrepo TABLE uin_auth_lock idrepouser
+383; 1259 19638 TABLE idrepo uin_biometric idrepouser
+4760; 0 0 COMMENT idrepo TABLE uin_biometric idrepouser
+4761; 0 0 COMMENT idrepo COLUMN uin_biometric.uin_ref_id idrepouser
+4762; 0 0 COMMENT idrepo COLUMN uin_biometric.biometric_file_type idrepouser
+4763; 0 0 COMMENT idrepo COLUMN uin_biometric.bio_file_id idrepouser
+4764; 0 0 COMMENT idrepo COLUMN uin_biometric.biometric_file_name idrepouser
+4765; 0 0 COMMENT idrepo COLUMN uin_biometric.biometric_file_hash idrepouser
+4766; 0 0 COMMENT idrepo COLUMN uin_biometric.lang_code idrepouser
+4767; 0 0 COMMENT idrepo COLUMN uin_biometric.cr_by idrepouser
+4768; 0 0 COMMENT idrepo COLUMN uin_biometric.cr_dtimes idrepouser
+4769; 0 0 COMMENT idrepo COLUMN uin_biometric.upd_by idrepouser
+4770; 0 0 COMMENT idrepo COLUMN uin_biometric.upd_dtimes idrepouser
+4771; 0 0 COMMENT idrepo COLUMN uin_biometric.is_deleted idrepouser
+4772; 0 0 COMMENT idrepo COLUMN uin_biometric.del_dtimes idrepouser
+4773; 0 0 ACL idrepo TABLE uin_biometric idrepouser
+384; 1259 19645 TABLE idrepo uin_biometric_h idrepouser
+4774; 0 0 COMMENT idrepo TABLE uin_biometric_h idrepouser
+4775; 0 0 COMMENT idrepo COLUMN uin_biometric_h.uin_ref_id idrepouser
+4776; 0 0 COMMENT idrepo COLUMN uin_biometric_h.biometric_file_type idrepouser
+4777; 0 0 COMMENT idrepo COLUMN uin_biometric_h.eff_dtimes idrepouser
+4778; 0 0 COMMENT idrepo COLUMN uin_biometric_h.bio_file_id idrepouser
+4779; 0 0 COMMENT idrepo COLUMN uin_biometric_h.biometric_file_name idrepouser
+4780; 0 0 COMMENT idrepo COLUMN uin_biometric_h.biometric_file_hash idrepouser
+4781; 0 0 COMMENT idrepo COLUMN uin_biometric_h.lang_code idrepouser
+4782; 0 0 COMMENT idrepo COLUMN uin_biometric_h.cr_by idrepouser
+4783; 0 0 COMMENT idrepo COLUMN uin_biometric_h.cr_dtimes idrepouser
+4784; 0 0 COMMENT idrepo COLUMN uin_biometric_h.upd_by idrepouser
+4785; 0 0 COMMENT idrepo COLUMN uin_biometric_h.upd_dtimes idrepouser
+4786; 0 0 COMMENT idrepo COLUMN uin_biometric_h.is_deleted idrepouser
+4787; 0 0 COMMENT idrepo COLUMN uin_biometric_h.del_dtimes idrepouser
+4788; 0 0 ACL idrepo TABLE uin_biometric_h idrepouser
+385; 1259 19652 TABLE idrepo uin_document idrepouser
+4789; 0 0 COMMENT idrepo TABLE uin_document idrepouser
+4790; 0 0 COMMENT idrepo COLUMN uin_document.uin_ref_id idrepouser
+4791; 0 0 COMMENT idrepo COLUMN uin_document.doccat_code idrepouser
+4792; 0 0 COMMENT idrepo COLUMN uin_document.doctyp_code idrepouser
+4793; 0 0 COMMENT idrepo COLUMN uin_document.doc_id idrepouser
+4794; 0 0 COMMENT idrepo COLUMN uin_document.doc_name idrepouser
+4795; 0 0 COMMENT idrepo COLUMN uin_document.docfmt_code idrepouser
+4796; 0 0 COMMENT idrepo COLUMN uin_document.doc_hash idrepouser
+4797; 0 0 COMMENT idrepo COLUMN uin_document.lang_code idrepouser
+4798; 0 0 COMMENT idrepo COLUMN uin_document.cr_by idrepouser
+4799; 0 0 COMMENT idrepo COLUMN uin_document.cr_dtimes idrepouser
+4800; 0 0 COMMENT idrepo COLUMN uin_document.upd_by idrepouser
+4801; 0 0 COMMENT idrepo COLUMN uin_document.upd_dtimes idrepouser
+4802; 0 0 COMMENT idrepo COLUMN uin_document.is_deleted idrepouser
+4803; 0 0 COMMENT idrepo COLUMN uin_document.del_dtimes idrepouser
+4804; 0 0 ACL idrepo TABLE uin_document idrepouser
+386; 1259 19659 TABLE idrepo uin_document_h idrepouser
+4805; 0 0 COMMENT idrepo TABLE uin_document_h idrepouser
+4806; 0 0 COMMENT idrepo COLUMN uin_document_h.uin_ref_id idrepouser
+4807; 0 0 COMMENT idrepo COLUMN uin_document_h.doccat_code idrepouser
+4808; 0 0 COMMENT idrepo COLUMN uin_document_h.doctyp_code idrepouser
+4809; 0 0 COMMENT idrepo COLUMN uin_document_h.eff_dtimes idrepouser
+4810; 0 0 COMMENT idrepo COLUMN uin_document_h.doc_id idrepouser
+4811; 0 0 COMMENT idrepo COLUMN uin_document_h.doc_name idrepouser
+4812; 0 0 COMMENT idrepo COLUMN uin_document_h.docfmt_code idrepouser
+4813; 0 0 COMMENT idrepo COLUMN uin_document_h.doc_hash idrepouser
+4814; 0 0 COMMENT idrepo COLUMN uin_document_h.lang_code idrepouser
+4815; 0 0 COMMENT idrepo COLUMN uin_document_h.cr_by idrepouser
+4816; 0 0 COMMENT idrepo COLUMN uin_document_h.cr_dtimes idrepouser
+4817; 0 0 COMMENT idrepo COLUMN uin_document_h.upd_by idrepouser
+4818; 0 0 COMMENT idrepo COLUMN uin_document_h.upd_dtimes idrepouser
+4819; 0 0 COMMENT idrepo COLUMN uin_document_h.is_deleted idrepouser
+4820; 0 0 COMMENT idrepo COLUMN uin_document_h.del_dtimes idrepouser
+4821; 0 0 ACL idrepo TABLE uin_document_h idrepouser
+387; 1259 19666 TABLE idrepo uin_encrypt_salt idrepouser
+4822; 0 0 COMMENT idrepo TABLE uin_encrypt_salt idrepouser
+4823; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.id idrepouser
+4824; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.salt idrepouser
+4825; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.cr_by idrepouser
+4826; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.cr_dtimes idrepouser
+4827; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.upd_by idrepouser
+4828; 0 0 COMMENT idrepo COLUMN uin_encrypt_salt.upd_dtimes idrepouser
+4829; 0 0 ACL idrepo TABLE uin_encrypt_salt idrepouser
+388; 1259 19672 TABLE idrepo uin_h idrepouser
+4830; 0 0 COMMENT idrepo TABLE uin_h idrepouser
+4831; 0 0 COMMENT idrepo COLUMN uin_h.uin_ref_id idrepouser
+4832; 0 0 COMMENT idrepo COLUMN uin_h.eff_dtimes idrepouser
+4833; 0 0 COMMENT idrepo COLUMN uin_h.uin idrepouser
+4834; 0 0 COMMENT idrepo COLUMN uin_h.uin_hash idrepouser
+4835; 0 0 COMMENT idrepo COLUMN uin_h.uin_data idrepouser
+4836; 0 0 COMMENT idrepo COLUMN uin_h.uin_data_hash idrepouser
+4837; 0 0 COMMENT idrepo COLUMN uin_h.reg_id idrepouser
+4838; 0 0 COMMENT idrepo COLUMN uin_h.bio_ref_id idrepouser
+4839; 0 0 COMMENT idrepo COLUMN uin_h.status_code idrepouser
+4840; 0 0 COMMENT idrepo COLUMN uin_h.lang_code idrepouser
+4841; 0 0 COMMENT idrepo COLUMN uin_h.cr_by idrepouser
+4842; 0 0 COMMENT idrepo COLUMN uin_h.cr_dtimes idrepouser
+4843; 0 0 COMMENT idrepo COLUMN uin_h.upd_by idrepouser
+4844; 0 0 COMMENT idrepo COLUMN uin_h.upd_dtimes idrepouser
+4845; 0 0 COMMENT idrepo COLUMN uin_h.is_deleted idrepouser
+4846; 0 0 COMMENT idrepo COLUMN uin_h.del_dtimes idrepouser
+4847; 0 0 ACL idrepo TABLE uin_h idrepouser
+389; 1259 19679 TABLE idrepo uin_hash_salt idrepouser
+4848; 0 0 COMMENT idrepo TABLE uin_hash_salt idrepouser
+4849; 0 0 COMMENT idrepo COLUMN uin_hash_salt.id idrepouser
+4850; 0 0 COMMENT idrepo COLUMN uin_hash_salt.salt idrepouser
+4851; 0 0 COMMENT idrepo COLUMN uin_hash_salt.cr_by idrepouser
+4852; 0 0 COMMENT idrepo COLUMN uin_hash_salt.cr_dtimes idrepouser
+4853; 0 0 COMMENT idrepo COLUMN uin_hash_salt.upd_by idrepouser
+4854; 0 0 COMMENT idrepo COLUMN uin_hash_salt.upd_dtimes idrepouser
+4855; 0 0 ACL idrepo TABLE uin_hash_salt idrepouser
+4443; 2606 19686 CONSTRAINT idrepo uin pk_uin idrepouser
+4451; 2606 19688 CONSTRAINT idrepo uin_auth_lock pk_uinal idrepouser
+4453; 2606 19690 CONSTRAINT idrepo uin_biometric pk_uinb idrepouser
+4457; 2606 19692 CONSTRAINT idrepo uin_biometric_h pk_uinbh idrepouser
+4461; 2606 19694 CONSTRAINT idrepo uin_document pk_uind idrepouser
+4465; 2606 19696 CONSTRAINT idrepo uin_document_h pk_uindh idrepouser
+4469; 2606 19698 CONSTRAINT idrepo uin_encrypt_salt pk_uines idrepouser
+4471; 2606 19700 CONSTRAINT idrepo uin_h pk_uinh idrepouser
+4476; 2606 19702 CONSTRAINT idrepo uin_hash_salt pk_uinhs idrepouser
+4445; 2606 19704 CONSTRAINT idrepo uin uk_uin idrepouser
+4447; 2606 19706 CONSTRAINT idrepo uin uk_uin_reg_id idrepouser
+4449; 2606 19708 CONSTRAINT idrepo uin uk_uin_uin_hash idrepouser
+4455; 2606 19710 CONSTRAINT idrepo uin_biometric uk_uinb idrepouser
+4459; 2606 19712 CONSTRAINT idrepo uin_biometric_h uk_uinbh idrepouser
+4463; 2606 19714 CONSTRAINT idrepo uin_document uk_uind idrepouser
+4467; 2606 19716 CONSTRAINT idrepo uin_document_h uk_uindh idrepouser
+4474; 2606 19718 CONSTRAINT idrepo uin_h uk_uinh idrepouser
+4472; 1259 18473155 INDEX idrepo uin_h_cr_dtimes_idx idrepouser
+4477; 2606 19719 FK CONSTRAINT idrepo uin_biometric fk_uinb_uin idrepouser
+4478; 2606 19724 FK CONSTRAINT idrepo uin_document fk_uind_uin idrepouser

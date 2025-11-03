@@ -1,0 +1,134 @@
+﻿;
+; Archive created at 2025-11-03 10:52:18
+;     dbname: biintegration
+;     TOC Entries: 124
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.16.20
+;     Dumped by pg_dump version: 12.16.20
+;
+;
+; Selected TOC Entries:
+;
+4853; 0 0 ACL - SCHEMA public enterprisedb
+6; 3079 2415014 EXTENSION - dblink 
+4854; 0 0 COMMENT - EXTENSION dblink 
+380; 1259 16447 TABLE public bi_filter postgres
+4855; 0 0 ACL public TABLE bi_filter postgres
+381; 1259 16450 TABLE public bi_user_role_map postgres
+4856; 0 0 ACL public TABLE bi_user_role_map postgres
+382; 1259 16453 TABLE public bi_users postgres
+4857; 0 0 ACL public TABLE bi_users postgres
+383; 1259 16460 SEQUENCE public bi_users_id_seq postgres
+384; 1259 16462 SEQUENCE public bi_users_id_seq1 postgres
+4858; 0 0 SEQUENCE OWNED BY public bi_users_id_seq1 postgres
+385; 1259 16464 TABLE public dss_action postgres
+4859; 0 0 ACL public TABLE dss_action postgres
+386; 1259 16470 TABLE public dss_action_details postgres
+4860; 0 0 ACL public TABLE dss_action_details postgres
+387; 1259 16476 SEQUENCE public dss_action_details_id_seq postgres
+388; 1259 16478 SEQUENCE public dss_action_details_id_seq1 postgres
+4861; 0 0 SEQUENCE OWNED BY public dss_action_details_id_seq1 postgres
+389; 1259 16480 TABLE public dss_audit postgres
+4862; 0 0 ACL public TABLE dss_audit postgres
+390; 1259 16486 SEQUENCE public dss_audit_id_seq postgres
+391; 1259 16488 SEQUENCE public dss_audit_id_seq1 postgres
+4863; 0 0 SEQUENCE OWNED BY public dss_audit_id_seq1 postgres
+392; 1259 16490 TABLE public dss_batch_stats postgres
+4864; 0 0 ACL public TABLE dss_batch_stats postgres
+393; 1259 16496 SEQUENCE public dss_batch_stats_id_seq postgres
+394; 1259 16498 SEQUENCE public dss_batch_stats_id_seq1 postgres
+4865; 0 0 SEQUENCE OWNED BY public dss_batch_stats_id_seq1 postgres
+395; 1259 16500 TABLE public dss_country postgres
+4866; 0 0 ACL public TABLE dss_country postgres
+396; 1259 16506 TABLE public dss_extraction_batch postgres
+4867; 0 0 ACL public TABLE dss_extraction_batch postgres
+397; 1259 16512 SEQUENCE public dss_extraction_batch_id_seq postgres
+398; 1259 16514 SEQUENCE public dss_extraction_batch_id_seq1 postgres
+4868; 0 0 SEQUENCE OWNED BY public dss_extraction_batch_id_seq1 postgres
+399; 1259 16516 TABLE public dss_global_config postgres
+4869; 0 0 ACL public TABLE dss_global_config postgres
+400; 1259 16519 TABLE public dss_notification_batch postgres
+4870; 0 0 ACL public TABLE dss_notification_batch postgres
+401; 1259 16525 SEQUENCE public dss_notification_batch_id_seq postgres
+402; 1259 16527 SEQUENCE public dss_notification_batch_id_seq1 postgres
+4871; 0 0 SEQUENCE OWNED BY public dss_notification_batch_id_seq1 postgres
+403; 1259 16529 TABLE public dss_notification_template postgres
+4872; 0 0 ACL public TABLE dss_notification_template postgres
+404; 1259 16535 SEQUENCE public dss_notification_template_id_seq postgres
+405; 1259 16537 SEQUENCE public dss_notification_template_id_seq1 postgres
+4873; 0 0 SEQUENCE OWNED BY public dss_notification_template_id_seq1 postgres
+406; 1259 16539 TABLE public dss_packet_status_mapping postgres
+4874; 0 0 ACL public TABLE dss_packet_status_mapping postgres
+407; 1259 16545 TABLE public dss_reg_packet_display postgres
+4875; 0 0 ACL public TABLE dss_reg_packet_display postgres
+408; 1259 16551 TABLE public dss_reg_status_mapping postgres
+4876; 0 0 ACL public TABLE dss_reg_status_mapping postgres
+409; 1259 16557 TABLE public dss_registration_center postgres
+4877; 0 0 ACL public TABLE dss_registration_center postgres
+410; 1259 16560 TABLE public dss_reprocess_batch postgres
+4878; 0 0 ACL public TABLE dss_reprocess_batch postgres
+411; 1259 16566 SEQUENCE public dss_reprocess_batch_id_seq postgres
+412; 1259 16568 SEQUENCE public dss_reprocess_batch_id_seq1 postgres
+4879; 0 0 SEQUENCE OWNED BY public dss_reprocess_batch_id_seq1 postgres
+413; 1259 16570 TABLE public dss_rid_detail postgres
+4880; 0 0 ACL public TABLE dss_rid_detail postgres
+414; 1259 16576 TABLE public dss_status_action postgres
+4881; 0 0 ACL public TABLE dss_status_action postgres
+415; 1259 16582 TABLE public dss_uin_detail postgres
+4882; 0 0 ACL public TABLE dss_uin_detail postgres
+416; 1259 16588 TABLE public dss_uin_detail_bkp postgres
+4883; 0 0 ACL public TABLE dss_uin_detail_bkp postgres
+417; 1259 16594 TABLE public dss_user postgres
+4884; 0 0 ACL public TABLE dss_user postgres
+418; 1259 16600 TABLE public dss_user_action postgres
+4885; 0 0 ACL public TABLE dss_user_action postgres
+419; 1259 16606 TABLE public email_dispatcher_config postgres
+4886; 0 0 ACL public TABLE email_dispatcher_config postgres
+420; 1259 16612 TABLE public email_dispatcher_transactions postgres
+4887; 0 0 ACL public TABLE email_dispatcher_transactions postgres
+421; 1259 16618 SEQUENCE public hibernate_sequence postgres
+422; 1259 16620 TABLE public prereg_failed_messages postgres
+4888; 0 0 ACL public TABLE prereg_failed_messages postgres
+423; 1259 16626 TABLE public reg_handler_reprocess postgres
+4889; 0 0 ACL public TABLE reg_handler_reprocess postgres
+424; 1259 16632 VIEW public reg_handler_reprocess_view postgres
+4890; 0 0 ACL public TABLE reg_handler_reprocess_view postgres
+4555; 2604 16636 DEFAULT public bi_users id postgres
+4556; 2604 16637 DEFAULT public dss_action_details id postgres
+4557; 2604 16638 DEFAULT public dss_audit id postgres
+4558; 2604 16639 DEFAULT public dss_batch_stats id postgres
+4559; 2604 16640 DEFAULT public dss_extraction_batch id postgres
+4560; 2604 16641 DEFAULT public dss_notification_batch id postgres
+4561; 2604 16642 DEFAULT public dss_notification_template id postgres
+4562; 2604 16643 DEFAULT public dss_reprocess_batch id postgres
+4564; 2606 16645 CONSTRAINT public bi_filter bi_filter_pkey postgres
+4566; 2606 16647 CONSTRAINT public bi_user_role_map bi_user_role_map_pkey postgres
+4569; 2606 16649 CONSTRAINT public bi_users bi_users_pk postgres
+4572; 2606 16651 CONSTRAINT public dss_action_details dss_action_details_pkey postgres
+4574; 2606 16653 CONSTRAINT public dss_audit dss_audit_pkey postgres
+4576; 2606 16655 CONSTRAINT public dss_batch_stats dss_batch_stats_pkey postgres
+4580; 2606 16657 CONSTRAINT public dss_extraction_batch dss_extraction_batch_pkey postgres
+4582; 2606 16659 CONSTRAINT public dss_notification_batch dss_notification_batch_pkey postgres
+4584; 2606 16661 CONSTRAINT public dss_notification_template dss_notification_template_pkey postgres
+4586; 2606 16663 CONSTRAINT public dss_packet_status_mapping dss_packet_status_mapping_pkey postgres
+4588; 2606 16665 CONSTRAINT public dss_reg_packet_display dss_reg_packet_display_pkey postgres
+4590; 2606 16667 CONSTRAINT public dss_reg_status_mapping dss_reg_status_mapping_pkey postgres
+4594; 2606 16669 CONSTRAINT public dss_reprocess_batch dss_reprocess_batch_pkey postgres
+4578; 2606 16671 CONSTRAINT public dss_country pk_dss_country postgres
+4600; 2606 16673 CONSTRAINT public dss_user pk_dss_user postgres
+4592; 2606 16675 CONSTRAINT public dss_registration_center pk_registration_center postgres
+4604; 2606 16677 CONSTRAINT public prereg_failed_messages prereg_failed_messages_pkey postgres
+4606; 2606 16679 CONSTRAINT public reg_handler_reprocess reg_handler_reprocess_pk postgres
+4567; 1259 16680 INDEX public bi_users_id_uindex postgres
+4570; 1259 16681 INDEX public bi_users_username_uindex postgres
+4601; 1259 16682 INDEX public email_dispatcher_config_id_idx postgres
+4602; 1259 16683 INDEX public email_dispatcher_uidx postgres
+4595; 1259 16684 INDEX public idx_dss_uin_detail_age_group postgres
+4596; 1259 16685 INDEX public idx_dss_uin_detail_gender postgres
+4597; 1259 16686 INDEX public idx_dss_uin_detail_rid postgres
+4598; 1259 16687 INDEX public idx_dss_uin_detail_uin postgres
+4607; 1259 16688 INDEX public reg_handler_reprocess_status_idx postgres

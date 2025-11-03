@@ -229,6 +229,23 @@ PY2
     # Also ensure we drop access_allowed from column list if present
     sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\([^)]*)\s*,\s*access_allowed\b/\1/I" "$SQL_PATH"
     sed -i -E "s/(\\COPY[[:space:]]+ida\\.key_policy_def[[:space:]]*\()\s*access_allowed\s*,/\1/I" "$SQL_PATH"
+
+    # Ensure filtered CSV exists in temp tree if referenced by dml.sql
+    ORIG_CSV_PATH="$TMP_DIR/dml/ida-key_policy_def.csv"
+    FILT_CSV_PATH="$TMP_DIR/dml/ida-key_policy_def.filtered.csv"
+    if [[ -f "$ORIG_CSV_PATH" && ! -f "$FILT_CSV_PATH" ]]; then
+      python3 - "$ORIG_CSV_PATH" "$FILT_CSV_PATH" <<'PY3'
+import csv, sys
+src, dst = sys.argv[1], sys.argv[2]
+keep = ['app_id','key_validity_duration','is_active','cr_by','cr_dtimes']
+with open(src, newline='', encoding='utf-8') as f_in, open(dst, 'w', newline='', encoding='utf-8') as f_out:
+    r = csv.DictReader(f_in)
+    w = csv.DictWriter(f_out, fieldnames=keep)
+    w.writeheader()
+    for row in r:
+        w.writerow({k: row.get(k, '') for k in keep})
+PY3
+    fi
   fi
 
   (

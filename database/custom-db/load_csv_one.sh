@@ -132,25 +132,28 @@ def sanitize_sql(sql_path):
                 if r.fieldnames:
                     # Case-insensitive header mapping
                     header_map = {h.lower(): h for h in r.fieldnames}
-                    csv_keep_headers = []
+                    # Build aligned pairs of (db_col, csv_header)
+                    pairs = []
                     for c in keep:
-                        lc = c.lower()
-                        if lc in header_map:
-                            csv_keep_headers.append(header_map[lc])
-                    # If any required columns would be dropped, skip alignment for this COPY
-                    missing_required = [c for c in required_cols if c not in [k.lower() for k in keep]]
+                        h = header_map.get(c.lower())
+                        if h:
+                            pairs.append((c, h))
+                    # Ensure we do not drop required columns
+                    missing_required = [c for c in required_cols if c not in [db for db, _ in pairs]]
                     if missing_required:
                         continue
-                    if not csv_keep_headers:
+                    if not pairs:
                         pass
                     else:
+                        db_cols = [db for db, _ in pairs]
+                        csv_headers = [h for _, h in pairs]
                         filtered_csv = csv_path + '.filtered.csv'
                         with open(filtered_csv, 'w', newline='', encoding='utf-8') as f_out:
-                            w = csv.DictWriter(f_out, fieldnames=csv_keep_headers)
+                            w = csv.DictWriter(f_out, fieldnames=csv_headers)
                             w.writeheader()
                             for row in r:
-                                w.writerow({k: row.get(k, '') for k in csv_keep_headers})
-                        cols_str = ','.join(keep)
+                                w.writerow({k: row.get(k, '') for k in csv_headers})
+                        cols_str = ','.join(db_cols)
                         rel_dir = os.path.dirname(csv_rel)
                         rel_filtered = os.path.join(rel_dir, os.path.basename(filtered_csv)) if rel_dir else os.path.basename(filtered_csv)
                         new_line = COPY_RE.sub(lambda mm: mm.group(0)

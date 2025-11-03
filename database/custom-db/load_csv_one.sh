@@ -20,6 +20,16 @@ export PGHOST="${PGHOST:-localhost}"
 export PGPORT="${PGPORT:-5432}"
 export PGUSER="${PGUSER:-postgres}"
 export PGPASSWORD="${PGPASSWORD:-}"
+export DML_STRICT="${DML_STRICT:-true}"
+export SKIP_DBS_DML="${SKIP_DBS_DML:-}"
+
+# Skip list handling (space-separated names)
+for SKIP_NAME in $SKIP_DBS_DML; do
+  if [[ "$SKIP_NAME" == "$DB_NAME" ]]; then
+    echo "[${DB_NAME}] Skipping DML as per SKIP_DBS_DML"
+    exit 0
+  fi
+done
 
 # Map DB -> module dml.sql (preferred), with fallbacks and auto-detect
 declare -A DML_PATHS=()
@@ -61,9 +71,108 @@ if [[ -n "${DML_FILE}" && -f "$DML_FILE" ]]; then
   rsync -a "$MODULE_DIR/" "$TMP_DIR/" >/dev/null 2>&1 || cp -r "$MODULE_DIR/." "$TMP_DIR/"
   # Comment out any \connect / \c lines in all sql files
   find "$TMP_DIR" -type f -name "*.sql" -print0 | xargs -0 -r sed -i -E 's/^\\c(onn?ect)?\b/-- &/Ig'
+
+  # Generic alignment: for each COPY with explicit column list, intersect with actual DB columns
+  echo "[${DB_NAME}] Aligning DML columns to actual schema (generic)"
+  python3 - "$PGHOST" "$PGPORT" "$PGUSER" "$DB_NAME" "$TMP_DIR" <<'PY'
+import os, re, sys, csv, subprocess, shlex
+PGHOST, PGPORT, PGUSER, DBNAME, TMP_DIR = sys.argv[1:6]
+PGPASSWORD = os.environ.get('PGPASSWORD', '')
+
+copy_re = re.compile(r"^\\\\COPY\s+([a-zA-Z0-9_]+)\.)?([a-zA-Z0-9_]+)\s*\(([^)]*)\)\s+FROM\s+'([^']+)'", re.IGNORECASE)
+
+def get_actual_columns(schema, table):
+    q = f"select column_name from information_schema.columns where table_schema={shlex.quote(schema)!r} and table_name={shlex.quote(table)!r} order by ordinal_position"
+    env = os.environ.copy()
+    if PGPASSWORD:
+        env['PGPASSWORD'] = PGPASSWORD
+    cmd = ['psql', '-h', PGHOST, '-p', PGPORT, '-U', PGUSER, '-d', DBNAME, '-At', '-c', q]
+    out = subprocess.check_output(cmd, env=env).decode().strip()
+    return [c for c in out.split('\n') if c]
+
+def sanitize_sql(sql_path):
+    with open(sql_path, encoding='utf-8') as f:
+        lines = f.readlines()
+    changed = False
+    for i, line in enumerate(lines):
+        m = re.search(r"^\\\\COPY\s+([a-zA-Z0-9_]+)\.)?([a-zA-Z0-9_]+)\s*\(([^)]*)\)\s+FROM\s+'([^']+)'", line, re.IGNORECASE)
+        if not m:
+            continue
+        full = m.group(0)
+        # extract schema, table, columns, csv path
+        # handle optional schema
+        rest = line.strip()
+        # more robust parse
+        mm = re.match(r"^\\\\COPY\s+((?P<schema>[a-zA-Z0-9_]+)\.)?(?P<table>[a-zA-Z0-9_]+)\s*\((?P<cols>[^)]*)\)\s+FROM\s+'(?P<csv>[^']+)'", rest, re.IGNORECASE)
+        if not mm:
+            continue
+        schema = mm.group('schema') or 'public'
+        table = mm.group('table')
+        cols = [c.strip().strip('"') for c in mm.group('cols').split(',') if c.strip()]
+        csv_rel = mm.group('csv')
+        csv_path = os.path.join(os.path.dirname(sql_path), csv_rel)
+        if not os.path.exists(csv_path):
+            # skip if CSV not found
+            continue
+        try:
+            actual_cols = get_actual_columns(schema, table)
+        except subprocess.CalledProcessError:
+            continue
+        # intersect while preserving original COPY column order
+        keep = [c for c in cols if c in actual_cols]
+        if not keep:
+            continue
+        # Filter CSV to keep only these columns (if header available)
+        filtered_csv = None
+        try:
+            with open(csv_path, newline='', encoding='utf-8') as f_in:
+                r = csv.DictReader(f_in)
+                if r.fieldnames:
+                    # Keep only columns present both in CSV and keep list
+                    csv_keep = [c for c in keep if c in r.fieldnames]
+                    if not csv_keep:
+                        # cannot realign
+                        pass
+                    else:
+                        filtered_csv = csv_path + '.filtered.csv'
+                        with open(filtered_csv, 'w', newline='', encoding='utf-8') as f_out:
+                            w = csv.DictWriter(f_out, fieldnames=csv_keep)
+                            w.writeheader()
+                            for row in r:
+                                w.writerow({k: row.get(k, '') for k in csv_keep})
+                        # update COPY line in SQL
+                        cols_str = ','.join(csv_keep)
+                        new_line = re.sub(r"\(([^)]*)\)", f"({cols_str})", line, count=1)
+                        new_line = new_line.replace(csv_rel, os.path.basename(filtered_csv))
+                        lines[i] = new_line
+                        changed = True
+        except Exception:
+            # ignore CSV issues; leave as is
+            pass
+    if changed:
+        with open(sql_path, 'w', encoding='utf-8') as f:
+            f.writelines(lines)
+
+for root, _, files in os.walk(TMP_DIR):
+    for fn in files:
+        if fn.lower().endswith('.sql'):
+            sanitize_sql(os.path.join(root, fn))
+PY
+
   (
     cd "$TMP_DIR"
-    psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$BASE_NAME"
+    if [[ "$DML_STRICT" == "false" ]]; then
+      # continue-on-error: capture errors but do not stop install_all
+      set +e
+      psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -v ON_ERROR_STOP=0 -f "$BASE_NAME"
+      rc=$?
+      set -e
+      if [[ $rc -ne 0 ]]; then
+        echo "[${DB_NAME}] DML completed with errors (non-strict mode)." >&2
+      fi
+    else
+      psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$BASE_NAME"
+    fi
   )
   rm -rf "$TMP_DIR"
   echo "[${DB_NAME}] DML load complete"

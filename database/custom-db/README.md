@@ -25,7 +25,10 @@ cd database/custom-db
 Restore ALL databases and load CSV/DML where available
 ```bash
 cd database/custom-db
-./install_all.sh --load-csv
+# optional environment:
+#   DML_STRICT=false     # continue on DML errors (log only)
+#   SKIP_DBS_DML="mosip_ida keycloak"  # skip DML for these DBs
+DML_STRICT=false ./install_all.sh --load-csv
 ```
 
 Restore a SINGLE database
@@ -48,5 +51,6 @@ Notes
 Troubleshooting
 - Ensure the role in DB_OWNER already exists on the target server
 - If using a remote server, verify network/firewall and PG HBA settings
+- DML schema mismatch: set `DML_STRICT=false` to continue despite DML errors or use `SKIP_DBS_DML` to skip specific DBs
 
 

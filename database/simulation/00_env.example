@@ -1,0 +1,15 @@
+# Connection
+PGHOST=localhost
+PGPORT=5432
+PGUSER=postgres
+PGPASSWORD=changeme
+
+# Volumes per cycle
+SIM_REG_COUNT=200
+SIM_AUTH_COUNT=800
+SIM_OTP_COUNT=1200
+
+# Language and defaults
+SIM_LANG=fra
+
+

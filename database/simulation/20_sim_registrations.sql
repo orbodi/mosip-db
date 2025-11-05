@@ -2,11 +2,13 @@
 
 -- Inserts N registrations (schema-adaptive)
 -- Usage: psql -v sim_reg_count=500 -f 20_sim_registrations.sql
-\set sim_reg_count :sim_reg_count 200
+-- Note: DO blocks n'acceptent pas l'expansion psql ":var"; utiliser la constante ci-dessous
+\set sim_reg_count 200
 
 DO $$
 DECLARE
   has_reg_id boolean;
+  v_count int := 200; -- ajuster si besoin
 BEGIN
   SELECT EXISTS (
     SELECT 1 FROM information_schema.columns 
@@ -18,11 +20,11 @@ BEGIN
     SELECT gen_random_uuid(),
            'REG' || to_char(now(), 'YYYYMMDDHH24MISS') || lpad(i::text,6,'0'),
            'CREATED','fra','sim', now() - (random()*'2 days'::interval)
-    FROM generate_series(1, :sim_reg_count) AS s(i);
+    FROM generate_series(1, v_count) AS s(i);
   ELSE
     INSERT INTO regprc.registration (id, status_code, lang_code, cr_by, cr_dtimes)
     SELECT gen_random_uuid(), 'CREATED','fra','sim', now() - (random()*'2 days'::interval)
-    FROM generate_series(1, :sim_reg_count) AS s(i);
+    FROM generate_series(1, v_count) AS s(i);
   END IF;
 END $$;
 

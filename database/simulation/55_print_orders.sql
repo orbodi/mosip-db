@@ -2,10 +2,11 @@
 
 -- Générer des ordres d'impression pour des registrations APPROVED
 -- Usage: psql -v sim_print_orders=200 -f 55_print_orders.sql
-\set sim_print_orders :sim_print_orders 200
+\set sim_print_orders 200
 
 DO $$
 DECLARE has_reg_id boolean; has_regid_col boolean; has_registration_id_col boolean;
+  v_cnt int := 200;
 BEGIN
   SELECT EXISTS (
     SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='registration' AND column_name='reg_id'
@@ -20,13 +21,13 @@ BEGIN
   IF has_regid_col THEN
     WITH approved AS (
       SELECT CASE WHEN has_reg_id THEN reg_id ELSE id::text END AS key
-      FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT :sim_print_orders
+      FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT v_cnt
     )
     INSERT INTO regprc.printing_orders (id, regid, cr_by, cr_dtimes)
     SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
   ELSIF has_registration_id_col THEN
     WITH approved AS (
-      SELECT id AS key FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT :sim_print_orders
+      SELECT id AS key FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT v_cnt
     )
     INSERT INTO regprc.printing_orders (id, registration_id, cr_by, cr_dtimes)
     SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
@@ -34,7 +35,7 @@ BEGIN
     -- Fallback: insert orders without link
     INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
     SELECT gen_random_uuid(), 'sim', now()
-    FROM generate_series(1, :sim_print_orders);
+    FROM generate_series(1, v_cnt);
   END IF;
 END $$;
 

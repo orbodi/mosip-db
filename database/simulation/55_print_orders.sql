@@ -33,7 +33,7 @@ BEGIN
     SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
   ELSE
     -- Fallback: insert orders without link; adapt to ID type and optional audit columns
-    DECLARE has_cr_by boolean; has_cr_dtimes boolean; id_dtype text;
+    DECLARE has_cr_by boolean; has_cr_dtimes boolean; id_dtype text; crdt_is_generated boolean;
     BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_by'
@@ -41,19 +41,23 @@ BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_dtimes'
       ) INTO has_cr_dtimes;
+      SELECT (is_generated='ALWAYS') INTO crdt_is_generated
+      FROM information_schema.columns
+      WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_dtimes'
+      LIMIT 1;
       SELECT data_type INTO id_dtype
       FROM information_schema.columns
       WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='id'
       LIMIT 1;
 
       IF coalesce(id_dtype,'') = 'uuid' THEN
-        IF has_cr_by AND has_cr_dtimes THEN
+        IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
           SELECT gen_random_uuid(), 'sim', now() FROM generate_series(1, v_cnt);
         ELSIF has_cr_by THEN
           INSERT INTO regprc.printing_orders (id, cr_by)
           SELECT gen_random_uuid(), 'sim' FROM generate_series(1, v_cnt);
-        ELSIF has_cr_dtimes THEN
+        ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, cr_dtimes)
           SELECT gen_random_uuid(), now() FROM generate_series(1, v_cnt);
         ELSE
@@ -62,7 +66,7 @@ BEGIN
         END IF;
       ELSE
         -- Assume numeric/bigint; synthesize numeric IDs
-        IF has_cr_by AND has_cr_dtimes THEN
+        IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
           SELECT (extract(epoch from now())*1000000)::bigint + i, 'sim', now()
           FROM generate_series(1, v_cnt) s(i);
@@ -70,7 +74,7 @@ BEGIN
           INSERT INTO regprc.printing_orders (id, cr_by)
           SELECT (extract(epoch from now())*1000000)::bigint + i, 'sim'
           FROM generate_series(1, v_cnt) s(i);
-        ELSIF has_cr_dtimes THEN
+        ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, cr_dtimes)
           SELECT (extract(epoch from now())*1000000)::bigint + i, now()
           FROM generate_series(1, v_cnt) s(i);

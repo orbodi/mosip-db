@@ -363,22 +363,17 @@ PY_PMS3
     fi
 
     # Skip secure_biometric_interface and history if tables are absent
-    HAS_SBI=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='secure_biometric_interface'" || true)
-    if [[ -z "$HAS_SBI" ]]; then
-      TMP_SQL4="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
-        /^TRUNCATE TABLE pms\.secure_biometric_interface\b/{print "-- "$0; next}
-        /^\\\COPY[[:space:]]+pms\.secure_biometric_interface\b/{print "-- "$0; next}
-        {print $0}
-      ' "$SQL_PATH" > "$TMP_SQL4" && mv "$SQL_PATH" "$SQL_PATH.bak" && mv "$TMP_SQL4" "$SQL_PATH"
-    fi
-    HAS_SBIH=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='secure_biometric_interface_h'" || true)
-    if [[ -z "$HAS_SBIH" ]]; then
-      TMP_SQL5="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
-        /^TRUNCATE TABLE pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
-        /^\\\COPY[[:space:]]+pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
-        {print $0}
-      ' "$SQL_PATH" > "$TMP_SQL5" && mv "$SQL_PATH" "$SQL_PATH.bak2" && mv "$TMP_SQL5" "$SQL_PATH"
-    fi
+    # Unconditionally comment SBI tables as they are often absent in this setup
+    TMP_SQL4="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
+      /^TRUNCATE TABLE pms\.secure_biometric_interface\b/{print "-- "$0; next}
+      /^\\\COPY[[:space:]]+pms\.secure_biometric_interface\b/{print "-- "$0; next}
+      {print $0}
+    ' "$SQL_PATH" > "$TMP_SQL4" && mv "$TMP_SQL4" "$SQL_PATH"
+    TMP_SQL5="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
+      /^TRUNCATE TABLE pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
+      /^\\\COPY[[:space:]]+pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
+      {print $0}
+    ' "$SQL_PATH" > "$TMP_SQL5" && mv "$TMP_SQL5" "$SQL_PATH"
   fi
 
   (

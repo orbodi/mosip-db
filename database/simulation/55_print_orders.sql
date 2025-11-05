@@ -81,7 +81,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -89,8 +89,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_by THEN
@@ -99,7 +99,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -107,8 +107,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
@@ -117,7 +117,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -125,8 +125,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    now()
             FROM generate_series(1, v_cnt) s(i);
           ELSE
@@ -135,7 +135,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -143,8 +143,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END
+                     ELSE NULL::text
+                   END)::text
             FROM generate_series(1, v_cnt) s(i);
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
@@ -169,7 +169,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -177,8 +177,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_by THEN
@@ -187,7 +187,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -195,8 +195,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
@@ -205,7 +205,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -213,8 +213,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END,
+                     ELSE NULL::text
+                   END)::text,
                    now()
             FROM generate_series(1, v_cnt) s(i);
           ELSE
@@ -223,7 +223,7 @@ BEGIN
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   CASE 
+                   (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
                        CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
                             WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
@@ -231,8 +231,8 @@ BEGIN
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL
-                   END
+                     ELSE NULL::text
+                   END)::text
             FROM generate_series(1, v_cnt) s(i);
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN

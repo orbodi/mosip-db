@@ -102,7 +102,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -126,7 +126,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -150,7 +150,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -174,7 +174,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -214,7 +214,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -238,7 +238,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -262,7 +262,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -286,7 +286,7 @@ BEGIN
                      WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL::text
                    END)::text,
-                   CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN has_reqtype THEN 
                      CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                           ELSE 'PRINT'::text
                      END
@@ -295,20 +295,48 @@ BEGIN
             FROM generate_series(1, v_cnt) s(i);
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-          INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
-          SELECT (extract(epoch from now())*1000000)::bigint + i, 'sim', now()
+          INSERT INTO regprc.printing_orders (id, request_type, cr_by, cr_dtimes)
+          SELECT (extract(epoch from now())*1000000)::bigint + i, 
+                 CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                        ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END,
+                 'sim', now()
           FROM generate_series(1, v_cnt) s(i);
         ELSIF has_cr_by THEN
-          INSERT INTO regprc.printing_orders (id, cr_by)
-          SELECT (extract(epoch from now())*1000000)::bigint + i, 'sim'
+          INSERT INTO regprc.printing_orders (id, request_type, cr_by)
+          SELECT (extract(epoch from now())*1000000)::bigint + i,
+                 CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                        ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END,
+                 'sim'
           FROM generate_series(1, v_cnt) s(i);
         ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-          INSERT INTO regprc.printing_orders (id, cr_dtimes)
-          SELECT (extract(epoch from now())*1000000)::bigint + i, now()
+          INSERT INTO regprc.printing_orders (id, request_type, cr_dtimes)
+          SELECT (extract(epoch from now())*1000000)::bigint + i,
+                 CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                        ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END,
+                 now()
           FROM generate_series(1, v_cnt) s(i);
         ELSE
-          INSERT INTO regprc.printing_orders (id)
-          SELECT (extract(epoch from now())*1000000)::bigint + i FROM generate_series(1, v_cnt) s(i);
+          INSERT INTO regprc.printing_orders (id, request_type)
+          SELECT (extract(epoch from now())*1000000)::bigint + i,
+                 CASE WHEN has_reqtype AND reqtype_not_null THEN 
+                   CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                        ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END
+          FROM generate_series(1, v_cnt) s(i);
         END IF;
       END IF;
     END;

@@ -88,7 +88,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    'sim', now()
@@ -106,7 +106,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    'sim'
@@ -124,7 +124,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    now()
@@ -142,7 +142,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END
             FROM generate_series(1, v_cnt) s(i);
@@ -176,7 +176,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    'sim', now()
@@ -194,7 +194,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    'sim'
@@ -212,7 +212,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END,
                    now()
@@ -230,7 +230,7 @@ BEGIN
                             WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
                             ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN (extract(epoch from now())*1000)::bigint
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
                      ELSE NULL
                    END
             FROM generate_series(1, v_cnt) s(i);

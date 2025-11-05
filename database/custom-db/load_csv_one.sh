@@ -314,7 +314,7 @@ a_block = (
     "CREATE TEMP TABLE _auth_policy_min (id text, policy_group_id text, name text, descr text);\n"
     "\\COPY _auth_policy_min (id,policy_group_id,name,descr) FROM './dml/pms-auth_policy.simplified.csv' delimiter ',' HEADER  csv;\n"
     "INSERT INTO pms.auth_policy (id,policy_group_id,name,descr,policy_file_id,policy_type,version,policy_schema,valid_from_date,valid_to_date,is_active,cr_by,cr_dtimes,upd_by,upd_dtimes)\n"
-    "SELECT id,policy_group_id,name,descr,NULL::text,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_min;"
+    "SELECT id,policy_group_id,name,descr,id::text AS policy_file_id,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_min;"
 )
 
 ah_block = (
@@ -322,7 +322,7 @@ ah_block = (
     "CREATE TEMP TABLE _auth_policy_h_min (id text, eff_dtimes timestamp, policy_group_id text, name text, descr text);\n"
     "\\COPY _auth_policy_h_min (id,eff_dtimes,policy_group_id,name,descr) FROM './dml/pms-auth_policy_h.simplified.csv' delimiter ',' HEADER  csv;\n"
     "INSERT INTO pms.auth_policy_h (id,eff_dtimes,policy_group_id,name,descr,policy_file_id,policy_type,version,policy_schema,valid_from_date,valid_to_date,is_active,cr_by,cr_dtimes,upd_by,upd_dtimes)\n"
-    "SELECT id,COALESCE(eff_dtimes, now()),policy_group_id,name,descr,NULL::text,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_h_min;"
+    "SELECT id,COALESCE(eff_dtimes, now()),policy_group_id,name,descr,id::text AS policy_file_id,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_h_min;"
 )
 
 pat1 = re.compile(r"^\\COPY\s+pms\.auth_policy\b[\s\S]*?\n", flags=re.IGNORECASE|re.MULTILINE)

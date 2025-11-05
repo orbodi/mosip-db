@@ -30,11 +30,15 @@ export PGPASSWORD="${PGPASSWORD:-}"
 export DB_OWNER="${DB_OWNER:-postgres}"
 export JOBS="${JOBS:-4}"
 
-echo "[${DB_NAME}] Dropping existing database (if any)"
-psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS \"$DB_NAME\";"
+if [[ "$DB_NAME" != "postgres" ]]; then
+  echo "[${DB_NAME}] Dropping existing database (if any)"
+  psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS \"$DB_NAME\";"
 
-echo "[${DB_NAME}] Creating database owned by '$DB_OWNER'"
-psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -v ON_ERROR_STOP=1 -c "CREATE DATABASE \"$DB_NAME\" OWNER \"$DB_OWNER\";"
+  echo "[${DB_NAME}] Creating database owned by '$DB_OWNER'"
+  psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -v ON_ERROR_STOP=1 -c "CREATE DATABASE \"$DB_NAME\" OWNER \"$DB_OWNER\";"
+else
+  echo "[postgres] System database will not be dropped/created; restoring into existing 'postgres'"
+fi
 
 echo "[${DB_NAME}] Restoring from $DUMP_FILE"
 pg_restore \

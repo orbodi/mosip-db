@@ -26,9 +26,10 @@ Restore ALL databases and load CSV/DML where available
 ```bash
 cd database/custom-db
 # optional environment:
-#   DML_STRICT=false     # continue on DML errors (log only)
+#   DML_STRICT=false                 # continue on DML errors (log only)
 #   SKIP_DBS_DML="mosip_ida keycloak"  # skip DML for these DBs
-DML_STRICT=false ./install_all.sh --load-csv
+#   SKIP_DBS="postgres"             # skip restoring certain DBs (can't drop 'postgres')
+DML_STRICT=false SKIP_DBS="postgres" ./install_all.sh --load-csv
 ```
 
 Restore a SINGLE database

@@ -596,7 +596,30 @@ TRUNCATE TABLE master.zone_user_h cascade ;
 ----- TRUNCATE master.zone_user TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.zone_user cascade ;
 
-\COPY master.zone_user (zone_code,usr_id,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-zone_user.csv' delimiter ',' HEADER  csv;
+-- Stage then insert only rows whose zone exists in FRA; force lang_code='fra'
+DROP TABLE IF EXISTS _zone_user_stg;
+CREATE TEMP TABLE _zone_user_stg (
+    zone_code character varying(36),
+    usr_id character varying(256),
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+\COPY _zone_user_stg (zone_code,usr_id,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-zone_user.csv' delimiter ',' HEADER  csv;
+
+INSERT INTO master.zone_user (zone_code,usr_id,lang_code,is_active,cr_by,cr_dtimes)
+SELECT s.zone_code,
+       s.usr_id,
+       'fra'::character varying(3) AS lang_code,
+       s.is_active,
+       s.cr_by,
+       s.cr_dtimes
+FROM _zone_user_stg s
+WHERE EXISTS (
+    SELECT 1 FROM master.zone z
+    WHERE z.code = s.zone_code AND z.lang_code = 'fra'
+);
 
 
 

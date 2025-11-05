@@ -365,15 +365,13 @@ PY_PMS3
     # Skip secure_biometric_interface and history if tables are absent
     # Unconditionally comment SBI tables as they are often absent in this setup
     TMP_SQL4="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
-      /^TRUNCATE TABLE pms\.secure_biometric_interface\b/{print "-- "$0; next}
-      /^\\\COPY[[:space:]]+pms\.secure_biometric_interface\b/{print "-- "$0; next}
-      {print $0}
+      {
+        line=$0
+        # Comment any line that references the SBI tables in any context
+        if (line ~ /pms\.[ ]*secure_biometric_interface(\b|_h\b)/) { print "-- " line; next }
+        print line
+      }
     ' "$SQL_PATH" > "$TMP_SQL4" && mv "$TMP_SQL4" "$SQL_PATH"
-    TMP_SQL5="$(mktemp)" && awk 'BEGIN{IGNORECASE=1}
-      /^TRUNCATE TABLE pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
-      /^\\\COPY[[:space:]]+pms\.secure_biometric_interface_h\b/{print "-- "$0; next}
-      {print $0}
-    ' "$SQL_PATH" > "$TMP_SQL5" && mv "$TMP_SQL5" "$SQL_PATH"
   fi
 
   (

@@ -3,9 +3,9 @@
 -- Génération synthétique des zones (Région -> Préfecture -> Commune)
 -- Paramètres par défaut: 10 régions, 5 préfectures/région, 4 communes/préfecture
 -- Usage: psql -v nb_regions=10 -v nb_pref=5 -v nb_comm=4 -f 15_sim_zones.sql
-\set nb_regions :nb_regions 10
-\set nb_pref :nb_pref 5
-\set nb_comm :nb_comm 4
+\set nb_regions 10
+\set nb_pref 5
+\set nb_comm 4
 
 -- Régions (niveau 1)
 INSERT INTO master.zone(code,name,hierarchy_level,hierarchy_level_name,hierarchy_path,parent_zone_code,lang_code,is_active,cr_by,cr_dtimes)

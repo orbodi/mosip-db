@@ -8,12 +8,17 @@
 DO $$
 DECLARE
   has_reg_id boolean;
+  has_reg_type boolean;
   v_count int := 200; -- ajuster si besoin
 BEGIN
   SELECT EXISTS (
     SELECT 1 FROM information_schema.columns 
     WHERE table_schema='regprc' AND table_name='registration' AND column_name='reg_id'
   ) INTO has_reg_id;
+  SELECT EXISTS (
+    SELECT 1 FROM information_schema.columns 
+    WHERE table_schema='regprc' AND table_name='registration' AND column_name='reg_type'
+  ) INTO has_reg_type;
 
   IF has_reg_id THEN
     INSERT INTO regprc.registration (id, reg_id, status_code, lang_code, cr_by, cr_dtimes)
@@ -22,9 +27,15 @@ BEGIN
            'CREATED','fra','sim', now() - (random()*'2 days'::interval)
     FROM generate_series(1, v_count) AS s(i);
   ELSE
-    INSERT INTO regprc.registration (id, status_code, lang_code, cr_by, cr_dtimes)
-    SELECT gen_random_uuid(), 'CREATED','fra','sim', now() - (random()*'2 days'::interval)
-    FROM generate_series(1, v_count) AS s(i);
+    IF has_reg_type THEN
+      INSERT INTO regprc.registration (id, reg_type, status_code, lang_code, cr_by, cr_dtimes)
+      SELECT gen_random_uuid(), 'NEW', 'CREATED','fra','sim', now() - (random()*'2 days'::interval)
+      FROM generate_series(1, v_count) AS s(i);
+    ELSE
+      INSERT INTO regprc.registration (id, status_code, lang_code, cr_by, cr_dtimes)
+      SELECT gen_random_uuid(), 'CREATED','fra','sim', now() - (random()*'2 days'::interval)
+      FROM generate_series(1, v_count) AS s(i);
+    END IF;
   END IF;
 END $$;
 

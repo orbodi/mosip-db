@@ -16,15 +16,29 @@ BEGIN
   SELECT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_at') INTO has_cat;
 
   IF has_module AND has_event THEN
-    IF has_id AND has_descr AND has_cby AND has_cat THEN
-      INSERT INTO audit.app_audit_log (id, module_name, event_name, description, created_by, created_at)
-      VALUES (gen_random_uuid(), 'simulation', 'workflow_step', 'Cycle simulation step completed', 'sim', now());
-    ELSIF has_descr AND has_cby AND has_cat THEN
-      INSERT INTO audit.app_audit_log (module_name, event_name, description, created_by, created_at)
-      VALUES ('simulation', 'workflow_step', 'Cycle simulation step completed', 'sim', now());
-    ELSE
-      INSERT INTO audit.app_audit_log (module_name, event_name)
-      VALUES ('simulation', 'workflow_step');
+    -- Prefer columns with defaults or nullable PKs, otherwise skip to avoid NOT NULL violations
+    IF has_id AND EXISTS (
+         SELECT 1 FROM information_schema.columns 
+         WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='id' AND (column_default IS NOT NULL OR is_nullable='YES')
+       ) THEN
+      IF has_descr AND has_cby AND has_cat THEN
+        INSERT INTO audit.app_audit_log (module_name, event_name, description, created_by, created_at)
+        VALUES ('simulation', 'workflow_step', 'Cycle simulation step completed', 'sim', now());
+      ELSE
+        INSERT INTO audit.app_audit_log (module_name, event_name)
+        VALUES ('simulation', 'workflow_step');
+      END IF;
+    ELSIF EXISTS (
+         SELECT 1 FROM information_schema.columns 
+         WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='log_id' AND (column_default IS NOT NULL OR is_nullable='YES')
+       ) THEN
+      IF has_descr AND has_cby AND has_cat THEN
+        INSERT INTO audit.app_audit_log (log_id, module_name, event_name, description, created_by, created_at)
+        VALUES (DEFAULT, 'simulation', 'workflow_step', 'Cycle simulation step completed', 'sim', now());
+      ELSE
+        INSERT INTO audit.app_audit_log (log_id, module_name, event_name)
+        VALUES (DEFAULT, 'simulation', 'workflow_step');
+      END IF;
     END IF;
   END IF;
 END $$;

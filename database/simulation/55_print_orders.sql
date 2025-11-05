@@ -32,10 +32,34 @@ BEGIN
     INSERT INTO regprc.printing_orders (id, registration_id, cr_by, cr_dtimes)
     SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
   ELSE
-    -- Fallback: insert orders without link
-    INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
-    SELECT gen_random_uuid(), 'sim', now()
-    FROM generate_series(1, v_cnt);
+    -- Fallback: insert orders without link; adapt to available columns
+    DECLARE has_cr_by boolean; has_cr_dtimes boolean;
+    BEGIN
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_by'
+      ) INTO has_cr_by;
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_dtimes'
+      ) INTO has_cr_dtimes;
+
+      IF has_cr_by AND has_cr_dtimes THEN
+        INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
+        SELECT gen_random_uuid(), 'sim', now()
+        FROM generate_series(1, v_cnt);
+      ELSIF has_cr_by THEN
+        INSERT INTO regprc.printing_orders (id, cr_by)
+        SELECT gen_random_uuid(), 'sim'
+        FROM generate_series(1, v_cnt);
+      ELSIF has_cr_dtimes THEN
+        INSERT INTO regprc.printing_orders (id, cr_dtimes)
+        SELECT gen_random_uuid(), now()
+        FROM generate_series(1, v_cnt);
+      ELSE
+        INSERT INTO regprc.printing_orders (id)
+        SELECT gen_random_uuid()
+        FROM generate_series(1, v_cnt);
+      END IF;
+    END;
   END IF;
 END $$;
 

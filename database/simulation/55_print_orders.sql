@@ -84,6 +84,24 @@ BEGIN
         LIMIT 1;
       END IF;
 
+      -- Ensure defaults for type columns to avoid NOT NULL insert issues when not explicitly provided
+      BEGIN
+        IF has_reqtype THEN
+          EXECUTE 'ALTER TABLE regprc.printing_orders ALTER COLUMN request_type SET DEFAULT ''PRINT''';
+        END IF;
+      EXCEPTION WHEN others THEN
+        -- ignore if no rights or incompatible
+      END;
+      BEGIN
+        PERFORM 1 FROM information_schema.columns 
+         WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='target_request_type';
+        IF FOUND THEN
+          EXECUTE 'ALTER TABLE regprc.printing_orders ALTER COLUMN target_request_type SET DEFAULT ''PRINT''';
+        END IF;
+      EXCEPTION WHEN others THEN
+        -- ignore if no rights or incompatible
+      END;
+
       IF coalesce(id_dtype,'') = 'uuid' THEN
         IF has_rid AND rid_not_null THEN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN

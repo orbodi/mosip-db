@@ -1,28 +1,36 @@
 \c mosip_regprc 
 
--- Inserts N registrations
+-- Inserts N registrations (schema-adaptive)
 -- Usage: psql -v sim_reg_count=500 -f 20_sim_registrations.sql
 \set sim_reg_count :sim_reg_count 200
 
-INSERT INTO regprc.registration (id, reg_id, status_code, lang_code, cr_by, cr_dtimes)
-SELECT gen_random_uuid(),
-       'REG' || to_char(now(), 'YYYYMMDDHH24MISS') || lpad(i::text,6,'0'),
-       'CREATED',
-       'fra',
-       'sim',
-       now() - (random()*'2 days'::interval)
-FROM generate_series(1, :sim_reg_count) AS s(i);
+DO $$
+DECLARE
+  has_reg_id boolean;
+BEGIN
+  SELECT EXISTS (
+    SELECT 1 FROM information_schema.columns 
+    WHERE table_schema='regprc' AND table_name='registration' AND column_name='reg_id'
+  ) INTO has_reg_id;
 
--- Progress some to IN_PROGRESS, APPROVED, PRINTING, SHIPPED
+  IF has_reg_id THEN
+    INSERT INTO regprc.registration (id, reg_id, status_code, lang_code, cr_by, cr_dtimes)
+    SELECT gen_random_uuid(),
+           'REG' || to_char(now(), 'YYYYMMDDHH24MISS') || lpad(i::text,6,'0'),
+           'CREATED','fra','sim', now() - (random()*'2 days'::interval)
+    FROM generate_series(1, :sim_reg_count) AS s(i);
+  ELSE
+    INSERT INTO regprc.registration (id, status_code, lang_code, cr_by, cr_dtimes)
+    SELECT gen_random_uuid(), 'CREATED','fra','sim', now() - (random()*'2 days'::interval)
+    FROM generate_series(1, :sim_reg_count) AS s(i);
+  END IF;
+END $$;
+
+-- Progress some to IN_PROGRESS, APPROVED
 UPDATE regprc.registration SET status_code='IN_PROGRESS'
 WHERE status_code='CREATED' AND random() < 0.9;
 
 UPDATE regprc.registration SET status_code='APPROVED'
 WHERE status_code='IN_PROGRESS' AND random() < 0.8;
-
--- Example printing orders
-INSERT INTO regprc.printing_orders (id, regid, cr_by, cr_dtimes)
-SELECT gen_random_uuid(), reg_id, 'sim', now()
-FROM regprc.registration WHERE status_code='APPROVED' AND random() < 0.6;
 
 

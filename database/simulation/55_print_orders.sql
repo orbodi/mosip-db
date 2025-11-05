@@ -4,11 +4,38 @@
 -- Usage: psql -v sim_print_orders=200 -f 55_print_orders.sql
 \set sim_print_orders :sim_print_orders 200
 
-WITH approved AS (
-  SELECT reg_id FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT :sim_print_orders
-)
-INSERT INTO regprc.printing_orders (id, regid, cr_by, cr_dtimes)
-SELECT gen_random_uuid(), a.reg_id, 'sim', now()
-FROM approved a;
+DO $$
+DECLARE has_reg_id boolean; has_regid_col boolean; has_registration_id_col boolean;
+BEGIN
+  SELECT EXISTS (
+    SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='registration' AND column_name='reg_id'
+  ) INTO has_reg_id;
+  SELECT EXISTS (
+    SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='regid'
+  ) INTO has_regid_col;
+  SELECT EXISTS (
+    SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='registration_id'
+  ) INTO has_registration_id_col;
+
+  IF has_regid_col THEN
+    WITH approved AS (
+      SELECT CASE WHEN has_reg_id THEN reg_id ELSE id::text END AS key
+      FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT :sim_print_orders
+    )
+    INSERT INTO regprc.printing_orders (id, regid, cr_by, cr_dtimes)
+    SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
+  ELSIF has_registration_id_col THEN
+    WITH approved AS (
+      SELECT id AS key FROM regprc.registration WHERE status_code='APPROVED' ORDER BY random() LIMIT :sim_print_orders
+    )
+    INSERT INTO regprc.printing_orders (id, registration_id, cr_by, cr_dtimes)
+    SELECT gen_random_uuid(), key, 'sim', now() FROM approved;
+  ELSE
+    -- Fallback: insert orders without link
+    INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
+    SELECT gen_random_uuid(), 'sim', now()
+    FROM generate_series(1, :sim_print_orders);
+  END IF;
+END $$;
 
 

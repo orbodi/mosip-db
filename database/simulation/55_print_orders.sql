@@ -112,118 +112,205 @@ BEGIN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by, cr_dtimes)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT',
+                     'sim', now()
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by, cr_dtimes)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'sim', now()
+              FROM generate_series(1, v_cnt) s(i);
             END IF;
-            SELECT gen_random_uuid(),
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
-                     END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
-                   'sim', now()
-            FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_by THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT',
+                     'sim'
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'sim'
+              FROM generate_series(1, v_cnt) s(i);
             END IF;
-            SELECT gen_random_uuid(),
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
-                     END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
-                   'sim'
-            FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_dtimes)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT',
+                     now()
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_dtimes)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     now()
+              FROM generate_series(1, v_cnt) s(i);
             END IF;
-            SELECT gen_random_uuid(),
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
-                     END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
-                   now()
-            FROM generate_series(1, v_cnt) s(i);
           ELSE
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type)
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT'
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)
-            END IF;
-            SELECT gen_random_uuid(),
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
+              SELECT gen_random_uuid(),
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
                      END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END
-            FROM generate_series(1, v_cnt) s(i);
+              FROM generate_series(1, v_cnt) s(i);
+            END IF;
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, cr_by, cr_dtimes)
@@ -244,10 +331,7 @@ BEGIN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by, cr_dtimes)
-            ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by, cr_dtimes)
-            END IF;
-            SELECT (extract(epoch from now())*1000000)::bigint + i,
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
@@ -266,96 +350,186 @@ BEGIN
                           ELSE 'PRINT'::text
                      END
                      ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
+                  END,
+                     'PRINT',
                    'sim', now()
-            FROM generate_series(1, v_cnt) s(i);
+              FROM generate_series(1, v_cnt) s(i);
+            ELSE
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by, cr_dtimes)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'sim', now()
+              FROM generate_series(1, v_cnt) s(i);
+            END IF;
           ELSIF has_cr_by THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT',
+                     'sim'
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'sim'
+              FROM generate_series(1, v_cnt) s(i);
             END IF;
-            SELECT (extract(epoch from now())*1000000)::bigint + i,
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
-                     END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
-                   'sim'
-            FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_dtimes)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT',
+                     now()
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_dtimes)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     now()
+              FROM generate_series(1, v_cnt) s(i);
             END IF;
-            SELECT (extract(epoch from now())*1000000)::bigint + i,
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
-                     END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END,
-                   now()
-            FROM generate_series(1, v_cnt) s(i);
           ELSE
             IF has_target_reqtype THEN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type)
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     'PRINT'
+              FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)
-            END IF;
-            SELECT (extract(epoch from now())*1000000)::bigint + i,
-                   CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
-                   (CASE 
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
-                       CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
-                            WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
-                            WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
-                            ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
-                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
-                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
-                     ELSE NULL::text
-                  END)::text,
-                  CASE WHEN has_reqtype THEN 
-                     CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
-                          ELSE 'PRINT'::text
+              SELECT (extract(epoch from now())*1000000)::bigint + i,
+                     CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                     (CASE 
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
+                         CASE WHEN coalesce(reqid_maxlen,0) >= 14 THEN to_char(now(),'YYYYMMDDHH24MISS')
+                              WHEN coalesce(reqid_maxlen,0) >= 12 THEN to_char(now(),'YYYYMMDDHH24MI')
+                              WHEN coalesce(reqid_maxlen,0) >= 10 THEN ((extract(epoch from now())*1000)::bigint)::text
+                              ELSE lpad(i::text, GREATEST(coalesce(reqid_maxlen,1),1), '0') END
+                       WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                       WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000)::bigint)::text
+                       ELSE NULL::text
+                     END)::text,
+                     CASE WHEN has_reqtype THEN 
+                       CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
+                            ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
                      END
-                     ELSE NULL::text
-                  END
-                  || CASE WHEN has_target_reqtype THEN ', ' || 'PRINT' ELSE '' END
-            FROM generate_series(1, v_cnt) s(i);
+              FROM generate_series(1, v_cnt) s(i);
+            END IF;
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
           INSERT INTO regprc.printing_orders (id, request_type, cr_by, cr_dtimes)

@@ -1,0 +1,8 @@
+app_id,key_validity_duration,is_active,cr_by,cr_dtimes
+IDA,1095,TRUE,mosipadmin,now()
+ROOT,1826,TRUE,mosipadmin,now()
+BASE,730,TRUE,mosipadmin,now()
+IDA_KEY_BINDING,1095,TRUE,mosipadmin,now()
+IDA_KYC_EXCHANGE,1095,TRUE,mosipadmin,now()
+IDA_VCI_EXCHANGE,1095,TRUE,mosipadmin,now()
+

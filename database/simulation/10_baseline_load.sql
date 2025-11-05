@@ -10,7 +10,7 @@ BEGIN
   END IF;
   IF NOT EXISTS (SELECT 1 FROM master.registration_center WHERE id='RC1') THEN
     INSERT INTO master.registration_center (id,name,cntrtyp_code,addr_line1,latitude,longitude,location_code,contact_phone,contact_person,number_of_kiosks,working_hours,per_kiosk_process_time,center_start_time,center_end_time,lunch_start_time,lunch_end_time,time_zone,holiday_loc_code,zone_code,lang_code,is_active,cr_by,cr_dtimes)
-    VALUES ('RC1','Center-1','FIXED','Addr',0,0,'Z1',NULL,'Ops',5,'08:00-17:00',10,'08:00','17:00','12:00','13:00','UTC','Z1','Z1','fra',true,'sim',now());
+    VALUES ('RC1','Center-1','FIXED','Addr',0,0,'Z1',NULL,'Ops',5,'08:00-17:00','00:10:00'::time,'08:00','17:00','12:00','13:00','UTC','Z1','Z1','fra',true,'sim',now());
   END IF;
 END $$;
 

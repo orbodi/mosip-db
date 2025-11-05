@@ -68,7 +68,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_by, cr_dtimes)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
@@ -76,7 +76,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_by)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
@@ -84,7 +84,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_dtimes)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    now()
             FROM generate_series(1, v_cnt) s(i);
@@ -92,7 +92,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END
             FROM generate_series(1, v_cnt) s(i);
           END IF;
@@ -116,7 +116,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_by, cr_dtimes)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
@@ -124,7 +124,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_by)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
@@ -132,7 +132,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid, cr_dtimes)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    now()
             FROM generate_series(1, v_cnt) s(i);
@@ -140,7 +140,7 @@ BEGIN
             INSERT INTO regprc.printing_orders (id, rid)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text,6,'0')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END
             FROM generate_series(1, v_cnt) s(i);
           END IF;

@@ -103,15 +103,15 @@ SELECT s.app_id,
        s.role_code,
        s.auth_method_code,
        s.method_seq,
-       COALESCE(rl.lang_code, am.lang_code, 'fra') AS lang_code,
+       'fra'::character varying(3) AS lang_code,
        s.is_active,
        s.cr_by,
        s.cr_dtimes
 FROM _app_auth_m_stg s
-LEFT JOIN master.authentication_method am
-  ON am.code = s.auth_method_code
-LEFT JOIN master.role_list rl
-  ON rl.code = s.role_code;
+JOIN master.authentication_method am
+  ON am.code = s.auth_method_code AND am.lang_code = 'fra'
+JOIN master.role_list rl
+  ON rl.code = s.role_code AND rl.lang_code = 'fra';
 
 ----- TRUNCATE master.app_role_priority TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.app_role_priority cascade ;

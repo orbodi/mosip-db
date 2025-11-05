@@ -8,6 +8,11 @@ BEGIN
     INSERT INTO master.zone (code,name,hierarchy_level,hierarchy_level_name,hierarchy_path,parent_zone_code,lang_code,is_active,cr_by,cr_dtimes)
     VALUES ('Z1','Zone-1',1,'Region','/Z1',NULL,'fra',true,'sim',now());
   END IF;
+  -- Ensure a matching location exists for FK (location_code, lang_code)
+  IF NOT EXISTS (SELECT 1 FROM master.location WHERE code='Z1' AND lang_code='fra') THEN
+    INSERT INTO master.location (code,name,hierarchy_level,hierarchy_level_name,parent_loc_code,lang_code,is_active,cr_by,cr_dtimes)
+    VALUES ('Z1','Zone-1',1,'Region',NULL,'fra',true,'sim',now());
+  END IF;
   IF NOT EXISTS (SELECT 1 FROM master.registration_center WHERE id='RC1') THEN
     -- Ensure center type 'FIXED' exists in FRA
     IF NOT EXISTS (SELECT 1 FROM master.reg_center_type WHERE code='FIXED' AND lang_code='fra') THEN

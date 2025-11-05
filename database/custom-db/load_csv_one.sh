@@ -325,8 +325,10 @@ ah_block = (
     "SELECT id,COALESCE(eff_dtimes, now()),policy_group_id,name,descr,NULL::text,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_h_min;"
 )
 
-s = re.sub(r"^\\COPY\s+pms\.auth_policy\b[\s\S]*?\n", a_block+"\n", s, count=1, flags=re.IGNORECASE|re.MULTILINE)
-s = re.sub(r"^\\COPY\s+pms\.auth_policy_h\b[\s\S]*?\n", ah_block+"\n", s, count=1, flags=re.IGNORECASE|re.MULTILINE)
+pat1 = re.compile(r"^\\COPY\s+pms\.auth_policy\b[\s\S]*?\n", flags=re.IGNORECASE|re.MULTILINE)
+pat2 = re.compile(r"^\\COPY\s+pms\.auth_policy_h\b[\s\S]*?\n", flags=re.IGNORECASE|re.MULTILINE)
+s = pat1.sub(lambda m: a_block+"\n", s, count=1)
+s = pat2.sub(lambda m: ah_block+"\n", s, count=1)
 
 with open(sql_path, 'w', encoding='utf-8') as f:
     f.write(s)

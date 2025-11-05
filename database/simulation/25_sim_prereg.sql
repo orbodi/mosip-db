@@ -2,11 +2,11 @@
 
 -- Simulate pre-registrations with defensive column handling
 -- Usage: psql -v sim_prereg_count=300 -f 25_sim_prereg.sql
-\set sim_prereg_count :sim_prereg_count 300
+\set sim_prereg_count 300
 
 DO $$
 DECLARE
-  n int := GREATEST(1, :sim_prereg_count);
+  n int := 300;
 BEGIN
   BEGIN
     -- Variant A (common): columns (pre_reg_id, applicant_detail, status_code, lang_code, cr_by, cr_dtimes)

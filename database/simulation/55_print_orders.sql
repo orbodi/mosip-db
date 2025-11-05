@@ -629,6 +629,12 @@ BEGIN
                      CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
                      END
               FROM generate_series(1, v_cnt) s(i);
             ELSE

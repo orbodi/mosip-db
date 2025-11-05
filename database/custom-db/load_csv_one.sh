@@ -333,6 +333,18 @@ s = pat2.sub(lambda m: ah_block+"\n", s, count=1)
 with open(sql_path, 'w', encoding='utf-8') as f:
     f.write(s)
 PY_PMS3
+
+    # Skip reg_device_type/sub_type if tables are absent
+    HAS_RDT=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='reg_device_type'" || true)
+    if [[ -z "$HAS_RDT" ]]; then
+      sed -i -E "s/^(TRUNCATE TABLE pms\.reg_device_type.*)$/-- \1/I" "$SQL_PATH"
+      sed -i -E "s#^(\\COPY pms\.reg_device_type .*)$#-- \1#I" "$SQL_PATH"
+    fi
+    HAS_RDST=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='reg_device_sub_type'" || true)
+    if [[ -z "$HAS_RDST" ]]; then
+      sed -i -E "s/^(TRUNCATE TABLE pms\.reg_device_sub_type.*)$/-- \1/I" "$SQL_PATH"
+      sed -i -E "s#^(\\COPY pms\.reg_device_sub_type .*)$#-- \1#I" "$SQL_PATH"
+    fi
   fi
 
   (

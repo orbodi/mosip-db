@@ -37,7 +37,7 @@ BEGIN
             has_rid boolean; rid_dtype text; rid_not_null boolean;
             has_reqid boolean; reqid_dtype text; reqid_not_null boolean; reqid_maxlen integer;
             has_reqtype boolean; reqtype_dtype text; reqtype_not_null boolean;
-            has_target_reqtype boolean;
+            has_target_reqtype boolean; target_reqtype_maxlen integer;
     BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_by'
@@ -88,6 +88,12 @@ BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='target_request_type'
       ) INTO has_target_reqtype;
+      IF has_target_reqtype THEN
+        SELECT character_maximum_length INTO target_reqtype_maxlen
+        FROM information_schema.columns
+        WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='target_request_type'
+        LIMIT 1;
+      END IF;
 
       -- Ensure defaults for type columns to avoid NOT NULL insert issues when not explicitly provided
       BEGIN
@@ -132,7 +138,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                      'sim', now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -183,7 +192,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                      'sim'
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -234,7 +246,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                      now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -285,7 +300,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT'
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END
               FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)
@@ -351,7 +369,10 @@ BEGIN
                      END
                      ELSE NULL::text
                   END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                    'sim', now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -402,7 +423,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                      'sim'
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -453,7 +477,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT',
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END,
                      now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
@@ -504,7 +531,10 @@ BEGIN
                        END
                        ELSE NULL::text
                      END,
-                     'PRINT'
+                     CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
+                          WHEN has_target_reqtype THEN 'PRINT'
+                          ELSE NULL::text
+                     END
               FROM generate_series(1, v_cnt) s(i);
             ELSE
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)

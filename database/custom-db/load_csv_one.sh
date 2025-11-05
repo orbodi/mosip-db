@@ -200,27 +200,37 @@ if not CSV_REL or not os.path.exists(csv_path):
     sys.exit(0)
 
 with open(csv_path, newline='', encoding='utf-8') as f_in:
-    r = csv.DictReader(f_in)
-    headers = r.fieldnames or []
-    hdr_map = {h.lower(): h for h in headers}
-    cols = [c for c in actual if c.lower() in hdr_map]
-    if not cols or any(c not in [x.lower() for x in cols] for c in req):
-        # if required missing, do nothing
+    r = csv.reader(f_in)
+    rows = list(r)
+    if not rows:
         sys.exit(0)
+    header = rows[0]
+    # Determine indices for the 5 required columns by header names; fallback to first 5
+    want = ['app_id','key_validity_duration','is_active','cr_by','cr_dtimes']
+    lower = [h.strip().lower() for h in header]
+    idx = []
+    for w in want:
+        try:
+            idx.append(lower.index(w))
+        except ValueError:
+            idx = list(range(min(5, len(header))))
+            break
     out_path = csv_path + '.filtered.csv'
     with open(out_path, 'w', newline='', encoding='utf-8') as f_out:
-        w = csv.DictWriter(f_out, fieldnames=[hdr_map[c.lower()] for c in cols])
-        w.writeheader()
-        for row in r:
-            w.writerow({hdr_map[c.lower()]: row.get(hdr_map[c.lower()], '') for c in cols})
-    # rewrite COPY line in SQL
+        w = csv.writer(f_out)
+        w.writerow(want)
+        for row in rows[1:]:
+            # pad row if shorter
+            row = list(row) + [''] * (max(idx)+1 - len(row) if len(row) <= max(idx) else 0)
+            w.writerow([row[i] for i in idx])
+    # rewrite COPY line in SQL to exactly 5 expected columns
     rel_dir = os.path.dirname(CSV_REL)
     rel_new = os.path.join(rel_dir, os.path.basename(out_path)) if rel_dir else os.path.basename(out_path)
     import re
     with open(SQL_PATH, encoding='utf-8') as f:
         s = f.read()
     s = re.sub(r"(\\COPY\s+ida\.key_policy_def\s*)\([^)]*\)(\s*FROM\s*')([^']+)(')",
-               lambda m: f"{m.group(1)}({','.join(cols)}){m.group(2)}{rel_new}{m.group(4)}",
+               lambda m: f"{m.group(1)}(app_id,key_validity_duration,is_active,cr_by,cr_dtimes){m.group(2)}{rel_new}{m.group(4)}",
                s, flags=re.IGNORECASE)
     with open(SQL_PATH, 'w', encoding='utf-8') as f:
         f.write(s)

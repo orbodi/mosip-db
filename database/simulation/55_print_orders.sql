@@ -38,6 +38,7 @@ BEGIN
             has_reqid boolean; reqid_dtype text; reqid_not_null boolean; reqid_maxlen integer;
             has_reqtype boolean; reqtype_dtype text; reqtype_not_null boolean;
             has_target_reqtype boolean; target_reqtype_maxlen integer;
+            has_prc_status boolean; prc_status_dtype text; prc_status_not_null boolean;
     BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_by'
@@ -94,6 +95,16 @@ BEGIN
         WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='target_request_type'
         LIMIT 1;
       END IF;
+      -- Detect prc_status column
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='prc_status'
+      ) INTO has_prc_status;
+      IF has_prc_status THEN
+        SELECT data_type, (is_nullable='NO') INTO prc_status_dtype, prc_status_not_null
+        FROM information_schema.columns
+        WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='prc_status'
+        LIMIT 1;
+      END IF;
 
       -- Ensure defaults for type columns to avoid NOT NULL insert issues when not explicitly provided
       BEGIN
@@ -117,7 +128,7 @@ BEGIN
         IF has_rid AND rid_not_null THEN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -142,10 +153,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                      'sim', now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -163,6 +180,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -171,7 +194,7 @@ BEGIN
             END IF;
           ELSIF has_cr_by THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -196,10 +219,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                      'sim'
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -217,6 +246,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -225,7 +260,7 @@ BEGIN
             END IF;
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -250,10 +285,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                      now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -271,6 +312,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -279,7 +326,7 @@ BEGIN
             END IF;
           ELSE
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -303,10 +350,16 @@ BEGIN
                      CASE WHEN has_target_reqtype AND coalesce(target_reqtype_maxlen,0) > 0 AND target_reqtype_maxlen <= 3 THEN 'PRT'
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
                      END
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -324,6 +377,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END
@@ -348,7 +407,7 @@ BEGIN
         IF has_rid AND rid_not_null THEN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -373,10 +432,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                    'sim', now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -394,6 +459,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -402,7 +473,7 @@ BEGIN
             END IF;
           ELSIF has_cr_by THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_by)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -427,10 +498,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                      'sim'
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_by)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -448,6 +525,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -456,7 +539,7 @@ BEGIN
             END IF;
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -481,10 +564,16 @@ BEGIN
                           WHEN has_target_reqtype THEN 'PRINT'
                           ELSE NULL::text
                      END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
+                     END,
                      now()
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, cr_dtimes)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -502,6 +591,12 @@ BEGIN
                      CASE WHEN has_reqtype THEN 
                        CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                             ELSE 'PRINT'::text
+                       END
+                       ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
                        END
                        ELSE NULL::text
                      END,
@@ -510,7 +605,7 @@ BEGIN
             END IF;
           ELSE
             IF has_target_reqtype THEN
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -537,7 +632,7 @@ BEGIN
                      END
               FROM generate_series(1, v_cnt) s(i);
             ELSE
-              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type)
+              INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                           THEN to_char(now(),'YYYYMMDDHH24MISS')
@@ -557,12 +652,18 @@ BEGIN
                             ELSE 'PRINT'::text
                        END
                        ELSE NULL::text
+                     END,
+                     CASE WHEN has_prc_status THEN 
+                       CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                            ELSE 'NEW'::text
+                       END
+                       ELSE NULL::text
                      END
               FROM generate_series(1, v_cnt) s(i);
             END IF;
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-          INSERT INTO regprc.printing_orders (id, request_type, cr_by, cr_dtimes)
+          INSERT INTO regprc.printing_orders (id, request_type, prc_status, cr_by, cr_dtimes)
           SELECT (extract(epoch from now())*1000000)::bigint + i, 
                  CASE WHEN has_reqtype AND reqtype_not_null THEN 
                    CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
@@ -570,21 +671,33 @@ BEGIN
                    END
                    ELSE NULL::text
                  END,
+                 CASE WHEN has_prc_status THEN 
+                   CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                        ELSE 'NEW'::text
+                   END
+                   ELSE NULL::text
+                 END,
                  'sim', now()
           FROM generate_series(1, v_cnt) s(i);
         ELSIF has_cr_by THEN
-          INSERT INTO regprc.printing_orders (id, request_type, cr_by)
+          INSERT INTO regprc.printing_orders (id, request_type, prc_status, cr_by)
           SELECT (extract(epoch from now())*1000000)::bigint + i,
                  CASE WHEN has_reqtype AND reqtype_not_null THEN 
                    CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                         ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END,
+                 CASE WHEN has_prc_status THEN 
+                   CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                        ELSE 'NEW'::text
                    END
                    ELSE NULL::text
                  END,
                  'sim'
           FROM generate_series(1, v_cnt) s(i);
         ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-          INSERT INTO regprc.printing_orders (id, request_type, cr_dtimes)
+          INSERT INTO regprc.printing_orders (id, request_type, prc_status, cr_dtimes)
           SELECT (extract(epoch from now())*1000000)::bigint + i,
                  CASE WHEN has_reqtype AND reqtype_not_null THEN 
                    CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
@@ -592,14 +705,26 @@ BEGIN
                    END
                    ELSE NULL::text
                  END,
+                 CASE WHEN has_prc_status THEN 
+                   CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                        ELSE 'NEW'::text
+                   END
+                   ELSE NULL::text
+                 END,
                  now()
           FROM generate_series(1, v_cnt) s(i);
         ELSE
-          INSERT INTO regprc.printing_orders (id, request_type)
+          INSERT INTO regprc.printing_orders (id, request_type, prc_status)
           SELECT (extract(epoch from now())*1000000)::bigint + i,
                  CASE WHEN has_reqtype AND reqtype_not_null THEN 
                    CASE WHEN coalesce(reqtype_dtype,'') IN ('character varying','text','character') THEN 'PRINT'
                         ELSE 'PRINT'::text
+                   END
+                   ELSE NULL::text
+                 END,
+                 CASE WHEN has_prc_status THEN 
+                   CASE WHEN coalesce(prc_status_dtype,'') IN ('character varying','text','character') THEN 'NEW'
+                        ELSE 'NEW'::text
                    END
                    ELSE NULL::text
                  END

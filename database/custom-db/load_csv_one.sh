@@ -268,6 +268,71 @@ PY3
     fi
   fi
 
+  if [[ "$DB_NAME" == "mosip_pms" ]]; then
+    SQL_PATH="$TMP_DIR/$BASE_NAME"
+    # Simplify pms-auth_policy.csv: keep only id,policy_group_id,name,descr
+    ORIG_APCSV="$TMP_DIR/dml/pms-auth_policy.csv"
+    SIMP_APCSV="$TMP_DIR/dml/pms-auth_policy.simplified.csv"
+    if [[ -f "$ORIG_APCSV" ]]; then
+      python3 - "$ORIG_APCSV" "$SIMP_APCSV" <<'PY_PMS1'
+import csv, sys
+src, dst = sys.argv[1], sys.argv[2]
+keep = ['id','policy_group_id','name','descr']
+with open(src, newline='', encoding='utf-8') as f_in, open(dst, 'w', newline='', encoding='utf-8') as f_out:
+    r = csv.DictReader(f_in)
+    w = csv.DictWriter(f_out, fieldnames=keep)
+    w.writeheader()
+    for row in r:
+        w.writerow({k: row.get(k, '') for k in keep})
+PY_PMS1
+    fi
+    # Simplify pms-auth_policy_h.csv: keep id,eff_dtimes,policy_group_id,name,descr
+    ORIG_APHCSV="$TMP_DIR/dml/pms-auth_policy_h.csv"
+    SIMP_APHCSV="$TMP_DIR/dml/pms-auth_policy_h.simplified.csv"
+    if [[ -f "$ORIG_APHCSV" ]]; then
+      python3 - "$ORIG_APHCSV" "$SIMP_APHCSV" <<'PY_PMS2'
+import csv, sys
+src, dst = sys.argv[1], sys.argv[2]
+keep = ['id','eff_dtimes','policy_group_id','name','descr']
+with open(src, newline='', encoding='utf-8') as f_in, open(dst, 'w', newline='', encoding='utf-8') as f_out:
+    r = csv.DictReader(f_in)
+    w = csv.DictWriter(f_out, fieldnames=keep)
+    w.writeheader()
+    for row in r:
+        w.writerow({k: row.get(k, '') for k in keep})
+PY_PMS2
+    fi
+    # Rewrite SQL COPY lines to load via staging with safe defaults
+    python3 - "$SQL_PATH" <<'PY_PMS3'
+import re, sys
+sql_path = sys.argv[1]
+with open(sql_path, encoding='utf-8') as f:
+    s = f.read()
+
+a_block = (
+    "DROP TABLE IF EXISTS _auth_policy_min;\n"
+    "CREATE TEMP TABLE _auth_policy_min (id text, policy_group_id text, name text, descr text);\n"
+    "\\COPY _auth_policy_min (id,policy_group_id,name,descr) FROM './dml/pms-auth_policy.simplified.csv' delimiter ',' HEADER  csv;\n"
+    "INSERT INTO pms.auth_policy (id,policy_group_id,name,descr,policy_file_id,policy_type,version,policy_schema,valid_from_date,valid_to_date,is_active,cr_by,cr_dtimes,upd_by,upd_dtimes)\n"
+    "SELECT id,policy_group_id,name,descr,NULL::text,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_min;"
+)
+
+ah_block = (
+    "DROP TABLE IF EXISTS _auth_policy_h_min;\n"
+    "CREATE TEMP TABLE _auth_policy_h_min (id text, eff_dtimes timestamp, policy_group_id text, name text, descr text);\n"
+    "\\COPY _auth_policy_h_min (id,eff_dtimes,policy_group_id,name,descr) FROM './dml/pms-auth_policy_h.simplified.csv' delimiter ',' HEADER  csv;\n"
+    "INSERT INTO pms.auth_policy_h (id,eff_dtimes,policy_group_id,name,descr,policy_file_id,policy_type,version,policy_schema,valid_from_date,valid_to_date,is_active,cr_by,cr_dtimes,upd_by,upd_dtimes)\n"
+    "SELECT id,COALESCE(eff_dtimes, now()),policy_group_id,name,descr,NULL::text,'DataShare'::text,'1'::varchar(8),'https://schemas.mosip.io/v1/auth-policy'::text, now(), now() + interval '3 years', TRUE,'admin', now(),'admin', now() FROM _auth_policy_h_min;"
+)
+
+s = re.sub(r"^\\COPY\s+pms\.auth_policy\b[\s\S]*?\n", a_block+"\n", s, count=1, flags=re.IGNORECASE|re.MULTILINE)
+s = re.sub(r"^\\COPY\s+pms\.auth_policy_h\b[\s\S]*?\n", ah_block+"\n", s, count=1, flags=re.IGNORECASE|re.MULTILINE)
+
+with open(sql_path, 'w', encoding='utf-8') as f:
+    f.write(s)
+PY_PMS3
+  fi
+
   (
     cd "$TMP_DIR"
     if [[ "$DML_STRICT" == "false" ]]; then

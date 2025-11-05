@@ -28,21 +28,11 @@ BEGIN
     END;
   END;
 
-  -- Optionally insert into consumed table if exists
-  BEGIN
-    INSERT INTO prereg.applicant_demographic_consumed (prereg_id, consumed_dtimes)
-    SELECT CASE WHEN EXISTS (
-             SELECT 1 FROM information_schema.columns 
-             WHERE table_schema='prereg' AND table_name='applicant_demographic' AND column_name IN ('pre_reg_id','prereg_id')
-           ) THEN (
-             SELECT COALESCE((SELECT pre_reg_id FROM prereg.applicant_demographic LIMIT 1), (SELECT prereg_id FROM prereg.applicant_demographic LIMIT 1))
-           ) ELSE 'PR'||to_char(now(),'YYYYMMDD')||'000001' END,
-           now()
-    LIMIT 0; -- no-op placeholder to keep block valid if table exists with different structure
-  EXCEPTION WHEN undefined_table THEN
-    -- ignore if table not present
-    NULL;
-  END;
+  -- Optionally insert into consumed table if exists and has consumed_dtimes
+  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='consumed_dtimes') THEN
+    PERFORM 1; -- placeholder, pas d'insert réel par défaut
+  END IF;
 END $$;
 
 

@@ -337,13 +337,19 @@ PY_PMS3
     # Skip reg_device_type/sub_type if tables are absent
     HAS_RDT=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='reg_device_type'" || true)
     if [[ -z "$HAS_RDT" ]]; then
-      sed -i -E "s/^(TRUNCATE TABLE pms\.reg_device_type.*)$/-- \1/I" "$SQL_PATH"
-      sed -i -E "s#^(\\COPY pms\.reg_device_type .*)$#-- \1#I" "$SQL_PATH"
+      TMP_SQL="$(mktemp)" && awk 'BEGIN{IGNORECASE=1} 
+        /^TRUNCATE TABLE pms\.reg_device_type/{print "-- "$0; next}
+        /^\\\COPY[[:space:]]+pms\.reg_device_type/{print "-- "$0; next}
+        {print $0}
+      ' "$SQL_PATH" > "$TMP_SQL" && mv "$TMP_SQL" "$SQL_PATH"
     fi
     HAS_RDST=$(psql -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$DB_NAME" -At -c "select 1 from information_schema.tables where table_schema='pms' and table_name='reg_device_sub_type'" || true)
     if [[ -z "$HAS_RDST" ]]; then
-      sed -i -E "s/^(TRUNCATE TABLE pms\.reg_device_sub_type.*)$/-- \1/I" "$SQL_PATH"
-      sed -i -E "s#^(\\COPY pms\.reg_device_sub_type .*)$#-- \1#I" "$SQL_PATH"
+      TMP_SQL2="$(mktemp)" && awk 'BEGIN{IGNORECASE=1} 
+        /^TRUNCATE TABLE pms\.reg_device_sub_type/{print "-- "$0; next}
+        /^\\\COPY[[:space:]]+pms\.reg_device_sub_type/{print "-- "$0; next}
+        {print $0}
+      ' "$SQL_PATH" > "$TMP_SQL2" && mv "$TMP_SQL2" "$SQL_PATH"
     fi
   fi
 

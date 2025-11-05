@@ -83,7 +83,33 @@ TRUNCATE TABLE master.sync_job_def  cascade ;
 ----- TRUNCATE master.app_authentication_method TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.app_authentication_method cascade ;
 
-\COPY master.app_authentication_method (app_id,process_id,role_code,auth_method_code,method_seq,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-app_authentication_method.csv' delimiter ',' HEADER  csv;
+-- Stage then insert with lang_code normalized to match existing authentication_method
+DROP TABLE IF EXISTS _app_auth_m_stg;
+CREATE TEMP TABLE _app_auth_m_stg (
+    app_id character varying(36),
+    process_id character varying(36),
+    role_code character varying(36),
+    auth_method_code character varying(36),
+    method_seq smallint,
+    lang_code character varying(3),
+    is_active boolean,
+    cr_by character varying(256),
+    cr_dtimes timestamp
+);
+\COPY _app_auth_m_stg (app_id,process_id,role_code,auth_method_code,method_seq,lang_code,is_active,cr_by,cr_dtimes) FROM './dml/master-app_authentication_method.csv' delimiter ',' HEADER  csv;
+INSERT INTO master.app_authentication_method (app_id,process_id,role_code,auth_method_code,method_seq,lang_code,is_active,cr_by,cr_dtimes)
+SELECT s.app_id,
+       s.process_id,
+       s.role_code,
+       s.auth_method_code,
+       s.method_seq,
+       COALESCE(am.lang_code, 'fra') AS lang_code,
+       s.is_active,
+       s.cr_by,
+       s.cr_dtimes
+FROM _app_auth_m_stg s
+LEFT JOIN master.authentication_method am
+  ON am.code = s.auth_method_code AND am.lang_code = s.lang_code;
 
 ----- TRUNCATE master.app_role_priority TABLE Data and It's reference Data and COPY Data from CSV file -----
 TRUNCATE TABLE master.app_role_priority cascade ;

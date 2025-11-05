@@ -35,6 +35,7 @@ BEGIN
     -- Fallback: insert orders without link; adapt to ID type and optional audit columns
     DECLARE has_cr_by boolean; has_cr_dtimes boolean; id_dtype text; crdt_is_generated boolean;
             has_rid boolean; rid_dtype text; rid_not_null boolean;
+            has_reqid boolean; reqid_dtype text; reqid_not_null boolean;
     BEGIN
       SELECT EXISTS (
         SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='cr_by'
@@ -61,39 +62,73 @@ BEGIN
         WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='rid'
         LIMIT 1;
       END IF;
+      -- Detect required request_id column
+      SELECT EXISTS (
+        SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='request_id'
+      ) INTO has_reqid;
+      IF has_reqid THEN
+        SELECT data_type, (is_nullable='NO') INTO reqid_dtype, reqid_not_null
+        FROM information_schema.columns
+        WHERE table_schema='regprc' AND table_name='printing_orders' AND column_name='request_id'
+        LIMIT 1;
+      END IF;
 
       IF coalesce(id_dtype,'') = 'uuid' THEN
         IF has_rid AND rid_not_null THEN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_by, cr_dtimes)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_by, cr_dtimes)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_by THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_by)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_by)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_dtimes)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_dtimes)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    now()
             FROM generate_series(1, v_cnt) s(i);
           ELSE
-            INSERT INTO regprc.printing_orders (id, rid)
+            INSERT INTO regprc.printing_orders (id, rid, request_id)
             SELECT gen_random_uuid(),
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END
+                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END
             FROM generate_series(1, v_cnt) s(i);
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
@@ -113,35 +148,59 @@ BEGIN
         -- Assume numeric/bigint; synthesize numeric IDs
         IF has_rid AND rid_not_null THEN
           IF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_by, cr_dtimes)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_by, cr_dtimes)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    'sim', now()
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_by THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_by)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_by)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    'sim'
             FROM generate_series(1, v_cnt) s(i);
           ELSIF has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN
-            INSERT INTO regprc.printing_orders (id, rid, cr_dtimes)
+            INSERT INTO regprc.printing_orders (id, rid, request_id, cr_dtimes)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END,
                    now()
             FROM generate_series(1, v_cnt) s(i);
           ELSE
-            INSERT INTO regprc.printing_orders (id, rid)
+            INSERT INTO regprc.printing_orders (id, rid, request_id)
             SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
                         THEN to_char(now(),'YYYYMMDDHH24MISS')
-                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END
+                        ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
+                   CASE 
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN to_char(now(),'YYYYMMDDHH24MISS')
+                     WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') = 'uuid' THEN gen_random_uuid()::text
+                     WHEN has_reqid AND reqid_not_null THEN ((extract(epoch from now())*1000000)::bigint + i)::text
+                     ELSE NULL
+                   END
             FROM generate_series(1, v_cnt) s(i);
           END IF;
         ELSIF has_cr_by AND has_cr_dtimes AND NOT coalesce(crdt_is_generated,false) THEN

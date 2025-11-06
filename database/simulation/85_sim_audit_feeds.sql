@@ -5,10 +5,19 @@
 DO $$
 DECLARE n int := 100; BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='schtsp' AND table_name='tsp_audit') THEN
-    INSERT INTO schtsp.tsp_audit (id, event_type, description, created_at)
-    SELECT gen_random_uuid(), 'SIM', 'Simulated TSP event '||i, now()
-    FROM generate_series(1, n) s(i)
-    ON CONFLICT DO NOTHING;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='schtsp' AND table_name='tsp_audit' AND column_name='event_type')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='schtsp' AND table_name='tsp_audit' AND column_name='description')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='schtsp' AND table_name='tsp_audit' AND column_name='created_at') THEN
+      INSERT INTO schtsp.tsp_audit (id, event_type, description, created_at)
+      SELECT gen_random_uuid(), 'SIM', 'Simulated TSP event '||i, now()
+      FROM generate_series(1, n) s(i)
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='schtsp' AND table_name='tsp_audit' AND column_name='created_at') THEN
+      INSERT INTO schtsp.tsp_audit (created_at)
+      SELECT now() FROM generate_series(1, n) s(i);
+    ELSE
+      PERFORM 1;
+    END IF;
   END IF;
 END $$;
 

@@ -57,8 +57,12 @@ BEGIN
     VALUES ('NATID','National ID','National ID Card','ID','fra',true,'sim',now()) ON CONFLICT DO NOTHING;
   END IF;
 
-  -- applicant_valid_document
-  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='applicant_valid_document') THEN
+  -- applicant_valid_document (schema may differ; insert only if expected columns exist)
+  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='applicant_valid_document')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='master' AND table_name='applicant_valid_document' AND column_name='applicant_type')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='master' AND table_name='applicant_valid_document' AND column_name='doc_category')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='master' AND table_name='applicant_valid_document' AND column_name='doc_type')
+  THEN
     INSERT INTO master.applicant_valid_document (applicant_type, doc_category, doc_type, lang_code, is_active, cr_by, cr_dtimes)
     VALUES ('ADULT','ID','NATID','fra',true,'sim',now())
     ON CONFLICT DO NOTHING;

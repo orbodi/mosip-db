@@ -31,7 +31,9 @@ BEGIN
   END IF;
 
   -- rid_uin_link
-  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='rid_uin_link') THEN
+  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='rid_uin_link')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='rid_uin_link' AND column_name='rid')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='rid_uin_link' AND column_name='uin') THEN
     INSERT INTO regprc.rid_uin_link (rid, uin, cr_by, cr_dtimes)
     SELECT 'RID'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), lpad((1000000000+i)::text, 12, '0'), 'sim', now()
     FROM generate_series(1, 20) s(i)

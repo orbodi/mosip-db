@@ -131,7 +131,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -165,7 +165,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -197,7 +197,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -231,7 +231,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -263,7 +263,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -297,7 +297,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_dtimes)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -329,7 +329,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -362,7 +362,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status)
               SELECT gen_random_uuid(),
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -410,7 +410,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                    CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                        THEN to_char(now(),'YYYYMMDDHH24MISS')
+                        THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                         ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                    (CASE 
                      WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -444,7 +444,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -476,7 +476,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_by)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -510,7 +510,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_by)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -542,7 +542,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -576,7 +576,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status, cr_dtimes)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -608,7 +608,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, target_request_type, prc_status)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 
@@ -641,7 +641,7 @@ BEGIN
               INSERT INTO regprc.printing_orders (id, rid, request_id, request_type, prc_status)
               SELECT (extract(epoch from now())*1000000)::bigint + i,
                      CASE WHEN coalesce(rid_dtype,'') IN ('character varying','text','character')
-                          THEN to_char(now(),'YYYYMMDDHH24MISS')
+                          THEN to_char(now(),'YYYYMMDDHH24MISS') || lpad(i::text, 6, '0')
                           ELSE ((extract(epoch from now())*1000000)::bigint + i)::text END,
                      (CASE 
                        WHEN has_reqid AND reqid_not_null AND coalesce(reqid_dtype,'') IN ('character varying','text','character') THEN 

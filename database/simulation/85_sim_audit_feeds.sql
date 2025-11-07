@@ -26,10 +26,19 @@ END $$;
 DO $$
 DECLARE n int := 100; BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='public' AND table_name='audit_data') THEN
-    INSERT INTO public.audit_data (id, module_name, activity_type, activity_ts, details)
-    SELECT gen_random_uuid(), 'SIM', 'WRITE', now(), jsonb_build_object('msg','sim event','i',i)
-    FROM generate_series(1, n) s(i)
-    ON CONFLICT DO NOTHING;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_data' AND column_name='module_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_data' AND column_name='activity_type')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_data' AND column_name='activity_ts') THEN
+      INSERT INTO public.audit_data (id, module_name, activity_type, activity_ts, details)
+      SELECT gen_random_uuid(), 'SIM', 'WRITE', now(), jsonb_build_object('msg','sim event','i',i)
+      FROM generate_series(1, n) s(i)
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_data' AND column_name='activity_ts') THEN
+      INSERT INTO public.audit_data (activity_ts)
+      SELECT now() FROM generate_series(1, n) s(i);
+    ELSE
+      PERFORM 1;
+    END IF;
   END IF;
 END $$;
 
@@ -38,10 +47,28 @@ END $$;
 DO $$
 DECLARE n int := 100; BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='kernel' AND table_name='kernel_notifications_audit') THEN
-    INSERT INTO kernel.kernel_notifications_audit (id, module_name, event_name, created_at)
-    SELECT gen_random_uuid(), 'SIM', 'NOTIFY', now()
-    FROM generate_series(1, n) s(i)
-    ON CONFLICT DO NOTHING;
+    -- detect available columns
+    PERFORM 1;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='id')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='module_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='event_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='created_at') THEN
+      INSERT INTO kernel.kernel_notifications_audit (id, module_name, event_name, created_at)
+      SELECT gen_random_uuid(), 'SIM', 'NOTIFY', now()
+      FROM generate_series(1, n) s(i)
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='module_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='event_name') THEN
+      INSERT INTO kernel.kernel_notifications_audit (module_name, event_name)
+      SELECT 'SIM', 'NOTIFY'
+      FROM generate_series(1, n) s(i);
+    ELSE
+      -- minimal insert if a timestamp column exists
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='kernel' AND table_name='kernel_notifications_audit' AND column_name='created_at') THEN
+        INSERT INTO kernel.kernel_notifications_audit (created_at)
+        SELECT now() FROM generate_series(1, n) s(i);
+      END IF;
+    END IF;
   END IF;
 END $$;
 

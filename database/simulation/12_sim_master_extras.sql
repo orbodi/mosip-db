@@ -71,12 +71,18 @@ BEGIN
   -- machines / machine_master
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='machines') THEN
     INSERT INTO master.machines (id,name,serial_num,zone_code,lang_code,is_active,cr_by,cr_dtimes)
-    SELECT gen_random_uuid(),'Mach '||i,'SER'||lpad(i::text,6,'0'),'Z1','fra',true,'sim',now()
+    SELECT gen_random_uuid(),
+           LEFT('Mach '||i, COALESCE((SELECT character_maximum_length FROM information_schema.columns WHERE table_schema='master' AND table_name='machines' AND column_name='name'), 255)),
+           LEFT('SER'||lpad(i::text,6,'0'), COALESCE((SELECT character_maximum_length FROM information_schema.columns WHERE table_schema='master' AND table_name='machines' AND column_name='serial_num'), 255)),
+           'Z1','fra',true,'sim',now()
     FROM generate_series(1, 10) s(i)
     ON CONFLICT DO NOTHING;
   ELSIF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='machine_master') THEN
     INSERT INTO master.machine_master (id,name,serial_num,zone_code,lang_code,is_active,cr_by,cr_dtimes)
-    SELECT gen_random_uuid(),'Mach '||i,'SER'||lpad(i::text,6,'0'),'Z1','fra',true,'sim',now()
+    SELECT gen_random_uuid(),
+           LEFT('Mach '||i, COALESCE((SELECT character_maximum_length FROM information_schema.columns WHERE table_schema='master' AND table_name='machine_master' AND column_name='name'), 255)),
+           LEFT('SER'||lpad(i::text,6,'0'), COALESCE((SELECT character_maximum_length FROM information_schema.columns WHERE table_schema='master' AND table_name='machine_master' AND column_name='serial_num'), 255)),
+           'Z1','fra',true,'sim',now()
     FROM generate_series(1, 10) s(i)
     ON CONFLICT DO NOTHING;
   END IF;

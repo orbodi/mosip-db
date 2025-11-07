@@ -43,11 +43,20 @@ BEGIN
   -- printing_orders_details (attach to existing printing_orders if present)
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='printing_orders_details')
      AND EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='printing_orders') THEN
-    INSERT INTO regprc.printing_orders_details (printing_order_id, detail_key, detail_value)
-    SELECT po.id, 'batch', 'B'||to_char(now(),'HH24MISS')
-    FROM regprc.printing_orders po
-    ORDER BY po.id DESC LIMIT 50
-    ON CONFLICT DO NOTHING;
+    -- determine FK column name
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders_details' AND column_name='printing_order_id') THEN
+      INSERT INTO regprc.printing_orders_details (printing_order_id, detail_key, detail_value)
+      SELECT po.id, 'batch', 'B'||to_char(now(),'HH24MISS') FROM regprc.printing_orders po ORDER BY po.id DESC LIMIT 50
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders_details' AND column_name='order_id') THEN
+      INSERT INTO regprc.printing_orders_details (order_id, detail_key, detail_value)
+      SELECT po.id, 'batch', 'B'||to_char(now(),'HH24MISS') FROM regprc.printing_orders po ORDER BY po.id DESC LIMIT 50
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_orders_details' AND column_name='printing_orders_id') THEN
+      INSERT INTO regprc.printing_orders_details (printing_orders_id, detail_key, detail_value)
+      SELECT po.id, 'batch', 'B'||to_char(now(),'HH24MISS') FROM regprc.printing_orders po ORDER BY po.id DESC LIMIT 50
+      ON CONFLICT DO NOTHING;
+    END IF;
   END IF;
 
   -- printing_shipped_cards (based on existing orders if present columns align)

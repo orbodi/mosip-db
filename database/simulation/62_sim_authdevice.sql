@@ -18,9 +18,15 @@ BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.tables WHERE table_schema='authdevice' AND table_name='reg_device_sub_type'
   ) THEN
-    INSERT INTO authdevice.reg_device_sub_type (code, name, descr, reg_device_type_code, is_active, cr_by, cr_dtimes)
-    VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', 'BIO', true, 'sim', now())
-    ON CONFLICT DO NOTHING;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='reg_device_sub_type' AND column_name='reg_device_type_code') THEN
+      INSERT INTO authdevice.reg_device_sub_type (code, name, descr, reg_device_type_code, is_active, cr_by, cr_dtimes)
+      VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', 'BIO', true, 'sim', now())
+      ON CONFLICT DO NOTHING;
+    ELSE
+      INSERT INTO authdevice.reg_device_sub_type (code, name, descr, is_active, cr_by, cr_dtimes)
+      VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', true, 'sim', now())
+      ON CONFLICT DO NOTHING;
+    END IF;
   END IF;
 
   -- registered_device_master or device_detail

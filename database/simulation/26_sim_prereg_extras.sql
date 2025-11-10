@@ -62,10 +62,50 @@ BEGIN
 
   -- applicant_demographic_consumed (if table has minimal columns)
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed') THEN
-    INSERT INTO prereg.applicant_demographic_consumed (pre_reg_id, status_code, cr_by, cr_dtimes)
-    SELECT 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'CONSUMED', 'sim', now()
-    FROM generate_series(1, n/3) s(i)
-    ON CONFLICT DO NOTHING;
+    DECLARE
+      has_pre_reg boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='pre_reg_id');
+      has_prereg boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='prereg_id');
+      has_status boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='status_code');
+      has_cr_by boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='cr_by');
+      has_cr_dt boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='cr_dtimes');
+      col_list text := ' ';
+      val_list text := ' ';
+    BEGIN
+      IF NOT (has_pre_reg OR has_prereg) THEN
+        RAISE NOTICE 'applicant_demographic_consumed skipped: no prereg column';
+      ELSE
+        col_list := 'id';
+        val_list := 'gen_random_uuid()';
+
+        IF has_pre_reg THEN
+          col_list := col_list || ', pre_reg_id';
+          val_list := val_list || ', ''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
+        ELSE
+          col_list := col_list || ', prereg_id';
+          val_list := val_list || ', ''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
+        END IF;
+
+        IF has_status THEN
+          col_list := col_list || ', status_code';
+          val_list := val_list || ', ''CONSUMED''';
+        END IF;
+        IF has_cr_by THEN
+          col_list := col_list || ', cr_by';
+          val_list := val_list || ', ''sim''';
+        END IF;
+        IF has_cr_dt THEN
+          col_list := col_list || ', cr_dtimes';
+          val_list := val_list || ', now()';
+        END IF;
+
+        EXECUTE format(
+          'INSERT INTO prereg.applicant_demographic_consumed (%s) SELECT %s FROM generate_series(1, %s) s(i) ON CONFLICT DO NOTHING',
+          col_list,
+          val_list,
+          n/3
+        );
+      END IF;
+    END;
   END IF;
 END $$;
 

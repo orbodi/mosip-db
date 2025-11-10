@@ -74,24 +74,24 @@ BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='machines') THEN
       SELECT NULLIF(character_maximum_length,0) INTO name_maxlen FROM information_schema.columns WHERE table_schema='master' AND table_name='machines' AND column_name='name';
       SELECT NULLIF(character_maximum_length,0) INTO serial_maxlen FROM information_schema.columns WHERE table_schema='master' AND table_name='machines' AND column_name='serial_num';
-      name_maxlen := COALESCE(name_maxlen, 10);
-      serial_maxlen := COALESCE(serial_maxlen, 10);
+      name_maxlen := COALESCE(name_maxlen, 8);
+      serial_maxlen := COALESCE(serial_maxlen, 8);
       INSERT INTO master.machines (id,name,serial_num,zone_code,lang_code,is_active,cr_by,cr_dtimes)
       SELECT gen_random_uuid(),
-             LEFT('M'||replace(md5(random()::text),'-',''), name_maxlen),
-             LEFT('S'||replace(md5(random()::text),'-',''), serial_maxlen),
+             'M'||RIGHT('0000000000'||i::text, GREATEST(name_maxlen-1,1)),
+             'S'||RIGHT('0000000000'||i::text, GREATEST(serial_maxlen-1,1)),
              'Z1','fra',true,'sim',now()
       FROM generate_series(1, 10) s(i)
       ON CONFLICT DO NOTHING;
   ELSIF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='master' AND table_name='machine_master') THEN
       SELECT NULLIF(character_maximum_length,0) INTO name_maxlen FROM information_schema.columns WHERE table_schema='master' AND table_name='machine_master' AND column_name='name';
       SELECT NULLIF(character_maximum_length,0) INTO serial_maxlen FROM information_schema.columns WHERE table_schema='master' AND table_name='machine_master' AND column_name='serial_num';
-      name_maxlen := COALESCE(name_maxlen, 10);
-      serial_maxlen := COALESCE(serial_maxlen, 10);
+      name_maxlen := COALESCE(name_maxlen, 8);
+      serial_maxlen := COALESCE(serial_maxlen, 8);
       INSERT INTO master.machine_master (id,name,serial_num,zone_code,lang_code,is_active,cr_by,cr_dtimes)
       SELECT gen_random_uuid(),
-             LEFT('M'||replace(md5(random()::text),'-',''), name_maxlen),
-             LEFT('S'||replace(md5(random()::text),'-',''), serial_maxlen),
+             'M'||RIGHT('0000000000'||i::text, GREATEST(name_maxlen-1,1)),
+             'S'||RIGHT('0000000000'||i::text, GREATEST(serial_maxlen-1,1)),
              'Z1','fra',true,'sim',now()
       FROM generate_series(1, 10) s(i)
       ON CONFLICT DO NOTHING;

@@ -63,26 +63,29 @@ BEGIN
   -- applicant_demographic_consumed (if table has minimal columns)
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed') THEN
     DECLARE
+      has_id boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='id');
       has_pre_reg boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='pre_reg_id');
       has_prereg boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='prereg_id');
       has_status boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='status_code');
       has_cr_by boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='cr_by');
       has_cr_dt boolean := EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='applicant_demographic_consumed' AND column_name='cr_dtimes');
-      col_list text := ' ';
-      val_list text := ' ';
+      col_list text := '';
+      val_list text := '';
     BEGIN
       IF NOT (has_pre_reg OR has_prereg) THEN
         RAISE NOTICE 'applicant_demographic_consumed skipped: no prereg column';
       ELSE
-        col_list := 'id';
-        val_list := 'gen_random_uuid()';
+        IF has_id THEN
+          col_list := 'id';
+          val_list := 'gen_random_uuid()';
+        END IF;
 
         IF has_pre_reg THEN
-          col_list := col_list || ', pre_reg_id';
-          val_list := val_list || ', ''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
+          col_list := col_list || CASE WHEN col_list = '' THEN '' ELSE ', ' END || 'pre_reg_id';
+          val_list := val_list || CASE WHEN val_list = '' THEN '' ELSE ', ' END || '''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
         ELSE
-          col_list := col_list || ', prereg_id';
-          val_list := val_list || ', ''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
+          col_list := col_list || CASE WHEN col_list = '' THEN '' ELSE ', ' END || 'prereg_id';
+          val_list := val_list || CASE WHEN val_list = '' THEN '' ELSE ', ' END || '''PR''||to_char(now(),''YYYYMMDD'')||lpad(i::text,6,''0'')';
         END IF;
 
         IF has_status THEN

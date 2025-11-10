@@ -9,15 +9,31 @@ BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='prereg' AND table_name='reg_appointment') THEN
     -- detect pre-reg id column name
     IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='pre_reg_id') THEN
-      INSERT INTO prereg.reg_appointment (id, pre_reg_id, regcntr_id, appt_date, appt_time, lang_code, cr_by, cr_dtimes)
-      SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', now()::date + (i%7), '09:00', 'fra', 'sim', now()
-      FROM generate_series(1, n) s(i)
-      ON CONFLICT DO NOTHING;
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='appt_date')
+         AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='appt_time') THEN
+        INSERT INTO prereg.reg_appointment (id, pre_reg_id, regcntr_id, appt_date, appt_time, lang_code, cr_by, cr_dtimes)
+        SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', now()::date + (i%7), '09:00', 'fra', 'sim', now()
+        FROM generate_series(1, n) s(i)
+        ON CONFLICT DO NOTHING;
+      ELSE
+        INSERT INTO prereg.reg_appointment (id, pre_reg_id, regcntr_id, lang_code, cr_by, cr_dtimes)
+        SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', 'fra', 'sim', now()
+        FROM generate_series(1, n) s(i)
+        ON CONFLICT DO NOTHING;
+      END IF;
     ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='prereg_id') THEN
-      INSERT INTO prereg.reg_appointment (id, prereg_id, regcntr_id, appt_date, appt_time, lang_code, cr_by, cr_dtimes)
-      SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', now()::date + (i%7), '09:00', 'fra', 'sim', now()
-      FROM generate_series(1, n) s(i)
-      ON CONFLICT DO NOTHING;
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='appt_date')
+         AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='appt_time') THEN
+        INSERT INTO prereg.reg_appointment (id, prereg_id, regcntr_id, appt_date, appt_time, lang_code, cr_by, cr_dtimes)
+        SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', now()::date + (i%7), '09:00', 'fra', 'sim', now()
+        FROM generate_series(1, n) s(i)
+        ON CONFLICT DO NOTHING;
+      ELSE
+        INSERT INTO prereg.reg_appointment (id, prereg_id, regcntr_id, lang_code, cr_by, cr_dtimes)
+        SELECT gen_random_uuid(), 'PR'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'RC1', 'fra', 'sim', now()
+        FROM generate_series(1, n) s(i)
+        ON CONFLICT DO NOTHING;
+      END IF;
     ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='prereg' AND table_name='reg_appointment' AND column_name='appointment_dtimes') THEN
       INSERT INTO prereg.reg_appointment (id, appointment_dtimes, regcntr_id, lang_code, cr_by, cr_dtimes)
       SELECT gen_random_uuid(), now() + (i||' minutes')::interval, 'RC1', 'fra', 'sim', now()

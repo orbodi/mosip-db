@@ -78,13 +78,24 @@ DO $$
 DECLARE n int := 100; BEGIN
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='audit' AND table_name='app_audit_log') THEN
     -- choose flexible minimal columns
-    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='module_name') THEN
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='module_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='description')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_by')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_at') THEN
       INSERT INTO audit.app_audit_log (module_name, event_name, description, created_by, created_at)
       SELECT 'SIM','CYCLE','Simulated audit log','sim', now()
       FROM generate_series(1, n) s(i);
-    ELSE
-      INSERT INTO audit.app_audit_log (event_name, description)
-      SELECT 'CYCLE','Simulated audit log'
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='module_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='event_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_by')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_at') THEN
+      INSERT INTO audit.app_audit_log (module_name, event_name, created_by, created_at)
+      SELECT 'SIM','CYCLE','sim', now()
+      FROM generate_series(1, n) s(i);
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='event_name')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='audit' AND table_name='app_audit_log' AND column_name='created_at') THEN
+      INSERT INTO audit.app_audit_log (event_name, created_at)
+      SELECT 'CYCLE', now()
       FROM generate_series(1, n) s(i);
     END IF;
   END IF;

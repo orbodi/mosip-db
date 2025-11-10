@@ -62,11 +62,25 @@ BEGIN
   -- printing_shipped_cards (based on existing orders if present columns align)
   IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='printing_shipped_cards')
      AND EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='regprc' AND table_name='printing_orders') THEN
-    INSERT INTO regprc.printing_shipped_cards (printing_order_id, shipped_on, carrier, tracking_no)
-    SELECT po.id, now(), 'DHL', 'TRK'||po.id::text
-    FROM regprc.printing_orders po
-    ORDER BY po.id DESC LIMIT 30
-    ON CONFLICT DO NOTHING;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_shipped_cards' AND column_name='printing_order_id') THEN
+      INSERT INTO regprc.printing_shipped_cards (printing_order_id, shipped_on, carrier, tracking_no)
+      SELECT po.id, now(), 'DHL', 'TRK'||po.id::text
+      FROM regprc.printing_orders po
+      ORDER BY po.id DESC LIMIT 30
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_shipped_cards' AND column_name='order_id') THEN
+      INSERT INTO regprc.printing_shipped_cards (order_id, shipped_on, carrier, tracking_no)
+      SELECT po.id, now(), 'DHL', 'TRK'||po.id::text
+      FROM regprc.printing_orders po
+      ORDER BY po.id DESC LIMIT 30
+      ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='regprc' AND table_name='printing_shipped_cards' AND column_name='printing_orders_id') THEN
+      INSERT INTO regprc.printing_shipped_cards (printing_orders_id, shipped_on, carrier, tracking_no)
+      SELECT po.id, now(), 'DHL', 'TRK'||po.id::text
+      FROM regprc.printing_orders po
+      ORDER BY po.id DESC LIMIT 30
+      ON CONFLICT DO NOTHING;
+    END IF;
   END IF;
 END $$;
 

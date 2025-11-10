@@ -22,6 +22,10 @@ BEGIN
       INSERT INTO authdevice.reg_device_sub_type (code, name, descr, reg_device_type_code, is_active, cr_by, cr_dtimes)
       VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', 'BIO', true, 'sim', now())
       ON CONFLICT DO NOTHING;
+    ELSIF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='reg_device_sub_type' AND column_name='dtyp_code') THEN
+      INSERT INTO authdevice.reg_device_sub_type (code, name, descr, dtyp_code, is_active, cr_by, cr_dtimes)
+      VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', 'BIO', true, 'sim', now())
+      ON CONFLICT DO NOTHING;
     ELSE
       INSERT INTO authdevice.reg_device_sub_type (code, name, descr, is_active, cr_by, cr_dtimes)
       VALUES ('FINGER', 'Fingerprint', 'Fingerprint Biometric', true, 'sim', now())

@@ -37,10 +37,19 @@ BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.tables WHERE table_schema='authdevice' AND table_name='registered_device_master'
   ) THEN
-    INSERT INTO authdevice.registered_device_master (id, serial_no, make, model, reg_device_type_code, is_active, cr_by, cr_dtimes)
-    SELECT gen_random_uuid(), 'SN'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'MakeX', 'ModelY', 'BIO', true, 'sim', now()
-    FROM generate_series(1, LEAST(n, 200)) s(i)
-    ON CONFLICT DO NOTHING;
+    IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='id')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='serial_no')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='make')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='model')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='reg_device_type_code')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='is_active')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='cr_by')
+       AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='authdevice' AND table_name='registered_device_master' AND column_name='cr_dtimes') THEN
+      INSERT INTO authdevice.registered_device_master (id, serial_no, make, model, reg_device_type_code, is_active, cr_by, cr_dtimes)
+      SELECT gen_random_uuid(), 'SN'||to_char(now(),'YYYYMMDD')||lpad(i::text,6,'0'), 'MakeX', 'ModelY', 'BIO', true, 'sim', now()
+      FROM generate_series(1, LEAST(n, 200)) s(i)
+      ON CONFLICT DO NOTHING;
+    END IF;
   ELSIF EXISTS (
     SELECT 1 FROM information_schema.tables WHERE table_schema='authdevice' AND table_name='device_detail'
   ) THEN
